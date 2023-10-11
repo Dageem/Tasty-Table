@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.use("/recipe", require("./recipe"))
 router.use("/users", require("./Users"))
+router.use("/post", require("./Post"))
 
 
 module.exports = router;
