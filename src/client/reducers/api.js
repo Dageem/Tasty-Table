@@ -8,7 +8,7 @@ export const api = createApi({
     tagTypes:['tag'],
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
-        baseUrl: "localhost:3000",
+        baseUrl: "localhost:8081",
         prepareHeaders: (headers, { getState }) => {
             console.log("prepareHeaders is running");
 
