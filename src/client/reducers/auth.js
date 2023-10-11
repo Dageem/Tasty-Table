@@ -1,10 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {api as storeApi} from "./api";
+// import { api } from "./api";
 
  //session storage key
 const CREDENTIALS = "credentials";
 
-const authApi = storeApi.injectEndpoints({
+const authApi = api.injectEndpoints({
     endpoints: (builder)=>({
         login: builder.mutation({
             query: (cred)=>({
