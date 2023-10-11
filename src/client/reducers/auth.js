@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-// import { api } from "./api";
+import { api } from "./api";
 
  //session storage key
 const CREDENTIALS = "credentials";
@@ -49,9 +49,9 @@ const authSlice = createSlice({
     },
     reducers:{},
     extraReducers: (builder)=>{
-        builder.addMatcher(storeApi.endpoints.login.matchFulfilled, storeToken);
-        builder.addMatcher(storeApi.endpoints.register.matchFulfilled, storeToken);
-        builder.addMatcher(storeApi.endpoints.logout.matchFulfilled, (state)=>{
+        builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
+        builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
+        builder.addMatcher(api.endpoints.logout.matchFulfilled, (state)=>{
             console.log("logout")
             state.credentials = {
                 token:"",
