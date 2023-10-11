@@ -98,3 +98,4 @@ ALTER TABLE "Ingredient_recipe" ADD CONSTRAINT "Ingredient_recipe_ingredientId_f
 
 -- AddForeignKey
 ALTER TABLE "Ingredient_recipe" ADD CONSTRAINT "Ingredient_recipe_recipeId_fkey" FOREIGN KEY ("recipeId") REFERENCES "Recipe"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
