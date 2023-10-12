@@ -8,7 +8,7 @@ export const api = createApi({
     tagTypes:['tag'],
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
-        baseUrl: "localhost:8081",
+        baseUrl: import.meta.env.VITE_URL||"http://localhost:3000",
         prepareHeaders: (headers, { getState }) => {
             console.log("prepareHeaders is running");
 
@@ -24,68 +24,110 @@ export const api = createApi({
         },
     }),
     endpoints: (builder) => ({
-        getPosts: builder.query({
-            query: ()=> 'api/posts'
+        getUsers: builder.query({
+            query: ()=> 'api/users'
         }),
-        getUserPosts: builder.query({
-            query:()=>'api/posts/user/'
+        getUserById: builder.query({
+            query:(id)=>'api/users/'+id,
         }),
-        deletePost:builder.mutation({
+        updateUserById:builder.mutation({//not sure on this one
             query:(id)=>({
-                url:'api/posts/'+id,
-                method:'DELETE'
+                url:'api/users/'+id,
+                method:'PUT'
             })
         }),
-        addPost: builder.mutation({
-            query:(body)=>({
-                url:'api/posts',
+        deleteUser: builder.mutation({
+            query:(id)=>({
+                url:'api/users/'+id,
+                method:"DELETE",
+            })
+        }),
+        getRecipes: builder.query({
+            query:()=>({
+                url:'api/recipe'
+            })
+        }),
+        getRecipesByUserId: builder.query({
+            query:(userId)=>({
+                url:'api/recipe/users/'+userId,
+            })
+        }),
+        createRecipe: builder.mutation({
+            query:()=>({
+                url:'api/recipe',
+                method:"Post",
+            })
+        }),
+        getRecipeById: builder.query({
+            query:(id)=>({
+                url:'api/recipe/'+id,
+            })
+        }),
+        deleteRecipeById: builder.mutation({
+            query:(id)=>({
+                url:'api/recipe/'+id,
+                method:"DELETE",
+            })
+        }),
+        getRecipesByName: builder.query({//not sure
+            query:(name)=>({
+                url:'api/recipe/recipetags/'+name
+            })
+        }),
+        getRecipesByIngredient: builder.query({//not sure
+            query:(name)=>({
+                url:'api/recipe/recipebyingredient/'+name
+            })
+        }),
+        getPosts: builder.query({
+            query:()=>({
+                url:'api/post'
+            })
+        }),
+        getPostByUserId: builder.query({
+            query:(userId)=>({
+                url:'api/post/user'+userId
+            })
+        }),
+        createPost: builder.mutation({
+            query:()=>({
+                url:'api/post',
                 method:"POST",
-                body:body
             })
         }),
-        editPost: builder.mutation({
-            query(data){
-                const {id, ...body}=data;
-                return {
-                    url: 'api/posts/'+id,
-                    method:"PUT",
-                    body
-                }
-            }
+        updatePostById: builder.mutation({
+            query:(id)=>({
+                url:'api/post'+id,
+                method:"PUT",
+            })
         }),
-
+        deletePostById: builder.mutation({
+            query:(id)=>({
+                url:'api/post'+id,
+                method:"DELETE",
+            })
+        }),
     }),
 });
 
-const dataSlice = createSlice({
-    name:"data",
-    initialState:{
-        posts:[]
-    },
-    reducers:{},
-    extraReducers: (builder)=>{
-        builder.addMatcher(api.endpoints.getPosts.matchFulfilled, (state, {payload})=>{
-            return{
-                ...state,
-                posts: payload
-            }
-        })
 
-        builder.addMatcher(api.endpoints.deletePost.matchFulfilled, (state, {payload})=>{
-            return {
-                ...state,
-                posts: state.posts.filter(i=>i.id!==payload.id)
-            }
 
-        })
 
-        builder.addMatcher(api.endpoints.addPost.matchFulfilled, (state, {payload})=>{
-            state.posts.push(payload);
-            return state;
-        })
-    }
-})
-
-export default dataSlice.reducer;
-
-export const {useGetUserPostsQuery, useAddPostMutation, useDeletePostMutation, useGetPostsQuery, useUpdatePostMutation} = api;
+export const {
+    useGetUsersQuery,
+    useGetUserByIdQuery,
+    useUpdateUserByIdMutation,
+    useDeleteUserMutation,
+    useGetRecipesQuery,
+    useCreateRecipeMutation,
+    useGetRecipeByIdQuery,
+    useDeleteRecipeByIdMutation,
+    useGetRecipesByNameQuery,
+    useGetRecipesByIngredientQuery,
+    useGetPostsQuery,
+    useGetPostByUserIdQuery,
+    useCreatePostMutation,
+    useUpdatePostByIdMutation,
+    useDeletePostByIdMutation,
+    useGetRecipesByUserIdQuery,
+}= api

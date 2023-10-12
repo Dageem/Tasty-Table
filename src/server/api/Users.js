@@ -33,6 +33,8 @@ router.get("/:id", async (req, res) => {
     }
   });
 
+
+
 // update a user grabbed by id
 router.put("/:id", async (req, res) => {
     try {
