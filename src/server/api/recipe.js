@@ -3,21 +3,7 @@ const router = express.Router();
 const {PrismaClient} = require("@prisma/client");
 const prisma = new PrismaClient();
 
-// get recipe by userId, Also for Chef Daniel 
-// router.get('/user/:id', async (req, res, next)=>{
-//     try{
-//         const recipes = await prisma.recipe.findMany({
-//             where:{
-//                 id: Number(req.params.userId)
-//             }, include: {
-//                 Recipe: true
-//             }
-//         })
-//         res.send(recipes)
-//     }catch(error){
-//         next(error)
-//     }
-// })
+
 
 // get recipe's
 router.get('/', async (req, res, next)=>{
@@ -28,6 +14,32 @@ router.get('/', async (req, res, next)=>{
         next(error)
     }
 })
+
+//create recipe
+router.post('/', async (req, res, next) => {
+    try {
+        const newRecipe = await prisma.recipe.create({
+            data: req.body
+        });
+        res.status(201).send(newRecipe); // 201 Created status code
+    } catch (error) {
+        next(error);
+    }
+});
+
+  // get recipe by userId, Also for Chef Daniel 
+  router.get('/users/:userId', async (req, res, next)=>{
+    try{
+        const recipes = await prisma.recipe.findMany({
+            where:{
+                userId: Number(req.params.userId)
+            },
+        })
+        res.send(recipes)
+    }catch(error){
+        next(error)
+    }
+  })
 
 // get recipe by recipe Id
 router.get('/:id', async (req, res, next)=>{
