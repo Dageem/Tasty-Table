@@ -15,17 +15,89 @@ router.get('/', async (req, res, next)=>{
     }
 })
 
+
 //create recipe
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res) => {
     try {
-        const newRecipe = await prisma.recipe.create({
-            data: req.body
+      const {
+        name,
+        details,
+        desc,
+        instructions,
+        imageUrl,
+        image2Url,
+        image3Url,
+        userId, 
+        tagId, 
+        ingredients, 
+        tags, 
+      } = req.body;
+// console.log(req.body)
+  
+      // Create the recipe
+      const recipe = await prisma.recipe.create({
+        data: {
+          name,
+          details,
+          desc,
+          instructions,
+          imageUrl,
+          image2Url,
+          image3Url,
+          userId,
+          tagId,
+        },
+        include: {
+          Tag: true, 
+          User: true, 
+          Ingredient_recipe: true,
+        },
+      });
+  
+      // ccreate or match tqgs
+      for (const tagName of tags) {
+        const tag = await prisma.tag.upsert({
+          where: { name: tagName },
+          update: {},
+          create: { name: tagName },
         });
-        res.status(201).send(newRecipe); // 201 Created status code
+  
+        await prisma.recipetags.create({
+          data: {
+            tagId: tag.id,
+            recipeId: recipe.id,
+          },
+        });
+      }
+  
+      // Create or match ingr and mes
+      for (const ingredientData of ingredients) {
+        const { name, measurement } = ingredientData;
+  
+        const ingredient = await prisma.ingredient.upsert({
+          where: { name },
+          update: {},
+          create: { name },
+        });
+  
+        await prisma.ingredient_recipe.create({
+          data: {
+            ingredientId: ingredient.id,
+            recipeId: recipe.id,
+            measurement,
+          },
+        });
+      }
+  
+      res.json({ recipe });
     } catch (error) {
-        next(error);
+      console.error(error);
+      res.status(500).json({ error: "An error occurred while creating the recipe." });
     }
-});
+  });
+  
+
+  
 
   // get recipe by userId, Also for Chef Daniel 
   router.get('/users/:userId', async (req, res, next)=>{
@@ -84,22 +156,34 @@ router.delete('/:id', async (req, res, next)=>{
 })
 
 // get recipe by tag name 
-router.get('/recipetags/:name', async (req, res, next)=>{
-    try{
-        const tagName = await prisma.tag.findUnique({
-            where:{
-                name: req.params.name
-            }, include: {
-                recipes: true
-            }
-        })
-        if (tagName && tagName.recipes) {
-            res.send(tagName.recipes);
-        }
-    }catch(error){
-        next(error)
+router.get('/recipesbytag/:tagName', async (req, res) => {
+    try {
+      const { tagName } = req.params;
+      const recipes = await prisma.recipe.findMany({
+        where: {
+          recipetags: {
+            some: {
+              tag: {
+                name: tagName,
+              },
+            },
+          },
+        },
+        // orderBy: {
+        //   recipetags: {
+        //     tag: {
+        //       name: 'asc', // Sort recipes by tag name in ascending order
+        //     },
+        //   },
+        // },
+      });
+  
+      res.json(recipes);
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+      res.status(500).json({ error: 'An error occurred while fetching recipes.' });
     }
-})
+  });
 
 // get recipe by ingredient name 
 router.get('/recipebyingredient/:name', async (req, res, next) => {
