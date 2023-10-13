@@ -32,6 +32,7 @@ router.post("/", async (req, res) => {
         ingredients, 
         tags, 
       } = req.body;
+// console.log(req.body)
   
       // Create the recipe
       const recipe = await prisma.recipe.create({

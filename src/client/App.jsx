@@ -4,6 +4,7 @@ import { DrawerWithNavigation } from "./components/Drawer";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import DisplayCategory from "./components/DisplayCategory";
+import SubmitRecipe from "./components/SubmitRecipe";
 
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       </div>
       <Routes>
           <Route path="/categories" element={<DisplayCategory />} />
+          <Route path="/recipesubmit" element={<SubmitRecipe />} />
       </Routes>
     </div>
   );
