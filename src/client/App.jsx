@@ -1,10 +1,23 @@
-import { Button } from "@material-tailwind/react";
+import { StickyNavbar } from "./components/Nav";
+import { DrawerWithNavigation } from "./components/Drawer";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+// import SubmitRecipe from "./components/SubmitRecipe";
 
 export default function App() {
+  const [open, setOpen] = useState(false);
+  const openDrawer = () => setOpen(true);
+  const closeDrawer = () => setOpen(false);
+
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Button>Button</Button>
+      <div>
+        <StickyNavbar openDrawer={openDrawer} />
+        <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
+      </div>
+      <Routes>
+        {/* <Route path="/submitrecipe" element={<SubmitRecipe />}/> */}
+      </Routes>
     </div>
   );
 }
