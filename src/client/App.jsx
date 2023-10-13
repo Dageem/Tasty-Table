@@ -1,10 +1,15 @@
-import { Button } from "@material-tailwind/react";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import DisplayCategory from "./components/DisplayCategory";
 
-export default function App() {
+function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Button>Button</Button>
-    </div>
+    <>
+    <Routes>
+      <Route path="/categories" element={<DisplayCategory />} />
+    </Routes>
+    </>
   );
 }
+
+export default App;
