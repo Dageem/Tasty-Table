@@ -91,7 +91,7 @@ export const api = createApi({
         }),
         getPostByUserId: builder.query({
             query:(userId)=>({
-                url:'api/post/user'+userId
+                url:'api/post/user/'+userId
             })
         }),
         createPost: builder.mutation({
@@ -102,13 +102,13 @@ export const api = createApi({
         }),
         updatePostById: builder.mutation({
             query:(id)=>({
-                url:'api/post'+id,
+                url:'api/post/'+id,
                 method:"PUT",
             })
         }),
         deletePostById: builder.mutation({
             query:(id)=>({
-                url:'api/post'+id,
+                url:'api/post/'+id,
                 method:"DELETE",
             })
         }),

@@ -1,10 +1,10 @@
-
 import { StickyNavbar } from "./components/Nav";
 import { DrawerWithNavigation } from "./components/Drawer";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import DisplayCategory from "./components/DisplayCategory";
 import SubmitRecipe from "./components/SubmitRecipe";
+import CommunityBoard from "./components/CommunityBoard";
 
 
 export default function App() {
@@ -19,6 +19,7 @@ export default function App() {
         <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
       </div>
       <Routes>
+          <Route path="/communityboard" element={<CommunityBoard />} />
           <Route path="/categories" element={<DisplayCategory />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
       </Routes>
