@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   Collapse,
@@ -67,7 +68,7 @@ export function StickyNavbar({ openDrawer }) {
         className="p-1 font-normal"
       >
         <a href="#" className="flex items-center">
-          Login/Register
+          <Link to={"/login"}>Login/Register</Link>
         </a>
       </Typography>
     </ul>
