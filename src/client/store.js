@@ -5,7 +5,7 @@ import authReducer from './reducers/auth'
 const store = configureStore({
     reducer: {
         [api.reducerPath]: api.reducer,
-        auth: authReducer
+        auth: authReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(api.middleware),
