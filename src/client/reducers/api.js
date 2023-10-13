@@ -70,13 +70,18 @@ export const api = createApi({
             })
         }),
         getRecipesByName: builder.query({//not sure
-            query:(name)=>({
-                url:'api/recipe/recipetags/'+name
+            query:(tagname)=>({
+                url:'api/recipe/recipesbytag/'+tagname
             })
         }),
         getRecipesByIngredient: builder.query({//not sure
             query:(name)=>({
                 url:'api/recipe/recipebyingredient/'+name
+            })
+        }),
+        getTags: builder.query({
+            query:()=>({
+                url:'api/tag'
             })
         }),
         getPosts: builder.query({
@@ -130,4 +135,5 @@ export const {
     useUpdatePostByIdMutation,
     useDeletePostByIdMutation,
     useGetRecipesByUserIdQuery,
+    useGetTagsQuery,
 }= api

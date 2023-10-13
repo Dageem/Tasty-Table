@@ -1,7 +1,9 @@
+
 import { StickyNavbar } from "./components/Nav";
 import { DrawerWithNavigation } from "./components/Drawer";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import DisplayCategory from "./components/DisplayCategory";
 
 
 export default function App() {
@@ -16,6 +18,7 @@ export default function App() {
         <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
       </div>
       <Routes>
+          <Route path="/categories" element={<DisplayCategory />} />
       </Routes>
     </div>
   );

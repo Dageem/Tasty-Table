@@ -155,22 +155,34 @@ router.delete('/:id', async (req, res, next)=>{
 })
 
 // get recipe by tag name 
-router.get('/recipetags/:name', async (req, res, next)=>{
-    try{
-        const tagName = await prisma.tag.findUnique({
-            where:{
-                name: req.params.name
-            }, include: {
-                recipes: true
-            }
-        })
-        if (tagName && tagName.recipes) {
-            res.send(tagName.recipes);
-        }
-    }catch(error){
-        next(error)
+router.get('/recipesbytag/:tagName', async (req, res) => {
+    try {
+      const { tagName } = req.params;
+      const recipes = await prisma.recipe.findMany({
+        where: {
+          recipetags: {
+            some: {
+              tag: {
+                name: tagName,
+              },
+            },
+          },
+        },
+        // orderBy: {
+        //   recipetags: {
+        //     tag: {
+        //       name: 'asc', // Sort recipes by tag name in ascending order
+        //     },
+        //   },
+        // },
+      });
+  
+      res.json(recipes);
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+      res.status(500).json({ error: 'An error occurred while fetching recipes.' });
     }
-})
+  });
 
 // get recipe by ingredient name 
 router.get('/recipebyingredient/:name', async (req, res, next) => {
