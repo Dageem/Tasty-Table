@@ -45,7 +45,7 @@ router.post('/', async (req,res,next)=>{
       }catch(err){
           next(err)
       }
-  })
+  });
 
   router.put("/:id", async (req, res, next) => {
 
