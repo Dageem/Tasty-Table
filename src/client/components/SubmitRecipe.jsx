@@ -28,7 +28,7 @@ const RecipeForm = ({ userId }) => {
       image2Url,
       image3Url,
       userId,
-      tagId: null, // This should be adjusted according to your logic
+      tagId: null,
       tags,
       ingredients,
     };
@@ -42,7 +42,7 @@ const RecipeForm = ({ userId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col">
       <input
         value={name}
         onChange={(e) => setName(e.target.value)}

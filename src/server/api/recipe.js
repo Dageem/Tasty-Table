@@ -28,9 +28,9 @@ router.post("/", async (req, res) => {
         image2Url,
         image3Url,
         userId, 
-        tagId, 
-        ingredients, 
-        tags, 
+        tagId,
+        ingredients,
+        tags,
       } = req.body;
 // console.log(req.body)
   
