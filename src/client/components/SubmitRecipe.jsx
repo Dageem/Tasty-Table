@@ -1,161 +1,131 @@
 import React, { useState } from "react";
 import { useCreateRecipeMutation } from "../reducers/api";
 
-const SubmitRecipe = () => {
-  const [createRecipe, { isLoading, isError, error }] =
-    useCreateRecipeMutation();
+const RecipeForm = ({ userId }) => {
+  const [name, setName] = useState("");
+  const [details, setDetails] = useState("");
+  const [desc, setDesc] = useState("");
+  const [instructions, setInstructions] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [image2Url, setImage2Url] = useState("");
+  const [image3Url, setImage3Url] = useState("");
+  const [tags, setTags] = useState([""]);
+  const [ingredients, setIngredients] = useState([
+    { name: "", measurement: "" },
+  ]);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    details: "",
-    desc: "",
-    instructions: "",
-    imageUrl: "",
-    image2Url: "",
-    image3Url: "",
-    userId: 1,
-    tagId: 1,
-    tags: [""],
-    ingredients: [{ name: "", measurement: "" }],
-  });
-
-  //   const [createRecipe, { isLoading, isError, error }] =
-  //     useCreateRecipeMutation();
-
-  const handleInputChange = (field, value) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
-  };
-
-  const handleTagChange = (index, value) => {
-    const newTags = [...formData.tags];
-    newTags[index] = value;
-    setFormData({ ...formData, tags: newTags });
-  };
-
-  const handleIngredientChange = (index, key, value) => {
-    const newIngredients = [...formData.ingredients];
-    newIngredients[index][key] = value;
-    setFormData({ ...formData, ingredients: newIngredients });
-  };
-
-  const addIngredient = () => {
-    setFormData((prevData) => ({
-      ...prevData,
-      ingredients: [...prevData.ingredients, { name: "", measurement: "" }],
-    }));
-  };
-
-  const addTag = () => {
-    setFormData((prevData) => ({ ...prevData, tags: [...prevData.tags, ""] }));
-  };
+  const [createRecipe] = useCreateRecipeMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting formData:", formData);
-    if (!formData.name) {
-      alert("Please enter a recipe name.");
-      return;
-    }
+
+    const recipeData = {
+      name,
+      details,
+      desc,
+      instructions,
+      imageUrl,
+      image2Url,
+      image3Url,
+      userId,
+      tagId: null, // This should be adjusted according to your logic
+      tags,
+      ingredients,
+    };
+
     try {
-      await createRecipe(formData);
-      alert("Recipe submitted successfully!");
+      const response = await createRecipe(recipeData);
+      console.log(response);
     } catch (error) {
-      console.error("Failed to submit the recipe", error);
+      console.error("Error creating recipe:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col">
+    <form onSubmit={handleSubmit}>
       <input
-        type="text"
-        placeholder="Recipe Name"
-        value={formData.name}
-        onChange={(e) => handleInputChange("name", e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Name"
       />
       <textarea
-        placeholder="Recipe details"
-        value={formData.details}
-        onChange={(e) => handleInputChange("details", e.target.value)}
-      />
+        value={details}
+        onChange={(e) => setDetails(e.target.value)}
+        placeholder="Details"
+      ></textarea>
       <textarea
-        placeholder="Recipe Description"
-        value={formData.desc}
-        onChange={(e) => handleInputChange("desc", e.target.value)}
-      />
+        value={desc}
+        onChange={(e) => setDesc(e.target.value)}
+        placeholder="Description"
+      ></textarea>
       <textarea
+        value={instructions}
+        onChange={(e) => setInstructions(e.target.value)}
         placeholder="Instructions"
-        value={formData.instructions}
-        onChange={(e) => handleInputChange("instructions", e.target.value)}
-      />
+      ></textarea>
       <input
-        type="text"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
         placeholder="Image URL"
-        value={formData.imageUrl}
-        onChange={(e) => handleInputChange("imageUrl", e.target.value)}
       />
       <input
-        type="text"
-        placeholder="2nd Image URL"
-        value={formData.image2Url}
-        onChange={(e) => handleInputChange("image2Url", e.target.value)}
+        value={image2Url}
+        onChange={(e) => setImage2Url(e.target.value)}
+        placeholder="Image 2 URL"
       />
       <input
-        type="text"
-        placeholder="3rd Image URL"
-        value={formData.image3Url}
-        onChange={(e) => handleInputChange("image3Url", e.target.value)}
+        value={image3Url}
+        onChange={(e) => setImage3Url(e.target.value)}
+        placeholder="Image 3 URL"
       />
-      <div>
-        {formData.tags.map((tag, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              placeholder={`Tag ${index + 1}`}
-              value={tag}
-              onChange={(e) => handleTagChange(index, e.target.value)}
-            />
-          </div>
-        ))}
-        <button type="button" onClick={addTag}>
-          Add Tag
-        </button>
-      </div>
 
-      <div>
-        {formData.ingredients.map((ingredient, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              placeholder="Ingredient Name"
-              value={ingredient.name}
-              onChange={(e) =>
-                handleIngredientChange(index, "name", e.target.value)
-              }
-            />
-            <input
-              type="text"
-              placeholder="Measurement"
-              value={ingredient.measurement}
-              onChange={(e) =>
-                handleIngredientChange(index, "measurement", e.target.value)
-              }
-            />
-          </div>
-        ))}
-        <button type="button" onClick={addIngredient}>
-          Add Ingredient
-        </button>
-      </div>
+      {tags.map((tag, index) => (
+        <input
+          key={index}
+          value={tag}
+          onChange={(e) => {
+            const newTags = [...tags];
+            newTags[index] = e.target.value;
+            setTags(newTags);
+          }}
+          placeholder="Tag"
+        />
+      ))}
+      <button onClick={() => setTags([...tags, ""])}>Add Tag</button>
 
-      <button type="submit" disabled={isLoading}>
-        Submit Recipe
+      {ingredients.map((ingredient, index) => (
+        <div key={index}>
+          <input
+            value={ingredient.name}
+            onChange={(e) => {
+              const newIngredients = [...ingredients];
+              newIngredients[index].name = e.target.value;
+              setIngredients(newIngredients);
+            }}
+            placeholder="Ingredient Name"
+          />
+          <input
+            value={ingredient.measurement}
+            onChange={(e) => {
+              const newIngredients = [...ingredients];
+              newIngredients[index].measurement = e.target.value;
+              setIngredients(newIngredients);
+            }}
+            placeholder="Measurement"
+          />
+        </div>
+      ))}
+      <button
+        onClick={() =>
+          setIngredients([...ingredients, { name: "", measurement: "" }])
+        }
+      >
+        Add Ingredient
       </button>
-      {isError && <p>Error: {error.message}</p>}
+
+      <button type="submit">Submit</button>
     </form>
   );
 };
 
-export default SubmitRecipe;
+export default RecipeForm;
