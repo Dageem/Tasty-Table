@@ -4,8 +4,10 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import DisplayCategory from "./components/DisplayCategory";
 import SubmitRecipe from "./components/SubmitRecipe";
+import Home from "./components/Home";
 import CommunityBoard from "./components/CommunityBoard";
 import LoginPage from "./components/Login";
+
 
 
 export default function App() {
@@ -22,6 +24,7 @@ export default function App() {
       <Routes>
           <Route path="/communityboard" element={<CommunityBoard />} />
           <Route path="/categories" element={<DisplayCategory />} />
+          <Route path="/" element={<Home />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
       </Routes>
