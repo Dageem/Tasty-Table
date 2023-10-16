@@ -1,11 +1,66 @@
-import React from 'react'
+import React from "react";
+import Carousel from "./Carousel";
 
 function Home() {
   return (
     <div>
-      
+      <section className="px-4">
+        <div className="text-center mb-6">
+          <h1 className="text-3xl py-4 font-bold text-purple-900">
+            Tasty Recipes For Everyone
+          </h1>
+          <p className="text-xl bg-gray-300 italic text-purple-400 mb-6 p-1 rounded-xl">
+            "Restaurant quality recipes for average Joes."
+            <br /> -Chef Daniel
+          </p>
+        </div>
+        <div className="flex flex-col">
+          <div className="relative hover:cursor-pointer">
+            <img
+              src="https://www.acouplecooks.com/wp-content/uploads/2021/03/Cheese-Tortellini-011.jpg"
+              alt=""
+              className="w-[95%] ml-[2.5%] rounded-xl py-2 h-[300px]"
+            />
+            <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 p-2 bg-white bg-opacity-70 rounded text-l font-bold">
+              Easy Recipes
+            </div>
+          </div>
+          <div className="relative hover:cursor-pointer">
+            <img
+              src="https://cdn.britannica.com/13/234013-050-73781543/rice-and-chorizo-burrito.jpg"
+              alt=""
+              className="w-[95%] ml-[2.5%] rounded-xl py-2 h-[300px]"
+            />
+            <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 p-2 bg-white bg-opacity-70 rounded text-l font-bold">
+              Quick Recipes
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="p-4">
+          <h1 className="text-xl text-center font-bold text-black">
+            Search Recipes
+          </h1>
+          <input
+            type="text"
+            placeholder="Search recipes..."
+            className="w-[95%] ml-[2.5%] border border-black rounded-lg p-2"
+          />
+        </div>
+        <div>
+          <div className="my-6">
+            <Carousel />
+          </div>
+          <div className="text-center">
+            <button className="bg-purple-900 text-white my-4 py-2 px-4 w-[200px] rounded-lg hover:bg-purple-700 focus:outline-none focus:ring focus:border-purple-300">
+              All Recipes
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
