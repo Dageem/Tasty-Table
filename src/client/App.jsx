@@ -7,6 +7,7 @@ import SubmitRecipe from "./components/SubmitRecipe";
 import Home from "./components/Home";
 import CommunityBoard from "./components/CommunityBoard";
 import LoginPage from "./components/Login";
+import RecentRecipes from "./components/RecentRecipes";
 
 
 
@@ -23,10 +24,11 @@ export default function App() {
       </div>
       <Routes>
           <Route path="/communityboard" element={<CommunityBoard />} />
-          <Route path="/categories" element={<DisplayCategory />} />
+          <Route path="/categories/:category" element={<DisplayCategory />} />
           <Route path="/" element={<Home />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/temp" element={<RecentRecipes />} />
       </Routes>
     </div>
   );
