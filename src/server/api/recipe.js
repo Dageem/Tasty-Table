@@ -6,26 +6,171 @@ const prisma = new PrismaClient();
 
 
 // get recipe's
-router.get('/', async (req, res, next)=>{
+
+router.get('/', async (req,res,next)=>{
     try{
-        const allRecipes = await prisma.recipe.findMany();
-        res.send(allRecipes)
-    }catch(error){
-        next(error)
+        const allPosts = await prisma.recipe.findMany({
+            include:{
+                recipetags:{
+                    include:{
+                        tag:true
+                    }
+                }
+            }
+        });
+        res.send(allPosts)
+    }catch(err){
+        next(err)
+    }
+})
+
+router.post('/', async (req,res,next)=>{
+    console.log(req.body)
+    console.log("Request headers:", req.headers);
+    try{
+
+        const recipe = await prisma.recipe.create({
+          data: {
+            name: req.body.name,
+            details: req.body.details,
+            desc: req.body.desc,
+            instructions: req.body.instructions,
+            imageUrl:req.body.imageUrl,
+            image2Url: req.body.image2Url,
+            image3Url: req.body.image3Url,
+            userId: req.body.userId,
+          }
+        })
+
+        const convertedItems = req.body.tags.map((i)=>{
+            return {
+                recipeId: recipe.id,
+                tagId: i.id
+            }
+        })
+
+        const convertedItems2 = req.body.ingredients.map((i)=>{
+          return {
+            recipeId: recipe.id,
+            ingredientId: i.id,
+            measurement: i.measurement
+          }
+        })
+
+    
+
+        const relations = await prisma.Recipetags.createMany({
+            data: convertedItems
+        })
+
+        const relations2 = await prisma.ingredient_recipe.createMany({
+          data: convertedItems2
+        })
+
+        const finalPost = await prisma.recipe.findFirst({
+            where:{
+                id:recipe.id
+            },
+            include:{
+                recipetags:{
+                    include:{
+                        tag:true
+                    }
+                }
+            }, 
+            include:{
+              Ingredient_recipe:{
+                include:{
+                  recipe: true
+                }
+              }
+            }
+        })
+        res.send(finalPost)
+    }catch(err){
+        next(err)
     }
 })
 
 //create recipe
-router.post('/', async (req, res, next) => {
-    try {
-        const newRecipe = await prisma.recipe.create({
-            data: req.body
-        });
-        res.status(201).send(newRecipe); // 201 Created status code
-    } catch (error) {
-        next(error);
-    }
-});
+// router.post("/", async (req, res) => {
+//   try {
+//     const {
+//       name,
+//       details,
+//       desc,
+//       instructions,
+//       imageUrl,
+//       image2Url,
+//       image3Url,
+//       userId, 
+//       tagId, 
+//       ingredients, 
+//       tags, 
+//     } = req.body;
+// // console.log(req.body)
+
+//     // Create the recipe
+//     const recipe = await prisma.recipe.create({
+//       data: {
+//         name,
+//         details,
+//         desc,
+//         instructions,
+//         imageUrl,
+//         image2Url,
+//         image3Url,
+//         userId,
+//         tagId,
+//       },
+//       include: {
+//         Tag: true, 
+//         User: true, 
+//         Ingredient_recipe: true,
+//       },
+//     });
+
+//     // ccreate or match tqgs
+//     for (const tagName of tags) {
+//       const tag = await prisma.tag.upsert({
+//         where: { name: tagName },
+//         update: {},
+//         create: { name: tagName },
+//       });
+
+//       await prisma.recipetags.create({
+//         data: {
+//           tagId: tag.id,
+//           recipeId: recipe.id,
+//         },
+//       });
+//     }
+
+//     // Create or match ingr and mes
+//     for (const ingredientData of ingredients) {
+//       const { name, measurement } = ingredientData;
+
+//       const ingredient = await prisma.ingredient.upsert({
+//         where: { name },
+//         update: {},
+//         create: { name },
+//       });
+
+//       await prisma.ingredient_recipe.create({
+//         data: {
+//           ingredientId: ingredient.id,
+//           recipeId: recipe.id,
+//           measurement,
+//         },
+//       });
+//     }
+
+//     res.json({ recipe });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "An error occurred while creating the recipe." });
+//   }
+// });
 
   // get recipe by userId, Also for Chef Daniel 
   router.get('/users/:userId', async (req, res, next)=>{
@@ -84,17 +229,21 @@ router.delete('/:id', async (req, res, next)=>{
 })
 
 // get recipe by tag name 
-router.get('/recipetags/:name', async (req, res, next)=>{
+router.get('/recipebytag/:tagName', async (req, res, next)=>{
     try{
-        const tagName = await prisma.tag.findUnique({
+        const recipes = await prisma.recipe.findMany({
             where:{
-                name: req.params.name
-            }, include: {
-                recipes: true
+                recipetags:{
+                    some: {
+                        tag: {
+                            name: tagName
+                        }
+                    }
+                }
             }
         })
-        if (tagName && tagName.recipes) {
-            res.send(tagName.recipes);
+        if (recipes) {
+            res.send(recipes);
         }
     }catch(error){
         next(error)
@@ -102,16 +251,15 @@ router.get('/recipetags/:name', async (req, res, next)=>{
 })
 
 // get recipe by ingredient name 
-router.get('/recipebyingredient/:name', async (req, res, next) => {
+router.get('/recipebyingredient/:ingname', async (req, res, next) => {
     try {
-        const ingredient = await prisma.ingredient.findUnique({
-            where: {
-                name: req.params.name
-            },
-            include: {
-                ingredient_recipe: {
-                    select: {
-                        recipe: true
+        const ingredient = await prisma.recipe.findMany({
+            wwhere:{
+                ingredientrecipe:{
+                    some: {
+                        ingredient: {
+                            name: ingname
+                        }
                     }
                 }
             }
@@ -120,16 +268,12 @@ router.get('/recipebyingredient/:name', async (req, res, next) => {
         if (!ingredient || !ingredient.ingredient_recipe.length) {
             return res.status(404).send("Ingredient not found or no recipes for ingredient");
         }
+        res.send(ingredient);
 
-        // Extract recipes
-        const recipes = ingredient.ingredient_recipe.map(ir => ir.recipe);
-
-        res.send(recipes);
     } catch (error) {
         next(error);
     }
 });
-
 
 
 module.exports = router;
