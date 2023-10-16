@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useLogoutMutation } from "../reducers/auth";
+import { useSelector } from "react-redux";
 import {
   Navbar,
   Collapse,
@@ -10,6 +13,8 @@ import { useEffect, useState } from "react";
 
 export function StickyNavbar({ openDrawer }) {
   const [openNav, setOpenNav] = useState(false);
+  const [logout] = useLogoutMutation();
+  const user = useSelector((state) => state.auth.credentials.user) || "";
 
   useEffect(() => {
     window.addEventListener(
@@ -26,9 +31,9 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+       <Link to={"/"}>
           Home
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -66,9 +71,8 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Login/Register
-        </a>
+        {!user.userId && <Link to={"/login"}>Login/Register</Link>}
+        {user.userId && <button onClick={logout}>Logout</button>}
       </Typography>
     </ul>
   );
