@@ -78,7 +78,7 @@ export function StickyNavbar({ openDrawer }) {
   );
 
   return (
-      <Navbar className="w-full sticky top-0 z-50 bg-white py-2 px-4 lg:px-8 lg:py-4">
+      <nav className=" w-full sticky top-0 z-50 p-5 shadow-xl bg-white">
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
@@ -145,6 +145,6 @@ export function StickyNavbar({ openDrawer }) {
             </a>
           </Button>
         </Collapse>
-      </Navbar>
+      </nav>
   );
 }
