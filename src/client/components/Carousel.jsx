@@ -18,7 +18,7 @@ const Carousel = () => {
   return (
     <Slider {...carouselSettings}>
       <Link to="/categories/Chinese">
-        <div className="slide">
+      <div className="slide flex flex-col items-center justify-center">
           <div className="rounded-full overflow-hidden mx-2">
             <img
               src="https://ik.imagekit.io/awwybhhmo/satellite_images/chinese/gray/about_us/2.jpg?tr=w-3840"
@@ -30,7 +30,7 @@ const Carousel = () => {
         </div>
       </Link>
       <Link to="/categories/mexican">
-        <div className="slide">
+      <div className="slide flex flex-col items-center justify-center">
           <div className="rounded-full overflow-hidden mx-2">
             <img
               src="https://insanelygoodrecipes.com/wp-content/uploads/2022/10/Homemade-Vegan-Mexican-Beef-Tacos-with-Herbs-500x375.jpg"
@@ -42,7 +42,7 @@ const Carousel = () => {
         </div>
       </Link>
       <Link to="/categories/thai">
-        <div className="slide">
+      <div className="slide flex flex-col items-center justify-center">
           <div className="rounded-full overflow-hidden mx-2">
             <img
               src="https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/07/1296x728-header.jpg?w=1155&h=1528"
@@ -54,7 +54,7 @@ const Carousel = () => {
         </div>
       </Link>
       <Link to="/categories/indian">
-        <div className="slide">
+      <div className="slide flex flex-col items-center justify-center">
           <div className="rounded-full overflow-hidden mx-2">
             <img
               src="https://www.saga.co.uk/contentlibrary/saga/publishing/verticals/travel/destinations/asia/traditional-indian-food.jpg"
@@ -66,7 +66,7 @@ const Carousel = () => {
         </div>
       </Link>
       <Link to="/categories/korean">
-        <div className="slide">
+      <div className="slide flex flex-col items-center justify-center">
           <div className="rounded-full overflow-hidden mx-2">
             <img
               src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2019_50/3144056/191211-korean-beef-bulgogi-ew-118p.jpg"
@@ -78,7 +78,7 @@ const Carousel = () => {
         </div>
       </Link>
       <Link to="/categories/breakfast">
-        <div className="slide">
+      <div className="slide flex flex-col items-center justify-center">
           <div className="rounded-full overflow-hidden mx-2">
             <img
               src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2021-09-breakfast-grits%2FNew%20Finals%2F2021-10-12_ATK8035"
@@ -90,7 +90,7 @@ const Carousel = () => {
         </div>
       </Link>
       <Link to="/categories/lunch">
-        <div className="slide">
+      <div className="slide flex flex-col items-center justify-center">
           <div className="rounded-full overflow-hidden mx-2">
             <img
               src="https://www.instacart.com/company/wp-content/uploads/2023/04/lunch-ideas-for-work-hero.jpg"
@@ -102,7 +102,7 @@ const Carousel = () => {
         </div>
       </Link>
       <Link to="/categories/dinner">
-        <div className="slide">
+      <div className="slide flex flex-col items-center justify-center">
           <div className="rounded-full overflow-hidden mx-2">
             <img
               src="https://static01.nyt.com/images/2023/09/13/multimedia/11WEEKNIGHT-still-zwhl/11WEEKNIGHT-still-zwhl-master675.jpg"

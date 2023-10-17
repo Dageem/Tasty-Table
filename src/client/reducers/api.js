@@ -86,7 +86,7 @@ export const api = createApi({
         }),
         getTags: builder.query({
             query:()=>({
-                url:'api/tag'
+                url:'api/tags'
             })
         }),
         getPosts: builder.query({

@@ -31,7 +31,6 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-
         <Link to={"/"} onClick={() => setOpenNav(false)}>
           Home
         </Link>
@@ -99,7 +98,11 @@ export function StickyNavbar({ openDrawer }) {
           href="#"
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
-          <h1 className="text-2xl font-bold">Tasty-Table</h1>
+          <img
+            src="https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_290,h_104/https://www.tastytablecatering.com/wp-content/uploads/2022/12/1665697050237-removebg-preview-1.png"
+            alt=""
+            className="h-[40px]"
+          />
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
