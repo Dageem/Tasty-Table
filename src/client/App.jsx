@@ -7,9 +7,10 @@ import SubmitRecipe from "./components/SubmitRecipe";
 import Home from "./components/Home";
 import CommunityBoard from "./components/CommunityBoard";
 import LoginPage from "./components/Login";
+
+import UserProfile from "./components/UserProfile";
 import RecentRecipes from "./components/RecentRecipes";
 import About from "./components/About";
-
 
 
 export default function App() {
@@ -29,7 +30,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/temp" element={<RecentRecipes />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
       </Routes>
     </div>
