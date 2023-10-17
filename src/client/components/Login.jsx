@@ -16,6 +16,7 @@ const LoginPage = () => {
       try {
         await register({ username, password }).unwrap();
         setSuccessMessage("Registered successfully!");
+        navigate("/profile")
       } catch (error) {
         console.error("Register failed:", error);
         setErrorMessage("Registration failed!");
