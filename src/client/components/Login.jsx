@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import { useRegisterMutation, useLoginMutation } from "../reducers/auth";
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
   
     const [register] = useRegisterMutation();
     const [login] = useLoginMutation();
@@ -25,11 +27,12 @@ const LoginPage = () => {
         setErrorMessage("");
       }, 2000);
     };
-  
+   
     const handleLogin = async () => {
       try {
         await login({ username, password }).unwrap();
         setSuccessMessage("Logged in successfully!");
+        navigate("/")
       } catch (error) {
         console.error("Login failed:", error);
         setErrorMessage("Login failed!");
@@ -42,14 +45,14 @@ const LoginPage = () => {
         setErrorMessage("");
       }, 2000);
     };
-  
+    
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="mx-auto h-21 w-auto"
-          src="https://yt3.googleusercontent.com/a1qVaNZqIm_OAYqKSPg8rJ44liH-7u0Lk-h8xNa9fFfkQbNd0tbjD5VNrFy1IJHWW1veFRuP=s900-c-k-c0x00ffffff-no-rj"
-          alt="Your Company"
+          src="https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_290,h_104/https://www.tastytablecatering.com/wp-content/uploads/2022/12/1665697050237-removebg-preview-1.png"
+          alt="Tasty-Table"
         />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign in to your account
