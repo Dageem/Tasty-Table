@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useLogoutMutation } from "../reducers/auth";
 import { useSelector } from "react-redux";
 import {
-  Navbar,
   Collapse,
   Typography,
   Button,
@@ -31,7 +30,9 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to={"/"}>Home</Link>
+        <Link to={"/"} onClick={() => setOpenNav(false)}>
+          Home
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -39,7 +40,9 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link to={"/about"}>About</Link>
+        <Link to={"/about"} onClick={() => setOpenNav(false)}>
+          About
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -47,9 +50,9 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link to={"/blog"} onClick={() => setOpenNav(false)}>
           Blog
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -57,9 +60,9 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <Link to={"/profile"} onClick={() => setOpenNav(false)}>
           Profile
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -67,21 +70,38 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        {!user.userId && <Link to={"/login"}>Login/Register</Link>}
-        {user.userId && <button onClick={logout}>Logout</button>}
+        {!user.userId && (
+          <Link to={"/login"} onClick={() => setOpenNav(false)}>
+            Login/Register
+          </Link>
+        )}
+        {user.userId && (
+          <button
+            onClick={() => {
+              logout();
+              setOpenNav(false);
+            }}
+          >
+            Logout
+          </button>
+        )}
       </Typography>
     </ul>
   );
 
   return (
     <nav className=" w-full sticky top-0 z-50 p-5 shadow-xl bg-white">
-      <div className="flex items-center justify-between text-blue-gray-900">
+      <div className="flex items-center justify-between text-blue-gray-900 h-[20px]">
         <Typography
           as="a"
           href="#"
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
-          <h1 className="text-2xl font-bold">Tasty-Table</h1>
+          <img
+            src="https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_290,h_104/https://www.tastytablecatering.com/wp-content/uploads/2022/12/1665697050237-removebg-preview-1.png"
+            alt=""
+            className="h-[40px]"
+          />
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
@@ -136,7 +156,15 @@ export function StickyNavbar({ openDrawer }) {
       <Collapse open={openNav}>
         {navList}
         <Button variant="gradient" size="sm" className="mb-2">
-          <a href="#" className="flex items-center" onClick={openDrawer}>
+          <a
+            href="#"
+            className="flex items-center"
+            onClick={(e) => {
+              e.preventDefault();
+              openDrawer(); 
+              setOpenNav(false); 
+            }}
+          >
             Recipes
           </a>
         </Button>

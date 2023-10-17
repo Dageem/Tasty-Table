@@ -8,17 +8,17 @@ function Home() {
     <div>
       <section className="">
         <div className="text-center mb-6">
-          <h1 className="text-3xl py-4 font-bold text-purple-900">
-            Tasty Recipes For Everyone
+          <h1 className="text-2xl py-4 font-bold text-purple-900">
+            Recipes For Everyone
           </h1>
-          <p className="text-xl bg-gray-300 italic text-purple-400 mb-6 p-1 rounded-xl w-[95%] ml-[2.5%]">
+          <p className="text-lg bg-gray-300 italic text-purple-400 mb-6 p-1 rounded-xl w-[95%] ml-[2.5%]">
             "Restaurant quality recipes for average Joes."
             <br /> -Chef Daniel
           </p>
         </div>
         <div className="flex flex-col">
           <Link to="/categories/easy">
-            <div className="relative hover:cursor-pointer">
+            <div className="relative hover:cursor-pointer hover:opacity-70">
               <img
                 src="https://www.acouplecooks.com/wp-content/uploads/2021/03/Cheese-Tortellini-011.jpg"
                 alt=""
@@ -30,7 +30,7 @@ function Home() {
             </div>
           </Link>
           <Link to="/categories/quick">
-            <div className="relative hover:cursor-pointer">
+            <div className="relative hover:cursor-pointer hover:opacity-70">
               <img
                 src="https://cdn.britannica.com/13/234013-050-73781543/rice-and-chorizo-burrito.jpg"
                 alt=""
@@ -67,6 +67,12 @@ function Home() {
       </section>
       <section>
         <RecentRecipes />
+      </section>
+      <section>
+        <div>
+          <h1 className="">Sign Up For Our Newsletter</h1>
+          <p>Be the first to get new recipes</p>
+        </div>
       </section>
     </div>
   );
