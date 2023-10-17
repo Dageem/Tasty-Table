@@ -1,3 +1,4 @@
+
 import { StickyNavbar } from "./components/Nav";
 import { DrawerWithNavigation } from "./components/Drawer";
 import { useState } from "react";
@@ -28,9 +29,7 @@ export default function App() {
         <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
 
       <Routes>
-          <Route path="/communityboard" element={<CommunityBoard />} />
-          <Route path="/categories/:category" element={<DisplayCategory />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/categories" element={<DisplayCategory />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<UserProfile />} />
