@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useLogoutMutation } from "../reducers/auth";
 import { useSelector } from "react-redux";
 import {
-  Navbar,
   Collapse,
   Typography,
   Button,
@@ -92,7 +91,7 @@ export function StickyNavbar({ openDrawer }) {
 
   return (
     <nav className=" w-full sticky top-0 z-50 p-5 shadow-xl bg-white">
-      <div className="flex items-center justify-between text-blue-gray-900">
+      <div className="flex items-center justify-between text-blue-gray-900 h-[20px]">
         <Typography
           as="a"
           href="#"
@@ -161,9 +160,9 @@ export function StickyNavbar({ openDrawer }) {
             href="#"
             className="flex items-center"
             onClick={(e) => {
-              e.preventDefault(); // Prevent default behavior of the link
-              openDrawer(); // Open the drawer
-              setOpenNav(false); // Close the navbar menu
+              e.preventDefault();
+              openDrawer(); 
+              setOpenNav(false); 
             }}
           >
             Recipes

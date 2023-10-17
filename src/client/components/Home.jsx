@@ -18,7 +18,7 @@ function Home() {
         </div>
         <div className="flex flex-col">
           <Link to="/categories/easy">
-            <div className="relative hover:cursor-pointer">
+            <div className="relative hover:cursor-pointer hover:opacity-70">
               <img
                 src="https://www.acouplecooks.com/wp-content/uploads/2021/03/Cheese-Tortellini-011.jpg"
                 alt=""
@@ -30,7 +30,7 @@ function Home() {
             </div>
           </Link>
           <Link to="/categories/quick">
-            <div className="relative hover:cursor-pointer">
+            <div className="relative hover:cursor-pointer hover:opacity-70">
               <img
                 src="https://cdn.britannica.com/13/234013-050-73781543/rice-and-chorizo-burrito.jpg"
                 alt=""
@@ -67,6 +67,12 @@ function Home() {
       </section>
       <section>
         <RecentRecipes />
+      </section>
+      <section>
+        <div>
+          <h1 className="">Sign Up For Our Newsletter</h1>
+          <p>Be the first to get new recipes</p>
+        </div>
       </section>
     </div>
   );
