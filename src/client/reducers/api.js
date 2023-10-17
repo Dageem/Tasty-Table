@@ -69,19 +69,24 @@ export const api = createApi({
                 method:"DELETE",
             })
         }),
-        getRecipesByName: builder.query({//not sure
+        getRecipesByName: builder.query({
             query:(tagname)=>({
                 url:'api/recipe/recipesbytag/'+tagname
             })
         }),
-        getRecipesByIngredient: builder.query({//not sure
+        getThreeRecentRecipes: builder.query({
+            query:()=>({
+                url:'api/recipe/recent'
+            })
+        }),
+        getRecipesByIngredient: builder.query({
             query:(name)=>({
                 url:'api/recipe/recipebyingredient/'+name
             })
         }),
         getTags: builder.query({
             query:()=>({
-                url:'api/tag'
+                url:'api/tags'
             })
         }),
         getPosts: builder.query({
@@ -136,4 +141,5 @@ export const {
     useDeletePostByIdMutation,
     useGetRecipesByUserIdQuery,
     useGetTagsQuery,
+    useGetThreeRecentRecipesQuery,
 }= api

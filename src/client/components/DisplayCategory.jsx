@@ -6,12 +6,12 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Avatar,
-  Tooltip,
 } from "@material-tailwind/react";
+import { useParams } from "react-router-dom";
 
 function DisplayCategory() {
-  const { data: recipes, error, isLoading } = useGetRecipesByNameQuery("easy");
+  const { category } = useParams();
+  const { data: recipes, error, isLoading } = useGetRecipesByNameQuery(category);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error Loading Categories! {error.message}</p>;

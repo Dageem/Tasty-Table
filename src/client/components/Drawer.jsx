@@ -6,6 +6,7 @@ import {
   List,
   ListItem,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export function DrawerWithNavigation({ open, closeDrawer }) {
   return (
@@ -40,30 +41,21 @@ export function DrawerWithNavigation({ open, closeDrawer }) {
           />
         </div>
         <Typography variant="h6" color="blue-gray" className="p-4">
-            Popular Recipe Searches
-          </Typography>
+          Popular Recipe Searches
+        </Typography>
         <List>
           <ListItem>
-            Easy
+            <Link to="/categories/easy">Easy</Link>
           </ListItem>
-          <ListItem>
-            Quick
-          </ListItem>
-          <ListItem>
-            Chinese
-          </ListItem>
-          <ListItem>
-            Mexican
-          </ListItem>
-          <ListItem>
-            Thai
-          </ListItem>
-          <ListItem>
-            Indian
-          </ListItem>
-          <ListItem>
-            Korean
-          </ListItem>
+          <ListItem><Link  to="/categories/quick" onClick={closeDrawer}>Quick</Link></ListItem>
+          <ListItem><Link to="/categories/chinese" onClick={closeDrawer}>Chinese</Link></ListItem>
+          <ListItem><Link to="/categories/mexican" onClick={closeDrawer}>Mexican</Link></ListItem>
+          <ListItem><Link to="/categories/thai" onClick={closeDrawer}>Thai</Link></ListItem>
+          <ListItem><Link to="/categories/indian" onClick={closeDrawer}>Indian</Link></ListItem>
+          <ListItem><Link to="/categories/korean" onClick={closeDrawer}>Korean</Link></ListItem>
+          <ListItem><Link to="/categories/breakfast" onClick={closeDrawer}>Breakfast</Link></ListItem>
+          <ListItem><Link to="/categories/lunch" onClick={closeDrawer}>lunch</Link></ListItem>
+          <ListItem><Link to="/categories/dinner" onClick={closeDrawer}>Dinner</Link></ListItem>
         </List>
       </Drawer>
     </React.Fragment>
