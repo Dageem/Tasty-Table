@@ -8,10 +8,10 @@ function Home() {
     <div>
       <section className="">
         <div className="text-center mb-6">
-          <h1 className="text-3xl py-4 font-bold text-purple-900">
-            Tasty Recipes For Everyone
+          <h1 className="text-2xl py-4 font-bold text-purple-900">
+            Recipes For Everyone
           </h1>
-          <p className="text-xl bg-gray-300 italic text-purple-400 mb-6 p-1 rounded-xl w-[95%] ml-[2.5%]">
+          <p className="text-lg bg-gray-300 italic text-purple-400 mb-6 p-1 rounded-xl w-[95%] ml-[2.5%]">
             "Restaurant quality recipes for average Joes."
             <br /> -Chef Daniel
           </p>
