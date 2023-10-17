@@ -9,6 +9,9 @@ import CommunityBoard from "./components/CommunityBoard";
 import LoginPage from "./components/Login";
 import RecentRecipes from "./components/RecentRecipes";
 import About from "./components/About";
+import Footer from "./components/Footer";
+
+
 
 
 
@@ -32,6 +35,7 @@ export default function App() {
           <Route path="/temp" element={<RecentRecipes />} />
           <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

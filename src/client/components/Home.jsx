@@ -68,12 +68,6 @@ function Home() {
       <section>
         <RecentRecipes />
       </section>
-      <section>
-        <div>
-          <h1 className="">Sign Up For Our Newsletter</h1>
-          <p>Be the first to get new recipes</p>
-        </div>
-      </section>
     </div>
   );
 }
