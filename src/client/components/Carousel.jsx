@@ -26,7 +26,7 @@ const Carousel = () => {
               className="w-32 h-32 object-cover rounded-full"
             />
           </div>
-          <h1 className="rounded text-l font-bold text-left">Chinese</h1>
+          <h1 className="rounded text-l font-bold text-center">Chinese</h1>
         </div>
       </Link>
       <Link to="/categories/mexican">
@@ -38,7 +38,7 @@ const Carousel = () => {
               className="w-32 h-32 object-cover rounded-full"
             />
           </div>
-          <h1 className="rounded text-l font-bold text-left">Mexican</h1>
+          <h1 className="rounded text-l font-bold text-center">Mexican</h1>
         </div>
       </Link>
       <Link to="/categories/thai">
@@ -50,7 +50,7 @@ const Carousel = () => {
               className="w-32 h-32 object-cover rounded-full"
             />
           </div>
-          <h1 className="rounded text-l font-bold text-left">Thai</h1>
+          <h1 className="rounded text-l font-bold text-center">Thai</h1>
         </div>
       </Link>
       <Link to="/categories/indian">
@@ -62,7 +62,7 @@ const Carousel = () => {
               className="w-32 h-32 object-cover rounded-full"
             />
           </div>
-          <h1 className="rounded text-l font-bold text-left">Indian</h1>
+          <h1 className="rounded text-l font-bold text-center">Indian</h1>
         </div>
       </Link>
       <Link to="/categories/korean">
@@ -74,7 +74,43 @@ const Carousel = () => {
               className="w-32 h-32 object-cover rounded-full"
             />
           </div>
-          <h1 className="rounded text-l font-bold text-left">Korean</h1>
+          <h1 className="rounded text-l font-bold text-center">Korean</h1>
+        </div>
+      </Link>
+      <Link to="/categories/breakfast">
+        <div className="slide">
+          <div className="rounded-full overflow-hidden mx-2">
+            <img
+              src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2021-09-breakfast-grits%2FNew%20Finals%2F2021-10-12_ATK8035"
+              alt=""
+              className="w-32 h-32 object-cover rounded-full"
+            />
+          </div>
+          <h1 className="rounded text-l font-bold text-center">Breakfast</h1>
+        </div>
+      </Link>
+      <Link to="/categories/lunch">
+        <div className="slide">
+          <div className="rounded-full overflow-hidden mx-2">
+            <img
+              src="https://www.instacart.com/company/wp-content/uploads/2023/04/lunch-ideas-for-work-hero.jpg"
+              alt=""
+              className="w-32 h-32 object-cover rounded-full"
+            />
+          </div>
+          <h1 className="rounded text-l font-bold text-center">Lunch</h1>
+        </div>
+      </Link>
+      <Link to="/categories/dinner">
+        <div className="slide">
+          <div className="rounded-full overflow-hidden mx-2">
+            <img
+              src="https://static01.nyt.com/images/2023/09/13/multimedia/11WEEKNIGHT-still-zwhl/11WEEKNIGHT-still-zwhl-master675.jpg"
+              alt=""
+              className="w-32 h-32 object-cover rounded-full"
+            />
+          </div>
+          <h1 className="rounded text-l font-bold text-center">Dinner</h1>
         </div>
       </Link>
     </Slider>

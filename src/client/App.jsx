@@ -18,10 +18,10 @@ export default function App() {
 
   return (
     <div>
-      <div>
+
         <StickyNavbar openDrawer={openDrawer} />
         <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
-      </div>
+
       <Routes>
           <Route path="/communityboard" element={<CommunityBoard />} />
           <Route path="/categories/:category" element={<DisplayCategory />} />
