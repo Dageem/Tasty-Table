@@ -6,6 +6,7 @@ import DisplayCategory from "./components/DisplayCategory";
 import SubmitRecipe from "./components/SubmitRecipe";
 import CommunityBoard from "./components/CommunityBoard";
 import LoginPage from "./components/Login";
+import UserProfile from "./components/UserProfile";
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/categories" element={<DisplayCategory />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </div>
   );
