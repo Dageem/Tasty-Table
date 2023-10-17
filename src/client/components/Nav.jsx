@@ -31,6 +31,7 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
+
         <Link to={"/"} onClick={() => setOpenNav(false)}>
           Home
         </Link>
