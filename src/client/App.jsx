@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import CommunityBoard from "./components/CommunityBoard";
 import LoginPage from "./components/Login";
 import RecentRecipes from "./components/RecentRecipes";
+import About from "./components/About";
 
 
 
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/temp" element={<RecentRecipes />} />
+          <Route path="/about" element={<About />} />
       </Routes>
     </div>
   );
