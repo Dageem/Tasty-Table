@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useCreateRecipeMutation } from "../reducers/api";
 
-const RecipeForm = ({ userId }) => {
+const RecipeForm = () => {
+  // console.log({userId})
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
   const [desc, setDesc] = useState("");
@@ -9,15 +10,16 @@ const RecipeForm = ({ userId }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [image2Url, setImage2Url] = useState("");
   const [image3Url, setImage3Url] = useState("");
-  const [tags, setTags] = useState([""]);
+  const [tags, setTags] = useState([{ id: "", name: "" }]);
+  const [userId, setUserId] = useState("");
   const [ingredients, setIngredients] = useState([
     { name: "", measurement: "" },
   ]);
-
   const [createRecipe] = useCreateRecipeMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const numericUser = parseInt(userId, 10);
 
     const recipeData = {
       name,
@@ -27,8 +29,7 @@ const RecipeForm = ({ userId }) => {
       imageUrl,
       image2Url,
       image3Url,
-      userId,
-      tagId: null,
+      userId: numericUser,  
       tags,
       ingredients,
     };
@@ -42,7 +43,7 @@ const RecipeForm = ({ userId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col">
+    <form onSubmit={handleSubmit}>
       <input
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -78,50 +79,80 @@ const RecipeForm = ({ userId }) => {
         onChange={(e) => setImage3Url(e.target.value)}
         placeholder="Image 3 URL"
       />
+       <input
+        type= "number"
+        value={userId}
+        onChange={(e) => setUserId(e.target.value)}
+        placeholder="user ID"
+      />
+
 
       {tags.map((tag, index) => (
-        <input
-          key={index}
-          value={tag}
-          onChange={(e) => {
-            const newTags = [...tags];
-            newTags[index] = e.target.value;
-            setTags(newTags);
-          }}
-          placeholder="Tag"
-        />
+          <div key={index}>
+              <input
+                  type="number"
+                  value={tag.id}
+                  onChange={(e) => {
+                      const newTags = [...tags];
+                      newTags[index].id = parseInt(e.target.value, 10) || ""; 
+                      setTags(newTags);
+                  }}
+                  placeholder="Tag ID"
+              />
+              <input
+                  value={tag.name}
+                  onChange={(e) => {
+                      const newTags = [...tags];
+                      newTags[index].name = e.target.value;
+                      setTags(newTags);
+                  }}
+                  placeholder="Tag Name"
+              />
+          </div>
       ))}
-      <button onClick={() => setTags([...tags, ""])}>Add Tag</button>
 
-      {ingredients.map((ingredient, index) => (
-        <div key={index}>
-          <input
-            value={ingredient.name}
-            onChange={(e) => {
-              const newIngredients = [...ingredients];
-              newIngredients[index].name = e.target.value;
-              setIngredients(newIngredients);
-            }}
-            placeholder="Ingredient Name"
-          />
-          <input
-            value={ingredient.measurement}
-            onChange={(e) => {
-              const newIngredients = [...ingredients];
-              newIngredients[index].measurement = e.target.value;
-              setIngredients(newIngredients);
-            }}
-            placeholder="Measurement"
-          />
-        </div>
-      ))}
-      <button
-        onClick={() =>
-          setIngredients([...ingredients, { name: "", measurement: "" }])
-        }
-      >
-        Add Ingredient
-      </button>
+
+      <button onClick={() => setTags([...tags, { id: "", name: "" }])}>Add Tag</button>
+
+              {ingredients.map((ingredient, index) => (
+          <div key={index}>
+            <input
+              value={ingredient.id || ""}
+              onChange={(e) => {
+                const newIngredients = [...ingredients];
+                newIngredients[index].id = Number(e.target.value);
+                setIngredients(newIngredients);
+              }}
+              placeholder="Ingredient ID"
+            />
+            <input
+              value={ingredient.name}
+              onChange={(e) => {
+                const newIngredients = [...ingredients];
+                newIngredients[index].name = e.target.value;
+                setIngredients(newIngredients);
+              }}
+              placeholder="Ingredient Name"
+            />
+            <input
+              value={ingredient.measurement}
+              onChange={(e) => {
+                const newIngredients = [...ingredients];
+                newIngredients[index].measurement = e.target.value;
+                setIngredients(newIngredients);
+              }}
+              placeholder="Measurement"
+            />
+          </div>
+        ))}
+        <button
+          onClick={() =>
+            setIngredients([...ingredients, { id: "", name: "", measurement: "" }])
+          }
+        >
+          Add Ingredient
+        </button>
+
 
       <button type="submit">Submit</button>
     </form>

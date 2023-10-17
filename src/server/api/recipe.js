@@ -4,14 +4,91 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 // get recipe's
-router.get("/", async (req, res, next) => {
-  try {
-    const allRecipes = await prisma.recipe.findMany();
-    res.send(allRecipes);
-  } catch (error) {
-    next(error);
-  }
-});
+
+router.get('/', async (req,res,next)=>{
+    try{
+        const allPosts = await prisma.recipe.findMany({
+            include:{
+                recipetags:{
+                    include:{
+                        tag:true
+                    }
+                }
+            }
+        });
+        res.send(allPosts)
+    }catch(err){
+        next(err)
+    }
+})
+
+router.post('/', async (req,res,next)=>{
+    console.log(req.body)
+    console.log("Request headers:", req.headers);
+    try{
+
+        const recipe = await prisma.recipe.create({
+          data: {
+            name: req.body.name,
+            details: req.body.details,
+            desc: req.body.desc,
+            instructions: req.body.instructions,
+            imageUrl:req.body.imageUrl,
+            image2Url: req.body.image2Url,
+            image3Url: req.body.image3Url,
+            userId: req.body.userId,
+          }
+        })
+
+        const convertedItems = req.body.tags.map((i)=>{
+            return {
+                recipeId: recipe.id,
+                tagId: i.id
+            }
+        })
+
+        const convertedItems2 = req.body.ingredients.map((i)=>{
+          return {
+            recipeId: recipe.id,
+            ingredientId: i.id,
+            measurement: i.measurement
+          }
+        })
+
+    
+
+        const relations = await prisma.Recipetags.createMany({
+            data: convertedItems
+        })
+
+        const relations2 = await prisma.ingredient_recipe.createMany({
+          data: convertedItems2
+        })
+
+        const finalPost = await prisma.recipe.findFirst({
+            where:{
+                id:recipe.id
+            },
+            include:{
+                recipetags:{
+                    include:{
+                        tag:true
+                    }
+                }
+            }, 
+            include:{
+              Ingredient_recipe:{
+                include:{
+                  recipe: true
+                }
+              }
+            }
+        })
+        res.send(finalPost)
+    }catch(err){
+        next(err)
+    }
+})
 
 //create recipe
 router.post("/", async (req, res) => {
@@ -239,5 +316,7 @@ router.get("/recipebyingredient/:name", async (req, res, next) => {
     next(error);
   }
 });
+
+
 
 module.exports = router;

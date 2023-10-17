@@ -9,19 +9,19 @@ export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_URL||"http://localhost:3000",
-        prepareHeaders: (headers, { getState }) => {
-            console.log("prepareHeaders is running");
+        // prepareHeaders: (headers, { getState }) => {
+        //     console.log("prepareHeaders is running");
 
-            const credentials = window.sessionStorage.getItem(CREDENTIALS);
-            const parsedCredentials = JSON.parse(credentials || "{}");
-            const token = parsedCredentials.token;
-            console.log("token from reducer", token);
-            if (token) {
-                headers.set("Authorization", token);
-            }
-            console.log("token from session storage:", token);
-            return headers;
-        },
+        //     const credentials = window.sessionStorage.getItem(CREDENTIALS);
+        //     const parsedCredentials = JSON.parse(credentials || "{}");
+        //     const token = parsedCredentials.token;
+        //     console.log("token from reducer", token);
+        //     if (token) {
+        //         headers.set("Authorization", token);
+        //     }
+        //     console.log("token from session storage:", token);
+        //     return headers;
+        // },
     }),
     endpoints: (builder) => ({
         getUsers: builder.query({
@@ -53,10 +53,14 @@ export const api = createApi({
             })
         }),
         createRecipe: builder.mutation({
-            query:()=>({
-                url:'api/recipe',
-                method:"Post",
-            })
+            query:(recipeData)=>({
+                url:'api/recipe/',
+                method: "POST",
+                body: JSON.stringify(recipeData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }),
         }),
         getRecipeById: builder.query({
             query:(id)=>({
@@ -119,6 +123,8 @@ export const api = createApi({
         }),
     }),
 });
+
+
 
 
 

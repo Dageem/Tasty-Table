@@ -10,6 +10,8 @@ import LoginPage from "./components/Login";
 
 import UserProfile from "./components/UserProfile";
 import RecentRecipes from "./components/RecentRecipes";
+import SingleRecipe from "./components/SingleRecipe";
+
 import About from "./components/About";
 
 
@@ -32,7 +34,11 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
+      {/* <Route path="/recipe/:id" element={<SingleRecipe/>} /> */}
+
       </Routes>
     </div>
   );
+
+  return loadedRouter;
 }
