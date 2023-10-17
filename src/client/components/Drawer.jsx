@@ -47,15 +47,15 @@ export function DrawerWithNavigation({ open, closeDrawer }) {
           <ListItem>
             <Link to="/categories/easy">Easy</Link>
           </ListItem>
-          <ListItem><Link to="/categories/quick">Quick</Link></ListItem>
-          <ListItem><Link to="/categories/chinese">Chinese</Link></ListItem>
-          <ListItem><Link to="/categories/mexican">Mexican</Link></ListItem>
-          <ListItem><Link to="/categories/thai">Thai</Link></ListItem>
-          <ListItem><Link to="/categories/indian">Indian</Link></ListItem>
-          <ListItem><Link to="/categories/korean">Korean</Link></ListItem>
-          <ListItem><Link to="/categories/breakfast">Breakfast</Link></ListItem>
-          <ListItem><Link to="/categories/lunch">lunch</Link></ListItem>
-          <ListItem><Link to="/categories/dinner">Dinner</Link></ListItem>
+          <ListItem><Link  to="/categories/quick" onClick={closeDrawer}>Quick</Link></ListItem>
+          <ListItem><Link to="/categories/chinese" onClick={closeDrawer}>Chinese</Link></ListItem>
+          <ListItem><Link to="/categories/mexican" onClick={closeDrawer}>Mexican</Link></ListItem>
+          <ListItem><Link to="/categories/thai" onClick={closeDrawer}>Thai</Link></ListItem>
+          <ListItem><Link to="/categories/indian" onClick={closeDrawer}>Indian</Link></ListItem>
+          <ListItem><Link to="/categories/korean" onClick={closeDrawer}>Korean</Link></ListItem>
+          <ListItem><Link to="/categories/breakfast" onClick={closeDrawer}>Breakfast</Link></ListItem>
+          <ListItem><Link to="/categories/lunch" onClick={closeDrawer}>lunch</Link></ListItem>
+          <ListItem><Link to="/categories/dinner" onClick={closeDrawer}>Dinner</Link></ListItem>
         </List>
       </Drawer>
     </React.Fragment>
