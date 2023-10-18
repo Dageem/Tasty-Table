@@ -60,9 +60,11 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
+        {user.userId && (
         <Link to={"/profile"} onClick={() => setOpenNav(false)}>
           Profile
         </Link>
+        )}
       </Typography>
       <Typography
         as="li"
