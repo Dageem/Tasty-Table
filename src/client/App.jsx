@@ -37,6 +37,7 @@ export default function App() {
           <Route path="/categories/:category" element={<DisplayCategory />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/communityboard" element={<CommunityBoard />} />
           <Route path="/register" element={<RegisterPage/>} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
