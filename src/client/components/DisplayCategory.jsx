@@ -24,7 +24,7 @@ function DisplayCategory() {
           <div key={recipe.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
             <div className="shadow-2xl">
               <div className="flex items-center justify-center"> 
-                <img src={recipe.imageUrl} alt="recipe-image" className="rounded-xl h-[300px]" />
+                <img src={recipe.imageUrl} alt="recipe-image" className="rounded-xl h-[250px]" />
               </div>
               <div className="text-xl font-bold text-center">{recipe.name}</div>
               <div className="text-blue-gray-900 text-xl text-center">{recipe.details}</div>

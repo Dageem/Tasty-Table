@@ -16,6 +16,7 @@ import SingleRecipe from "./components/SingleRecipe";
 import About from "./components/About";
 import EditRecipe from "./components/EditRecipe";
 import Footer from "./components/Footer";
+import AllRecipes from "./components/AllRecipes";
 
 
 
@@ -37,9 +38,9 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
+          <Route path="/allrecipes" element={<AllRecipes />} />
       {/* <Route path="/recipe/:id" element={<SingleRecipe/>} /> */}
           <Route path="/editrecipe" element={<EditRecipe/>}/>
-
       </Routes>
       <Footer />
     </div>

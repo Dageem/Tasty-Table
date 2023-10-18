@@ -100,7 +100,7 @@ export const api = createApi({
         }),
         getTags: builder.query({
             query:()=>({
-                url:'api/tags'
+                url:'api/tags/recipetags'
             })
         }),
         getPosts: builder.query({
