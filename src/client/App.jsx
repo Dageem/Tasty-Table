@@ -11,6 +11,7 @@ import LoginPage from "./components/Login";
 import UserProfile from "./components/UserProfile";
 import RecentRecipes from "./components/RecentRecipes";
 import About from "./components/About";
+import RegisterPage from "./components/Register";
 
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage/>} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
       </Routes>

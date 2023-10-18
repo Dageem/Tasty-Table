@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useRegisterMutation, useLoginMutation } from "../reducers/auth";
 import {useNavigate} from "react-router-dom";
 
-const LoginPage = () => {
+const RegisterPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
@@ -12,22 +12,17 @@ const LoginPage = () => {
     const [register] = useRegisterMutation();
     const [login] = useLoginMutation();
   
-    const sendRegister = async () => {
-      return navigate("/register")
-    }
-      
-     
-   
-    const handleLogin = async () => {
+    const handleRegister = async () => {
       try {
-        await login({ username, password }).unwrap();
-        setSuccessMessage("Logged in successfully!");
-        navigate("/")
+        await register({ username, password }).unwrap();
+        setSuccessMessage("Registered successfully!");
+        setTimeout(() => {
+        navigate("/login")
+        },2000);
       } catch (error) {
-        console.error("Login failed:", error);
-        setErrorMessage("Login failed!");
+        console.error("Register failed:", error);
+        setErrorMessage("Registration failed!");
       }
-  
       setTimeout(() => {
         setUsername("");
         setPassword("");
@@ -35,7 +30,7 @@ const LoginPage = () => {
         setErrorMessage("");
       }, 2000);
     };
-    
+   
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -45,7 +40,7 @@ const LoginPage = () => {
           alt="Tasty-Table"
         />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Sign in to your account
+          Create your account
         </h2>
       </div>
 
@@ -80,12 +75,7 @@ const LoginPage = () => {
                 Password
               </label>
               <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-semibold text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot password?
-                </a>
+                
               </div>
             </div>
             <div className="mt-2">
@@ -103,25 +93,13 @@ const LoginPage = () => {
           </div>
 
           <div>
-            <button onClick={handleLogin}
+            <button onClick={handleRegister}
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Sign in
+              Register
             </button>
           </div>
-
-
-        <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member?
-          <a
-            href="#"
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-          ><button className="butt" onClick={sendRegister}>
-          Register
-        </button>
-          </a>
-        </p>
       </div>
       <div>
           {successMessage && (
@@ -133,4 +111,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
