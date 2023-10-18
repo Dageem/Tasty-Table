@@ -21,7 +21,7 @@ function Footer() {
                         <ul>
                             <li className="mb-2"><a href="#">Report Bug</a></li>
                             <li className="mb-2"><a href="#">Contribute</a></li>
-                            <li className="mb-2"><a href="#">Email</a></li>
+                            <li className="mb-2"><a href="#">Email Us</a></li>
                         </ul>
                     </div>
 
@@ -33,10 +33,6 @@ function Footer() {
                             <li className="mb-2"><a href="#">Community</a></li>
                         </ul>
                     </div>
-                </div>
-                <div className='flex flex-col items-center pt-5 font-bold md:flex-row md:justify-between'>
-                    <h1>Email - TastyTable@gmail.com</h1>
-                    <h1>Phone - (379) 459-2037</h1>
                 </div>
             </div>
         </footer>

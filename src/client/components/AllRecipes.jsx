@@ -16,7 +16,7 @@ function AllRecipes() {
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
-            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4"
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 hover:opacity-70 cursor-pointer"
           >
             <div className="shadow-2xl">
               <div className="flex items-center justify-center">
@@ -30,11 +30,11 @@ function AllRecipes() {
               <div className="text-blue-gray-900 text-xl text-center">
                 {recipe.details}
               </div>
-              <div className="flex justify-center">
+              {/* <div className="flex justify-center">
                 <button className="bg-purple-900 p-1 m-4 rounded-lg text-white hover:bg-purple-700">
                   Read More
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
