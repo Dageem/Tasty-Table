@@ -10,6 +10,7 @@ import LoginPage from "./components/Login";
 import RecentRecipes from "./components/RecentRecipes";
 import About from "./components/About";
 import Footer from "./components/Footer";
+import AllRecipes from "./components/AllRecipes";
 
 
 
@@ -34,7 +35,8 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/temp" element={<RecentRecipes />} />
           <Route path="/about" element={<About />} />
-      </Routes>
+          <Route path="/allrecipes" element={<AllRecipes />} />
+      </Routes>u
       <Footer />
     </div>
   );
