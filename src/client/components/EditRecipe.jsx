@@ -5,7 +5,7 @@ import { useGetRecipeByIdQuery } from "../reducers/api";
 import {useParams} from "react-router-dom";
 
 const EditRecipe = () => {
-  const me = useSelector(state=>state.auth.user)
+const me = useSelector((state) => state.auth.credentials.user)
   const { id } = useParams();
   const { data, isLoading } = useGetRecipeByIdQuery(id);
   const [name, setName] = useState("");
@@ -15,7 +15,7 @@ const EditRecipe = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [image2Url, setImage2Url] = useState("");
   const [image3Url, setImage3Url] = useState("");
-  const [tags, setTags] = useState([{ id: "", name: "" }]);
+  const [tags, setTags] = useState([{ name: "" }]);
   const [ingredients, setIngredients] = useState([
     { name: "", measurement: "" },
   ]);
@@ -94,16 +94,6 @@ const EditRecipe = () => {
 
           <div key={index} className="mb-4">
               <input
-                  type="number"
-                  value={tag.id}
-                  onChange={(e) => {
-                      const newTags = [...tags];
-                      newTags[index].id = parseInt(e.target.value, 10) || ""; 
-                      setTags(newTags);
-                  }}
-                  placeholder="Tag ID"
-              />
-              <input
                   value={tag.name}
                   onChange={(e) => {
                       const newTags = [...tags];
@@ -116,7 +106,7 @@ const EditRecipe = () => {
       ))}
 
 
-      <button className="bg-blue-500 text-white p-2 rounded mb-4" onClick={() => setTags([...tags, { id: "", name: "" }])}>Add Tag</button>
+      <button className="bg-blue-500 text-white p-2 rounded mb-4" onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
 
               {ingredients.map((ingredient, index) => (
           <div key={index}>
@@ -151,7 +141,7 @@ const EditRecipe = () => {
         ))}
         <button className="bg-blue-500 text-white p-2 rounded mb-4"
           onClick={() =>
-            setIngredients([...ingredients, { id: "", name: "", measurement: "" }])
+            setIngredients([...ingredients, { name: "", measurement: "" }])
           }
         >
           Add Ingredient

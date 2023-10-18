@@ -98,7 +98,7 @@ const RecipeForm = () => {
       ))}
 
 
-      <button onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
+      <button type="button" className="bg-blue-500 text-white p-2 rounded mb-4" onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
 
               {ingredients.map((ingredient, index) => (
           <div key={index}>
@@ -131,7 +131,7 @@ const RecipeForm = () => {
             />
           </div>
         ))}
-        <button className="bg-blue-500 text-white p-2 rounded mb-4"
+        <button type="button" className="bg-blue-500 text-white p-2 rounded mb-4"
           onClick={() =>
             setIngredients([...ingredients, { name: "", measurement: "" }])
           }
