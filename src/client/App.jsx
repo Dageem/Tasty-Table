@@ -1,3 +1,4 @@
+
 import { StickyNavbar } from "./components/Nav";
 import { DrawerWithNavigation } from "./components/Drawer";
 import { useState } from "react";
@@ -10,7 +11,10 @@ import LoginPage from "./components/Login";
 
 import UserProfile from "./components/UserProfile";
 import RecentRecipes from "./components/RecentRecipes";
+import SingleRecipe from "./components/SingleRecipe";
+
 import About from "./components/About";
+import EditRecipe from "./components/EditRecipe";
 import Footer from "./components/Footer";
 
 
@@ -28,13 +32,14 @@ export default function App() {
         <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
 
       <Routes>
-          <Route path="/communityboard" element={<CommunityBoard />} />
-          <Route path="/categories/:category" element={<DisplayCategory />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/categories" element={<DisplayCategory />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
+      {/* <Route path="/recipe/:id" element={<SingleRecipe/>} /> */}
+          <Route path="/editrecipe" element={<EditRecipe/>}/>
+
       </Routes>
       <Footer />
     </div>
