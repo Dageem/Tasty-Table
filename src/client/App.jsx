@@ -33,7 +33,8 @@ export default function App() {
         <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
 
       <Routes>
-          <Route path="/categories" element={<DisplayCategory />} />
+      <Route path="/" element={<Home />} />
+          <Route path="/categories/:category" element={<DisplayCategory />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<UserProfile />} />

@@ -44,6 +44,7 @@ export function DrawerWithNavigation({ open, closeDrawer }) {
           Popular Recipe Searches
         </Typography>
         <List>
+        <ListItem><Link  to="/allrecipes" onClick={closeDrawer}><strong>All Recipes</strong></Link></ListItem>
           <ListItem>
             <Link to="/categories/easy" onClick={closeDrawer}>Easy</Link>
           </ListItem>
