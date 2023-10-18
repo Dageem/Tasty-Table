@@ -8,15 +8,15 @@ import SubmitRecipe from "./components/SubmitRecipe";
 import Home from "./components/Home";
 import CommunityBoard from "./components/CommunityBoard";
 import LoginPage from "./components/Login";
-
 import UserProfile from "./components/UserProfile";
 import RecentRecipes from "./components/RecentRecipes";
 import SingleRecipe from "./components/SingleRecipe";
-
 import About from "./components/About";
+import RegisterPage from "./components/Register";
 import EditRecipe from "./components/EditRecipe";
 import Footer from "./components/Footer";
 import AllRecipes from "./components/AllRecipes";
+
 
 
 
@@ -37,6 +37,7 @@ export default function App() {
           <Route path="/categories/:category" element={<DisplayCategory />} />
           <Route path="/recipesubmit" element={<SubmitRecipe />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage/>} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
           <Route path="/allrecipes" element={<AllRecipes />} />

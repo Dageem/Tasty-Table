@@ -114,9 +114,10 @@ export const api = createApi({
             })
         }),
         createPost: builder.mutation({
-            query:()=>({
+            query:(body)=>({
                 url:'api/post',
                 method:"POST",
+                body:body
             })
         }),
         updatePostById: builder.mutation({

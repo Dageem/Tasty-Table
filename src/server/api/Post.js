@@ -29,16 +29,15 @@ router.get('/user/:userId', async (req,res,next)=>{
 router.post('/', async (req,res,next)=>{
       try{
         const { title, content, userId } = req.body;
-
         if (!title || !content || !userId) {
             return res.status(400).json({ error: "Title, content, and userId are required!" });
         }
 
           const createpost = await prisma.post.create({
               data:{
-                title: title,
-                content: content,
-                userId: userId
+                title,
+                content,
+                userId
               }
           })
           res.send(createpost)
