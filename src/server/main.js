@@ -17,7 +17,6 @@ app.use("/api", require('./api'))
 app.use("/auth", require("./auth"))
 
 app.use((req, res, next) => {
-  console.log('Body parser middleware executed.');
   next();
 });
 
