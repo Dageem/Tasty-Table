@@ -13,6 +13,7 @@ import RecentRecipes from "./components/RecentRecipes";
 import SingleRecipe from "./components/SingleRecipe";
 
 import About from "./components/About";
+import EditRecipe from "./components/EditRecipe";
 
 
 export default function App() {
@@ -35,10 +36,9 @@ export default function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
       {/* <Route path="/recipe/:id" element={<SingleRecipe/>} /> */}
+          <Route path="/editrecipe" element={<EditRecipe/>}/>
 
       </Routes>
     </div>
   );
-
-  return loadedRouter;
 }

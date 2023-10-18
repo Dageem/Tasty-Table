@@ -9,19 +9,19 @@ export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_URL||"http://localhost:3000",
-        // prepareHeaders: (headers, { getState }) => {
-        //     console.log("prepareHeaders is running");
+        prepareHeaders: (headers, { getState }) => {
+            console.log("prepareHeaders is running");
 
-        //     const credentials = window.sessionStorage.getItem(CREDENTIALS);
-        //     const parsedCredentials = JSON.parse(credentials || "{}");
-        //     const token = parsedCredentials.token;
-        //     console.log("token from reducer", token);
-        //     if (token) {
-        //         headers.set("Authorization", token);
-        //     }
-        //     console.log("token from session storage:", token);
-        //     return headers;
-        // },
+            const credentials = window.sessionStorage.getItem(CREDENTIALS);
+            const parsedCredentials = JSON.parse(credentials || "{}");
+            const token = parsedCredentials.token;
+            console.log("token from reducer", token);
+            if (token) {
+                headers.set("Authorization", token);
+            }
+            console.log("token from session storage:", token);
+            return headers;
+        },
     }),
     endpoints: (builder) => ({
         getUsers: builder.query({
@@ -61,6 +61,16 @@ export const api = createApi({
                     'Content-Type': 'application/json'
                 }
             }),
+        }),
+        editRecipe: builder.mutation({
+            query(data){
+                const {id, ...body}=data;
+                return {
+                    url: '/api/recipe/'+id,
+                    method:"PUT",
+                    body
+                }
+            }
         }),
         getRecipeById: builder.query({
             query:(id)=>({
@@ -148,4 +158,5 @@ export const {
     useGetRecipesByUserIdQuery,
     useGetTagsQuery,
     useGetThreeRecentRecipesQuery,
+    useEditRecipeMutation,
 }= api

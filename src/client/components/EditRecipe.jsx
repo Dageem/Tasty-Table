@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useCreateRecipeMutation } from "../reducers/api";
+import { useEditRecipeMutation } from "../reducers/api";
 import { useSelector } from "react-redux";
+import { useGetRecipeByIdQuery } from "../reducers/api";
+import {useParams} from "react-router-dom";
 
-const RecipeForm = () => {
-  // console.log({userId})
-  const me = useSelector((state) => state.auth.credentials.user)
+const EditRecipe = () => {
+  const me = useSelector(state=>state.auth.user)
+  const { id } = useParams();
+  const { data, isLoading } = useGetRecipeByIdQuery(id);
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
   const [desc, setDesc] = useState("");
@@ -12,31 +15,31 @@ const RecipeForm = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [image2Url, setImage2Url] = useState("");
   const [image3Url, setImage3Url] = useState("");
-  const [tags, setTags] = useState([{ name: "" }]);
+  const [tags, setTags] = useState([{ id: "", name: "" }]);
   const [ingredients, setIngredients] = useState([
     { name: "", measurement: "" },
   ]);
-  const [createRecipe] = useCreateRecipeMutation();
+  const [editRecipe] = useEditRecipeMutation();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-  
+    e.preventDefault()
 
     const recipeData = {
+      id: 44,
       name,
-      details,
-      desc,
-      instructions,
-      imageUrl,
-      image2Url,
-      image3Url,
-      userId: me.userId,  
+    //   details,
+    //   desc,
+    //   instructions,
+    //   imageUrl,
+    //   image2Url,
+    //   image3Url,
+    //   userId: me.userId,  
       tags,
       ingredients,
     };
 
     try {
-      const response = await createRecipe(recipeData);
+      const response = await editRecipe(recipeData);
       console.log(response);
     } catch (error) {
       console.error("Error creating recipe:", error);
@@ -44,47 +47,62 @@ const RecipeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+
+ <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-xl" onSubmit={handleSubmit}>
+      <input  className="border p-2 w-full rounded mb-4"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Name"
       />
-      <textarea
+      <textarea  className="border p-2 w-full rounded mb-4"
         value={details}
         onChange={(e) => setDetails(e.target.value)}
         placeholder="Details"
-      ></textarea>
-      <textarea
+      ></textarea> 
+      <textarea  className="border p-2 w-full rounded mb-4"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
         placeholder="Description"
       ></textarea>
-      <textarea
+      <textarea  className="border p-2 w-full rounded mb-4"
         value={instructions}
         onChange={(e) => setInstructions(e.target.value)}
         placeholder="Instructions"
       ></textarea>
-      <input
+      <input  className="border p-2 w-full rounded mb-4"
         value={imageUrl}
         onChange={(e) => setImageUrl(e.target.value)}
         placeholder="Image URL"
       />
-      <input
+      <input  className="border p-2 w-full rounded mb-4"
         value={image2Url}
         onChange={(e) => setImage2Url(e.target.value)}
         placeholder="Image 2 URL"
       />
-      <input
+      <input  className="border p-2 w-full rounded mb-4"
         value={image3Url}
         onChange={(e) => setImage3Url(e.target.value)}
         placeholder="Image 3 URL"
       />
-    
+       
+        
+
 
 
       {tags.map((tag, index) => (
-          <div key={index}>
+
+          <div key={index} className="mb-4">
+              <input
+                  type="number"
+                  value={tag.id}
+                  onChange={(e) => {
+                      const newTags = [...tags];
+                      newTags[index].id = parseInt(e.target.value, 10) || ""; 
+                      setTags(newTags);
+                  }}
+                  placeholder="Tag ID"
+              />
               <input
                   value={tag.name}
                   onChange={(e) => {
@@ -98,11 +116,11 @@ const RecipeForm = () => {
       ))}
 
 
-      <button onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
+      <button className="bg-blue-500 text-white p-2 rounded mb-4" onClick={() => setTags([...tags, { id: "", name: "" }])}>Add Tag</button>
 
               {ingredients.map((ingredient, index) => (
           <div key={index}>
-            {/* <input
+            <input
               value={ingredient.id || ""}
               onChange={(e) => {
                 const newIngredients = [...ingredients];
@@ -110,7 +128,7 @@ const RecipeForm = () => {
                 setIngredients(newIngredients);
               }}
               placeholder="Ingredient ID"
-            /> */}
+            />
             <input
               value={ingredient.name}
               onChange={(e) => {
@@ -133,7 +151,7 @@ const RecipeForm = () => {
         ))}
         <button className="bg-blue-500 text-white p-2 rounded mb-4"
           onClick={() =>
-            setIngredients([...ingredients, { name: "", measurement: "" }])
+            setIngredients([...ingredients, { id: "", name: "", measurement: "" }])
           }
         >
           Add Ingredient
@@ -141,8 +159,9 @@ const RecipeForm = () => {
 
 
       <button className="bg-green-500 text-white p-4 rounded w-full" type="submit">Submit</button>
-    </form>
+      </form>
+    </div>
   );
 };
 
-export default RecipeForm;
+export default EditRecipe;
