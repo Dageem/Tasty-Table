@@ -11,6 +11,9 @@ import LoginPage from "./components/Login";
 import UserProfile from "./components/UserProfile";
 import RecentRecipes from "./components/RecentRecipes";
 import About from "./components/About";
+import Footer from "./components/Footer";
+
+
 
 
 export default function App() {
@@ -33,6 +36,7 @@ export default function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
