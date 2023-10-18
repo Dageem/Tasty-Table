@@ -53,10 +53,24 @@ export const api = createApi({
             })
         }),
         createRecipe: builder.mutation({
-            query:()=>({
-                url:'api/recipe',
-                method:"Post",
-            })
+            query:(recipeData)=>({
+                url:'api/recipe/',
+                method: "POST",
+                body: JSON.stringify(recipeData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }),
+        }),
+        editRecipe: builder.mutation({
+            query(data){
+                const {id, ...body}=data;
+                return {
+                    url: '/api/recipe/'+id,
+                    method:"PUT",
+                    body
+                }
+            }
         }),
         getRecipeById: builder.query({
             query:(id)=>({
@@ -86,7 +100,7 @@ export const api = createApi({
         }),
         getTags: builder.query({
             query:()=>({
-                url:'api/tags'
+                url:'api/tags/recipetags'
             })
         }),
         getPosts: builder.query({
@@ -123,6 +137,8 @@ export const api = createApi({
 
 
 
+
+
 export const {
     useGetUsersQuery,
     useGetUserByIdQuery,
@@ -142,4 +158,5 @@ export const {
     useGetRecipesByUserIdQuery,
     useGetTagsQuery,
     useGetThreeRecentRecipesQuery,
+    useEditRecipeMutation,
 }= api

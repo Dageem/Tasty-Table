@@ -16,6 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", require('./api'))
 app.use("/auth", require("./auth"))
 
+app.use((req, res, next) => {
+  console.log('Body parser middleware executed.');
+  next();
+});
+
 
 const server = app.listen(PORT, ()=>{
     console.log('On port'+PORT)

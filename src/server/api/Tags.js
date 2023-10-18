@@ -3,25 +3,19 @@ const router = express.Router();
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-router.get('/', async (req, res) => {
+router.get('/recipetags', async (req, res) => {
     try {
-        const tags = await prisma.tag.findMany({
-            select: {
-                name: true
-            },
-            orderBy: {
-                name: 'asc'
-            }
-        });
-
-        const tagNames = tags.map(tag => tag.name);
-
-        res.json(tagNames);
+      const recipetags = await prisma.recipetags.findMany({
+        include: {
+          tag: true,
+        },
+      });
+      res.json(recipetags);
     } catch (error) {
-        console.error('Error fetching tag names:', error);
-        res.status(500).send('Internal Server Error');
+      console.error('Error fetching recipetags:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
-});
+  });
 
 
 module.exports = router;
