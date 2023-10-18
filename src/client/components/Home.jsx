@@ -59,20 +59,16 @@ function Home() {
             <Carousel />
           </div>
           <div className="text-center">
-            <button className="bg-purple-900 text-white my-4 py-2 px-4 w-[200px] rounded-lg hover:bg-purple-700 focus:outline-none focus:ring focus:border-purple-300">
-              All Recipes
-            </button>
+          <Link to="/allrecipes">
+              <button className="bg-purple-900 text-white my-4 py-2 px-4 w-[200px] rounded-lg hover:bg-purple-700 focus:outline-none focus:ring focus:border-purple-300">
+                All Recipes
+              </button>
+            </Link>
           </div>
         </div>
       </section>
       <section>
         <RecentRecipes />
-      </section>
-      <section>
-        <div>
-          <h1 className="">Sign Up For Our Newsletter</h1>
-          <p>Be the first to get new recipes</p>
-        </div>
       </section>
     </div>
   );
