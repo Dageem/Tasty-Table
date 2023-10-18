@@ -40,7 +40,7 @@ export default function App() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
           <Route path="/allrecipes" element={<AllRecipes />} />
-      {/* <Route path="/recipe/:id" element={<SingleRecipe/>} /> */}
+      <Route path="/recipe/:id" element={<SingleRecipe/>} />
           <Route path="/editrecipe" element={<EditRecipe/>}/>
       </Routes>
       <Footer />
