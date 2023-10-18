@@ -95,18 +95,15 @@ export function StickyNavbar({ openDrawer }) {
     <nav className=" w-full sticky top-0 z-50 p-5 shadow-xl bg-white">
       <div className="flex items-center justify-between text-blue-gray-900 h-[20px]">
         <Typography
-          as="a"
-          href="#"
+          as={Link}
+          to={"/"}
           className="mr-4 cursor-pointer py-1.5 font-medium"
         >
-          <Link to={'/'}>
           <img
             src="https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_290,h_104/https://www.tastytablecatering.com/wp-content/uploads/2022/12/1665697050237-removebg-preview-1.png"
             alt=""
             className="h-[40px]"
           />
-          </Link>
-          
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
@@ -166,8 +163,8 @@ export function StickyNavbar({ openDrawer }) {
             className="flex items-center"
             onClick={(e) => {
               e.preventDefault();
-              openDrawer(); 
-              setOpenNav(false); 
+              openDrawer();
+              setOpenNav(false);
             }}
           >
             Recipes
