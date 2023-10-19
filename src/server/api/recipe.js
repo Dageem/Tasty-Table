@@ -5,28 +5,30 @@ const prisma = new PrismaClient();
 
 // get recipe's
 
-router.get('/', async (req,res,next)=>{
-    try{
-        const allPosts = await prisma.recipe.findMany({
-            include:{
-                recipetags:{
-                    include:{
-                        tag:true
-                    }
-                }
-            }, incldue:{
-                Ingredient_recipe:{
-                    include: {
-                        ingredients: true
-                    }
-                }
-            }
-        });
-        res.send(allPosts)
-    }catch(err){
-        next(err)
+router.get('/', async (req, res, next) => {
+    try {
+      const allRecipes = await prisma.recipe.findMany({
+        include: {
+          recipetags: {
+            include: {
+              tag: true,
+            },
+          },
+        },
+        include: {
+          Ingredient_recipe: {
+            include: {
+              ingredient: true,
+          }
+        }
+      }
+      });
+        
+        res.send(allRecipes);
+    } catch (err) {
+        next(err);
     }
-})
+});
 
 router.get('/search', async (req, res) => {
   const { query } = req.query; // Get the search query from the URL parameter
