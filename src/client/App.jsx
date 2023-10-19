@@ -34,9 +34,8 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/about" element={<About />} />
-      {/* <Route path="/recipe/:id" element={<SingleRecipe/>} /> */}
-          <Route path="/editrecipe" element={<EditRecipe/>}/>
-
+          <Route path="/recipe/:id" element={<SingleRecipe/>} />
+          <Route path="/editrecipe/:id" element={<EditRecipe/>} />
       </Routes>
     </div>
   );
