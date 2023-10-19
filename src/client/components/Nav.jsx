@@ -60,6 +60,11 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
+        {!user.userId && (
+          <Link to={"/login"} onClick={() => setOpenNav(false)}>
+            Login/Register
+          </Link>
+        )}
         {user.userId && (
           <Link to={"/profile"} onClick={() => setOpenNav(false)}>
             Profile
@@ -72,11 +77,6 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        {!user.userId && (
-          <Link to={"/login"} onClick={() => setOpenNav(false)}>
-            Login/Register
-          </Link>
-        )}
         {user.userId && (
           <button
             onClick={() => {

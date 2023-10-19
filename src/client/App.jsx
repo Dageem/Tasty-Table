@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />
-        <Route path="/editrecipe" element={<EditRecipe />} />
+        <Route path="/editrecipe/:id" element={<EditRecipe />} />
       </Routes>
       <Footer />
     </div>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useEditRecipeMutation } from "../reducers/api";
 import { useSelector } from "react-redux";
-import { useGetRecipeByIdQuery } from "../reducers/api";
-import {useParams} from "react-router-dom";
+// import { useGetRecipeByIdQuery } from "../reducers/api";
+import {useParams, useNavigate} from "react-router-dom";
 
 const EditRecipe = () => {
 const me = useSelector((state) => state.auth.credentials.user)
   const { id } = useParams();
-  const { data, isLoading } = useGetRecipeByIdQuery(id);
+//   const { data, isLoading } = useGetRecipeByIdQuery(id);
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
   const [desc, setDesc] = useState("");
@@ -25,15 +25,15 @@ const me = useSelector((state) => state.auth.credentials.user)
     e.preventDefault()
 
     const recipeData = {
-      id: 44,
+      id: id,
       name,
-    //   details,
-    //   desc,
-    //   instructions,
-    //   imageUrl,
-    //   image2Url,
-    //   image3Url,
-    //   userId: me.userId,  
+      details,
+      desc,
+      instructions,
+      imageUrl,
+      image2Url,
+      image3Url,
+      userId: me.userId,  
       tags,
       ingredients,
     };
@@ -46,10 +46,13 @@ const me = useSelector((state) => state.auth.credentials.user)
     }
   };
 
+  const navigate = useNavigate();
   return (
-
  <div className="flex justify-center items-center min-h-screen bg-gray-100">
     <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-xl" onSubmit={handleSubmit}>
+    <button className="mb-6 bg-blue-500 text-white rounded px-6 py-3 hover:bg-blue-600" onClick={() => navigate("/profile")}>
+        Go Back
+    </button>
       <input  className="border p-2 w-full rounded mb-4"
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -110,15 +113,6 @@ const me = useSelector((state) => state.auth.credentials.user)
 
               {ingredients.map((ingredient, index) => (
           <div key={index}>
-            <input
-              value={ingredient.id || ""}
-              onChange={(e) => {
-                const newIngredients = [...ingredients];
-                newIngredients[index].id = Number(e.target.value);
-                setIngredients(newIngredients);
-              }}
-              placeholder="Ingredient ID"
-            />
             <input
               value={ingredient.name}
               onChange={(e) => {
