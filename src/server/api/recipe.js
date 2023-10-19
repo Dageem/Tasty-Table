@@ -22,6 +22,42 @@ router.get('/', async (req,res,next)=>{
     }
 })
 
+router.get('/search', async (req, res) => {
+  const { query } = req.query; // Get the search query from the URL parameter
+
+  try {
+    const filteredRecipes = await prisma.recipe.findMany({
+      where: {
+        OR: [
+          {
+            name: {
+              contains: query,
+              mode: 'insensitive', 
+            },
+          },
+          {
+            recipetags: {
+              some: {
+                tag: {
+                  name: {
+                    contains: query,
+                    mode: 'insensitive',
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
+    });
+    res.json(filteredRecipes);
+  } catch (error) {
+    console.error('Error searching for recipes:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 router.post('/', async (req,res,next)=>{
     console.log(req.body)
     console.log("Request headers:", req.headers);
