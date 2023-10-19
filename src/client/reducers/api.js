@@ -47,6 +47,11 @@ export const api = createApi({
                 url:'api/recipe'
             })
         }),
+        getSearchRecipes: builder.query({
+            query: (searchQuery) => ({
+              url: `search?query=${searchQuery}`,
+            }),
+          }),
         getRecipesByUserId: builder.query({
             query:(userId)=>({
                 url:'api/recipe/users/'+userId,
@@ -160,4 +165,5 @@ export const {
     useGetTagsQuery,
     useGetThreeRecentRecipesQuery,
     useEditRecipeMutation,
+    useGetSearchRecipesQuery
 }= api
