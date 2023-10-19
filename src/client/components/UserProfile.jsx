@@ -9,6 +9,7 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 import './userProfile.css';
+import { Link } from "react-router-dom";
 
 function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
@@ -61,16 +62,26 @@ function UserProfile() {
           <Tab value="posts">Posts</Tab>
         </TabsHeader>
         <TabsBody>
-          <TabPanel value="recipes">
+        <TabPanel value="recipes">
             <div className="recipes-container">
               {recipesData && recipesData.map((recipe) => (
                 <div className="apple" key={recipe.id}>
-                  <p>Name: {recipe.name}</p>
-                  <p>Details: {recipe.details}</p>
-                  {/* Add date or time if needed */}
+                  <Link to={`/editrecipe/${recipe.id}`}>
+                  <button className="bg-blue-500 text-white p-2 rounded mb-4">
+                    Edit Recipe
+                  </button>
+                    <p>Name: {recipe.name}</p>
+                    <p>Details: {recipe.details}</p>
+                    {/* Add date or time if needed */}
+                  </Link>
                 </div>
               ))}
             </div>
+            <Link to="/recipesubmit">
+            <button className="bg-green-500 text-white p-4 rounded w-full">
+                    New Recipe
+            </button>
+            </Link>
           </TabPanel>
           <TabPanel value="posts">
             <div className="">
