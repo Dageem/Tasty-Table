@@ -15,6 +15,7 @@ import RegisterPage from "./components/Register";
 import EditRecipe from "./components/EditRecipe";
 import Footer from "./components/Footer";
 import AllRecipes from "./components/AllRecipes";
+
 // import Search from "./components/Search";
 
 

@@ -14,6 +14,12 @@ router.get('/', async (req,res,next)=>{
                         tag:true
                     }
                 }
+            }, incldue:{
+                Ingredient_recipe:{
+                    include: {
+                        ingredients: true
+                    }
+                }
             }
         });
         res.send(allPosts)
@@ -59,8 +65,8 @@ router.get('/search', async (req, res) => {
 
 
 router.post('/', async (req,res,next)=>{
-    console.log(req.body)
-    console.log("Request headers:", req.headers);
+    // console.log(req.body)
+    // console.log("Request headers:", req.headers);
 
     let tags = req.body.tags 
     const TagIds = [];
@@ -412,6 +418,54 @@ router.get("/recipebyingredient/:name", async (req, res, next) => {
 
 
 router.put('/:id', async (req, res, next) => {
+    let tags = req.body.tags 
+    const TagIds = [];
+
+    for (const tagName of tags) {
+        let tag = await prisma.Tag.findFirst({ 
+            where: { 
+                name: tagName.name 
+            } 
+        });
+
+        if (!tag) {
+        // Create the tag if it doesn't exist
+            tag = await prisma.Tag.create({ 
+                data: { 
+                    name: tagName.name
+                } 
+            });
+        }
+
+        TagIds.push(tag.id);
+    }
+
+    const ingredients = req.body.ingredients
+
+    const IngredientKeys = [];
+
+    for (const ingredient of ingredients) {
+        let individual = await prisma.ingredient.findFirst({ 
+            where: {
+                name: ingredient.name 
+            } 
+        });
+
+        if (!individual) {
+        // Create the tag if it doesn't exist
+        individual = await prisma.ingredient.create({ 
+            data: { 
+                name: ingredient.name 
+            } 
+        });
+        }
+
+        IngredientKeys.push({
+            ingredientId: individual.id,
+            measurement: ingredient.measurement
+        });
+    }
+
     try {
         const recipe = await prisma.Recipe.update({
             where: {
@@ -438,10 +492,10 @@ router.put('/:id', async (req, res, next) => {
         })
 
         await prisma.Recipetags.createMany({
-            data: req.body.tags.map((i) => {
+            data: TagIds.map((i) => {
                 return {
                     recipeId: recipe.id,
-                    tagId: i.id
+                    tagId: i
                 }
             })
         })
@@ -453,10 +507,10 @@ router.put('/:id', async (req, res, next) => {
         })
 
         await prisma.Ingredient_recipe.createMany({
-            data: req.body.ingredients.map((i) => {
+            data: IngredientKeys.map((i) => {
                 return {
                     recipeId: recipe.id,
-                    ingredientId: i.id,
+                    ingredientId: i.ingredientId,
                     measurement: i.measurement
                 }
             })
