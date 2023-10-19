@@ -59,7 +59,7 @@ const LoginPage = () => {
             </label>
             <div className="mt-2">
               <input
-                // id="username"
+                id="username"
                 name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
