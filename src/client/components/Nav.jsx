@@ -66,9 +66,9 @@ export function StickyNavbar({ openDrawer }) {
           </Link>
         )}
         {user.userId && (
-        <Link to={"/profile"} onClick={() => setOpenNav(false)}>
-          Profile
-        </Link>
+          <Link to={"/profile"} onClick={() => setOpenNav(false)}>
+            Profile
+          </Link>
         )}
       </Typography>
       <Typography
