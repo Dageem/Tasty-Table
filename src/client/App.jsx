@@ -27,17 +27,17 @@ export default function App() {
       <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/categories/:category" element={<DisplayCategory />} />
-        <Route path="/recipesubmit" element={<SubmitRecipe />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/communityboard" element={<CommunityBoard />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/allrecipes" element={<AllRecipes />} />
-        <Route path="/recipe/:id" element={<SingleRecipe />} />
-        <Route path="/editrecipe" element={<EditRecipe />} />
+      <Route path="/" element={<Home />} />
+          <Route path="/categories/:category" element={<DisplayCategory />} />
+          <Route path="/recipesubmit" element={<SubmitRecipe />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/communityboard" element={<CommunityBoard />} />
+          <Route path="/register" element={<RegisterPage/>} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/allrecipes" element={<AllRecipes />} />
+          <Route path="/recipe/:id" element={<SingleRecipe/>} />
+          <Route path="/editrecipe/:id" element={<EditRecipe/>}/>
       </Routes>
       <Footer />
     </div>

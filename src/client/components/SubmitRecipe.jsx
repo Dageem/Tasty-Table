@@ -44,38 +44,39 @@ const RecipeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-xl" onSubmit={handleSubmit}>
+      <input className="border p-2 w-full rounded mb-4"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Name"
       />
-      <textarea
+      <textarea className="border p-2 w-full rounded mb-4"
         value={details}
         onChange={(e) => setDetails(e.target.value)}
         placeholder="Details"
       ></textarea>
-      <textarea
+      <textarea className="border p-2 w-full rounded mb-4"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
         placeholder="Description"
       ></textarea>
-      <textarea
+      <textarea className="border p-2 w-full rounded mb-4"
         value={instructions}
         onChange={(e) => setInstructions(e.target.value)}
         placeholder="Instructions"
       ></textarea>
-      <input
+      <input className="border p-2 w-full rounded mb-4"
         value={imageUrl}
         onChange={(e) => setImageUrl(e.target.value)}
         placeholder="Image URL"
       />
-      <input
+      <input className="border p-2 w-full rounded mb-4"
         value={image2Url}
         onChange={(e) => setImage2Url(e.target.value)}
         placeholder="Image 2 URL"
       />
-      <input
+      <input className="border p-2 w-full rounded mb-4"
         value={image3Url}
         onChange={(e) => setImage3Url(e.target.value)}
         placeholder="Image 3 URL"
@@ -102,15 +103,6 @@ const RecipeForm = () => {
 
               {ingredients.map((ingredient, index) => (
           <div key={index}>
-            {/* <input
-              value={ingredient.id || ""}
-              onChange={(e) => {
-                const newIngredients = [...ingredients];
-                newIngredients[index].id = Number(e.target.value);
-                setIngredients(newIngredients);
-              }}
-              placeholder="Ingredient ID"
-            /> */}
             <input
               value={ingredient.name}
               onChange={(e) => {
@@ -142,6 +134,7 @@ const RecipeForm = () => {
 
       <button className="bg-green-500 text-white p-4 rounded w-full" type="submit">Submit</button>
     </form>
+    </div>
   );
 };
 
