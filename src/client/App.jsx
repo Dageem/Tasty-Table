@@ -1,4 +1,3 @@
-
 import { StickyNavbar } from "./components/Nav";
 import { DrawerWithNavigation } from "./components/Drawer";
 import { useState } from "react";
@@ -17,10 +16,6 @@ import EditRecipe from "./components/EditRecipe";
 import Footer from "./components/Footer";
 import AllRecipes from "./components/AllRecipes";
 
-
-
-
-
 export default function App() {
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
@@ -28,22 +23,21 @@ export default function App() {
 
   return (
     <div>
-
-        <StickyNavbar openDrawer={openDrawer} />
-        <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
+      <StickyNavbar openDrawer={openDrawer} />
+      <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
 
       <Routes>
-      <Route path="/" element={<Home />} />
-          <Route path="/categories/:category" element={<DisplayCategory />} />
-          <Route path="/recipesubmit" element={<SubmitRecipe />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/communityboard" element={<CommunityBoard />} />
-          <Route path="/register" element={<RegisterPage/>} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/allrecipes" element={<AllRecipes />} />
-      <Route path="/recipe/:id" element={<SingleRecipe/>} />
-          <Route path="/editrecipe" element={<EditRecipe/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/categories/:category" element={<DisplayCategory />} />
+        <Route path="/recipesubmit" element={<SubmitRecipe />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/communityboard" element={<CommunityBoard />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/allrecipes" element={<AllRecipes />} />
+        <Route path="/recipe/:id" element={<SingleRecipe />} />
+        <Route path="/editrecipe" element={<EditRecipe />} />
       </Routes>
       <Footer />
     </div>
