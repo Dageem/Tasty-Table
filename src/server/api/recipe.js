@@ -5,28 +5,66 @@ const prisma = new PrismaClient();
 
 // get recipe's
 
-router.get('/', async (req,res,next)=>{
-    try{
-        const allPosts = await prisma.recipe.findMany({
-            include:{
-                recipetags:{
-                    include:{
-                        tag:true
-                    }
-                }
-            }, incldue:{
-                Ingredient_recipe:{
-                    include: {
-                        ingredients: true
-                    }
-                }
-            }
-        });
-        res.send(allPosts)
-    }catch(err){
-        next(err)
+router.get('/', async (req, res, next) => {
+    try {
+      const allRecipes = await prisma.recipe.findMany({
+        include: {
+          recipetags: {
+            include: {
+              tag: true,
+            },
+          },
+        },
+        include: {
+          Ingredient_recipe: {
+            include: {
+              ingredient: true,
+          }
+        }
+      }
+      });
+        
+        res.send(allRecipes);
+    } catch (err) {
+        next(err);
     }
-})
+});
+
+router.get('/search', async (req, res) => {
+  const { query } = req.query;
+console.log(query)
+  try {
+    const filteredRecipes = await prisma.recipe.findMany({
+      where: {
+        OR: [
+          {
+            name: {
+              contains: query,
+              mode: 'insensitive', 
+            },
+          },
+          {
+            recipetags: {
+              some: {
+                tag: {
+                  name: {
+                    contains: query,
+                    mode: 'insensitive',
+                  },
+                },
+              },
+            },
+          },
+        ],
+      },
+    });
+    res.json(filteredRecipes);
+  } catch (error) {
+    console.error('Error searching for recipes:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 router.post('/', async (req,res,next)=>{
     // console.log(req.body)
@@ -304,18 +342,29 @@ router.put("/user/:userId/recipe/recipeId", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
-    const recipe = await prisma.recipe.delete({
-      where: {
-        id: Number(req.params.id),
-      },
-    });
-    res.send(recipe);
-  } catch (error) {
-    next(error);
+      await prisma.Recipetags.deleteMany({
+          where: {
+              recipeId: Number(req.params.id)
+          },
+      });
+      await prisma.Ingredient_recipe.deleteMany({
+          where: {
+              recipeId: Number(req.params.id)
+          },
+      });
+      await prisma.Recipe.delete({
+          where: {
+              id: Number(req.params.id)
+          }
+      });
+      res.send({ message: 'Recipe successfully deleted' });
+  } catch (err) {
+      next(err);
   }
 });
+
 
 // get recipe by tag name
 router.get("/recipesbytag/:tagName", async (req, res) => {
@@ -508,6 +557,8 @@ router.put('/:id', async (req, res, next) => {
         next(err)
     }
 })
+
+
 
 
 

@@ -71,12 +71,7 @@ export function StickyNavbar({ openDrawer }) {
           </Link>
         )}
       </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
+      <li>
         {user.userId && (
           <button
             onClick={() => {
@@ -84,10 +79,10 @@ export function StickyNavbar({ openDrawer }) {
               setOpenNav(false);
             }}
           >
-            Logout
+            <span className="p-1 font-normal text-blue-gray">Logout</span>
           </button>
         )}
-      </Typography>
+      </li>
     </ul>
   );
 

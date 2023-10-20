@@ -15,6 +15,8 @@ import RegisterPage from "./components/Register";
 import EditRecipe from "./components/EditRecipe";
 import Footer from "./components/Footer";
 import AllRecipes from "./components/AllRecipes";
+import Search from "./components/Search";
+
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -37,7 +39,8 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />
-        <Route path="/editrecipe/:id" element={<EditRecipe />} />
+        <Route path="/editrecipe" element={<EditRecipe />} />
+        <Route path="/temp" element={<Search />} />
       </Routes>
       <Footer />
     </div>

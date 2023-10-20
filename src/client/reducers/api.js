@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
 const CREDENTIALS = "credentials";
@@ -10,16 +11,12 @@ export const api = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_URL||"http://localhost:3000",
         prepareHeaders: (headers, { getState }) => {
-            console.log("prepareHeaders is running");
-
             const credentials = window.sessionStorage.getItem(CREDENTIALS);
             const parsedCredentials = JSON.parse(credentials || "{}");
             const token = parsedCredentials.token;
-            console.log("token from reducer", token);
             if (token) {
                 headers.set("Authorization", token);
             }
-            console.log("token from session storage:", token);
             return headers;
         },
     }),
@@ -47,6 +44,11 @@ export const api = createApi({
                 url:'api/recipe'
             })
         }),
+        getSearchRecipes: builder.query({
+            query: (searchQuery) => ({
+              url: `search?query=${searchQuery}`,
+            }),
+          }),
         getRecipesByUserId: builder.query({
             query:(userId)=>({
                 url:'api/recipe/users/'+userId,
@@ -135,10 +137,168 @@ export const api = createApi({
     }),
 });
 
+// Note; this is unfinished as Luke also mentioned we need a slice for ingredients as well, which means for tags also
+// we will probably need to do crud on both through tables as they are crudded on...
+const dataSlice = createSlice({
+    name:"data",
+    initialState:{
+        // tags
+        tags:[],
+        // recipe
+        recipe:null,
+        recipes:[],
+        result:[],
+        // post
+        post:null,
+        posts:[],
+        // user
+        users:[],
+        user:null,
+
+    },
+    reducers:{},
+    extraReducers: (builder)=>{
+        //  Tag
+        builder.addMatcher(api.endpoints.getTags.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                tags: payload
+            }
+        })
+
+        //  Recipe 
+        builder.addMatcher(api.endpoints.getRecipeById.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                recipe: payload
+            }
+        })
+
+        builder.addMatcher(api.endpoints.getRecipes.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                recipes: payload
+            }
+        })
+
+        builder.addMatcher(api.endpoints.deleteRecipeById.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                recipes: state.recipes.filter(i=>i.id!==payload.id)
+            }
+
+        })
+
+        builder.addMatcher(api.endpoints.createRecipe.matchFulfilled, (state, {payload})=>{
+            state.recipes.push(payload);
+            return state;
+        })
+
+
+        builder.addMatcher(api.endpoints.editRecipe.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                recipes: state.recipes.map(i=>i.id===payload.id?{...i, ...payload}:i)
+            }
+        })
+
+        // Community Posts 
+        builder.addMatcher(api.endpoints.getPostByUserId.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                post: payload
+            }
+        })
+       
+        builder.addMatcher(api.endpoints.getPosts.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                posts: state.posts.map(i=>i.id===payload.id?{...i, ...payload}:i)
+            }
+        })
+
+        builder.addMatcher(api.endpoints.updatePostById.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                recipes: state.recipes.map(i=>i.id===payload.id?{...i, ...payload}:i)
+            }
+        })
+
+        builder.addMatcher(api.endpoints.deletePostById.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                posts: state.posts.filter(i=>i.id!==payload.id)
+            }
+
+        })
+
+        builder.addMatcher(api.endpoints.createPost.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                recipes: state.recipes.filter(i=>i.id!==payload.id)
+            }
+
+        })
+
+        // Users
+
+        builder.addMatcher(api.endpoints.getUserById.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                user: payload
+            }
+        })
+
+        builder.addMatcher(api.endpoints.getUsers.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                user: payload
+            }
+        })
+
+        builder.addMatcher(api.endpoints.updateUserById.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                users: state.users.map(i=>i.id===payload.id?{...i, ...payload}:i)
+            }
+        })
+
+        builder.addMatcher(api.endpoints.deleteUser.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                users: state.users.filter(i=>i.id!==payload.id)
+            }
+
+        })
+
+        
+
+        
+
+
+    
+    }
+})
 
 
 
+const searchSlice = createSlice({
+    name:"search",
+    initialState:{
+        search:[],
+    },
+    reducers:{},
+    extraReducers: (builder)=>{
+        builder.addMatcher(api.endpoints.getSearchRecipes.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                search: payload
+            }
+        })
+    }
+})
 
+export default searchSlice.reducer;
 
 export const {
     useGetUsersQuery,
@@ -160,4 +320,5 @@ export const {
     useGetTagsQuery,
     useGetThreeRecentRecipesQuery,
     useEditRecipeMutation,
+    useGetSearchRecipesQuery
 }= api
