@@ -342,18 +342,29 @@ router.put("/user/:userId/recipe/recipeId", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
-    const recipe = await prisma.recipe.delete({
-      where: {
-        id: Number(req.params.id),
-      },
-    });
-    res.send(recipe);
-  } catch (error) {
-    next(error);
+      await prisma.Recipetags.deleteMany({
+          where: {
+              recipeId: Number(req.params.id)
+          },
+      });
+      await prisma.Ingredient_recipe.deleteMany({
+          where: {
+              recipeId: Number(req.params.id)
+          },
+      });
+      await prisma.Recipe.delete({
+          where: {
+              id: Number(req.params.id)
+          }
+      });
+      res.send({ message: 'Recipe successfully deleted' });
+  } catch (err) {
+      next(err);
   }
 });
+
 
 // get recipe by tag name
 router.get("/recipesbytag/:tagName", async (req, res) => {
@@ -546,6 +557,8 @@ router.put('/:id', async (req, res, next) => {
         next(err)
     }
 })
+
+
 
 
 
