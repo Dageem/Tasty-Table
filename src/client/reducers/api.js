@@ -282,23 +282,23 @@ const dataSlice = createSlice({
 
 
 
-const searchSlice = createSlice({
-    name:"search",
-    initialState:{
-        search:[],
-    },
-    reducers:{},
-    extraReducers: (builder)=>{
-        builder.addMatcher(api.endpoints.getSearchRecipes.matchFulfilled, (state, {payload})=>{
-            return{
-                ...state,
-                search: payload
-            }
-        })
-    }
-})
+// const searchSlice = createSlice({
+//     name:"search",
+//     initialState:{
+//         search:[],
+//     },
+//     reducers:{},
+//     extraReducers: (builder)=>{
+//         builder.addMatcher(api.endpoints.getSearchRecipes.matchFulfilled, (state, {payload})=>{
+//             return{
+//                 ...state,
+//                 search: payload
+//             }
+//         })
+//     }
+// })
 
-export default searchSlice.reducer;
+// export default searchSlice.reducer;
 
 export const {
     useGetUsersQuery,
