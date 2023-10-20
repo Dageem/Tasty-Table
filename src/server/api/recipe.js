@@ -191,88 +191,6 @@ router.post('/', async (req,res,next)=>{
     }
 })
 
-//create recipe
-// router.post("/", async (req, res) => {
-//   try {
-//     const {
-//       name,
-//       details,
-//       desc,
-//       instructions,
-//       imageUrl,
-//       image2Url,
-//       image3Url,
-//       userId,
-//       tagId,
-//       ingredients,
-//       tags,
-//     } = req.body;
-//     // console.log(req.body)
-
-//     // Create the recipe
-//     const recipe = await prisma.recipe.create({
-//       data: {
-//         name,
-//         details,
-//         desc,
-//         instructions,
-//         imageUrl,
-//         image2Url,
-//         image3Url,
-//         userId,
-//         tagId,
-//       },
-//       include: {
-//         Tag: true,
-//         User: true,
-//         Ingredient_recipe: true,
-//       },
-//     });
-
-//     // ccreate or match tqgs
-//     for (const tagName of tags) {
-//       const tag = await prisma.tag.upsert({
-//         where: { name: tagName },
-//         update: {},
-//         create: { name: tagName },
-//       });
-
-//       await prisma.recipetags.create({
-//         data: {
-//           tagId: tag.id,
-//           recipeId: recipe.id,
-//         },
-//       });
-//     }
-
-//     // Create or match ingr and mes
-//     for (const ingredientData of ingredients) {
-//       const { name, measurement } = ingredientData;
-
-//       const ingredient = await prisma.ingredient.upsert({
-//         where: { name },
-//         update: {},
-//         create: { name },
-//       });
-
-//       await prisma.ingredient_recipe.create({
-//         data: {
-//           ingredientId: ingredient.id,
-//           recipeId: recipe.id,
-//           measurement,
-//         },
-//       });
-//     }
-
-//     res.json({ recipe });
-//   } catch (error) {
-//     console.error(error);
-//     res
-//       .status(500)
-//       .json({ error: "An error occurred while creating the recipe." });
-//   }
-// });
-
 router.get("/recent", async (req, res, next) => {
   try {
     const recentRecipes = await prisma.recipe.findMany({
@@ -320,12 +238,26 @@ router.get("/:id", async (req, res, next) => {
       where: {
         id: Number(req.params.id),
       },
+      include: {
+        recipetags: {
+          include: {
+            tag: true,
+          },
+        },
+        Ingredient_recipe: {
+          include: {
+            ingredient: true,
+          },
+        },
+      },
     });
     res.send(recipeId);
   } catch (error) {
     next(error);
   }
 });
+
+
 
 //  user can update their recipe by userId -- This should be in Chef Dan's User routes, also unfinished
 router.put("/user/:userId/recipe/recipeId", async (req, res, next) => {
