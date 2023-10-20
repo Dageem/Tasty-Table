@@ -31,8 +31,8 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/search', async (req, res) => {
-  const { query } = req.query; // Get the search query from the URL parameter
-
+  const { query } = req.query;
+console.log(query)
   try {
     const filteredRecipes = await prisma.recipe.findMany({
       where: {

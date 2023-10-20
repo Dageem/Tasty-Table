@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
 const CREDENTIALS = "credentials";
@@ -10,16 +11,12 @@ export const api = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_URL||"http://localhost:3000",
         prepareHeaders: (headers, { getState }) => {
-            console.log("prepareHeaders is running");
-
             const credentials = window.sessionStorage.getItem(CREDENTIALS);
             const parsedCredentials = JSON.parse(credentials || "{}");
             const token = parsedCredentials.token;
-            console.log("token from reducer", token);
             if (token) {
                 headers.set("Authorization", token);
             }
-            console.log("token from session storage:", token);
             return headers;
         },
     }),
@@ -139,6 +136,25 @@ export const api = createApi({
         }),
     }),
 });
+
+
+const searchSlice = createSlice({
+    name:"search",
+    initialState:{
+        search:[],
+    },
+    reducers:{},
+    extraReducers: (builder)=>{
+        builder.addMatcher(api.endpoints.getSearchRecipes.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                search: payload
+            }
+        })
+    }
+})
+
+export default searchSlice.reducer;
 
 export const {
     useGetUsersQuery,
