@@ -25,7 +25,7 @@ export default function SingleRecipe() {
           <img
             src="https://media.licdn.com/dms/image/C4D03AQH10ABaP0vlPw/profile-displayphoto-shrink_800_800/0/1566569501300?e=2147483647&v=beta&t=4oURRlcat1xowixQtOT6p1JmYm5rE2mW2WiAY3zaPqk"
             alt=""
-            className="rounded-full w-[220px]"
+            className="rounded-full w-[210px]"
           />
           <h1 className="text-purple-900 font-bold text-md">
             OUR HEAD CHEF AND TEAM
@@ -33,7 +33,7 @@ export default function SingleRecipe() {
           <p className="text-center px-6">
             All recipes are approved by Head Chef Daniel. Whether he or his team
             created it, or one of our fantastic contributors, you know it will
-            be delicious. lorem
+            be delicious.
           </p>
         </div>
       </section>
