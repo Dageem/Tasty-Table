@@ -279,7 +279,7 @@ const dataSlice = createSlice({
     
     }
 })
-export default dataSlice.reducer;
+
 
 
 const searchSlice = createSlice({
