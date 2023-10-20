@@ -6,34 +6,34 @@ const people = [
       "https://upload.wikimedia.org/wikipedia/commons/6/6f/Gordon_Ramsay.jpg",
   },
   {
-    name: "Guy Fieri",
+    name: "Daniel Atehortua",
     role: "Sous-chef",
     imageUrl:
-      "https://www.ocregister.com/wp-content/uploads/migration/l0v/l0vuax-l0vtw5guyfieriphoto1white.jpg?w=879",
+      "https://media.licdn.com/dms/image/C4D03AQH10ABaP0vlPw/profile-displayphoto-shrink_800_800/0/1566569501300?e=2147483647&v=beta&t=4oURRlcat1xowixQtOT6p1JmYm5rE2mW2WiAY3zaPqk",
   },
   {
-    name: "Michael Caines",
+    name: "Dageem Syume",
     role: "Garde manger",
     imageUrl:
-      "https://www.chefspencil.com/wp-content/uploads/Michael-Caines.jpg.webp",
+      "https://scontent-iad3-1.xx.fbcdn.net/v/t1.6435-9/172154228_2375240789277732_9178781530763136217_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7a1959&_nc_ohc=Yznci5p2Ej8AX-AChBW&_nc_ht=scontent-iad3-1.xx&oh=00_AfAeUoJjDXp9zkOn5VjwJC2q5ef4CQMPD9XykUNUeF5ZVA&oe=655A317D",
   },
   {
-    name: "Jamie Oliver",
+    name: "Jake Hogsten",
     role: "Chef de partie",
     imageUrl:
-      "https://www.chefspencil.com/wp-content/uploads/Jamie-Oliver.jpg.webp",
+      "https://media.licdn.com/dms/image/D4E03AQG8VC0Cun6jQg/profile-displayphoto-shrink_800_800/0/1693416100929?e=1703116800&v=beta&t=FdhR_TWQO_Qh9EyQKBldOHwsGaEFPjB3cPtynarFR3o",
   },
   {
-    name: "Spongebob",
+    name: "Daniel jerman",
     role: "Executive chef",
     imageUrl:
-      "https://play-lh.googleusercontent.com/oNGJkMtJLL9p0x9U0jaCN63Mny4wKdCOjCtRm8RazHVd3HsuT8YbEk1H00QnOfgOwYQ",
+      "https://media.licdn.com/dms/image/D4E35AQGb4fQ4mWOWTQ/profile-framedphoto-shrink_800_800/0/1686318155926?e=1698433200&v=beta&t=D5QgQ8Hko_e5LHHs2DaRhg1Mh-mLEVx-FBe13j23e3s",
   },
   {
-    name: "Leslie Alexander",
+    name: "Luke Jones",
     role: "Co-Founder / CEO",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+      "https://ca.slack-edge.com/E05LYDFST6K-U039ADKHDDM-8aa8e3928383-512",
   },
   // More people...
 ];
