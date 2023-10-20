@@ -8,7 +8,7 @@ const store = configureStore({
     reducer: {
         [api.reducerPath]: api.reducer,
         auth: authReducer,
-        search: searchReducer
+        // search: searchReducer
    
     },
     middleware: (getDefaultMiddleware) =>
