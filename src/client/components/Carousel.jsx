@@ -15,25 +15,25 @@ const Carousel = () => {
     slidesToShow: isMobile ? 2 : 6,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4000,
   };
 
   return (
     <div>
-      <div className="p-4">
-        <h1 className="text-xl text-center font-bold text-black">
+      <div className="p-4 mb-3">
+        <h1 className="text-2xl text-center font-bold">
           Search Recipes
         </h1>
         <input
           type="text"
           placeholder="Search recipes..."
-          className="border border-black rounded-lg p-2 w-[90%] ml-[5%] lg:w-[70%] lg:ml-[15%]"
+          className="border border-blue-gray-900 rounded-lg p-2 w-[90%] ml-[5%] lg:w-[70%] lg:ml-[15%]"
         />
       </div>
       <Slider {...carouselSettings}>
         <Link to="/categories/Chinese">
           <div className="slide flex flex-col items-center justify-center hover:opacity-70">
-            <div className="rounded-full overflow-hidden mx-2">
+            <div className="rounded-full overflow-hidden mx-2 ">
               <img
                 src="https://ik.imagekit.io/awwybhhmo/satellite_images/chinese/gray/about_us/2.jpg?tr=w-3840"
                 alt=""

@@ -5,7 +5,7 @@ function Examples() {
   return (
       <section className="">
         <h1 className="text-3xl font-bold mt-6 mb-2">Popular Recipes</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 shadow-2xl pb-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pb-4">
           <Link to="/categories/easy">
             <div className="relative hover:cursor-pointer hover:opacity-70">
               <img
