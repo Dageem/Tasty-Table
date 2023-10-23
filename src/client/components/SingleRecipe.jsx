@@ -11,7 +11,7 @@ export default function SingleRecipe() {
 
   return (
     <div className="text-blue-gray-900 mt-5">
-      <section className="grid grid-cols-1 md:grid-cols-3 w-[95%] ml-[2.5%] md:w-[95%] md:ml-[2.5%] lg:w-[70%] lg:ml-[15%]">
+      <section className="grid grid-cols-1 gap-x-12 md:grid-cols-3 w-[95%] ml-[2.5%] md:w-[95%] md:ml-[2.5%] lg:w-[70%] lg:ml-[15%]">
         <div className="flex flex-col justify-center items-center py-5 px-1 col-span-3 lg:col-span-2">
           <h1 className="text-xl font-bold md:text-3xl">{recipe.name}</h1>
           <p>{recipe.details}</p>
@@ -21,7 +21,7 @@ export default function SingleRecipe() {
             alt="Recipe image"
           />
         </div>
-        <div className="hidden lg:flex col-span-1 flex-col justify-center items-center">
+        <div className="hidden xl:flex col-span-1 flex-col justify-center items-center">
           <img
             src="https://media.licdn.com/dms/image/C4D03AQH10ABaP0vlPw/profile-displayphoto-shrink_800_800/0/1566569501300?e=2147483647&v=beta&t=4oURRlcat1xowixQtOT6p1JmYm5rE2mW2WiAY3zaPqk"
             alt=""
@@ -36,12 +36,12 @@ export default function SingleRecipe() {
             be delicious.
           </p>
           <div className="m-5">
-            <button className="font-bold px-4 py-2 bg-purple-900 text-white rounded hover:bg-purple-700 mr-4">
+            {/* <button className="font-bold px-4 py-2 bg-purple-900 text-white rounded hover:bg-purple-700 mr-4">
               SAVE RECIPE
             </button>
             <button className="font-bold px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-300">
               LIKE RECIPE
-            </button>
+            </button> */}
           </div>
           <div className="mt-5 mx-2 bg-purple-900 rounded-xl hover:opacity-70 cursor-pointer">
             <img
@@ -58,7 +58,7 @@ export default function SingleRecipe() {
 
       <div className="h-[100px]"></div>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 w-[95%] ml-[2.5%] md:w-[80%] md:ml-[10%] lg:w-[70%] lg:ml-[15%]">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-x-12 w-[95%] ml-[2.5%] md:w-[80%] md:ml-[10%] lg:w-[70%] lg:ml-[15%]">
         <div className="col-span-2">
           <h1 className="text-center font-bold lg:text-2xl pb-2">
             Everything about the{" "}
