@@ -10,7 +10,7 @@ export default function SingleRecipe() {
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (
-    <div className="text-blue-gray-900 mt-5">
+    <div className="w-[95%] ml-[2.5%] lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
       <section className="grid grid-cols-1 gap-x-12 md:grid-cols-3 w-[95%] ml-[2.5%] md:w-[95%] md:ml-[2.5%] lg:w-[70%] lg:ml-[15%]">
         <div className="flex flex-col justify-center items-center py-5 px-1 col-span-3 lg:col-span-2">
           <h1 className="text-xl font-bold md:text-3xl">{recipe.name}</h1>
