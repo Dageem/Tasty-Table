@@ -1,22 +1,20 @@
-import { StickyNavbar } from "./components/Nav";
-import { DrawerWithNavigation } from "./components/Drawer";
+import { StickyNavbar } from "./pages/nav/comps/Nav";
+import { DrawerWithNavigation } from "./pages/nav/comps/Drawer";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import DisplayCategory from "./components/DisplayCategory";
-import SubmitRecipe from "./components/SubmitRecipe";
-import Home from "./components/Home";
-import CommunityBoard from "./components/CommunityBoard";
-import LoginPage from "./components/Login";
-import UserProfile from "./components/UserProfile";
-import RecentRecipes from "./components/RecentRecipes";
-import SingleRecipe from "./components/SingleRecipe";
-import About from "./components/About";
-import RegisterPage from "./components/Register";
-import EditRecipe from "./components/EditRecipe";
-import Footer from "./components/Footer";
-import AllRecipes from "./components/AllRecipes";
-import Search from "./components/Search";
-
+import DisplayCategory from "./pages/displayCategory/DisplayCategory";
+import SubmitRecipe from "./pages/SubmitRecipe";
+import Home from "./pages/home/Home";
+import CommunityBoard from "./pages/communityBoard/CommunityBoard";
+import LoginPage from "./pages/loginRegister/Login";
+import UserProfile from "./pages/profile/UserProfile";
+import SingleRecipe from "./pages/singleRecipe/SingleRecipe";
+import About from "./pages/about/About";
+import RegisterPage from "./pages/loginRegister/Register";
+import EditRecipe from "./pages/EditRecipe";
+import Footer from "./pages/footer/Footer";
+import AllRecipes from "./pages/allRecipes/AllRecipes";
+import Search from "./pages/Search";
 
 export default function App() {
   const [open, setOpen] = useState(false);
