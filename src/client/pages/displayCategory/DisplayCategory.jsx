@@ -1,18 +1,25 @@
 import React from "react";
-import { useGetRecipesQuery } from "../reducers/api";
+import { useGetRecipesByNameQuery } from "../../reducers/api";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function AllRecipes() {
-  const { data: recipes, error, isLoading } = useGetRecipesQuery();
+function DisplayCategory() {
+  const { category } = useParams();
+  const {
+    data: recipes,
+    error,
+    isLoading,
+  } = useGetRecipesByNameQuery(category);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (
     <div className="w-[95%] ml-[2.5%] lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
-      <div>
-        <h1 className="text-xl text-center md:text-3xl font-bold">
-          All Recipes
+      <div className="w-full mb-4 text-center text-blue-gray-900">
+        <h1 className="text-xl md:text-3xl font-bold">
+          The best <strong className="text-purple-900">{category}</strong>{" "}
+          recipes
         </h1>
       </div>
       <div className="flex flex-wrap justify-center">
@@ -33,9 +40,7 @@ function AllRecipes() {
                 <div className="text-xl font-bold text-center">
                   {recipe.name}
                 </div>
-                <div className="text-blue-gray-900 text-xl text-center ">
-                  {recipe.details}
-                </div>
+                <div className="text-xl text-center">{recipe.details}</div>
               </div>
             </Link>
           </div>
@@ -45,4 +50,4 @@ function AllRecipes() {
   );
 }
 
-export default AllRecipes;
+export default DisplayCategory;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useLogoutMutation } from "../reducers/auth";
+import { useLogoutMutation } from "../../../reducers/auth";
 import { useSelector } from "react-redux";
 import {
   Collapse,

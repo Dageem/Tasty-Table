@@ -12,8 +12,8 @@ import {
   useGetRecipesByUserIdQuery,
   useGetPostByUserIdQuery,
   useDeleteRecipeByIdMutation,
-} from "../reducers/api";
-import './userProfile.css';
+} from "../../reducers/api";
+
 
 function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
@@ -92,9 +92,10 @@ function UserProfile() {
                       Edit Recipe
                     </button>
                   </Link>
-                  <button 
-                    className="bg-red-500 text-white p-2 rounded mb-4" 
-                    onClick={() => onDelete(recipe.id)}>
+                  <button
+                    className="bg-red-500 text-white p-2 rounded mb-4"
+                    onClick={() => onDelete(recipe.id)}
+                  >
                     Delete Recipe
                   </button>
                   <p>Name: {recipe.name}</p>
@@ -125,4 +126,3 @@ function UserProfile() {
 }
 
 export default UserProfile;
-

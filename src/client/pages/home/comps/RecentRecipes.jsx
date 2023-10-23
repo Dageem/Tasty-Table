@@ -1,4 +1,4 @@
-import { useGetThreeRecentRecipesQuery } from "../reducers/api";
+import { useGetThreeRecentRecipesQuery } from "../../../reducers/api";
 import { useState, useEffect } from "react";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";

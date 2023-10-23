@@ -3,7 +3,7 @@ import {
   useGetPostsQuery,
   useCreatePostMutation,
   useDeletePostByIdMutation,
-} from "../reducers/api";
+} from "../../reducers/api";
 import { useSelector } from "react-redux";
 
 function CommunityBoard({ userId }) {
