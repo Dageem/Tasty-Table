@@ -1,50 +1,92 @@
 import { useGetThreeRecentRecipesQuery } from "../reducers/api";
+import { useState, useEffect } from "react";
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
 function RecentRecipes() {
   const { data: recipes, error, isLoading } = useGetThreeRecentRecipesQuery();
-  console.log(recipes);
+  const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
+  const [isMobileScreen, setIsMobileScreen] = useState(
+    window.innerWidth < 768
+  );
+
+  const nextRecipe = () => {
+    setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length);
+  };
+
+  const prevRecipe = () => {
+    setCurrentRecipeIndex((prevIndex) =>
+      prevIndex === 0 ? recipes.length - 1 : prevIndex - 1
+    );
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileScreen(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (
-    <div className="">
+    <div className="mt-4 shadow-2xl mb-4">
       <div>
-        <h1 className="text-2xl text-center font-bold mt-4">Recent Additions</h1>
+        <h1 className="text-3xl font-bold mt-4 mb-2">Recent Recipes</h1>
       </div>
-      <div>
-        {recipes.map((recipe) => (
-          <div key={recipe.id}>
-            <div className="pt-4">
-              <img
-                src={recipe.imageUrl}
-                alt="recipe-image"
-                className="w-[95%] ml-[2.5%] rounded-xl py-2 h-[300px]"
-              />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-center w-[95%] ml-[2.5%]">
-                {recipe.name}
-              </h1>
-            </div>
-            <div>
-              <p className="text-blue-gray-900 text-md w-[95%] ml-[2.5%]">
-                {recipe.details}Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. In ut cum debitis aliquam, aliquid est
-                doloremque molestiae quasi tenetur corrupti? Repellendus
-                eligendi ducimus laudantium, quidem earum libero ab? Quisquam,
-                illum?
-              </p>
-            </div>
-            <div>
-              <h1 className="bg-purple-900 text-lg font-bold text-center rounded-xl mt-1 text-white w-[95%] ml-[2.5%] hover:text-yellow-700 cursor-pointer">
-                Continue Reading
-              </h1>
-            </div>
+      {isMobileScreen ? (
+        <div className="relative hover:cursor-pointer hover:opacity-70">
+          <img
+            src={recipes[currentRecipeIndex].imageUrl}
+            alt="recipe-image"
+            className="h-[350px] w-full"
+          />
+          <div className="absolute top-0 left-0 w-full h-full flex justify-between items-center">
+            <button onClick={prevRecipe}>
+              <FaArrowAltCircleLeft className="text-3xl" />
+            </button>
+            <button onClick={nextRecipe}>
+              <FaArrowAltCircleRight className="text-3xl" />
+            </button>
           </div>
-        ))}
-      </div>
+          <div className="mt-2">
+            <h1 className="text-xl font-bold">
+              {recipes[currentRecipeIndex].name}
+            </h1>
+            <p>{recipes[currentRecipeIndex].details}</p>
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {recipes.map((recipe, index) => (
+            <div
+              key={recipe.id}
+              className={index !== currentRecipeIndex ? "hidden md:block" : ""}
+            >
+              <div className="relative hover:cursor-pointer hover:opacity-70">
+                <img
+                  src={recipe.imageUrl}
+                  alt="recipe-image"
+                  className="h-[350px] w-full"
+                />
+              </div>
+              <div className="mt-2">
+                <h1 className="text-xl font-bold">{recipe.name}</h1>
+                <p>{recipe.details}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
 
 export default RecentRecipes;
+
+
