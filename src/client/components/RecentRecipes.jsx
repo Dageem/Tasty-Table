@@ -1,13 +1,12 @@
 import { useGetThreeRecentRecipesQuery } from "../reducers/api";
 import { useState, useEffect } from "react";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function RecentRecipes() {
   const { data: recipes, error, isLoading } = useGetThreeRecentRecipesQuery();
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
-  const [isMobileScreen, setIsMobileScreen] = useState(
-    window.innerWidth < 768
-  );
+  const [isMobileScreen, setIsMobileScreen] = useState(window.innerWidth < 768);
 
   const nextRecipe = () => {
     setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length);
@@ -35,7 +34,7 @@ function RecentRecipes() {
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (
-    <div className="mt-4 shadow-2xl mb-4">
+    <div className="mt-4 mb-4">
       <div>
         <h1 className="text-3xl font-bold mt-4 mb-2">Recent Recipes</h1>
       </div>
@@ -64,22 +63,26 @@ function RecentRecipes() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {recipes.map((recipe, index) => (
-            <div
-              key={recipe.id}
-              className={index !== currentRecipeIndex ? "hidden md:block" : ""}
-            >
-              <div className="relative hover:cursor-pointer hover:opacity-70">
-                <img
-                  src={recipe.imageUrl}
-                  alt="recipe-image"
-                  className="h-[350px] w-full"
-                />
+            <Link to={`/recipe/${recipe.id}`}>
+              <div
+                key={recipe.id}
+                className={
+                  index !== currentRecipeIndex ? "hidden md:block" : ""
+                }
+              >
+                <div className="relative hover:cursor-pointer hover:opacity-70">
+                  <img
+                    src={recipe.imageUrl}
+                    alt="recipe-image"
+                    className="h-[350px] w-full"
+                  />
+                </div>
+                <div className="mt-2">
+                  <h1 className="text-xl font-bold">{recipe.name}</h1>
+                  <p>{recipe.details}</p>
+                </div>
               </div>
-              <div className="mt-2">
-                <h1 className="text-xl font-bold">{recipe.name}</h1>
-                <p>{recipe.details}</p>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
@@ -88,5 +91,3 @@ function RecentRecipes() {
 }
 
 export default RecentRecipes;
-
-

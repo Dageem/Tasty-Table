@@ -24,7 +24,7 @@ export default function App() {
   const closeDrawer = () => setOpen(false);
 
   return (
-    <div>
+    <div id="app-container">
       <StickyNavbar openDrawer={openDrawer} />
       <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
 

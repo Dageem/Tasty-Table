@@ -87,7 +87,7 @@ export function StickyNavbar({ openDrawer }) {
   );
 
   return (
-    <nav className=" w-full sticky top-0 z-50 p-5 shadow-xl bg-white">
+    <nav className=" w-full sticky top-0 z-50 p-5 shadow-md bg-white">
       <div className="flex items-center justify-between text-blue-gray-900 h-[20px]">
         <Typography
           as={Link}

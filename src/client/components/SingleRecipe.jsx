@@ -65,17 +65,7 @@ export default function SingleRecipe() {
             <strong className="text-purple-900">{recipe.name}</strong>...
           </h1>
           <p className="">
-            {recipe.desc} Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Repellat numquam laudantium, iste saepe provident sdaffeafe
-            doloremque adipisci temporibus veritatis, quod deserunt, ullam at
-            magni blanditiis. Iure in sint alias voluptates autem. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Eos in sit debitis eum,
-            repellendus, inventore a, perspiciatis numquam saepe consequuntur
-            soluta autem nam quam obcaecati error animi totam incidunt libero?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-            quam pariatur. Repellendus rem, nemo quos tempore ex ipsa placeat
-            sunt inventore amet reiciendis velit doloribus, fugit officia
-            delectus a labore.
+            {recipe.desc}
           </p>
         </div>
         <div className="mx-2">
