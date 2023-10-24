@@ -83,31 +83,65 @@ function UserProfile() {
           <Tab value="posts">Posts</Tab>
         </TabsHeader>
         <TabsBody>
-          <TabPanel value="recipes">
-            <div className="recipes-container">
+        <TabPanel value="recipes">
+          <div className="recipes-container flex flex-wrap justify-center mt-10 w-300">
               {recipes.map((recipe) => (
-                <div className="apple" key={recipe.id}>
-                  <Link to={`/editrecipe/${recipe.id}`}>
-                    <button className="bg-blue-500 text-white p-2 rounded mb-4">
-                      Edit Recipe
+                  <div className="m-4 relative group w-1/4" key={recipe.id}>
+
+                 {/* Image */}
+                 <div className="w-full h-96 relative overflow-hidden">
+                    <img 
+                      src={recipe.imageUrl} 
+                      alt="Recipe" 
+                      className="w-full max-h-full object-contain absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-60 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="text-white p-4">
+                        <h2 className="text-lg font-bold mb-2">{recipe.name}</h2>
+                        <p>
+                          { 
+                            recipe.details.split(" ").slice(0, 70).join(" ")
+
+                            + (recipe.details.split(" ").length > 70 ? "..." : "")
+                          }
+                        </p>
+                        </div>
+                    </div>
+                  </div>
+
+                {/* Edit and Delete buttons */}
+                <div className="mt-4 flex justify-between">
+                    <Link to={`/editrecipe/${recipe.id}`} className="flex-1 mr-2">
+                        <button className="bg-purple-900 text-white p-2 rounded w-full">
+                            Edit Recipe
+                        </button>
+                    </Link>
+                    <button 
+                        className="bg-red-500 text-white p-2 rounded flex-1" 
+                        onClick={(e) => {
+                            onDelete(recipe.id);
+                        }}>
+                        Delete Recipe
                     </button>
-                  </Link>
-                  <button 
-                    className="bg-red-500 text-white p-2 rounded mb-4" 
-                    onClick={() => onDelete(recipe.id)}>
-                    Delete Recipe
-                  </button>
-                  <p>Name: {recipe.name}</p>
-                  <p>Details: {recipe.details}</p>
                 </div>
-              ))}
-              <Link to="/recipesubmit">
-                <button className="bg-green-500 text-white p-4 rounded w-full">
-                  New Recipe
-                </button>
-              </Link>
             </div>
-          </TabPanel>
+        ))}
+
+        <div className="mt-10 w-full flex justify-center">
+            <Link to="/recipesubmit">
+                <button className="bg-purple-900 text-white p-4 rounded w-full">
+                   Add a New Recipe !
+                </button>
+            </Link>
+        </div>
+    </div>
+</TabPanel>
+
+
+
+
+
+
           <TabPanel value="posts">
             <div className="">
               {postsData.map((post) => (

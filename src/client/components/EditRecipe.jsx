@@ -49,8 +49,8 @@ const me = useSelector((state) => state.auth.credentials.user)
   const navigate = useNavigate();
   return (
  <div className="flex justify-center items-center min-h-screen bg-gray-100">
-    <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-xl" onSubmit={handleSubmit}>
-    <button className="mb-6 bg-blue-500 text-white rounded px-6 py-3 hover:bg-blue-600" onClick={() => navigate("/profile")}>
+    <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
+    <button className="mb-6 bg-purple-900 text-white rounded px-6 py-3 hover:bg-purple-600" onClick={() => navigate("/profile")}>
         Go Back
     </button>
       <input  className="border p-2 w-full rounded mb-4"
@@ -109,7 +109,7 @@ const me = useSelector((state) => state.auth.credentials.user)
       ))}
 
 
-      <button className="bg-blue-500 text-white p-2 rounded mb-4" onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
+      <button className="bg-purple-800 text-white p-2 rounded mb-4" onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
 
               {ingredients.map((ingredient, index) => (
           <div key={index}>
@@ -121,6 +121,7 @@ const me = useSelector((state) => state.auth.credentials.user)
                 setIngredients(newIngredients);
               }}
               placeholder="Ingredient Name"
+              className="flex-1 p-1 rounded mr-2"
             />
             <input
               value={ingredient.measurement}
@@ -130,10 +131,11 @@ const me = useSelector((state) => state.auth.credentials.user)
                 setIngredients(newIngredients);
               }}
               placeholder="Measurement"
+              className="flex-1 p-1 rounded mr-2"
             />
           </div>
         ))}
-        <button className="bg-blue-500 text-white p-2 rounded mb-4"
+        <button className="bg-purple-800 text-white p-2 rounded mb-4"
           onClick={() =>
             setIngredients([...ingredients, { name: "", measurement: "" }])
           }
@@ -142,7 +144,7 @@ const me = useSelector((state) => state.auth.credentials.user)
         </button>
 
 
-      <button className="bg-green-500 text-white p-4 rounded w-full" type="submit">Submit</button>
+      <button className="bg-purple-800 text-white p-4 rounded w-full" type="submit">Submit</button>
       </form>
     </div>
   );
