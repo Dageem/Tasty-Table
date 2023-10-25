@@ -24,7 +24,7 @@ export default function RecipeDetails() {
           Everything about <strong>{recipe.name}</strong>
         </h1>
         <p className="text-xl">
-          {recipe.details}
+          {recipe.desc}
         </p>
         <div
           className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px] bg-cover bg-center"
