@@ -13,7 +13,7 @@ import {
   useGetPostByUserIdQuery,
   useDeleteRecipeByIdMutation,
 } from "../../reducers/api";
-// import './userProfile.css';
+
 
 function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
