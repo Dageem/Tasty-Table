@@ -6,10 +6,16 @@ import { Link } from "react-router-dom";
 
 export default function RecipeDetails() {
   const { id } = useParams();
-  const { data: recipe, isLoading, error } = useGetRecipeByIdQuery(id);
+  const { data: recipe, isLoading: recipeLoading, error: recipeError } = useGetRecipeByIdQuery(id);
+  const { data: recents, isLoading: recentsLoading, error: recentsError } = useGetThreeRecentRecipesQuery();
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error Loading Categories! {error.message}</p>;
+  if (recipeLoading || recentsLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (recipeError || recentsError) {
+    return <p>Error Loading Data! {recipeError ? recipeError.message : recentsError.message}</p>;
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid md:grid-cols-3 mt-6 gap-12">
@@ -18,7 +24,7 @@ export default function RecipeDetails() {
           Everything about <strong>{recipe.name}</strong>
         </h1>
         <p className="text-xl">
-          {recipe.desc}
+          {recipe.details}
         </p>
         <div
           className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px] bg-cover bg-center"
@@ -56,6 +62,22 @@ export default function RecipeDetails() {
           className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px] bg-cover bg-center"
           style={{ backgroundImage: `url(${recipe.image3Url})` }}
         ></div>
+      </div>
+      <div>
+      <h1 className="text-3xl font-bold">Recently Added</h1>
+      <div>
+          {recents.map((recent, index) => (
+            <Link to={`/recipe/${recent.id}`} key={recent.id} className="mb-4">
+              <div className="relative hover:cursor-pointer hover:opacity-70">
+                <img src={recent.imageUrl} alt="recipe-image" className="w-full h-[320px]" />
+              </div>
+              <div className="mt-2">
+                <h1 className="text-2xl font-bold">{recent.name}</h1>
+                <p>{recent.details}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
