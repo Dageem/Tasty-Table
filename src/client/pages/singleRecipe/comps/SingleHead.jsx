@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetRecipeByIdQuery } from "../../../reducers/api";
+import { Link } from "react-router-dom";
 
 export default function SingleHead() {
   const { id } = useParams();
@@ -14,7 +15,7 @@ export default function SingleHead() {
       <div className="mt-10 grid grid-cols-1 lg:grid lg:grid-cols-3 gap-6">
         <div className="col-span-2">
           <h1 className="text-3xl  font-bold mb-3">{recipe.name}</h1>
-          <p className="text-xl  mb-5">{recipe.desc}</p>
+          <p className="text-xl  mb-5">{recipe.details}</p>
           <div className="">
             <button className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900">
               Like Recipe
@@ -61,16 +62,18 @@ export default function SingleHead() {
               Our Cookbook
             </h1>
           </div>
-          <div
-            className="w-full h-[300px] xl:h-[400px] bg-cover bg-center relative hover:opacity-70 cursor-pointer"
-            style={{
-              backgroundImage: `url(https://assets3.thrillist.com/v1/image/3130793/828x1500/flatten;scale;webp=auto;jpeg_quality=60.jpg)`,
-            }}
-          >
-            <h1 className="absolute top-0 left-1/2 transform -translate-x-1/2 text-2xl text-center text-black rounded p-1 w-[55%] bg-white opacity-80 font-bold mt-4">
-              All Recipes
-            </h1>
-          </div>
+          <Link to="/allrecipes">
+            <div
+              className="w-full h-[300px] xl:h-[400px] bg-cover bg-center relative hover:opacity-70 cursor-pointer"
+              style={{
+                backgroundImage: `url(https://assets3.thrillist.com/v1/image/3130793/828x1500/flatten;scale;webp=auto;jpeg_quality=60.jpg)`,
+              }}
+            >
+              <h1 className="absolute top-0 left-1/2 transform -translate-x-1/2 text-2xl text-center text-black rounded p-1 w-[55%] bg-white opacity-80 font-bold mt-4">
+                All Recipes
+              </h1>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
