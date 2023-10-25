@@ -50,7 +50,7 @@ const me = useSelector((state) => state.auth.credentials.user)
   return (
  <div className="flex justify-center items-center min-h-screen bg-gray-100">
     <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
-    <button className="mb-6 bg-purple-900 text-white rounded px-6 py-3 hover:bg-purple-600" onClick={() => navigate("/profile")}>
+    <button className="mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50" onClick={() => navigate("/profile")}>
         Go Back
     </button>
       <input  className="border p-2 w-full rounded mb-4"
@@ -93,49 +93,69 @@ const me = useSelector((state) => state.auth.credentials.user)
 
 
 
-      {tags.map((tag, index) => (
-
-          <div key={index} className="mb-4">
-              <input
-                  value={tag.name}
-                  onChange={(e) => {
-                      const newTags = [...tags];
-                      newTags[index].name = e.target.value;
-                      setTags(newTags);
-                  }}
-                  placeholder="Tag Name"
-              />
-          </div>
-      ))}
+       {tags.map((tag, index) => (
+    <div key={index} className="border p-2 rounded mb-4 flex items-center">
+        <input
+            value={tag.name}
+            onChange={(e) => {
+                const newTags = [...tags];
+                newTags[index].name = e.target.value;
+                setTags(newTags);
+            }}
+            placeholder="Tag Name"
+            className="flex-1 p-1 rounded mr-2"
+        />
+        <button 
+            onClick={() => {
+                const newTags = [...tags];
+                newTags.splice(index, 1);
+                setTags(newTags);
+            }}
+            className="bg-red-500 text-white p-1 rounded"
+        >
+            Delete
+        </button>
+    </div>
+))}
 
 
       <button className="bg-purple-800 text-white p-2 rounded mb-4" onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
 
-              {ingredients.map((ingredient, index) => (
-          <div key={index}>
-            <input
-              value={ingredient.name}
-              onChange={(e) => {
+      {ingredients.map((ingredient, index) => (
+    <div key={index} className="border p-2 rounded mb-4 flex items-center">
+        <input
+            value={ingredient.name}
+            onChange={(e) => {
                 const newIngredients = [...ingredients];
                 newIngredients[index].name = e.target.value;
                 setIngredients(newIngredients);
-              }}
-              placeholder="Ingredient Name"
-              className="flex-1 p-1 rounded mr-2"
-            />
-            <input
-              value={ingredient.measurement}
-              onChange={(e) => {
+            }}
+            placeholder="Ingredient Name"
+            className="flex-1 p-1 rounded mr-2"
+        />
+        <input
+            value={ingredient.measurement}
+            onChange={(e) => {
                 const newIngredients = [...ingredients];
                 newIngredients[index].measurement = e.target.value;
                 setIngredients(newIngredients);
-              }}
-              placeholder="Measurement"
-              className="flex-1 p-1 rounded mr-2"
-            />
-          </div>
-        ))}
-        <button className="bg-purple-800 text-white p-2 rounded mb-4"
+            }}
+            placeholder="Measurement"
+            className="flex-1 p-1 rounded mr-2"
+        />
+        <button 
+            onClick={() => {
+                const newIngredients = [...ingredients];
+                newIngredients.splice(index, 1);
+                setIngredients(newIngredients);
+            }}
+            className="bg-red-500 text-white p-1 rounded"
+        >
+            Delete
+        </button>
+        </div>
+      ))};
+        <button className="bg-blue-gray-50 text-white p-2 rounded mb-4"
           onClick={() =>
             setIngredients([...ingredients, { name: "", measurement: "" }])
           }
@@ -144,7 +164,7 @@ const me = useSelector((state) => state.auth.credentials.user)
         </button>
 
 
-      <button className="bg-purple-800 text-white p-4 rounded w-full" type="submit">Submit</button>
+      <button className="bg-green-500 text-white p-4 rounded w-full hover:bg-green-800" type="submit">Submit</button>
       </form>
     </div>
   );

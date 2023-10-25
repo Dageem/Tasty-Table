@@ -112,7 +112,7 @@ function UserProfile() {
                 {/* Edit and Delete buttons */}
                 <div className="mt-4 flex justify-between">
                     <Link to={`/editrecipe/${recipe.id}`} className="flex-1 mr-2">
-                        <button className="bg-purple-900 text-white p-2 rounded w-full">
+                        <button className="bg-blue-900 text-white p-2 rounded w-full">
                             Edit Recipe
                         </button>
                     </Link>
@@ -129,7 +129,7 @@ function UserProfile() {
 
         <div className="mt-10 w-full flex justify-center">
             <Link to="/recipesubmit">
-                <button className="bg-purple-900 text-white p-4 rounded w-full">
+                <button className="bg-green-300 text-white p-4 rounded w-full">
                    Add a New Recipe !
                 </button>
             </Link>
