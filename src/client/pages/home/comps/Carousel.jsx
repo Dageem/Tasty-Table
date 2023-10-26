@@ -20,16 +20,6 @@ const Carousel = () => {
 
   return (
     <div>
-      <div className="p-4 mb-3">
-        <h1 className="text-2xl text-center font-bold">
-          Search Recipes
-        </h1>
-        <input
-          type="text"
-          placeholder="Search recipes..."
-          className="border border-blue-gray-900 rounded-lg p-2 w-[90%] ml-[5%] lg:w-[70%] lg:ml-[15%]"
-        />
-      </div>
       <Slider {...carouselSettings}>
         <Link to="/categories/chinese">
           <div className="slide flex flex-col items-center justify-center hover:opacity-70">
