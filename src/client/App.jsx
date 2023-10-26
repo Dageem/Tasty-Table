@@ -14,7 +14,7 @@ import RegisterPage from "./pages/loginRegister/Register";
 import EditRecipe from "./pages/EditRecipe";
 import Footer from "./pages/footer/Footer";
 import AllRecipes from "./pages/allRecipes/AllRecipes";
-import Search from "./pages/Search";
+import SearchResults from "./pages/SearchResults";
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -38,7 +38,7 @@ export default function App() {
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />
         <Route path="/editrecipe/:id" element={<EditRecipe />} />
-        <Route path="/temp" element={<Search />} />
+        <Route path="/search-results" element={<SearchResults />} />
       </Routes>
       <Footer />
     </div>
