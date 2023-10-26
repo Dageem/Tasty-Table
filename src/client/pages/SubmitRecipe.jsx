@@ -58,7 +58,7 @@ const RecipeForm = () => {
     </div>
     ) : (
     <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
-       <button className="mb-6 bg-purple-900 text-white rounded px-6 py-3 hover:bg-purple-600" onClick={() => navigate("/profile")}>
+       <button className="mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-green-200" onClick={() => navigate("/profile")}>
         Go Back
     </button>
       <input className="border p-2 w-full rounded mb-4"
@@ -66,17 +66,17 @@ const RecipeForm = () => {
         onChange={(e) => setName(e.target.value)}
         placeholder="Name"
       />
-      <textarea className="border p-2 w-full rounded mb-4"
+      <textarea className="border p-2 h-20 w-full rounded mb-4"
         value={details}
         onChange={(e) => setDetails(e.target.value)}
         placeholder="Details"
       ></textarea>
-      <textarea className="border p-2 w-full rounded mb-4"
+      <textarea className="border p-2 h-40 w-full rounded mb-4"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
         placeholder="Description"
       ></textarea>
-      <textarea className="border p-2 w-full rounded mb-4"
+      <textarea className="border p-2 h-60  w-full rounded mb-4"
         value={instructions}
         onChange={(e) => setInstructions(e.target.value)}
         placeholder="Instructions"
@@ -99,8 +99,24 @@ const RecipeForm = () => {
     
 
 
+    <button type="button" className="bg-green-300 text-purple p-2 rounded mb-4 hover:bg-green-200" onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
+    
     {tags.map((tag, index) => (
-    <div key={index} className="border p-2 rounded mb-4 flex items-center">
+      <div>
+      <div>
+        <button 
+          type="button"
+            onClick={() => {
+              const newTags = [...tags];
+                newTags.splice(index, 1);
+                setTags(newTags);
+            }}
+            className="bg-red-500 text-white p-1 rounded"
+        >
+            Delete Tag
+        </button>
+        </div>
+        <div key={index} className="border p-2 rounded mb-4 flex items-center">
         <input
             value={tag.name}
             onChange={(e) => {
@@ -111,25 +127,33 @@ const RecipeForm = () => {
             placeholder="Tag Name"
             className="flex-1 p-1 rounded mr-2"
         />
-        <button 
-            onClick={() => {
-                const newTags = [...tags];
-                newTags.splice(index, 1);
-                setTags(newTags);
-            }}
-            className="bg-red-500 text-white p-1 rounded"
-        >
-            Delete
-        </button>
-    </div>
+        </div>
+      </div>
 ))}
 
 
-
-      <button type="button" className="bg-gray-200 text-purple p-2 rounded mb-4" onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
+        <div>
+        <button type="button" className="bg-green-300 text-purple p-2 rounded mb-4 hover:bg-green-200" onClick={() => setIngredients([...ingredients, { name: "", measurement: "" }])}>
+        Add Ingredient
+        </button>
+        </div>
 
       {ingredients.map((ingredient, index) => (
-    <div key={index} className="border p-2 rounded mb-4 flex items-center">
+        <div>
+          <div>
+          <button 
+          type="button"
+              onClick={() => {
+                const newIngredients = [...ingredients];
+                  newIngredients.splice(index, 1);
+                  setIngredients(newIngredients);
+              }}
+              className="bg-red-500 text-white p-1 rounded"
+          >
+              Delete Ingredient
+          </button>
+        </div>
+        <div key={index} className="border p-2 rounded mb-4 flex items-center">
         <input
             value={ingredient.name}
             onChange={(e) => {
@@ -150,22 +174,10 @@ const RecipeForm = () => {
             placeholder="Measurement"
             className="flex-1 p-1 rounded mr-2"
         />
-        <button 
-            onClick={() => {
-                const newIngredients = [...ingredients];
-                newIngredients.splice(index, 1);
-                setIngredients(newIngredients);
-            }}
-            className="bg-red-500 text-white p-1 rounded"
-        >
-            Delete
-        </button>
+      </div>
         </div>
           ))}
-        <button type="button" className="bg-gray-200 text-purple p-2 rounded mb-4" onClick={() => setIngredients([...ingredients, { name: "", measurement: "" }])}>
-        Add Ingredient
-        </button>
-        <button type="submit" className="bg-purple-900 text-white p-2 w-full rounded mt-4 hover:bg-purple-600">
+        <button type="submit" className="bg-green-300 text-white p-2 w-full rounded mt-4 hover:bg-green-200">
         Submit Recipe
         </button>
         </form>
