@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./reducers/api";
 import authReducer from './reducers/auth';
-// import searchReducer from "./reducers/api";
+import searchReducer from "./reducers/api";
 
 
 const store = configureStore({
     reducer: {
         [api.reducerPath]: api.reducer,
         auth: authReducer,
-        // search: searchReducer
+        search: searchReducer
    
     },
     middleware: (getDefaultMiddleware) =>

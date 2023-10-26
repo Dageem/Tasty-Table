@@ -21,7 +21,7 @@ export default function RecipeDetails() {
     <div className="grid grid-cols-1 md:grid md:grid-cols-3 mt-6 gap-12">
       <div className="col-span-2">
         <h1 className="text-3xl font-bold">
-          Everything about <strong>{recipe.name}</strong>
+          Everything about <strong className="text-yellow-900">{recipe.name}</strong>
         </h1>
         <p className="text-xl">
           {recipe.desc}
