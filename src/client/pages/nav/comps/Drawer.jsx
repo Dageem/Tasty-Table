@@ -57,6 +57,13 @@ export function DrawerWithNavigation({ open, closeDrawer }) {
           <ListItem><Link to="/categories/breakfast" onClick={closeDrawer}>Breakfast</Link></ListItem>
           <ListItem><Link to="/categories/lunch" onClick={closeDrawer}>lunch</Link></ListItem>
           <ListItem><Link to="/categories/dinner" onClick={closeDrawer}>Dinner</Link></ListItem>
+          <ListItem><Link to="/categories/dessert" onClick={closeDrawer}>Dessert</Link></ListItem>
+          <ListItem><Link to="/categories/italian" onClick={closeDrawer}>Italian</Link></ListItem>
+          <ListItem><Link to="/categories/sandwich" onClick={closeDrawer}>Sandwich</Link></ListItem>
+          <ListItem><Link to="/categories/bbq" onClick={closeDrawer}>BBQ</Link></ListItem>
+          <ListItem><Link to="/categories/mediterranean" onClick={closeDrawer}>Mediterranean</Link></ListItem>
+          <ListItem><Link to="/categories/seafood" onClick={closeDrawer}>Seafood</Link></ListItem>
+          <ListItem><Link to="/categories/vegan" onClick={closeDrawer}>Vegan</Link></ListItem>
         </List>
       </Drawer>
     </React.Fragment>
