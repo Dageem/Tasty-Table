@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchResults, clearSearch } from "../reducers/api";
+import { setSearchResults, clearSearch } from "../../../reducers/api";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {
@@ -17,7 +17,7 @@ const Search = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/recipe/search?query=${searchQuery}`
+        `https://tasty-table-lqa6.onrender.com/api/recipe/search?query=${searchQuery}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
