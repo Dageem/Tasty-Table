@@ -137,8 +137,7 @@ export const api = createApi({
     }),
 });
 
-// Note; this is unfinished as Luke also mentioned we need a slice for ingredients as well, which means for tags also
-// we will probably need to do crud on both through tables as they are crudded on...
+
 const dataSlice = createSlice({
     name:"data",
     initialState:{
@@ -174,7 +173,8 @@ const dataSlice = createSlice({
             }
         })
 
-        builder.addMatcher(api.endpoints.getRecipes.matchFulfilled, (state, {payload})=>{
+        builder.addMatcher(api.endpoints.getRecipesByUserId.matchFulfilled, (state, {payload})=>{
+            console.log(payload)
             return{
                 ...state,
                 recipes: payload
@@ -206,7 +206,8 @@ const dataSlice = createSlice({
         builder.addMatcher(api.endpoints.getPostByUserId.matchFulfilled, (state, {payload})=>{
             return{
                 ...state,
-                post: payload
+                posts: payload
+
             }
         })
        

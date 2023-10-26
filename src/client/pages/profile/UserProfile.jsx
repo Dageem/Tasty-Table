@@ -18,24 +18,23 @@ import {
 function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
   const [userId, setUserId] = useState(user.userId);
-  const [recipes, setRecipes] = useState([]);
-//   const recipes = useSelector(state => state.data.recipes);
-
-  // Fetching Recipes and Posts Data
+ 
   const {
     data: recipesData,
     isLoading: isRecipesLoading,
     isError: isRecipesError,
   } = useGetRecipesByUserIdQuery(userId, { skip: !userId });
-
+  
   const {
     data: postsData,
     isLoading: isPostsLoading,
     isError: isPostsError,
   } = useGetPostByUserIdQuery(userId, { skip: !userId });
-
+  
+  console.log("Loading recipes:", isRecipesLoading);
+  console.log("Error fetching recipes:", isRecipesError);
   const [deleteRecipe] = useDeleteRecipeByIdMutation();
-
+  
   // Handle errors
   useEffect(() => {
     if (isRecipesError) {
@@ -45,36 +44,40 @@ function UserProfile() {
       console.error("Error loading posts:", isPostsError);
     }
   }, [isRecipesError, isPostsError]);
-
+  
   // Update local recipes state when recipesData changes
   useEffect(() => {
     if (recipesData) {
-      setRecipes(recipesData);
+      // setRecipes(recipesData);
     }
   }, [recipesData]);
 
+  const recipes = useSelector(state => state.data.recipes);
+  
   // Delete recipe handler
   const onDelete = async (recipeId) => {
     try {
       await deleteRecipe(recipeId);
       const updatedRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
-      setRecipes(updatedRecipes);
+      // setRecipes(updatedRecipes);
     } catch {
       console.log("error");
     }
   };
-
+  
   // Loading states
   if (isRecipesLoading || isPostsLoading) {
     return <div>Loading...</div>;
   }
-
+  
+  
+  console.log(recipesData)
   return (
     <div className="big-container">
       {/* User Profile Header */}
       <div className="flex flex-col mb-6 mt-5 ml-5">
         <h1 className="text-xl font-extrabold">{user.username}'s Profile</h1>
-        <h2>Number of recipes: {recipes.length}</h2>
+        <h2>Number of recipes: {recipes?.length || 0}</h2>
         <h2>Number of posts: {postsData.length}</h2>
       </div>
 
