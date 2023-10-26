@@ -19,6 +19,7 @@ function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
   const [userId, setUserId] = useState(user.userId);
   const [recipes, setRecipes] = useState([]);
+//   const recipes = useSelector(state => state.data.recipes);
 
   // Fetching Recipes and Posts Data
   const {
