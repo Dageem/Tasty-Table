@@ -1,7 +1,7 @@
 import Carousel from "./comps/Carousel";
 import RecentRecipes from "./comps/RecentRecipes";
 import Examples from "./comps/Examples";
-import Search from "../Search";
+import Search from "./comps/Search";
 
 function Home() {
   return (
