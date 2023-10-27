@@ -15,6 +15,7 @@ import EditRecipe from "./pages/EditRecipe";
 import Footer from "./pages/footer/Footer";
 import AllRecipes from "./pages/allRecipes/AllRecipes";
 import Search from "./pages/Search";
+import BasicMap from "./pages/map/map";
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/recipe/:id" element={<SingleRecipe />} />
         <Route path="/editrecipe/:id" element={<EditRecipe />} />
         <Route path="/temp" element={<Search />} />
+        <Route path="/map" element={<BasicMap />} />
       </Routes>
       <Footer />
     </div>

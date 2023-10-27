@@ -239,6 +239,22 @@ router.get("/:id", async (req, res, next) => {
         id: Number(req.params.id),
       },
       include: {
+        Comment: {
+          orderBy: {
+            createdAt: "desc"
+          },
+          select: {
+            id: true,
+            message: true,
+            createdAt: true,
+            user: {
+              select:{
+                id: true,
+                username: true
+              }
+            }
+          }
+        },
         recipetags: {
           include: {
             tag: true,
@@ -489,7 +505,43 @@ router.put('/:id', async (req, res, next) => {
         next(err)
     }
 })
+router.post('/comments', async (req, res, next) => {
+  if (req.body.message ==="" || req.body.message == null) {
+    return res.sendStatus(400)
+  }
+  try {
+    const createComment = await prisma.comment.create({
+      data: {
+        message: req.body.message,
+        userId: Number(req.body.userId), // Assuming userId is sent in the request body
+        recipeId: Number(req.body.recipeId) // Assuming recipeId is sent in the request body
+      }
+    });
+    
+    res.send(createComment);
+  } catch (error) {
+    console.error("Error creating comment:", error);
+    next(error); // Pass the error to the next middleware or error handling route
+  }
+});
+router.delete('/comments/:id', async (req, res, next) => {
 
+  try {
+      const comment = await prisma.comment.delete({
+          where: {
+              id: Number(req.params.id)
+          }
+      });
+      const post = await prisma.recipe.findUnique({
+          where: {
+              id: Number(comment.recipeId)
+          },
+      });
+      res.send({comment})
+  } catch (err) {
+      next(err)
+  }
+})
 
 
 

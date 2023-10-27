@@ -14,6 +14,8 @@ model User {
   admin    String
   Post     Post[]
   recipes  Recipe[]
+  Comment  Comment[]
+  Likes     Like[]
 }
 
 model Recipe {
@@ -31,6 +33,7 @@ model Recipe {
   recipetags        Recipetags[]
   Tag               Tag?                @relation(fields: [tagId], references: [id])
   tagId             Int?
+  Comment           Comment[]
 }
 
 model Recipetags {
@@ -69,4 +72,27 @@ model Ingredient_recipe {
   measurement  String
   ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
   recipe       Recipe     @relation(fields: [recipeId], references: [id])
+}
+
+model Comment {
+  id       Int    @id @default(autoincrement())
+  message String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  recipeId Int
+  Likes  Like[]
+}
+
+
+model Like {
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+  comment   Comment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  commentId Int
+
+
+  @@id([userId, commentId])
 }

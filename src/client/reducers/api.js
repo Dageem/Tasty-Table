@@ -134,6 +134,19 @@ export const api = createApi({
                 method:"DELETE",
             })
         }),
+        deleteComment:builder.mutation({
+            query:(id)=>({
+                url:'/api/recipe/comments/'+id,
+                method:'DELETE'
+            })
+        }),
+        addComment : builder.mutation({
+            query:(body)=>({
+                url:'/api/recipe/comments',
+                method:"POST",
+                body:body
+            })
+        }),
     }),
 });
 
@@ -320,5 +333,7 @@ export const {
     useGetTagsQuery,
     useGetThreeRecentRecipesQuery,
     useEditRecipeMutation,
-    useGetSearchRecipesQuery
+    useGetSearchRecipesQuery,
+    useDeleteCommentMutation,
+    useAddCommentMutation
 }= api
