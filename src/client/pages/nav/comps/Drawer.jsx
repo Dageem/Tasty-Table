@@ -7,6 +7,7 @@ import {
   ListItem,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import Search from "../../home/comps/Search";
 
 export function DrawerWithNavigation({ open, closeDrawer }) {
   return (
@@ -34,11 +35,11 @@ export function DrawerWithNavigation({ open, closeDrawer }) {
           </IconButton>
         </div>
         <div className="p-4">
-          <input
+          {/* <input
             type="text"
             placeholder="Search recipes..."
             className="w-full border border-black rounded-lg p-2"
-          />
+          /> */}
         </div>
         <Typography variant="h6" color="blue-gray" className="p-4">
           Popular Recipe Searches
@@ -57,6 +58,13 @@ export function DrawerWithNavigation({ open, closeDrawer }) {
           <ListItem><Link to="/categories/breakfast" onClick={closeDrawer}>Breakfast</Link></ListItem>
           <ListItem><Link to="/categories/lunch" onClick={closeDrawer}>lunch</Link></ListItem>
           <ListItem><Link to="/categories/dinner" onClick={closeDrawer}>Dinner</Link></ListItem>
+          <ListItem><Link to="/categories/dessert" onClick={closeDrawer}>Dessert</Link></ListItem>
+          <ListItem><Link to="/categories/italian" onClick={closeDrawer}>Italian</Link></ListItem>
+          <ListItem><Link to="/categories/sandwich" onClick={closeDrawer}>Sandwich</Link></ListItem>
+          <ListItem><Link to="/categories/bbq" onClick={closeDrawer}>BBQ</Link></ListItem>
+          <ListItem><Link to="/categories/mediterranean" onClick={closeDrawer}>Mediterranean</Link></ListItem>
+          <ListItem><Link to="/categories/seafood" onClick={closeDrawer}>Seafood</Link></ListItem>
+          <ListItem><Link to="/categories/vegan" onClick={closeDrawer}>Vegan</Link></ListItem>
         </List>
       </Drawer>
     </React.Fragment>

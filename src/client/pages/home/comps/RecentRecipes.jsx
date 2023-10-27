@@ -71,11 +71,10 @@ function RecentRecipes() {
                 }
               >
                 <div className="relative hover:cursor-pointer hover:opacity-70">
-                  <img
-                    src={recipe.imageUrl}
-                    alt="recipe-image"
-                    className="h-[350px] w-full"
-                  />
+                <div
+                  className="w-full h-[300px] xl:h-[350px] bg-cover bg-center"
+                  style={{ backgroundImage: `url(${recipe.imageUrl})` }}
+                ></div>
                 </div>
                 <div className="mt-2">
                   <h1 className="text-xl font-bold">{recipe.name}</h1>

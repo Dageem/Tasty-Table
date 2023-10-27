@@ -20,18 +20,8 @@ const Carousel = () => {
 
   return (
     <div>
-      <div className="p-4 mb-3">
-        <h1 className="text-2xl text-center font-bold">
-          Search Recipes
-        </h1>
-        <input
-          type="text"
-          placeholder="Search recipes..."
-          className="border border-blue-gray-900 rounded-lg p-2 w-[90%] ml-[5%] lg:w-[70%] lg:ml-[15%]"
-        />
-      </div>
       <Slider {...carouselSettings}>
-        <Link to="/categories/Chinese">
+        <Link to="/categories/chinese">
           <div className="slide flex flex-col items-center justify-center hover:opacity-70">
             <div className="rounded-full overflow-hidden mx-2 ">
               <img
@@ -55,18 +45,6 @@ const Carousel = () => {
             <h1 className="rounded text-l font-bold text-center">Mexican</h1>
           </div>
         </Link>
-        <Link to="/categories/thai">
-          <div className="slide flex flex-col items-center justify-center hover:opacity-70">
-            <div className="rounded-full overflow-hidden mx-2">
-              <img
-                src="https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/07/1296x728-header.jpg?w=1155&h=1528"
-                alt=""
-                className="w-32 h-32 object-cover rounded-full"
-              />
-            </div>
-            <h1 className="rounded text-l font-bold text-center">Thai</h1>
-          </div>
-        </Link>
         <Link to="/categories/indian">
           <div className="slide flex flex-col items-center justify-center hover:opacity-70">
             <div className="rounded-full overflow-hidden mx-2">
@@ -79,43 +57,19 @@ const Carousel = () => {
             <h1 className="rounded text-l font-bold text-center">Indian</h1>
           </div>
         </Link>
-        <Link to="/categories/korean">
+        <Link to="/categories/dessert">
           <div className="slide flex flex-col items-center justify-center hover:opacity-70">
             <div className="rounded-full overflow-hidden mx-2">
               <img
-                src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2019_50/3144056/191211-korean-beef-bulgogi-ew-118p.jpg"
+                src="https://houseofnasheats.com/wp-content/uploads/2023/03/Oreo-Dessert-Recipe-Square-1.jpg"
                 alt=""
                 className="w-32 h-32 object-cover rounded-full"
               />
             </div>
-            <h1 className="rounded text-l font-bold text-center">Korean</h1>
+            <h1 className="rounded text-l font-bold text-center">Dessert</h1>
           </div>
         </Link>
-        <Link to="/categories/breakfast">
-          <div className="slide flex flex-col items-center justify-center hover:opacity-70">
-            <div className="rounded-full overflow-hidden mx-2">
-              <img
-                src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2021-09-breakfast-grits%2FNew%20Finals%2F2021-10-12_ATK8035"
-                alt=""
-                className="w-32 h-32 object-cover rounded-full"
-              />
-            </div>
-            <h1 className="rounded text-l font-bold text-center">Breakfast</h1>
-          </div>
-        </Link>
-        <Link to="/categories/lunch">
-          <div className="slide flex flex-col items-center justify-center hover:opacity-70">
-            <div className="rounded-full overflow-hidden mx-2">
-              <img
-                src="https://www.instacart.com/company/wp-content/uploads/2023/04/lunch-ideas-for-work-hero.jpg"
-                alt=""
-                className="w-32 h-32 object-cover rounded-full"
-              />
-            </div>
-            <h1 className="rounded text-l font-bold text-center">Lunch</h1>
-          </div>
-        </Link>
-        <Link to="/categories/dinner">
+        <Link to="/categories/italian">
           <div className="slide flex flex-col items-center justify-center hover:opacity-70">
             <div className="rounded-full overflow-hidden mx-2">
               <img
@@ -124,7 +78,67 @@ const Carousel = () => {
                 className="w-32 h-32 object-cover rounded-full"
               />
             </div>
-            <h1 className="rounded text-l font-bold text-center">Dinner</h1>
+            <h1 className="rounded text-l font-bold text-center">Italian</h1>
+          </div>
+        </Link>
+        <Link to="/categories/sandwich">
+          <div className="slide flex flex-col items-center justify-center hover:opacity-70">
+            <div className="rounded-full overflow-hidden mx-2">
+              <img
+                src="https://www.jocooks.com/wp-content/uploads/2020/10/club-sandwich-1-9.jpg"
+                alt=""
+                className="w-32 h-32 object-cover rounded-full"
+              />
+            </div>
+            <h1 className="rounded text-l font-bold text-center">Sandwich</h1>
+          </div>
+        </Link>
+        <Link to="/categories/bbq">
+          <div className="slide flex flex-col items-center justify-center hover:opacity-70">
+            <div className="rounded-full overflow-hidden mx-2">
+              <img
+                src="https://images.squarespace-cdn.com/content/v1/5545619be4b03724d70ff242/1583199875390-7QDA5G8AIWW22MD3YTGL/CF_P39_LR_Proof-109+%281%29.JPG?format=1500w"
+                alt=""
+                className="w-32 h-32 object-cover rounded-full"
+              />
+            </div>
+            <h1 className="rounded text-l font-bold text-center">BBQ</h1>
+          </div>
+        </Link>
+        <Link to="/categories/mediterranean">
+          <div className="slide flex flex-col items-center justify-center hover:opacity-70">
+            <div className="rounded-full overflow-hidden mx-2">
+              <img
+                src="https://tb-static.uber.com/prod/image-proc/processed_images/a3836a178c79ade163a9007449423b91/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg"
+                alt=""
+                className="w-32 h-32 object-cover rounded-full"
+              />
+            </div>
+            <h1 className="rounded text-l font-bold text-center">Mediterranean</h1>
+          </div>
+        </Link>
+        <Link to="/categories/seafood">
+          <div className="slide flex flex-col items-center justify-center hover:opacity-70">
+            <div className="rounded-full overflow-hidden mx-2">
+              <img
+                src="https://www.oliveandmango.com/images/uploads/2021_07_30_seafood_boil_2.jpg"
+                alt=""
+                className="w-32 h-32 object-cover rounded-full"
+              />
+            </div>
+            <h1 className="rounded text-l font-bold text-center">Seafood</h1>
+          </div>
+        </Link>
+        <Link to="/categories/vegan">
+          <div className="slide flex flex-col items-center justify-center hover:opacity-70">
+            <div className="rounded-full overflow-hidden mx-2">
+              <img
+                src="https://images.ctfassets.net/uexfe9h31g3m/4esjwG8j4kSYaGMU6Y8OSe/2c41bfd3a1144c0591dd7ed32cc870d3/quorn-chicken-and-quinoa-bowl.jpg"
+                alt=""
+                className="w-32 h-32 object-cover rounded-full"
+              />
+            </div>
+            <h1 className="rounded text-l font-bold text-center">Vegan</h1>
           </div>
         </Link>
       </Slider>

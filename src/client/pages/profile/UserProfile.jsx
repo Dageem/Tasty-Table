@@ -14,11 +14,11 @@ import {
   useDeleteRecipeByIdMutation,
 } from "../../reducers/api";
 
-
 function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
   const [userId, setUserId] = useState(user.userId);
   const [recipes, setRecipes] = useState([]);
+  //   const recipes = useSelector(state => state.data.recipes);
 
   // Fetching Recipes and Posts Data
   const {
@@ -71,10 +71,20 @@ function UserProfile() {
   return (
     <div className="big-container">
       {/* User Profile Header */}
-      <div className="flex flex-col mb-6 mt-5 ml-5">
-        <h1 className="text-xl font-extrabold">{user.username}'s Profile</h1>
-        <h2>Number of recipes: {recipes.length}</h2>
-        <h2>Number of posts: {postsData.length}</h2>
+
+      <div className="flex flex-col mb-6 mt-5 ml-5 bg-yellow-300">
+        <div className="">
+          <h1 className="text-xl font-extrabold">{user.username}Daniel</h1>
+          <h2>Number of recipes: {recipes.length}</h2>
+          <h2>Number of posts: {postsData.length}</h2>
+        </div>
+        <div className="mt-10 w-full flex justify-center">
+          <Link to="/recipesubmit">
+            <button className="bg-green-300 text-white p-4 rounded w-full">
+              Add a New Recipe !
+            </button>
+          </Link>
+        </div>
       </div>
 
       <Tabs className="" value="recipesAndPosts">
@@ -83,58 +93,63 @@ function UserProfile() {
           <Tab value="posts">Posts</Tab>
         </TabsHeader>
         <TabsBody>
-        <TabPanel value="recipes">
-          <div className="recipes-container flex flex-wrap justify-center mt-10 w-300">
+          <TabPanel value="recipes">
+            <div className="recipes-container flex flex-wrap justify-center mt-10 w-300">
               {recipes.map((recipe) => (
-                  <div className="m-4 relative group w-1/4" key={recipe.id}>
-                 {/* Image */}
-                 <div className="w-full h-96 relative overflow-hidden">
-                    <img 
-                      src={recipe.imageUrl} 
-                      alt="Recipe" 
+                <div className="m-4 relative group w-1/4" key={recipe.id}>
+                  {/* Image */}
+                  <div className="w-full h-96 relative overflow-hidden">
+                    <img
+                      src={recipe.imageUrl}
+                      alt="Recipe"
                       className="w-full max-h-full object-contain absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     />
                     <div className="absolute inset-0 bg-black bg-opacity-60 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="text-white p-4">
-                        <h2 className="text-lg font-bold mb-2">{recipe.name}</h2>
+                        <h2 className="text-lg font-bold mb-2">
+                          {recipe.name}
+                        </h2>
                         <p>
-                          { 
-                            recipe.details.split(" ").slice(0, 70).join(" ")
-
-                            + (recipe.details.split(" ").length > 70 ? "..." : "")
-                          }
+                          {recipe.details.split(" ").slice(0, 70).join(" ") +
+                            (recipe.details.split(" ").length > 70
+                              ? "..."
+                              : "")}
                         </p>
-                        </div>
+                      </div>
                     </div>
                   </div>
 
-                {/* Edit and Delete buttons */}
-                <div className="mt-4 flex justify-between">
-                    <Link to={`/editrecipe/${recipe.id}`} className="flex-1 mr-2">
-                        <button className="bg-blue-900 text-white p-2 rounded w-full">
-                            Edit Recipe
-                        </button>
+                  {/* Edit and Delete buttons */}
+                  <div className="mt-4 flex justify-between">
+                    <Link
+                      to={`/editrecipe/${recipe.id}`}
+                      className="flex-1 mr-2"
+                    >
+                      <button className="bg-blue-900 text-white p-2 rounded w-full">
+                        Edit Recipe
+                      </button>
                     </Link>
-                    <button 
-                        className="bg-red-500 text-white p-2 rounded flex-1" 
-                        onClick={(e) => {
-                            onDelete(recipe.id);
-                        }}>
-                        Delete Recipe
+                    <button
+                      className="bg-red-500 text-white p-2 rounded flex-1"
+                      onClick={(e) => {
+                        onDelete(recipe.id);
+                      }}
+                    >
+                      Delete Recipe
                     </button>
-                            </div>
-                        </div>
-                    ))}
+                  </div>
+                </div>
+              ))}
 
-                    <div className="mt-10 w-full flex justify-center">
+              {/* <div className="mt-10 w-full flex justify-center">
                         <Link to="/recipesubmit">
                             <button className="bg-green-300 text-white p-4 rounded w-full">
                             Add a New Recipe !
                             </button>
                         </Link>
-                    </div>
-                </div>
-        </TabPanel>
+                    </div> */}
+            </div>
+          </TabPanel>
           <TabPanel value="posts">
             <div className="">
               {postsData.map((post) => (
