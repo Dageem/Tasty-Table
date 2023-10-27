@@ -14,25 +14,27 @@ import {
   useDeleteRecipeByIdMutation,
 } from "../../reducers/api";
 // import './userProfile.css';
+import { api } from "../../reducers/api";
 
 function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
   const [userId, setUserId] = useState(user.userId);
+  const recipes = useSelector(state => state.data.recipes);
  
   const {
     data: recipesData,
     isLoading: isRecipesLoading,
     isError: isRecipesError,
-  } = useGetRecipesByUserIdQuery(userId, { skip: !userId });
+    refetch  // <-- Add this to get the refetch function
+} = useGetRecipesByUserIdQuery(userId, { skip: !userId });
+
   
   const {
     data: postsData,
     isLoading: isPostsLoading,
     isError: isPostsError,
   } = useGetPostByUserIdQuery(userId, { skip: !userId });
-  
-  console.log("Loading recipes:", isRecipesLoading);
-  console.log("Error fetching recipes:", isRecipesError);
+
   const [deleteRecipe] = useDeleteRecipeByIdMutation();
   
   // Handle errors
@@ -45,25 +47,33 @@ function UserProfile() {
     }
   }, [isRecipesError, isPostsError]);
   
-  // Update local recipes state when recipesData changes
-  useEffect(() => {
-    if (recipesData) {
-      // setRecipes(recipesData);
-    }
-  }, [recipesData]);
 
-  const recipes = useSelector(state => state.data.recipes);
+
   
   // Delete recipe handler
   const onDelete = async (recipeId) => {
     try {
-      await deleteRecipe(recipeId);
-      const updatedRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
-      // setRecipes(updatedRecipes);
-    } catch {
-      console.log("error");
+      await deleteRecipe(recipeId).unwrap();
+      refetch();  // <-- Call refetch here to reload the recipes
+    } catch (error) {
+      console.log("Error during deletion:", error);
     }
   };
+
+  
+  
+  
+
+  // const onDelete = async (recipeId) => {
+  //   try {
+  //     await deleteRecipe(recipeId);
+      // const updatedRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
+      // setRecipes(updatedRecipes);
+    
+  //   } catch {
+  //     console.log("error");
+  //   }
+  // };
   
   // Loading states
   if (isRecipesLoading || isPostsLoading) {
@@ -71,7 +81,6 @@ function UserProfile() {
   }
   
   
-  console.log(recipesData)
   return (
     <div className="big-container">
       {/* User Profile Header */}

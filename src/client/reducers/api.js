@@ -2,6 +2,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
+
 const CREDENTIALS = "credentials";
 
 // Define a service using a base URL and expected endpoints
@@ -182,6 +183,7 @@ const dataSlice = createSlice({
         })
 
         builder.addMatcher(api.endpoints.deleteRecipeById.matchFulfilled, (state, {payload})=>{
+            console.log("deleteRecipeById.matchFulfilled called with payload:", payload);
             return {
                 ...state,
                 recipes: state.recipes.filter(i=>i.id!==payload.id)
@@ -221,7 +223,7 @@ const dataSlice = createSlice({
         builder.addMatcher(api.endpoints.updatePostById.matchFulfilled, (state, {payload})=>{
             return {
                 ...state,
-                recipes: state.recipes.map(i=>i.id===payload.id?{...i, ...payload}:i)
+                posts: state.posts.map(i=>i.id===payload.id?{...i, ...payload}:i)
             }
         })
 
@@ -271,16 +273,11 @@ const dataSlice = createSlice({
             }
 
         })
-
-        
-
-        
-
-
     
     }
 })
 
+export default dataSlice.reducer;
 
 
 // const searchSlice = createSlice({
