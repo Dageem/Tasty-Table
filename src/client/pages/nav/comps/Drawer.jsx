@@ -7,6 +7,7 @@ import {
   ListItem,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import Search from "../../home/comps/Search";
 
 export function DrawerWithNavigation({ open, closeDrawer }) {
   return (
@@ -34,11 +35,11 @@ export function DrawerWithNavigation({ open, closeDrawer }) {
           </IconButton>
         </div>
         <div className="p-4">
-          <input
+          {/* <input
             type="text"
             placeholder="Search recipes..."
             className="w-full border border-black rounded-lg p-2"
-          />
+          /> */}
         </div>
         <Typography variant="h6" color="blue-gray" className="p-4">
           Popular Recipe Searches

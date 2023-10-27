@@ -19,16 +19,15 @@ function AllRecipes() {
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
-            className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-4 hover:opacity-70 cursor-pointer"
+            className="w-full sm:w-1/2 md:w-1/2 xl:w-1/3 2xl:w-1/4 sm:p-3 hover:opacity-70 cursor-pointer"
           >
             <Link to={`/recipe/${recipe.id}`}>
-              <div className="">
+              <div>
                 <div className="flex items-center justify-center">
-                  <img
-                    src={recipe.imageUrl}
-                    alt="recipe-image"
-                    className="h-[300px] w-full"
-                  />
+                <div
+                  className="w-full h-[280px] md:h-[300px] bg-cover bg-center"
+                  style={{ backgroundImage: `url(${recipe.imageUrl})` }}
+                ></div>
                 </div>
                 <div className="text-xl font-bold text-center">
                   {recipe.name}
