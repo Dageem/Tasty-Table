@@ -239,7 +239,7 @@ router.get("/:id", async (req, res, next) => {
         id: Number(req.params.id),
       },
       include: {
-        comment: {
+        Comment: {
           orderBy: {
             createdAt: "desc"
           },
