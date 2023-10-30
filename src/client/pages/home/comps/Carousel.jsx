@@ -15,7 +15,7 @@ const Carousel = () => {
     slidesToShow: isMobile ? 2 : 6,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
   };
 
   return (

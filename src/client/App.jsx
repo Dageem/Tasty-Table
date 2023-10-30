@@ -1,5 +1,4 @@
 import { StickyNavbar } from "./pages/nav/comps/Nav";
-import { DrawerWithNavigation } from "./pages/nav/comps/Drawer";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import DisplayCategory from "./pages/displayCategory/DisplayCategory";
@@ -19,15 +18,11 @@ import SearchResults from "./pages/SearchResults";
 
 
 export default function App() {
-  const [open, setOpen] = useState(false);
-  const openDrawer = () => setOpen(true);
-  const closeDrawer = () => setOpen(false);
+
 
   return (
     <div id="app-container">
-      <StickyNavbar openDrawer={openDrawer} />
-      <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
-
+      <StickyNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories/:category" element={<DisplayCategory />} />

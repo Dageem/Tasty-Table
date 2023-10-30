@@ -7,13 +7,12 @@ const SearchResults = () => {
   const searchResults = useSelector((state) => state.search.results);
 
   return (
-    <div className="w-[95%] ml-[2.5%] lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
-      <Search />
+    <div className="w-[95%] ml-[2.5%] min-h-screen lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
       <div className="flex flex-wrap justify-center">
         {searchResults.rslt.map((result) => (
           <div
             key={result.id}
-            className="w-full sm:w-1/2 md:w-1/2 xl:w-1/3 2xl:w-1/4 sm:p-3 hover:opacity-70 cursor-pointer"
+            className="w-full sm:w-1/2 md:w-1/2 my-4 xl:w-1/3 2xl:w-1/4 sm:p-3 hover:opacity-70 cursor-pointer"
           >
             <Link to={`/recipe/${result.id}`}>
               <div>
