@@ -100,6 +100,13 @@ export const api = createApi({
         url: "api/recipe/recipebyingredient/" + name,
       }),
     }),
+    saveRecipe: builder.mutation({
+      query: (data) => ({
+        url: "/api/recipe/savedrecipes",
+        method: "POST",
+        body: data,
+      }),
+    }),
     getTags: builder.query({
       query: () => ({
         url: "api/tags/recipetags",
@@ -380,6 +387,7 @@ export const {
   useEditRecipeMutation,
   useGetSearchRecipesQuery,
   useDeleteCommentMutation,
-  useAddCommentMutation
+  useAddCommentMutation,
+  useSaveRecipeMutation
 } = api;
 

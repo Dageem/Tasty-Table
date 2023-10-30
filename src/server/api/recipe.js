@@ -5,6 +5,19 @@ const prisma = new PrismaClient();
 
 // get recipe's
 
+router.post('/savedrecipes', async (req, res) => {
+  const { userId, recipeId } = req.body;
+
+  const savedRecipe = await prisma.savedRecipe.create({
+      data: {
+          userId: userId,
+          recipeId: recipeId
+      }
+  });
+
+  res.json(savedRecipe);
+});
+
 router.get('/', async (req, res, next) => {
     try {
       const allRecipes = await prisma.recipe.findMany({
