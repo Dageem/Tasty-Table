@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 import {
   Collapse,
   Typography,
-  Button,
   IconButton,
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import Search from "../../home/comps/Search";
 
 export function StickyNavbar({ openDrawer }) {
   const [openNav, setOpenNav] = useState(false);
@@ -26,9 +26,8 @@ export function StickyNavbar({ openDrawer }) {
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
-        variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-bold hover:text-orange-600"
       >
         <Link to={"/"} onClick={() => setOpenNav(false)}>
           Home
@@ -36,9 +35,8 @@ export function StickyNavbar({ openDrawer }) {
       </Typography>
       <Typography
         as="li"
-        variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-bold hover:text-orange-600"
       >
         <Link to={"/about"} onClick={() => setOpenNav(false)}>
           About
@@ -46,19 +44,8 @@ export function StickyNavbar({ openDrawer }) {
       </Typography>
       <Typography
         as="li"
-        variant="small"
         color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <Link to={"/blog"} onClick={() => setOpenNav(false)}>
-          Blog
-        </Link>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 font-bold hover:text-orange-600"
       >
         {!user.userId && (
           <Link to={"/login"} onClick={() => setOpenNav(false)}>
@@ -79,10 +66,11 @@ export function StickyNavbar({ openDrawer }) {
               setOpenNav(false);
             }}
           >
-            <span className="p-1 font-normal text-blue-gray">Logout</span>
+            <span className="p-1 font-bold hover:text-orange-600">Logout</span>
           </button>
         )}
       </li>
+      <div className="flex items-center"><Search /></div>
     </ul>
   );
 
@@ -102,15 +90,6 @@ export function StickyNavbar({ openDrawer }) {
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden lg:block">{navList}</div>
-          <Button
-            variant="gradient"
-            size="sm"
-            className="hidden lg:inline-block"
-          >
-            <a href="#" className="flex items-center" onClick={openDrawer}>
-              Recipes
-            </a>
-          </Button>
           <IconButton
             variant="text"
             className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -152,19 +131,6 @@ export function StickyNavbar({ openDrawer }) {
       </div>
       <Collapse open={openNav}>
         {navList}
-        <Button variant="gradient" size="sm" className="mb-2">
-          <a
-            href="#"
-            className="flex items-center"
-            onClick={(e) => {
-              e.preventDefault();
-              openDrawer();
-              setOpenNav(false);
-            }}
-          >
-            Recipes
-          </a>
-        </Button>
       </Collapse>
     </nav>
   );

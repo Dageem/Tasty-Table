@@ -18,6 +18,7 @@ const Search = () => {
     try {
       const response = await fetch(
         `https://tasty-table-lqa6.onrender.com/api/recipe/search?query=${searchQuery}`
+        // `http://localhost:3000/api/recipe/search?query=${searchQuery}`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -32,15 +33,14 @@ const Search = () => {
   };
 
   return (
-    <div className="bg-gray-100 p-4">
-      <h1 className="text-3xl text-center font-bold">Search Recipes</h1>
-      <div className="flex items-center justify-center mt-4">
+    <div className="bg-gray-100">
+      <div className="flex items-center justify-center">
         <input
           type="text"
           placeholder="Search recipes..."
           value={searchQuery}
           onChange={handleSearchInputChange}
-          className="border border-blue-gray-900 rounded-lg p-2 w-full lg:w-1/2"
+          className="border border-blue-gray-900 rounded-lg p-2 w-[200px]"
         />
         <button
           onClick={handleSearchButtonClick}

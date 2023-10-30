@@ -15,7 +15,7 @@ function DisplayCategory() {
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (
-    <div className="w-[95%] ml-[2.5%] lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
+    <div className="w-[95%] ml-[2.5%] min-h-screen lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
       <div className="w-full mb-4 text-center text-blue-gray-900">
         <h1 className="text-xl md:text-3xl font-bold">
           The best <strong className="text-purple-900">{category}</strong>{" "}
