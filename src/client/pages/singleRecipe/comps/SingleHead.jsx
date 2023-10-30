@@ -1,11 +1,31 @@
-import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetRecipeByIdQuery } from "../../../reducers/api";
+import { useGetRecipeByIdQuery, useSaveRecipeMutation } from "../../../reducers/api";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentUserId } from "../../../reducers/auth";
+
 
 export default function SingleHead() {
   const { id } = useParams();
   const { data: recipe, isLoading, error } = useGetRecipeByIdQuery(id);
+  const [saveRecipe] = useSaveRecipeMutation();
+  const dispatch = useDispatch();
+  const userId = useSelector(selectCurrentUserId);
+
+  const handleSaveRecipe = async () => {
+    if (!userId) {
+      console.log("User not logged in");
+      return;
+    }
+    try {
+      const savedRecipe = await saveRecipe({ userId, recipeId: recipe.id }).unwrap();
+      console.log("Recipe saved!", savedRecipe);
+    } catch (error) {
+      console.error("Failed to save recipe", error);
+    }
+  };
+ 
+  
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error Loading Categories! {error.message}</p>;
@@ -20,7 +40,7 @@ export default function SingleHead() {
             <button className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900">
               Like Recipe
             </button>
-            <button className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900">
+            <button onClick={handleSaveRecipe} className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900">
               Save Recipe
             </button>
           </div>

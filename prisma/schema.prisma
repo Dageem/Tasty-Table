@@ -16,6 +16,7 @@ model User {
   recipes  Recipe[]
   Comment  Comment[]
   Likes     Like[]
+  savedRecipes SavedRecipe[]
 }
 
 model Recipe {
@@ -34,6 +35,7 @@ model Recipe {
   Tag               Tag?                @relation(fields: [tagId], references: [id])
   tagId             Int?
   Comment           Comment[]
+  savedByUsers SavedRecipe[]
 }
 
 model Recipetags {
@@ -95,4 +97,15 @@ model Like {
 
 
   @@id([userId, commentId])
+}
+
+model SavedRecipe {
+  id      Int      @id @default(autoincrement())
+  userId  Int
+  recipeId Int
+  user    User     @relation(fields: [userId], references: [id])
+  recipe  Recipe   @relation(fields: [recipeId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, recipeId])
 }
