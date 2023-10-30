@@ -4,6 +4,31 @@ const prisma = new PrismaClient();
 async function seed() {
   const recipesData = [
     {
+      name: "Juicy Turkey",
+      details: "A juicy cooked bird",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      instructions:
+        "1. Sprinkle steak with salt and pepper. Grilled steak, covered, over medium heat or broil 4 inches from heat until meat reaches desired doneness (for medium rare, a thermometer should read 135 degrees, medium 160 degrees) 6 to 9 minutes per side. Let stand 5 minutes. 2. Meanwhile, process salsa and cilantro in a food processor until blended. Slice steak thinly across the grain; serve with salsa mixture, avocado, and tomato.",
+      imageUrl:
+        "https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/QXMNIUJ5UJH6RE4GQ6RSHOIEL4.jpg",
+      image2Url:
+        "https://i.pinimg.com/736x/3f/ab/26/3fab2610354198ffba877ff94cd9aa40.jpg",
+      image3Url:
+        "https://homegrown.extension.ncsu.edu/wp-content/uploads/2019/11/Timing-Your-Turkey-Meal_Thanksgiving-food-safety_Homegrown.jpg",
+      tags: ["mexican", "beef"],
+      ingredients: [
+        {
+          name: "beef flank steak or top sirloin steak, 1in thick",
+          measurement: "567g",
+        },
+        { name: "salt", measurement: "2-5g" },
+        { name: "salsa verde", measurement: "240g" },
+        { name: "cilantro", measurement: "30g" },
+        { name: "peeled and cubed avocado", measurement: "170g" },
+        { name: "chopped tomatoes", measurement: "150g" },
+      ],
+    },
+    {
       name: "Flank Steak with Cilantro Salsa Verde",
       details: "A juicy steak tamed by a refreshing salsa verde",
       desc: "Savor the exquisite flavors of our perfectly grilled flank steak, lavished with a vibrant Cilantro Salsa Verde sauce. As the tender, succulent meat meets the zesty embrace of our homemade salsa, your palate embarks on an unforgettable journey. The robust, smoky notes of the steak harmonize seamlessly with the refreshing tang of cilantro and a hint of spiciness, creating a culinary masterpiece that delights the senses.",
