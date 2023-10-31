@@ -1,34 +1,28 @@
 import { useParams } from "react-router-dom";
-import { useGetRecipeByIdQuery, useSaveRecipeMutation } from "../../../reducers/api";
-import { Link } from "react-router-dom";
+import { useGetRecipeByIdQuery, useSaveRecipeMutation, api } from "../../../reducers/api";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUserId } from "../../../reducers/auth";
-
+import { Link } from "react-router-dom";
 
 export default function SingleHead() {
   const { id } = useParams();
-  const { data: recipe, isLoading, error } = useGetRecipeByIdQuery(id);
+  const { data: recipe } = useGetRecipeByIdQuery(id);
   const [saveRecipe] = useSaveRecipeMutation();
-  const dispatch = useDispatch();
   const userId = useSelector(selectCurrentUserId);
-
+  
   const handleSaveRecipe = async () => {
     if (!userId) {
       console.log("User not logged in");
       return;
     }
     try {
-      const savedRecipe = await saveRecipe({ userId, recipeId: recipe.id }).unwrap();
-      console.log("Recipe saved!", savedRecipe);
+      await saveRecipe({ userId, recipeId: recipe.id });
+      console.log("Recipe saved!");
     } catch (error) {
       console.error("Failed to save recipe", error);
     }
   };
  
-  
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (
     <div>
