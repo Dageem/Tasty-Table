@@ -100,6 +100,13 @@ export const api = createApi({
         url: "api/recipe/recipebyingredient/" + name,
       }),
     }),
+    saveRecipe: builder.mutation({
+      query: (data) => ({
+        url: "/api/recipe/savedrecipes",
+        method: "POST",
+        body: data,
+      }),
+    }),
     getTags: builder.query({
       query: () => ({
         url: "api/tags/recipetags",
@@ -150,8 +157,7 @@ export const api = createApi({
   }),
 });
 
-// Note; this is unfinished as Luke also mentioned we need a slice for ingredients as well, which means for tags also
-// we will probably need to do crud on both through tables as they are crudded on...
+
 const dataSlice = createSlice({
   name: "data",
   initialState: {
@@ -356,7 +362,10 @@ const searchSlice = createSlice({
 
 export const { setSearchResults, clearSearch } = searchSlice.actions;
 
-export default searchSlice.reducer;
+export const searchReducer = searchSlice.reducer;
+export const dataReducer = dataSlice.reducer;
+
+
 
 export const {
   useGetUsersQuery,
@@ -380,6 +389,7 @@ export const {
   useEditRecipeMutation,
   useGetSearchRecipesQuery,
   useDeleteCommentMutation,
-  useAddCommentMutation
+  useAddCommentMutation,
+  useSaveRecipeMutation
 } = api;
 

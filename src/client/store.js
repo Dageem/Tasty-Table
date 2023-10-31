@@ -3,6 +3,9 @@ import { api } from "./reducers/api";
 import authReducer from './reducers/auth';
 import searchReducer from "./reducers/api";
 import commentsReducer from "./reducers/commentsSlice"
+import { searchReducer, dataReducer } from "./reducers/api";
+import savedRecipeReducer from "./reducers/SavedRecipeSlice";
+
 
 
 const store = configureStore({
@@ -10,7 +13,9 @@ const store = configureStore({
         [api.reducerPath]: api.reducer,
         auth: authReducer,
         search: searchReducer,
-        comments: commentsReducer
+        comments: commentsReducer,
+        saveRecipe: savedRecipeReducer,
+        data: dataReducer
    
     },
     middleware: (getDefaultMiddleware) =>

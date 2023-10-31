@@ -6,26 +6,38 @@ import { Link } from "react-router-dom";
 
 export default function RecipeDetails() {
   const { id } = useParams();
-  const { data: recipe, isLoading: recipeLoading, error: recipeError } = useGetRecipeByIdQuery(id);
-  const { data: recents, isLoading: recentsLoading, error: recentsError } = useGetThreeRecentRecipesQuery();
+  const {
+    data: recipe,
+    isLoading: recipeLoading,
+    error: recipeError,
+  } = useGetRecipeByIdQuery(id);
+  const {
+    data: recents,
+    isLoading: recentsLoading,
+    error: recentsError,
+  } = useGetThreeRecentRecipesQuery();
 
   if (recipeLoading || recentsLoading) {
     return <p>Loading...</p>;
   }
 
   if (recipeError || recentsError) {
-    return <p>Error Loading Data! {recipeError ? recipeError.message : recentsError.message}</p>;
+    return (
+      <p>
+        Error Loading Data!{" "}
+        {recipeError ? recipeError.message : recentsError.message}
+      </p>
+    );
   }
 
   return (
     <div className="grid grid-cols-1 md:grid md:grid-cols-3 mt-6 gap-12">
       <div className="col-span-2">
         <h1 className="text-3xl font-bold">
-          Everything about <strong className="text-yellow-900">{recipe.name}</strong>
+          Everything about{" "}
+          <strong className="text-yellow-900">{recipe.name}</strong>
         </h1>
-        <p className="text-xl">
-          {recipe.desc}
-        </p>
+        <p className="text-xl">{recipe.desc}</p>
         <div
           className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px] bg-cover bg-center"
           style={{ backgroundImage: `url(${recipe.image2Url})` }}
@@ -63,13 +75,17 @@ export default function RecipeDetails() {
           style={{ backgroundImage: `url(${recipe.image3Url})` }}
         ></div>
       </div>
-      <div>
-      <h1 className="text-3xl font-bold">Recently Added</h1>
-      <div>
+      <div className="hidden lg:block">
+        <h1 className="text-3xl font-bold">Recently Added</h1>
+        <div>
           {recents.map((recent, index) => (
             <Link to={`/recipe/${recent.id}`} key={recent.id} className="mb-4">
               <div className="relative hover:cursor-pointer hover:opacity-70">
-                <img src={recent.imageUrl} alt="recipe-image" className="w-full h-[320px]" />
+                <img
+                  src={recent.imageUrl}
+                  alt="recipe-image"
+                  className="w-full h-[320px]"
+                />
               </div>
               <div className="mt-2">
                 <h1 className="text-2xl font-bold">{recent.name}</h1>
