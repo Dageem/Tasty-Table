@@ -5,7 +5,7 @@ const CREDENTIALS = "credentials";
 
 // Define a service using a base URL and expected endpoints
 export const api = createApi({
-  tagTypes: ["tag"],
+  tagTypes: ['SavedRecipes'],//
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_URL || "http://localhost:3000",
@@ -106,6 +106,11 @@ export const api = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ['SavedRecipes'],//
+    }),
+    getSavedRecipes: builder.query({
+      query: (userId) => `api/recipe/users/${userId}/savedrecipes`,
+      providesTags: ['SavedRecipes'],//
     }),
     getTags: builder.query({
       query: () => ({
@@ -390,6 +395,7 @@ export const {
   useGetSearchRecipesQuery,
   useDeleteCommentMutation,
   useAddCommentMutation,
-  useSaveRecipeMutation
+  useSaveRecipeMutation,
+  useGetSavedRecipesQuery,
 } = api;
 

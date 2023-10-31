@@ -35,7 +35,7 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<UserProfile />} />
           <Route path="/account" element={Account} />
-          <Route path="/saved" element={Saved} />
+          <Route path="/saved" element={<Saved />} />
           <Route path="/visualize" element={Visualize} />
         <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />

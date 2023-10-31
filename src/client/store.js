@@ -7,6 +7,7 @@ import savedRecipeReducer from "./reducers/SavedRecipeSlice";
 
 
 
+
 const store = configureStore({
     reducer: {
         [api.reducerPath]: api.reducer,
@@ -14,7 +15,7 @@ const store = configureStore({
         search: searchReducer,
         comments: commentsReducer,
         saveRecipe: savedRecipeReducer,
-        data: dataReducer
+        data: dataReducer,
    
     },
     middleware: (getDefaultMiddleware) =>

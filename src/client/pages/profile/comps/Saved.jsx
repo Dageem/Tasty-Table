@@ -1,17 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useGetSavedRecipesQuery } from '../../../reducers/api';
+import { selectCurrentUserId } from '../../../reducers/auth';
 
-function Saved(){
-    return (
-        <div className="flex-none w-1/4 p-4 border border-gray-300 bg-gray-100 rounded">
-            <h2 className="text-lg font-bold mb-4">Menu</h2>
-            <ul className="space-y-2">
-                <li><Link to="/account" className="text-blue-600 hover:underline">Account</Link></li>
-                <li><Link to="/saved" className="text-blue-600 hover:underline">Saved</Link></li>
-                <li><Link to="/visualize" className="text-blue-600 hover:underline">Visualize</Link></li>
-            </ul>
-        </div>
-    );
+export default function Saved() {
+  const userId = useSelector(selectCurrentUserId);
+  const { data: savedRecipes, isLoading, error } = useGetSavedRecipesQuery(userId, {
+    skip: !userId,
+  });
+  
+  if (!userId) return <p>Please log in to view saved recipes.</p>;
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading saved recipes: {error.message}</p>;
+
+  return (
+    <div>
+      <h1>Your Saved Recipes</h1>
+      <ul>
+        {savedRecipes.map((savedRecipe) => (
+          <li key={savedRecipe.recipe.id}>{savedRecipe.recipe.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default Saved;
+
+
