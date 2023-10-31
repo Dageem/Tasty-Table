@@ -103,7 +103,7 @@ export const api = createApi({
         }),
         getTags: builder.query({
             query:()=>({
-                url:'api/tags/recipetags'
+                url:'api/Tags/recipetags'
             })
         }),
         getPosts: builder.query({
@@ -183,7 +183,6 @@ const dataSlice = createSlice({
         })
 
         builder.addMatcher(api.endpoints.deleteRecipeById.matchFulfilled, (state, {payload})=>{
-            console.log("deleteRecipeById.matchFulfilled called with payload:", payload);
             return {
                 ...state,
                 recipes: state.recipes.filter(i=>i.id!==payload.id)

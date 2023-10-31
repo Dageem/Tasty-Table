@@ -15,6 +15,9 @@ import EditRecipe from "./pages/EditRecipe";
 import Footer from "./pages/footer/Footer";
 import AllRecipes from "./pages/allRecipes/AllRecipes";
 import Search from "./pages/Search";
+import Visualize from "./pages/profile/comps/Visualize";
+import Account from "./pages/profile/comps/Account";
+import Saved from "./pages/profile/comps/Saved";
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -34,6 +37,9 @@ export default function App() {
         <Route path="/communityboard" element={<CommunityBoard />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<UserProfile />} />
+          <Route path="/account" element={Account} />
+          <Route path="/saved" element={Saved} />
+          <Route path="/visualize" element={Visualize} />
         <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />
