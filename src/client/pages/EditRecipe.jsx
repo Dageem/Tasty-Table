@@ -115,7 +115,7 @@ const [change, setChange] = useState(false);
         <input className="border-2 p-2 w-full rounded mb-4" value={image3Url} onChange={(e) => setImage3Url(e.target.value)} placeholder="Image 3 URL" />
         
         {/* Tags */}
-        <div>
+        {/* <div>
           <button type="button" className="bg-green-300 text-white p-2 rounded mb-4 hover:bg-green-800" onClick={() => setTags([...tags, { name: "" }])}>
             Add Tag
           </button>
@@ -147,7 +147,7 @@ const [change, setChange] = useState(false);
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
          {/* Display all available tags from the API */}
          {data && data.map((apiTag, index) => {
