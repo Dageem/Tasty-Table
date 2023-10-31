@@ -61,37 +61,37 @@ const RecipeForm = () => {
        <button className="mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-green-200" onClick={() => navigate("/profile")}>
         Go Back
     </button>
-      <input className="border p-2 w-full rounded mb-4"
+      <input className="border-8 p-2 w-full rounded mb-4"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Name"
       />
-      <textarea className="border p-2 h-20 w-full rounded mb-4"
+      <textarea className="border-8 p-2 h-20 w-full rounded mb-4"
         value={details}
         onChange={(e) => setDetails(e.target.value)}
         placeholder="Details"
       ></textarea>
-      <textarea className="border p-2 h-40 w-full rounded mb-4"
+      <textarea className="border-8  p-2 h-40 w-full rounded mb-4"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
         placeholder="Description"
       ></textarea>
-      <textarea className="border p-2 h-60  w-full rounded mb-4"
+      <textarea className="border-8 p-2 h-60  w-full rounded mb-4"
         value={instructions}
         onChange={(e) => setInstructions(e.target.value)}
         placeholder="Instructions"
       ></textarea>
-      <input className="border p-2 w-full rounded mb-4"
+      <input className="border-8 p-2 w-full rounded mb-4"
         value={imageUrl}
         onChange={(e) => setImageUrl(e.target.value)}
         placeholder="Image URL"
       />
-      <input className="border p-2 w-full rounded mb-4"
+      <input className="border-8 p-2 w-full rounded mb-4"
         value={image2Url}
         onChange={(e) => setImage2Url(e.target.value)}
         placeholder="Image 2 URL"
       />
-      <input className="border p-2 w-full rounded mb-4"
+      <input className="border-8 p-2 w-full rounded mb-4"
         value={image3Url}
         onChange={(e) => setImage3Url(e.target.value)}
         placeholder="Image 3 URL"
@@ -116,7 +116,7 @@ const RecipeForm = () => {
             Delete Tag
         </button>
         </div>
-        <div key={index} className="border p-2 rounded mb-4 flex items-center">
+        <div key={index} className="border-8 p-2 rounded mb-4 flex items-center">
         <input
             value={tag.name}
             onChange={(e) => {
@@ -153,7 +153,7 @@ const RecipeForm = () => {
               Delete Ingredient
           </button>
         </div>
-        <div key={index} className="border p-2 rounded mb-4 flex items-center">
+        <div key={index} className="border-8 p-2 rounded mb-4 flex items-center">
         <input
             value={ingredient.name}
             onChange={(e) => {

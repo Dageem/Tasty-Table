@@ -157,8 +157,7 @@ export const api = createApi({
   }),
 });
 
-// Note; this is unfinished as Luke also mentioned we need a slice for ingredients as well, which means for tags also
-// we will probably need to do crud on both through tables as they are crudded on...
+
 const dataSlice = createSlice({
   name: "data",
   initialState: {
