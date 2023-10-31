@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./reducers/api";
 import authReducer from './reducers/auth';
-import searchReducer from "./reducers/api";
 import commentsReducer from "./reducers/commentsSlice"
 import { searchReducer, dataReducer } from "./reducers/api";
 import savedRecipeReducer from "./reducers/SavedRecipeSlice";
