@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./reducers/api";
 import authReducer from './reducers/auth';
+import searchReducer from "./reducers/api";
+import commentsReducer from "./reducers/commentsSlice"
 import { searchReducer, dataReducer } from "./reducers/api";
 import savedRecipeReducer from "./reducers/SavedRecipeSlice";
 
@@ -11,8 +13,9 @@ const store = configureStore({
         [api.reducerPath]: api.reducer,
         auth: authReducer,
         search: searchReducer,
+        comments: commentsReducer,
         saveRecipe: savedRecipeReducer,
-        data: dataReducer,
+        data: dataReducer
    
     },
     middleware: (getDefaultMiddleware) =>

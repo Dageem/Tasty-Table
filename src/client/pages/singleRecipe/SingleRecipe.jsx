@@ -1,83 +1,96 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import {
-  useGetRecipeByIdQuery,
-  useAddCommentMutation,
-  useDeleteCommentMutation,
-} from "../../reducers/api";
-import SingleHead from "./comps/SingleHead";
-import RecipeDetails from "./comps/RecipeDetails";
-import "./Comment.css";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useGetRecipeByIdQuery, useAddCommentMutation, useDeleteCommentMutation } from '../../reducers/api';
+import SingleHead from './comps/SingleHead';
+import RecipeDetails from './comps/RecipeDetails';
+import './Comment.css';
+import { setComments, addComment, deleteComment } from '../../reducers/commentsSlice';
 
 export default function SingleRecipe() {
   const { id } = useParams();
   const { data: recipe, isLoading, error } = useGetRecipeByIdQuery(id);
-  const [message, setMessage] = useState(""); // State for new comment input
+  const [message, setMessage] = useState('');
   const me = useSelector((state) => state.auth.credentials.user);
-
-  const [addcomment] = useAddCommentMutation();
-  const [deleteComment] = useDeleteCommentMutation();
-  const navigate = useNavigate();
-  const [errorAddingComment, setErrorAddingComment] = useState("");
-
+  const comments = useSelector((state) => state.comments); 
+  const dispatch = useDispatch();
+  const [addcommentapi] = useAddCommentMutation();
+  const [deleteCommentapi] = useDeleteCommentMutation();
+  const [loading, setLoading] = useState(false);
+  const [load, setLoad] = useState(true);
+ 
   const handleAddComment = async () => {
     if (me) {
       try {
-        await addcomment({ recipeId: id, message, userId: me.userId });
-        setMessage(""); // Reset the comment input after adding
-        setErrorAddingComment(""); // Reset error message
+        setLoading(true);
+        const newCommentData = await addcommentapi({ recipeId: id, message, userId: me.userId });
+  
+        // Assuming newCommentData looks like: { id: 123, message: '...', createdAt: '...', userId: 1 }
+        const newComment = {
+          recipeId: id,
+          message,
+          userId: me.userId,
+          user: {
+            userId: me.userId,
+            username: me.username, // Assuming you have 'username' in your auth state
+          },
+        };
+  
+        dispatch(addComment(newComment));
+        setMessage('');
+        setLoading(false);
       } catch (error) {
-        console.error("Error adding comment:", error);
-        setErrorAddingComment("Error adding comment. Please try again.");
+        console.error('Error adding comment:', error);
+        setLoading(false);
       }
     } else {
-      // If user is not logged in, redirect to login page
-      navigate("/login");
+      navigate('/login');
     }
   };
-  const handleDeleteComment = async (commentId, UserId) => {
-    if (me && me.userId === UserId) {
-      try {
-        await deleteComment(commentId);
-      } catch (error) {
-        console.error("Error deleting post:", error);
-      }
-    } else {
-      console.error("You do not have permission to delete this comment.");
+
+  const handleDeleteComment = async (commentId) => {
+    try {
+      await deleteCommentapi(commentId);
+      dispatch(deleteComment(commentId)); // Remove the deleted comment from Redux state
+    } catch (error) {
+      console.error('Error deleting post:', error);
     }
   };
-function handleSubmit(e) {
-  e.preventDefault()
-}
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
+  useEffect(() => {
+    if (isLoading) {
+      setLoading(true);
+    } else if (recipe && recipe.Comment) {
+      dispatch(setComments(recipe.Comment)); // Set initial comments to Redux state
+      setLoad(false); // Set load to false after initial comments are loaded
+      setLoading(false); // Set loading to false after comments are loaded
+    }
+  }, [recipe, isLoading, dispatch]);
+
+  if (load) return null;
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error Loading Categories! {error.message}</p>;
-
+console.log(recipe.Comment)
   return (
     <div className="w-[95%] ml-[2.5%] min-h-screen xl:w-[70%] xl:ml-[15%] text-blue-gray-900 my-4">
       <SingleHead />
       <RecipeDetails />
       <form onSubmit={handleSubmit}>
         <h3 className="comments-title">Comments</h3>
-        {errorAddingComment && <p className="error-message">{errorAddingComment}</p>}
         <ul className="comment-list">
-          {recipe.Comment.map((comment) => (
-            <li key={comment.id} className="comment">
-              <p>{comment.message}</p>
-              <p>User: {comment.user.username}</p>
-              {me && me.userId === comment.user.userId && (
-                <button
-                  onClick={() =>
-                    handleDeleteComment(comment.id, comment.user.userId)
-                  }
-                >
-                  Delete
-                </button>
-              )}
-            </li>
-          ))}
-        </ul>
+  {comments.map((comment) => (
+    <li key={comment.id} className="comment">
+      <p>{comment.message}</p>
+      <p>User: {comment.user.username}</p>
+        <button onClick={() => handleDeleteComment(comment.id, comment.user.userId)}>
+          Delete
+        </button>
+    </li>
+  ))}
+</ul>
         <div className="add-comment">
           <input
             type="text"
