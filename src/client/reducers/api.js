@@ -362,7 +362,10 @@ const searchSlice = createSlice({
 
 export const { setSearchResults, clearSearch } = searchSlice.actions;
 
-export default searchSlice.reducer;
+export const searchReducer = searchSlice.reducer;
+export const dataReducer = dataSlice.reducer;
+
+
 
 export const {
   useGetUsersQuery,

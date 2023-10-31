@@ -22,6 +22,7 @@ function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
   const [userId, setUserId] = useState(user.userId);
   const recipes = useSelector(state => state.data.recipes);
+  console.log(recipes)
  
   const {
     data: recipesData,
