@@ -1,0 +1,9 @@
+.header-container{
+    background-color: lightcoral;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-container{
+    background-color: blue;
+}
