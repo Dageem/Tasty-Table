@@ -5,12 +5,19 @@ import { useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
+import {Icon} from "leaflet";
 
 const BasicMap = () => {
   const [center, setCenter] = useState({ lat: 13.084622, lng: 1.248357 });
   const Zoom_LEVEL = 2;
   const mapRef = useRef();
   const navigate = useNavigate();
+
+  const customIcon = new Icon({
+    iconUrl:"https://cdn-icons-png.flaticon.com/128/6717/6717652.png",
+    iconSize: [35, 35]
+  })
+
   const markers = [
     {
       geocode: [19.432608, -99.133209],
@@ -60,6 +67,7 @@ const BasicMap = () => {
                 <Marker
                   key={marker.popUp}
                   position={marker.geocode}
+                  icon={customIcon}
                   eventHandlers={{
                     click: () => handleMarkerClick(marker.popUp),
                   }}
