@@ -31,9 +31,6 @@ export default function SingleHead() {
           <h1 className="text-3xl  font-bold mb-3">{recipe.name}</h1>
           <p className="text-xl  mb-5">{recipe.details}</p>
           <div className="">
-            <button className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900">
-              Like Recipe
-            </button>
             <button onClick={handleSaveRecipe} className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900">
               Save Recipe
             </button>

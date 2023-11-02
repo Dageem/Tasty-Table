@@ -15,7 +15,7 @@ async function seed() {
         "https://i.pinimg.com/736x/3f/ab/26/3fab2610354198ffba877ff94cd9aa40.jpg",
       image3Url:
         "https://homegrown.extension.ncsu.edu/wp-content/uploads/2019/11/Timing-Your-Turkey-Meal_Thanksgiving-food-safety_Homegrown.jpg",
-      tags: ["mexican", "beef"],
+      tags: ["holiday", "turkey", "dinner", "thanksgiving"],
       ingredients: [
         {
           name: "beef flank steak or top sirloin steak, 1in thick",
