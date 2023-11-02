@@ -3,6 +3,8 @@ import { useGetRecipeByIdQuery, useSaveRecipeMutation, api } from "../../../redu
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUserId } from "../../../reducers/auth";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SingleHead() {
   const { id } = useParams();
@@ -18,6 +20,7 @@ export default function SingleHead() {
     try {
       await saveRecipe({ userId, recipeId: recipe.id });
       console.log("Recipe saved!");
+      toast.success("Recipe saved successfully!");
     } catch (error) {
       console.error("Failed to save recipe", error);
     }
@@ -34,6 +37,7 @@ export default function SingleHead() {
             <button onClick={handleSaveRecipe} className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900">
               Save Recipe
             </button>
+            <ToastContainer position="top-center" autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
           </div>
         </div>
         <div className="hidden xl:block">
