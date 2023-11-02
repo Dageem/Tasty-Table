@@ -13,8 +13,14 @@ module.exports = withMT({
       screens: {
 
       },
+      backgroundImage: theme => ({
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-radial-at-t': 'radial-gradient(at top, var(--tw-gradient-stops))',
+        // ... you can add more gradient styles if needed ...
+      })
     },
   },
+
+  variants: {},
   plugins: [],
 });
-

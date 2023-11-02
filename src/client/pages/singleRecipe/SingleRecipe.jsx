@@ -75,7 +75,7 @@ export default function SingleRecipe() {
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 console.log(recipe.Comment)
   return (
-    <div className="w-[95%] ml-[2.5%] xl:w-[70%] xl:ml-[15%] text-blue-gray-900 my-4">
+    <div className="w-[95%] ml-[2.5%] min-h-screen xl:w-[70%] xl:ml-[15%] text-blue-gray-900 my-4">
       <SingleHead />
       <RecipeDetails />
       <form onSubmit={handleSubmit}>

@@ -1,5 +1,4 @@
 import { StickyNavbar } from "./pages/nav/comps/Nav";
-import { DrawerWithNavigation } from "./pages/nav/comps/Drawer";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import DisplayCategory from "./pages/displayCategory/DisplayCategory";
@@ -17,17 +16,16 @@ import AllRecipes from "./pages/allRecipes/AllRecipes";
 import BasicMap from "./pages/map/map";
 import SearchResults from "./pages/SearchResults";
 
+import Visualize from "./pages/profile/comps/Visualize";
+import Account from "./pages/profile/comps/Account";
+import Saved from "./pages/profile/comps/Saved";
 
 export default function App() {
-  const [open, setOpen] = useState(false);
-  const openDrawer = () => setOpen(true);
-  const closeDrawer = () => setOpen(false);
+
 
   return (
     <div id="app-container">
-      <StickyNavbar openDrawer={openDrawer} />
-      <DrawerWithNavigation open={open} closeDrawer={closeDrawer} />
-
+      <StickyNavbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categories/:category" element={<DisplayCategory />} />
@@ -36,6 +34,9 @@ export default function App() {
         <Route path="/communityboard" element={<CommunityBoard />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<UserProfile />} />
+          <Route path="/account" element={Account} />
+          <Route path="/saved" element={<Saved />} />
+          <Route path="/visualize" element={Visualize} />
         <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />

@@ -9,7 +9,7 @@ function AllRecipes() {
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (
-    <div className="w-[95%] ml-[2.5%] lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
+    <div className="w-[95%] ml-[2.5%] min-h-screen lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
       <div>
         <h1 className="text-xl text-center md:text-3xl font-bold">
           All Recipes

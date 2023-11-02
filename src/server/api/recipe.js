@@ -5,6 +5,46 @@ const prisma = new PrismaClient();
 
 // get recipe's
 
+router.post('/savedrecipes', async (req, res) => {
+  const { userId, recipeId } = req.body;
+
+  try {
+    const savedRecipe = await prisma.savedRecipe.upsert({
+      where: {
+        userId_recipeId: {
+          userId: userId,
+          recipeId: recipeId,
+        },
+      },
+      update: {},
+      create: {
+        userId: userId,
+        recipeId: recipeId,
+      },
+    });
+    res.json(savedRecipe);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+router.get('/users/:userId/savedrecipes', async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const savedRecipes = await prisma.savedRecipe.findMany({
+      where: { userId: parseInt(userId) },
+      include: { recipe: true },
+    });
+    res.json(savedRecipes);
+  } catch (error) {
+    console.error("Failed to get saved recipes", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+
 router.get('/', async (req, res, next) => {
     try {
       const allRecipes = await prisma.recipe.findMany({
