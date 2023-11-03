@@ -72,7 +72,7 @@ export const api = createApi({
           method: "PUT",
           body,
         };
-      },,
+      },
             invalidatesTags: (result, error, arg) => [
                 { type: 'Recipe', id: arg.id },
               ],
