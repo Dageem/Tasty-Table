@@ -72,7 +72,10 @@ export const api = createApi({
           method: "PUT",
           body,
         };
-      },
+      },,
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Recipe', id: arg.id },
+              ],
     }),
     getRecipeById: builder.query({
       query: (id) => ({
@@ -231,40 +234,31 @@ const dataSlice = createSlice({
       }
     );
 
-    builder.addMatcher(
-      api.endpoints.editRecipe.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          recipes: state.recipes.map((i) =>
-            i.id === payload.id ? { ...i, ...payload } : i
-          ),
-        };
-      }
-    );
 
-    // Community Posts
-    builder.addMatcher(
-      api.endpoints.getPostByUserId.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          post: payload,
-        };
-      }
-    );
+        builder.addMatcher(api.endpoints.editRecipe.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                recipe: payload,
+                recipes: state.recipes.map(i=>i.id===payload.id?{...i, ...payload}:i)
+            }
+        })  
+        
 
-    builder.addMatcher(
-      api.endpoints.getPosts.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          posts: state.posts.map((i) =>
-            i.id === payload.id ? { ...i, ...payload } : i
-          ),
-        };
-      }
-    );
+        // Community Posts 
+        builder.addMatcher(api.endpoints.getPostByUserId.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                posts: payload
+
+            }
+        })
+       
+        builder.addMatcher(api.endpoints.getPosts.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                posts: state.posts.map(i=>i.id===payload.id?{...i, ...payload}:i)
+            }
+        })
 
     builder.addMatcher(
       api.endpoints.updatePostById.matchFulfilled,

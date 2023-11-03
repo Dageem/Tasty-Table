@@ -13,8 +13,6 @@ import {
   useGetPostByUserIdQuery,
   useDeleteRecipeByIdMutation,
 } from "../../reducers/api";
-// import './userProfile.css';
-// import { api } from "../../reducers/api";
 import Sidebar from "./comps/Sidebar";
 import RecipesRender from './comps/Recipes';
 
@@ -65,18 +63,6 @@ function UserProfile() {
 
   
   
-  
-
-  // const onDelete = async (recipeId) => {
-  //   try {
-  //     await deleteRecipe(recipeId);
-      // const updatedRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
-      // setRecipes(updatedRecipes);
-    
-  //   } catch {
-  //     console.log("error");
-  //   }
-  // };
   
   // Loading states
   if (isRecipesLoading || isPostsLoading) {
