@@ -60,6 +60,7 @@ const BasicMap = () => {
           <div className="col">
             <MapContainer center={center} zoom={Zoom_LEVEL}>
               <TileLayer
+              noWrap={true}
                 url={osmProvider.maptiler.url}
                 attribution={osmProvider.maptiler.attribution}
               />
