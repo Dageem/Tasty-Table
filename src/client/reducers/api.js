@@ -73,7 +73,10 @@ export const api = createApi({
                     method:"PUT",
                     body
                 }
-            }
+            },
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Recipe', id: arg.id },
+              ],
         }),
         getRecipeById: builder.query({
             query:(id)=>({
@@ -199,9 +202,11 @@ const dataSlice = createSlice({
         builder.addMatcher(api.endpoints.editRecipe.matchFulfilled, (state, {payload})=>{
             return {
                 ...state,
+                recipe: payload,
                 recipes: state.recipes.map(i=>i.id===payload.id?{...i, ...payload}:i)
             }
-        })
+        })  
+        
 
         // Community Posts 
         builder.addMatcher(api.endpoints.getPostByUserId.matchFulfilled, (state, {payload})=>{

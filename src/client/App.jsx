@@ -11,7 +11,7 @@ import UserProfile from "./pages/profile/UserProfile";
 import SingleRecipe from "./pages/singleRecipe/SingleRecipe";
 import About from "./pages/about/About";
 import RegisterPage from "./pages/loginRegister/Register";
-import EditRecipe from "./pages/EditRecipe";
+import EditRecipe from "./pages/profile/edit/EditRecipe";
 import Footer from "./pages/footer/Footer";
 import AllRecipes from "./pages/allRecipes/AllRecipes";
 import Search from "./pages/Search";
