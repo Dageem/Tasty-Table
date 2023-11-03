@@ -195,6 +195,8 @@ const dataSlice = createSlice({
       }
     );
 
+    
+
     //  Recipe
     builder.addMatcher(
       api.endpoints.getRecipeById.matchFulfilled,
@@ -205,6 +207,16 @@ const dataSlice = createSlice({
         };
       }
     );
+
+    builder.addMatcher(
+        api.endpoints.getRecipesByUserId.matchFulfilled,
+        (state, { payload }) => {
+          return {
+            ...state,
+            recipes: payload,
+          };
+        }
+      );
 
     builder.addMatcher(
       api.endpoints.getRecipes.matchFulfilled,
