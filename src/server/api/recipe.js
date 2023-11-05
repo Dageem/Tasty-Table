@@ -538,8 +538,6 @@ router.put('/:id', async (req, res, next) => {
       })
       
       res.send(finalPost);
-
-        res.send(finalPost)
     } catch (err) {
         next(err)
     }

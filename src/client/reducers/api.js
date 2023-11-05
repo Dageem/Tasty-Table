@@ -120,6 +120,11 @@ export const api = createApi({
         url: "api/tags/recipetags",
       }),
     }),
+    getPopTags: builder.query({
+      query: () => ({
+          url: "api/tags/popular",
+      })
+    }),
     getPosts: builder.query({
       query: () => ({
         url: "api/post",
@@ -403,5 +408,6 @@ export const {
   useAddCommentMutation,
   useSaveRecipeMutation,
   useGetSavedRecipesQuery,
+  useGetPopTagsQuery, 
 } = api;
 
