@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 
 function RecipesRender({ recipes, onDelete }) {
@@ -54,4 +55,4 @@ function RecipesRender({ recipes, onDelete }) {
   );
 }
 
-export default RecipesRender;
+export default Recipes;
