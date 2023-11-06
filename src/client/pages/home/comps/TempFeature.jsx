@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TempFeature = () => {
   return (
-    <div>
+    <div className="">
       <h1 className="text-3xl text-blue-gray-900 font-extrabold mt-6 mb-2">
         We Help With Your Health And Wellnes Goals!
       </h1>
@@ -15,9 +15,9 @@ const TempFeature = () => {
               "url(https://mealpreponfleek.com/wp-content/uploads/2019/04/food-prep-ideas-777x431.jpg)",
           }}
         ></div>
-        <div className="col-span-2 bg-white flex justify-center items-center p-4">
-          <div className="flex flex-col items-center">
-            <p className="text-blue-gray-900 text-center lg:text-2xl font-bold italic mb-2">
+        <div className="col-span-2  flex justify-center items-center p-4 bg-blue-gray-200">
+          <div className="flex flex-col items-center ">
+            <p className="text-blue-gray-900 text-center xl:text-xl font-bold italic mb-2">
               "Meal prepping not only paves the way for substantial savings but
               also aligns perfectly with achieving your personal health and
               wellness targets. However, the prospect of starting can sometimes

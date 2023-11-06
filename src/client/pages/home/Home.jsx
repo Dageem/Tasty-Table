@@ -23,7 +23,7 @@ function Home() {
       <div className="my-[40px] lg:my-[60px]">
         <Newsletter />
       </div>
-      <div className="hidden lg:block my-[40px] lg:my-[60px]">
+      <div className="hidden xl:block my-[40px] mb-[4rem] lg:my-[60px]">
         <TempFeature />
       </div>
     </div>
