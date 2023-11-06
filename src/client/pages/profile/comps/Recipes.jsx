@@ -1,16 +1,16 @@
-
 import { Link } from "react-router-dom";
+import { useGetRecipesByUserIdQuery } from "../../../reducers/api";
 
 function RecipesRender({ recipes, onDelete }) {
   return (
-    <div className="recipes-container flex flex-wrap justify-end mt-10">
+    <div className="flex flex-col justify-center items-center mt-10">
       {recipes.map((recipe) => (
         <div
-          className="group m-4 w-3/4 p-4 border border-gray-300 bg-gradient-to-r from-purple-100 via-purple-50 to-gray-100 rounded flex relative"
+          className="group m-4 w-[100%] p-4 border border-gray-300 bg-gradient-to-r from-gray-200  via-gray-100 to-gray-300 rounded flex relative"
           key={recipe.id}
         >
           {/* Image */}
-          <div className="mr-4 flex-none">
+          <div className="">
             <img
               src={recipe.imageUrl}
               alt="Recipe"
@@ -18,7 +18,7 @@ function RecipesRender({ recipes, onDelete }) {
             />
           </div>
           {/* Title */}
-          <h2 className="flex-grow text-lg font-bold text-center mb-2">
+          <h2 className="flex-grow text-lg font-bold">
             {recipe.name}
           </h2>
           <div className="absolute inset-0 bg-gray-500 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
@@ -34,19 +34,19 @@ function RecipesRender({ recipes, onDelete }) {
             </p>
           </div>
 
-          {/* Edit and Delete buttons*/}
-          <div className="absolute bottom-0 right-0 flex flex-col space-y-2 p-4">
+          {/* Edit and Delete buttons with fixed width */}
+          <div className="flex flex-col space-y-1">
             <Link to={`/editrecipe/${recipe.id}`}>
-              <button className="bg-blue-900 text-white p-2 rounded">
-                Edit Recipe
+              <button className="w-full bg-blue-900 text-white p-2 rounded">
+                Edit 
               </button>
             </Link>
 
             <button
-              className="bg-red-500 text-white p-2 rounded"
+              className="w-full bg-red-500 text-white p-2 rounded"
               onClick={() => onDelete(recipe.id)}
             >
-              Delete Recipe
+              Delete
             </button>
           </div>
         </div>
@@ -55,4 +55,4 @@ function RecipesRender({ recipes, onDelete }) {
   );
 }
 
-export default Recipes;
+export default RecipesRender;
