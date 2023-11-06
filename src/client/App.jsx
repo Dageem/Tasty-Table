@@ -19,7 +19,7 @@ import SearchResults from "./pages/SearchResults";
 import Visualize from "./pages/profile/comps/Visualize";
 import Account from "./pages/profile/comps/Account";
 import Saved from "./pages/profile/comps/Saved";
-import Recipes from "./pages/profile/comps/Recipes";
+import RecipesRender from "./pages/profile/comps/Recipes";
 
 export default function App() {
 
@@ -38,7 +38,7 @@ export default function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/visualize" element={<Visualize />} />
-          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/recipes" element={<RecipesRender />} />
         <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />
