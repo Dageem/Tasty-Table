@@ -35,6 +35,7 @@ export default function SingleRecipe() {
               userId: me.userId,
               username: me.username,
             },
+            createdAt: new Date().toISOString(),
           };
     
           dispatch(addComment(newComment));
@@ -51,7 +52,11 @@ export default function SingleRecipe() {
       nav('/login');
     }
   };
-
+  function formatCreatedAt(createdAt) {
+    const date = new Date(createdAt);
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    return date.toLocaleString(undefined, options);
+  }
   const handleDeleteComment = async (commentId) => {
     try {
       await deleteCommentapi(commentId);
@@ -85,12 +90,18 @@ console.log(recipe.Comment)
       <form onSubmit={handleSubmit}>
         <h3 className="comments-title">Comments</h3>
         <ul className="comment-list">
-  {comments.map((comment) => (
-    <li key={comment.id} className="comment">
-      <p>{comment.message}</p>
-      <p>User: {comment.user.username}</p>
+        {comments.map((comment) => (
+    <li key={comment.id} className="bg-white p-4 rounded-lg shadow mb-4 relative">
+      <div className="flex justify-between mb-2">
+        <p className="text-base font-bold text-gray-600">{comment.user.username}</p>
+        <p className="text-xs text-gray-500">{formatCreatedAt(comment.createdAt)}</p>
+      </div>
+      <p className="text-base mb-2">{comment.message}</p>
       {me.userId && comment.user.id === me.userId && (
-        <button onClick={() => handleDeleteComment(comment.id, comment.user.userId)}>
+        <button
+          onClick={() => handleDeleteComment(comment.id, comment.user.userId)}
+          className="bg-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-600 transition duration-300 absolute top-12 right-2"
+        >
           Delete
         </button>
       )}
