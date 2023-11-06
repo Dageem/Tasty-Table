@@ -15,7 +15,7 @@ async function seed() {
         "https://i.pinimg.com/736x/3f/ab/26/3fab2610354198ffba877ff94cd9aa40.jpg",
       image3Url:
         "https://homegrown.extension.ncsu.edu/wp-content/uploads/2019/11/Timing-Your-Turkey-Meal_Thanksgiving-food-safety_Homegrown.jpg",
-      tags: ["mexican", "beef"],
+      tags: ["holiday", "turkey", "dinner", "thanksgiving"],
       ingredients: [
         {
           name: "beef flank steak or top sirloin steak, 1in thick",
@@ -26,6 +26,35 @@ async function seed() {
         { name: "cilantro", measurement: "30g" },
         { name: "peeled and cubed avocado", measurement: "170g" },
         { name: "chopped tomatoes", measurement: "150g" },
+      ],
+    },
+    {
+      name: "Herb-Infused Roasted Chicken",
+      details: "A savory and herbaceous whole roasted chicken",
+      desc: "This classic Herb-Infused Roasted Chicken features a golden, crispy skin on the outside and succulent, flavorful meat on the inside. The secret lies in a blend of herbs and spices that infuse the chicken with depth and aroma during the roasting process. While simple to prepare, the result is nothing short of a feast for the senses, making it a perfect centerpiece for any family dinner or special occasion. Follow this recipe for a poultry dish that's guaranteed to be a crowd-pleaser.",
+      instructions:
+        "1. Preheat your oven to 375 degrees F (190 degrees C). Pat the chicken dry with paper towels. 2. In a small bowl, mix together olive oil, minced garlic, rosemary, thyme, sage, salt, and pepper. Rub this mixture all over the chicken, both on and under the skin. 3. Stuff the cavity of the chicken with lemon quarters and onion pieces. Tie the legs together with kitchen string and tuck the wing tips under the body. 4. Place the chicken breast-side up in a roasting pan and roast for 90 minutes, or until the internal temperature reaches 165 degrees F (75 degrees C). Baste occasionally with the pan juices. 5. Once cooked, tent the chicken with aluminum foil and let it rest for 10 minutes before carving. Serve with the roasted garlic and onions from the cavity and a drizzle of the pan juices.",
+      imageUrl:
+        "https://www.jocooks.com/wp-content/uploads/2021/11/roast-chicken-1-22.jpg",
+      image2Url:
+        "https://static01.nyt.com/images/2022/04/23/dining/23MS-FOODMANREX/23MS-FOODMANREX-mediumSquareAt3X-v5.jpg",
+      image3Url:
+        "https://www.fromvalerieskitchen.com/wordpress/wp-content/uploads/2022/01/Whole-Roasted-Chicken-crop-27.jpg",
+      tags: ["chicken", "foodprep", "dinner"],
+      ingredients: [
+        {
+          name: "whole chicken (about 4 to 5 pounds)",
+          measurement: "1800-2270g",
+        },
+        { name: "olive oil", measurement: "50ml" },
+        { name: "garlic, minced", measurement: "15g" },
+        { name: "fresh rosemary, chopped", measurement: "10g" },
+        { name: "fresh thyme, chopped", measurement: "10g" },
+        { name: "fresh sage, chopped", measurement: "10g" },
+        { name: "salt", measurement: "5g" },
+        { name: "ground black pepper", measurement: "2g" },
+        { name: "lemon, quartered", measurement: "1 medium" },
+        { name: "onion, cut into wedges", measurement: "100g" },
       ],
     },
     {
@@ -924,8 +953,10 @@ async function seed() {
         "1. On a rimmed baking sheet, toss tomatoes and shallot; season with 1 teaspoon salt and 1 teaspoon pepper. Drizzle oil and vinegar over. Let sit until tomatoes have released their liquid and shallots are softened, about 30 minutes.\n2. In a small skillet over low heat, toast panko, stirring occasionally, until golden brown, about 2 minutes. Transfer to a small bowl.\n3. Layer tomatoes on a large platter. Spoon shallot and juices over the top. Sprinkle with panko. Arrange burrata in the center of tomatoes and crack open with your hands. Sprinkle with basil, chives, salt, and pepper. Serve with bread alongside.",
       imageUrl:
         "https://hips.hearstapps.com/hmg-prod/images/burrata-salad3-1654284047.jpg?crop=1.00xw:0.667xh;0,0.200xh&resize=768:*",
-        image2Url: "https://natashaskitchen.com/wp-content/uploads/2021/08/Burrata-Salad-3-1-728x1092.jpg",
-        image3Url: "https://cdn.loveandlemons.com/wp-content/uploads/2019/07/burrata-recipe.jpg",
+      image2Url:
+        "https://natashaskitchen.com/wp-content/uploads/2021/08/Burrata-Salad-3-1-728x1092.jpg",
+      image3Url:
+        "https://cdn.loveandlemons.com/wp-content/uploads/2019/07/burrata-recipe.jpg",
       tags: ["italian", "easy"],
       ingredients: [
         { name: "sliced heirloom tomatoes", measurement: "1361g" },
@@ -948,8 +979,10 @@ async function seed() {
         "1. In a medium skillet over medium-low heat, cook pancetta, stirring occasionally, until golden brown and crispy, 20 to 25 minutes. Transfer pancetta to a paper towel-lined plate.\n2. Meanwhile, in a large pot, combine salt and 10 cups of water and bring to a boil. Cook spaghetti, stirring occasionally, until al dente, 8 to 10 minutes; reserve 1/2 cup pasta water.\n3. While pasta cooks, in a large heatproof bowl, whisk egg yolks, egg, and cheese until just combined.\n4. Immediately transfer spaghetti to egg mixture. Add pancetta and 1/4 cup pasta water and stir, adding 2 to 4 tablespoons more pasta water if the sauce seems too thick, until cheese is melted, and sauce is smooth; season with pepper.",
       imageUrl:
         "https://www.allrecipes.com/thmb/Vg2cRidr2zcYhWGvPD8M18xM_WY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457.jpg",
-        image2Url: "https://www.spendwithpennies.com/wp-content/uploads/2023/04/1200-Spaghetti-Carbonara-2-SpendWithPennies.jpg",
-        image3Url: "https://www.recipetineats.com/wp-content/uploads/2023/01/Carbonara_6a.jpg?w=500&h=375&crop=1",
+      image2Url:
+        "https://www.spendwithpennies.com/wp-content/uploads/2023/04/1200-Spaghetti-Carbonara-2-SpendWithPennies.jpg",
+      image3Url:
+        "https://www.recipetineats.com/wp-content/uploads/2023/01/Carbonara_6a.jpg?w=500&h=375&crop=1",
       tags: ["italian", "easy"],
       ingredients: [
         { name: "pancetta cut in lardons", measurement: "340g" },
@@ -970,8 +1003,10 @@ async function seed() {
         "1. In a large skillet over medium-high heat, heat oil. Add chicken; season with salt and pepper. Cook, turning occasionally, until golden brown and cooked through, about 8 minutes per side. Transfer to a cutting board. Let rest 10 minutes, then slice.\n2. In the same skillet over medium heat, combine broth, milk, and garlic; season with salt and pepper. Bring to a simmer. Add fettuccine and cook, tossing occasionally, until barely al dente, about 10 minutes.\n3. Stir in Parmesan and cream. Bring to a simmer and cook, stirring frequently, until sauce thickens and pasta is al dente, 2 to 3 minutes.\n4. Remove from heat and stir in chicken. Top with parsley.",
       imageUrl:
         "https://hips.hearstapps.com/hmg-prod/images/delish-221130-perfect-chicken-alfredo-0689-eb-1670449996.jpg?crop=1.00xw:0.737xh;0,0.134xh&resize=768:*",
-        image2Url: "https://hips.hearstapps.com/hmg-prod/images/chicken-alfredo-index-64ee1026c82a9.jpg?crop=0.9994472084024323xw:1xh;center,top&resize=1200:*",
-        image3Url: "https://bellyfull.net/wp-content/uploads/2021/02/Chicken-Alfredo-blog-4-768x1024.jpg",
+      image2Url:
+        "https://hips.hearstapps.com/hmg-prod/images/chicken-alfredo-index-64ee1026c82a9.jpg?crop=0.9994472084024323xw:1xh;center,top&resize=1200:*",
+      image3Url:
+        "https://bellyfull.net/wp-content/uploads/2021/02/Chicken-Alfredo-blog-4-768x1024.jpg",
       tags: ["italian", "easy"],
       ingredients: [
         { name: "olive oil", measurement: "30g" },
@@ -995,8 +1030,10 @@ async function seed() {
         "1. Butter the toast by spreading the butter on one side of each slice of bread.\n2. Heat a skillet on medium-low heat, approximately 275 degrees, immediately add 2 slices of bread with the butter side down.\n3. Add the cheese on one slice of the bread and then place the other side of the bread, buttered side out, on top of the cheese.\n4. Brown the toast by continuing to flip the sandwich from side to side until the cheese is melted; low heat is necessary.\n5. Cut diagonally and serve.",
       imageUrl:
         "https://cdn.loveandlemons.com/wp-content/uploads/2023/01/grilled-cheese.jpg",
-        image2Url: "https://hips.hearstapps.com/hmg-prod/images/grilled-cheese-horizontal-jpg-1522266016.jpg?crop=0.669xw:1.00xh;0.204xw,0&resize=1200:*",
-        image3Url: "https://static01.nyt.com/images/2021/08/30/dining/as-grilled-cheese-sandwich-on-the-grill/as-grilled-cheese-sandwich-on-the-grill-videoSixteenByNineJumbo1600.jpg",
+      image2Url:
+        "https://hips.hearstapps.com/hmg-prod/images/grilled-cheese-horizontal-jpg-1522266016.jpg?crop=0.669xw:1.00xh;0.204xw,0&resize=1200:*",
+      image3Url:
+        "https://static01.nyt.com/images/2021/08/30/dining/as-grilled-cheese-sandwich-on-the-grill/as-grilled-cheese-sandwich-on-the-grill-videoSixteenByNineJumbo1600.jpg",
       tags: ["sandwich", "easy"],
       ingredients: [
         { name: "sliced white bread", measurement: "2" },
@@ -1012,8 +1049,10 @@ async function seed() {
         "1. Mince the garlic.\n2. Peel the carrot and chop it into matchstick pieces.\n3. Peel and slice the cucumber into ribbons.\n4. Pick the cilantro leaves off the stems.\n5. Slice the green chilies.\n6. Mix the sugar, rice wine vinegar, and salt with the hot water until the sugar and salt have dissolved.\n7. Pour the mixture over the carrots and let sit to pickle for 1 hour.\n8. Chop the chicken thigh meat into bite-sized pieces and place them in a large bowl.\n9. Mix the minced garlic, sesame oil, honey, hoisin sauce, and soy sauce, and pour it over the chicken.\n10. Refrigerate chicken for 15 mins.\n11. Heat a frying pan over medium-high and sauté the marinated chicken until cooked through, about 10 minutes.\n12. Drain the pickled carrots.\n13. Slice open the baguette and scoop out some of the soft bread inside to create more room for the sandwich fillings.\n14. Spread mayonnaise onto both sides of the baguette, then sprinkle it with Maggi Seasoning.\n15. Place the cooked chicken inside the bread followed by carrots, cucumber, cilantro, and chili peppers.\n16. Slice the bánh mì in half to make two servings and enjoy!",
       imageUrl:
         "https://hips.hearstapps.com/hmg-prod/images/banh-mi-with-grilled-pork1-1663331872.jpg?crop=0.683xw:1.00xh;0.317xw,0&resize=1200:*",
-        image2Url: "https://omnivorescookbook.com/wp-content/uploads/2020/03/1912_Leftover-Ham-Banh-Mi_550.jpg",
-        image3Url: "https://www.allrecipes.com/thmb/HTJHVC_LYKmXaMF54dhe2gZQkNI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/roasted-pork-banh-mi-vietnamese-sandwitch-ddmfs-3X4-0332-cfb4d2e149e7476ab2a2b4030c543f1b.jpg",
+      image2Url:
+        "https://omnivorescookbook.com/wp-content/uploads/2020/03/1912_Leftover-Ham-Banh-Mi_550.jpg",
+      image3Url:
+        "https://www.allrecipes.com/thmb/HTJHVC_LYKmXaMF54dhe2gZQkNI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/roasted-pork-banh-mi-vietnamese-sandwitch-ddmfs-3X4-0332-cfb4d2e149e7476ab2a2b4030c543f1b.jpg",
       tags: ["sandwich"],
       ingredients: [
         { name: "garlic cloves", measurement: "6g" },
@@ -1043,8 +1082,10 @@ async function seed() {
         "1. Wash lettuce, dry, and slice into thin shreds. Slice tomatoes into thick slices.\n2. Heat a large skillet over medium-high and add the bacon in a single layer. Cook, turning occasionally, until crisp. Place the bacon on a paper towel-lined plate and set aside.\n3. Place the bread in a toaster and toast until lightly browned, butter if desired.\n4. Spread each slice of bread with one tablespoon of mayonnaise.\n5. Top with bacon, tomatoes, and lettuce. Season with salt and pepper to taste.\n6. Cut in half and serve.",
       imageUrl:
         "https://ohsweetbasil.com/wp-content/uploads/How-to-make-the-best-BLT-recipe-4-scaled.jpg",
-        image2Url: "https://www.jocooks.com/wp-content/uploads/2023/02/blt-sandwiches-1-13.jpg",
-        image3Url: "https://www.spendwithpennies.com/wp-content/uploads/2020/04/1200-BLT-Sandwich-Recipe-105.jpg",
+      image2Url:
+        "https://www.jocooks.com/wp-content/uploads/2023/02/blt-sandwiches-1-13.jpg",
+      image3Url:
+        "https://www.spendwithpennies.com/wp-content/uploads/2020/04/1200-BLT-Sandwich-Recipe-105.jpg",
       tags: ["sandwich", "easy"],
       ingredients: [
         { name: "sliced white bread", measurement: "2" },
@@ -1064,8 +1105,10 @@ async function seed() {
         "1. Drain lobster and pat dry excess moisture off with a paper towel. If needed, cut lobster meat into smaller pieces.\n2. Add diced celery, mayo, lemon zest and juice, chives, a dash of hot sauce, and a little pinch of kosher salt and freshly cracked black pepper to a bowl and stir to combine. Set aside.\n3. Add butter to a skillet over medium heat. Add already cooked lobster meat to the pan and toss to coat in butter. Cook until meat is warmed, about two minutes. Strain meat from butter and set aside.\n4. Wipe the skillet clean and set it over medium heat. Add the remaining 2 tablespoons of butter and melt. Dip buns in melted butter on flat sides and toast until golden.\n5. Place a lettuce leaf on top of the bottom bun and then 1/4 of the lobster mixture. Top with a sprinkle of fresh chives and the top bun. Serve immediately.",
       imageUrl:
         "https://thissillygirlskitchen.com/wp-content/uploads/2021/07/set-1-Lobster-Rolls-11-2.jpg",
-        image2Url: "https://www.dinneratthezoo.com/wp-content/uploads/2019/12/lobster-roll-5.jpg",
-        image3Url: "https://www.butterbeready.com/wp-content/uploads/2023/07/DK6A2864.jpg",
+      image2Url:
+        "https://www.dinneratthezoo.com/wp-content/uploads/2019/12/lobster-roll-5.jpg",
+      image3Url:
+        "https://www.butterbeready.com/wp-content/uploads/2023/07/DK6A2864.jpg",
       tags: ["sandwich", "easy"],
       ingredients: [
         { name: "cooked lobster meat", measurement: "454g" },
@@ -1090,8 +1133,10 @@ async function seed() {
         "1. Grill 2 beef patties on an oiled plancha or cast iron at 400-450 degrees Fahrenheit. For a more rare cook, we will only look to sear one side of the patties and then flip it once, add cheese, leave for 10 seconds and stack on top of each other and put to rest on a rack.\n2. While patties rest, we will slice brioche bun down the middle horizontally and toast the flat sides. When bread is toasted, add garlic aioli to the flat side of the bottom bun, add diced red onions, and then pickle slices.\n3. Mount rested patties over the pickle slices and top off with the top bun.",
       imageUrl:
         "https://cdn.vox-cdn.com/thumbor/2_MtVXCMozqToOhO5g3g6aPGm9U=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15951938/AuChevalBareBones.jpg",
-        image2Url: "https://i0.wp.com/www.whiskiedwanderlust.com/wp-content/uploads/2015/10/Burger-Au-Cheval-Chicago.jpg?resize=400%2C600&ssl=1",
-        image3Url: "https://thisurbankitchen.files.wordpress.com/2013/04/17293_4778695552458_1875488885_n.jpg",
+      image2Url:
+        "https://i0.wp.com/www.whiskiedwanderlust.com/wp-content/uploads/2015/10/Burger-Au-Cheval-Chicago.jpg?resize=400%2C600&ssl=1",
+      image3Url:
+        "https://thisurbankitchen.files.wordpress.com/2013/04/17293_4778695552458_1875488885_n.jpg",
       tags: ["sandwich"],
       ingredients: [
         { name: "brioche bun", measurement: "1pc" },
@@ -1112,8 +1157,10 @@ async function seed() {
         "1. Combine the pickle juice and water in a ziplock bag. Add the chicken breast halves and marinate for 30 minutes.\n2. Make the Chick-fil-A sauce by combining mayonnaise, Dijon mustard, yellow mustard, BBQ sauce, honey, garlic powder, paprika, and lemon juice in a bowl. Mix well and set aside.\n3. Next, in a large bowl mix the breading ingredients together: flour, powdered sugar, paprika, black pepper, chili powder, salt, and baking powder.\n4. In another bowl mix the milk, and egg.\n5. Add 2 to 3 cups of oil to a large saucepan and heat oil to about 350 degrees Fahrenheit.\n6. Dip the marinated chicken into the egg mixture, and then coat in the flour breading mixture. Now double dip by repeating this step and dipping that same chicken tender back into the egg mixture and then back into the flour again.\n7. Place chicken in hot oil and fry for three to four minutes on each side. Remove to a paper towel to dry.\n8. Toast the sandwich buns. Grab the sauce and spread it on both sides of the buns. Top with lettuce, cheese, and crispy chicken.",
       imageUrl:
         "https://grillinwithdad.com/wp-content/uploads/2022/12/Classic-Fried-Chicken-Sandwich-scaled.jpg",
-        image2Url: "https://somethingaboutsandwiches.com/wp-content/uploads/2021/03/fried-chicken-sandwich.jpg",
-        image3Url: "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/cfeptjrd/5f10c20f-5f19-42d2-b7d4-ea62d403ab1c.jpg",
+      image2Url:
+        "https://somethingaboutsandwiches.com/wp-content/uploads/2021/03/fried-chicken-sandwich.jpg",
+      image3Url:
+        "https://popmenucloud.com/cdn-cgi/image/width%3D1200%2Cheight%3D1200%2Cfit%3Dscale-down%2Cformat%3Dauto%2Cquality%3D60/cfeptjrd/5f10c20f-5f19-42d2-b7d4-ea62d403ab1c.jpg",
       tags: ["sandwich"],
       ingredients: [
         { name: "halved chicken breast", measurement: "454g" },
@@ -1153,8 +1200,10 @@ async function seed() {
         "1. Preheat the oven to 375 degrees and line a rimmed baking sheet with foil.\n2. Place the pork tenderloin on the prepared baking sheet. In a small bowl, whisk the olive oil, orange juice, lime juice, garlic cloves, oregano, and cumin together and pour over the pork.\n3. Cook for 30 to 40 minutes or until the meat reaches an internal temperature of 145 degrees. Thinly slice the meat and set aside.\n4. Slice each loaf of bread in half lengthwise and then cut it into four equal parts.\n5. Begin layering the ingredients by adding half of the cheese to the bottom layer of the sandwich bread. Top with the smoked ham, sliced pork, and pickles. Place remaining cheese on top. Spread mustard on the top piece of bread and place on the sandwich.\n6. Melt the butter in a skillet or griddle over medium heat. Add the sandwiches and set a heavy skillet, such as an iron skillet, on top of the sandwiches to press them down. Once toasted, flip the sandwich and repeat.",
       imageUrl:
         "https://bellyfull.net/wp-content/uploads/2023/05/Cuban-Sandwich-blog-2.jpg",
-        image2Url: "https://www.southernliving.com/thmb/rE9GZxMh1uYyHKjdFk2ux3Bld0U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/CubanSandwich_Beauty_SEO52_3240-5daaee08b62c48a29a925ed2b7ea2929.jpg",
-        image3Url: "https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2022/01/cuban-sandwich-1200x675.jpg",
+      image2Url:
+        "https://www.southernliving.com/thmb/rE9GZxMh1uYyHKjdFk2ux3Bld0U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/CubanSandwich_Beauty_SEO52_3240-5daaee08b62c48a29a925ed2b7ea2929.jpg",
+      image3Url:
+        "https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2022/01/cuban-sandwich-1200x675.jpg",
       tags: ["sandwich"],
       ingredients: [
         { name: "pork tenderloin", measurement: "454g" },
@@ -1180,8 +1229,10 @@ async function seed() {
         "1. Put the canned tuna, mayonnaise, celery, dill pickle, Dijon mustard, chopped dill, sliced green onion, and black pepper. Mix well using a wooden spoon, breaking up the tuna so the filling becomes smooth. The pickles and celery will take a beating, which is encouraged.\n2. Divide tuna filling between 4 sandwiches. Butter bread and use two slices of lettuce per sandwich.",
       imageUrl:
         "https://www.recipetineats.com/wp-content/uploads/2023/08/Tuna-sandwich_2.jpg",
-        image2Url: "https://workweeklunch.com/wp-content/uploads/2022/05/tuna-salad-sando-3-scaled.jpg",
-        image3Url: "https://thehealthfulideas.com/wp-content/uploads/2022/05/Tuna-Cucumber-Sandwich-SQUARE.jpg",
+      image2Url:
+        "https://workweeklunch.com/wp-content/uploads/2022/05/tuna-salad-sando-3-scaled.jpg",
+      image3Url:
+        "https://thehealthfulideas.com/wp-content/uploads/2022/05/Tuna-Cucumber-Sandwich-SQUARE.jpg",
       tags: ["sandwich", "easy"],
       ingredients: [
         { name: "canned tuna in oil drained", measurement: "425g" },
@@ -1206,8 +1257,10 @@ async function seed() {
         "1. In a blender, blend the one can of diced tomatoes, carrot peeled and chopped into a few pieces, parsley, Worcestershire sauce, and adobo sauce until fully combined.\n2. Dice the onion and green pepper. In a large pot or Dutch oven, heat the olive oil over medium high heat. Add the onion and green pepper and sauté for about 6 to 7 minutes until tender.\n3. Carefully add the blended vegetables, the second can of diced tomatoes, the crushed tomatoes, drained beans, quinoa, spices, kosher salt, and half cup water. Simmer gently for 25 to 30 minutes until the quinoa is tender and cooked through, stirring occasionally. Taste and add additional salt and adobo sauce as desired.",
       imageUrl:
         "https://cookieandkate.com/images/2015/11/best-vegetarian-chili-1-1.jpg",
-        image2Url: "https://cdn77-s3.lazycatkitchen.com/wp-content/uploads/2018/01/easy-vegan-chilli-pan-1000x1500.jpg",
-        image3Url: "https://lovingitvegan.com/wp-content/uploads/2022/04/Vegan-Chili-13.jpg",
+      image2Url:
+        "https://cdn77-s3.lazycatkitchen.com/wp-content/uploads/2018/01/easy-vegan-chilli-pan-1000x1500.jpg",
+      image3Url:
+        "https://lovingitvegan.com/wp-content/uploads/2022/04/Vegan-Chili-13.jpg",
       tags: ["vegan"],
       ingredients: [
         { name: "fire-roasted diced tomatoes", measurement: "794g" },
@@ -1239,8 +1292,10 @@ async function seed() {
         "1. Preheat the oven to 425 degrees Fahrenheit.\n2. Thinly slice the onion and bell peppers and chop the cauliflower into small florets. Chop the mushroom into bite-sized pieces. Add the veggies to a big bowl and toss them with the olive oil, chili powder, cumin, paprika, garlic powder, onion powder, and kosher salt.\n3. Line 2 baking sheets with parchment paper. Add the vegetables in a single layer. Roast 15 minutes, then remove the sheets, stir the veggies, and sprinkle on another half teaspoon salt spread between the trays quarter teaspoon on each. Stir again, then return to the oven and roast another 10 minutes until tender.\n4. Meanwhile, pit the avocados. Scoop out the flesh into a bowl and mash with a fork. Add the lime juice, salt, and cilantro.\n5. Heat the refried beans in a small saucepan.\n6. To serve, place the refried beans and roasted veggies in tortillas, and top with guac. If desired, char the tortillas by placing them on an open gas flame on medium for a few seconds per side, flipping with tongs, until they are slightly blackened and warm.",
       imageUrl:
         "https://www.acouplecooks.com/wp-content/uploads/2021/02/Fajita-Veggies-004.jpg",
-        image2Url: "https://theveglife.com/wp-content/uploads/2016/06/Overhead-Skillet.jpg",
-        image3Url: "https://jz-eats.com/wp-content/uploads/2021/08/vegetarian_fajitas-9.jpg",
+      image2Url:
+        "https://theveglife.com/wp-content/uploads/2016/06/Overhead-Skillet.jpg",
+      image3Url:
+        "https://jz-eats.com/wp-content/uploads/2021/08/vegetarian_fajitas-9.jpg",
       tags: ["vegan"],
       ingredients: [
         { name: "white onion", measurement: "200g" },
@@ -1269,8 +1324,10 @@ async function seed() {
         "1. Cook the noodles according to the package instructions. Drain and rinse under cold water.\n2. In a medium bowl, stir together the peanut butter, soy sauce, Sriracha, lime juice, maple syrup or honey, and water.\n3. In a large skillet, heat the neutral oil over high heat. Add the vegetables and half teaspoon kosher salt and sauté for 1 to 2 minutes, until just tender and lightly charred.\n4. Remove the heat. Add the cooked noodles, sauce, and the remaining half teaspoon kosher salt to the pan and stir to combine. Add 2 tablespoons or so of water and apply heat until it becomes smooth and saucy.\n5. Serve topped with torn fresh cilantro leaves, chopped peanuts, and lime wedges, if desired. The dish tastes best the day it is made, but leftovers store up to 2 days and are best reheated.",
       imageUrl:
         "https://eatwithclarity.com/wp-content/uploads/2023/06/peanut-butter-noodles-5.jpg",
-        image2Url: "https://www.crunchycreamysweet.com/wp-content/uploads/2018/08/thai-peanut-noodles-6.jpg",
-        image3Url: "https://therecipecritic.com/wp-content/uploads/2014/09/thaipeanutnoodles6-scaled.jpg",
+      image2Url:
+        "https://www.crunchycreamysweet.com/wp-content/uploads/2018/08/thai-peanut-noodles-6.jpg",
+      image3Url:
+        "https://therecipecritic.com/wp-content/uploads/2014/09/thaipeanutnoodles6-scaled.jpg",
       tags: ["vegan"],
       ingredients: [
         { name: "dry udon, soba or rice noodles", measurement: "340g" },
@@ -1298,8 +1355,10 @@ async function seed() {
         "1. Place 1 ½ cups water into a saucepan with a steamer basket: the water surface should be right under the basket. Bring the water to a boil. Chop the tempeh into small pieces. Once boiling, add it to the steamer basket and steam it for 10 minutes while you prep the remaining ingredients.\n2. Mince the white onion. Mince the garlic. Add them to a medium bowl with the breadcrumbs, fennel seeds and dried oregano. Once the tempeh is cooked, remove it from the steamer and add it to the bowl with the breadcrumbs. Stir in the soy sauce or tamari and 1 tablespoon of the olive oil and mix. Once the tempeh cools slightly, use your fingers to mash it together into a uniform dough.\n3. Use your fingers to form the dough into golf-ball sized balls, about 13 to 14 total, placing them on a plate.\n4. Heat the remaining 3 tablespoons olive oil in a non-stick large skillet over medium high heat. Add the meatballs and cook, turning them occasionally with chopsticks, until lightly browned on all sides, about 5 to 6 minutes. Reduce the heat to medium if it starts to smoke.\n5. Once cooked, you can remove the meatballs from a pan and refrigerate up to 5 days until serving if you’d like. Or serve immediately: turn off the heat and add the marinara sauce to the pan beware of spitting. Simmer for about 1 minute until warm, then top with chopped basil or parsley and serve. Store leftovers refrigerated without sauce for 5 days, or allow to cool then freeze in a freezer-safe container for up to 3 months.",
       imageUrl:
         "https://www.connoisseurusveg.com/wp-content/uploads/2022/03/vegan-meatballs-sq-3.jpg",
-        image2Url: "https://cdn77-s3.lazycatkitchen.com/wp-content/uploads/2017/02/moroccan-inspired-vegan-meatballs-portion-800x1200.jpg",
-        image3Url: "https://www.wearesovegan.com/wp-content/uploads/2017/10/SV_MightyMeatballs_H1.jpg",
+      image2Url:
+        "https://cdn77-s3.lazycatkitchen.com/wp-content/uploads/2017/02/moroccan-inspired-vegan-meatballs-portion-800x1200.jpg",
+      image3Url:
+        "https://www.wearesovegan.com/wp-content/uploads/2017/10/SV_MightyMeatballs_H1.jpg",
       tags: ["vegan", "italian"],
       ingredients: [
         { name: "tampeh", measurement: "227g" },
@@ -1321,8 +1380,10 @@ async function seed() {
         "1. Dice the onion and mince the garlic. Peel the potatoes and cut them into bite-sized chunks.\n2. In a large pot or Dutch oven, heat the olive oil over medium high heat. Add the onion and saute for 5 minutes. Add the garlic and saute for 1 minute. Add the vegetable broth, cashews and potatoes and ½ teaspoon kosher salt and bring to a boil. Reduce to a rapid simmer and simmer about 15 minutes until the potatoes are tender and falling apart when poked with a fork.\n3. Meanwhile, run the frozen broccoli under hot water to thaw it. Chop it into smaller florets as necessary. All packages are different, so make small bite-sized florets the size you’d like for a soup. You can chop the broccoli stems off and keep them in the soup as well. Place the broccoli in a bowl and mix it with quarter teaspoon kosher salt and black pepper to taste. Peel and grate the carrot into long strips.\n4. When the potatoes are tender, use a ladle to transfer everything to a blender. Add the thyme, dill, white wine vinegar, Dijon mustard and another quarter teaspoon kosher salt. Hold the top tight and blend everything for a minute or two until fully creamy.\n5. Pour the creamy soup back into the pot and add the broccoli and carrot. Simmer about 5 more minutes until the broccoli is cooked through. Taste and add additional salt as necessary.",
       imageUrl:
         "https://eatplant-based.com/wp-content/uploads/2020/03/Vegan-Broccoli-Cheddar-Soup_1904.jpg",
-        image2Url: "https://plantifullybasedblog.com/wp-content/uploads/2021/10/1-min-5-819x1024.jpg",
-        image3Url: "https://eatthegains.com/wp-content/uploads/2020/01/Vegan-Broccoli-Cheese-Soup-7-1.jpg",
+      image2Url:
+        "https://plantifullybasedblog.com/wp-content/uploads/2021/10/1-min-5-819x1024.jpg",
+      image3Url:
+        "https://eatthegains.com/wp-content/uploads/2020/01/Vegan-Broccoli-Cheese-Soup-7-1.jpg",
       tags: ["vegan"],
       ingredients: [
         { name: "Spanish onion", measurement: "200g" },
@@ -1348,8 +1409,10 @@ async function seed() {
         "1. Preheat oven to 425 degrees.\n2. Scrub the potatoes and pierce them all over with a fork. Rub each potato with olive oil. Place the potatoes directly on oven rack with a tray on the rack below to catch any dripping oil. Bake 20 minutes and flip with tongs. Bake an additional 25 minutes and check for tenderness with a fork. The fork should easily pierce the potato to the center. If not tender, continue baking, up to 15 minutes more depending on the size of the potato.\n3. Meanwhile, drain and rinse the black beans and mix them with kosher salt. Drain or thaw the corn. Chop the cilantro.\n4. When the potatoes are done, open the tops with a fork and top with the pico de gallo, seasoned black beans, corn, guacamole, cheddar cheese, cilantro, and sour cream. Enjoy!",
       imageUrl:
         "https://www.lavenderandmacarons.com/wp-content/uploads/2022/12/vegan-baked-potatoes-loaded-with-mushrooms-spinach.jpg",
-        image2Url: "https://zardyplants.com/wp-content/uploads/2022/02/Vegan-Loaded-Baked-Potatoes-03.jpg",
-        image3Url: "https://idahopotato.com/uploads/media/Overloaded%20Vegan%20Baked%20Potato.jpg",
+      image2Url:
+        "https://zardyplants.com/wp-content/uploads/2022/02/Vegan-Loaded-Baked-Potatoes-03.jpg",
+      image3Url:
+        "https://idahopotato.com/uploads/media/Overloaded%20Vegan%20Baked%20Potato.jpg",
       tags: ["vegan"],
       ingredients: [
         { name: "russet potatoes", measurement: "4" },
@@ -1369,8 +1432,10 @@ async function seed() {
         "1. If serving with rice, start rice first.\n2. Whisk together the stir fry sauce ingredients in a medium bowl, or make the sauce in advance and refrigerate until cooking.\n3. Chop the broccoli into florets. Thinly slice the pepper. Remove the shiitake stems and thinly slice them, if using. Thinly slice the green onion. Peel and grate the ginger.\n4. Cut the tofu into bite-sized pieces 1-inch squares, three eighths-inch thick and pat it dry with a towel. Add 2 tablespoons sesame oil to a large non-stick pan and add the tofu cubes and a few pinches kosher salt. Turn on the heat to medium-high. Cook 5 to 6 minutes until lightly browned on the bottom.\n5. Briefly remove the pan from the heat to reduce spitting. Flip the tofu with chopsticks or tongs. Return the heat to medium-high and cook 5 to 6 minutes until browned. Remove the tofu to a bowl and set it aside.\n6. Add the remaining 1 tablespoon oil to the skillet. Add the broccoli, pepper, and shiitake mushrooms and two pinches salt and cook 6 to 7 minutes until just starting to brown on edges, stirring occasionally. In the last minute, add 1 tablespoon water and allow the vegetables to steam.\n7. Turn down the heat to low. Add the green onion and ginger and cook 1 minute. Turn off the heat. Add the tofu and sauce and stir until the sauce thickens. Garnish with sesame seeds if desired. Serve immediately. Store leftovers up to 3 days refrigerated.",
       imageUrl:
         "https://www.skinnytaste.com/wp-content/uploads/2021/09/Tofu-Stir-Fry-8.jpg",
-        image2Url: "https://simpleveganblog.com/wp-content/uploads/2023/01/easy-tofu-stir-fry-square.jpg",
-        image3Url: "https://rainbowplantlife.com/wp-content/uploads/2023/01/tofu-stir-fry-cover-photo-1-of-1.jpg",
+      image2Url:
+        "https://simpleveganblog.com/wp-content/uploads/2023/01/easy-tofu-stir-fry-square.jpg",
+      image3Url:
+        "https://rainbowplantlife.com/wp-content/uploads/2023/01/tofu-stir-fry-cover-photo-1-of-1.jpg",
       tags: ["vegan"],
       ingredients: [
         { name: "soy sauce", measurement: "60g" },
@@ -1400,8 +1465,10 @@ async function seed() {
         "1. Cut the tofu into large cubes about 1.5″ x 2″ and pat it dry with a towel.\n2. Add the oil to a non-stick pan and add the tofu cubes and a few pinches kosher salt. Turn on the heat to medium-high. Cook 5 to 6 minutes until lightly browned on the bottom.\n3. Briefly remove the pan from the heat to reduce spitting. Flip the tofu with chopsticks or tongs. Return the heat to medium-high and cook additional 5 to 6 minutes until browned.\n4. Meanwhile, stir together the BBQ sauce, soy sauce and chili garlic sauce.\n5. Briefly remove the pan from the heat again and drizzle with the sauce. Return to low heat and cook 4 minutes, turning occasionally, until sauce is thickened. Serve immediately.",
       imageUrl:
         "https://www.acouplecooks.com/wp-content/uploads/2021/06/BBQ-Tofu-003.jpg",
-        image2Url: "https://www.rabbitandwolves.com/wp-content/uploads/2019/02/Korean-BBQ-Tofu0563.jpg",
-        image3Url: "https://cdn.loveandlemons.com/wp-content/uploads/2023/05/bbq-tofu.jpg",
+      image2Url:
+        "https://www.rabbitandwolves.com/wp-content/uploads/2019/02/Korean-BBQ-Tofu0563.jpg",
+      image3Url:
+        "https://cdn.loveandlemons.com/wp-content/uploads/2023/05/bbq-tofu.jpg",
       tags: ["vegan", "bbq"],
       ingredients: [
         { name: "firm or extra firm tofu", measurement: "397g" },
@@ -1420,8 +1487,10 @@ async function seed() {
         "1. Start the jasmine rice.\n2. Pat the tofu dry with a towel. Cut it into large cubes about half inch x 1 inch. Melt 2 tablespoons coconut oil in a large non-stick skillet over medium-high heat. Add the tofu cubes and quarter teaspoon kosher salt, and cook 5 to 6 minutes until lightly browned on the bottom. Briefly remove the pan from the heat to reduce spitting and flip the tofu with a spatula. Return the heat to medium-high and cook another 5 to 6 minutes until browned. Remove the tofu to a bowl and set aside.\n3. While the tofu cooks, mine the onion and garlic and thinly slice the bell pepper.\n4. In the same skillet, heat the remaining 2 tablespoons oil over medium heat. Add the onion and sauté for 5 minutes, until it is translucent. Add the garlic, red pepper, and green beans and sauté for 3 minutes.\n5. Add the bamboo shoots, red curry paste, coconut milk, brown sugar, soy sauce, lime juice, half teaspoon kosher salt, and Sambal oelek if you choose to use it. Bring to a simmer. Once simmering, add the tofu and cook about 5 to 8 minutes until the sauce is thickened and the veggies are tender. Taste and add additional Sambal oelek to your desired spice level.\n6. To serve, spoon the tofu and sauce over rice. Store refrigerated for up to 3 days.",
       imageUrl:
         "https://www.yayforfood.com/wp-content/uploads/one-pan-tofu-coconut-curry4-scaled-720x720.jpg",
-        image2Url: "https://choosingchia.com/jessh-jessh/uploads/2020/03/thai-coconut-curry-tofu-6.jpg",
-        image3Url: "https://images.getrecipekit.com/20211222153835-thaicoconutcurry-social-1.jpg?aspect_ratio=1:1&quality=90&",
+      image2Url:
+        "https://choosingchia.com/jessh-jessh/uploads/2020/03/thai-coconut-curry-tofu-6.jpg",
+      image3Url:
+        "https://images.getrecipekit.com/20211222153835-thaicoconutcurry-social-1.jpg?aspect_ratio=1:1&quality=90&",
       tags: ["vegan"],
       ingredients: [
         { name: "jasmine rice", measurement: "to taste" },
@@ -1449,8 +1518,10 @@ async function seed() {
         "1. In a small bowl, mix the first seven ingredients. Pour three quarter cup marinade into a large bowl. Add pork chops; turn to coat. Cover and refrigerate 8 hours or overnight. Cover and refrigerate remaining marinade.\n2. Drain pork, discarding marinade in bowl. Lightly grease the grill rack.\n3. Grill pork, covered, over medium heat or broil 4 in. from heat until a thermometer reads 145°, 4-6 minutes on each side; brush generously with remaining marinade during the last 3 minutes. Let stand 5 minutes before serving.",
       imageUrl:
         "https://kalynskitchen.com/wp-content/uploads/2016/05/2-550-pork-chops-balsamic-kalynskitchen-1.jpg",
-        image2Url: "https://images.themodernproper.com/billowy-turkey/production/posts/2019/hoisin-glazed-pork-chops-9.jpg?w=960&h=720&q=82&fm=jpg&fit=crop&dm=1603458849&s=039031ccdb75e4b67095c2e30f974383",
-        image3Url: "https://www.budgetbytes.com/wp-content/uploads/2010/08/Glazed-Pork-Chops-Vs.jpg",
+      image2Url:
+        "https://images.themodernproper.com/billowy-turkey/production/posts/2019/hoisin-glazed-pork-chops-9.jpg?w=960&h=720&q=82&fm=jpg&fit=crop&dm=1603458849&s=039031ccdb75e4b67095c2e30f974383",
+      image3Url:
+        "https://www.budgetbytes.com/wp-content/uploads/2010/08/Glazed-Pork-Chops-Vs.jpg",
       tags: ["bbq"],
       ingredients: [
         { name: "Ketchup", measurement: "122g" },
@@ -1471,8 +1542,10 @@ async function seed() {
         "1. In a large saucepan, sauté garlic in butter until tender. Add the next 8 ingredients. Bring to a boil, stirring constantly. Remove from the heat; set aside.\n2. On a lightly greased grill rack, grill chicken, covered, over medium heat for 30 minutes, turning occasionally. Baste with sauce. Grill 15 minutes longer or until a thermometer reaches 170°, basting and turning several times.",
       imageUrl:
         "https://www.mooshujenne.com/wp-content/uploads/2022/05/BBQPicnicChicken13-1024x682.jpg",
-        image2Url: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/6/7/2/FNM_070111-WN-Dinners-033_s4x3.jpg.rend.hgtvcom.616.462.suffix/1371597758947.jpeg",
-        image3Url: "https://i.pinimg.com/originals/1a/e5/10/1ae51071c8a744a23eb4b39044faa61c.jpg",
+      image2Url:
+        "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/6/7/2/FNM_070111-WN-Dinners-033_s4x3.jpg.rend.hgtvcom.616.462.suffix/1371597758947.jpeg",
+      image3Url:
+        "https://i.pinimg.com/originals/1a/e5/10/1ae51071c8a744a23eb4b39044faa61c.jpg",
       tags: ["bbq"],
       ingredients: [
         { name: "garlic cloves", measurement: "6g" },
@@ -1496,8 +1569,10 @@ async function seed() {
         "1. Place the ribs in a 5-qt. slow cooker. Add the water, onion, celery, 1 teaspoon garlic and peppercorns. Cover and cook on low for 6 hours or until meat is tender.\n2. In a small saucepan, combine the barbecue sauce, plum sauce, hot pepper sauce and remaining garlic. Cook and stir over medium heat for 5 minutes or until heated through. Remove ribs. Discard cooking juices and vegetables.\n3. Brush ribs with sauce. Grill, covered, on an oiled rack over medium-low heat for 8-10 minutes or until browned, turning and basting occasionally with remaining sauce.",
       imageUrl:
         "https://www.onceuponachef.com/images/2022/06/baby-back-ribs-18.jpg",
-        image2Url: "https://howtofeedaloon.com/wp-content/uploads/2019/01/Ribs-Final-Feature.jpg",
-        image3Url: "https://www.allrecipes.com/thmb/I2ENWJQG1mb2b5OSXPqQudzlzJw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/220987-Baked-BBQ-Baby-Back-Ribs-mfs-041-77a42b0ce0f0424e9aeec2b22664f1aa.jpg",
+      image2Url:
+        "https://howtofeedaloon.com/wp-content/uploads/2019/01/Ribs-Final-Feature.jpg",
+      image3Url:
+        "https://www.allrecipes.com/thmb/I2ENWJQG1mb2b5OSXPqQudzlzJw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/220987-Baked-BBQ-Baby-Back-Ribs-mfs-041-77a42b0ce0f0424e9aeec2b22664f1aa.jpg",
       tags: ["bbq"],
       ingredients: [
         { name: "Pork baby back ribs", measurement: "2.5lbs" },
@@ -1520,8 +1595,10 @@ async function seed() {
         "1. Whisk together bourbon, pineapple juice, hoisin sauce, ginger, 1 tablespoon pepper, Worcestershire sauce, garlic and 1 teaspoon salt until blended. Place chicken in a shallow dish. Add half the marinade; turn to coat. Cover and refrigerate overnight, turning occasionally. Cover and refrigerate remaining marinade.\n2. Drain chicken, discarding the marinade. Grill chicken, covered, on a greased grill rack over medium-high direct heat until a thermometer reads 170°, 5-6 minutes on each side.\n3. Meanwhile, toss pepper and onion slices in oil and remaining 2 teaspoons salt and 1 tablespoon pepper. Grill vegetables, turning frequently, until soft, 5-7 minutes. In a small saucepan on the grill, cook reserved marinade over medium heat, stirring occasionally, until slightly thickened, about 10 minutes. Chop grilled pepper and onion. Sprinkle over chicken; serve with sauce.",
       imageUrl:
         "https://everydaygoodthinking.ca/wp-content/uploads/2015/05/grilled-bourbon-chicken-31.jpg",
-        image2Url: "https://dinnerthendessert.com/wp-content/uploads/2017/11/Easy-Bourbon-Chicken-3.jpg",
-        image3Url: "https://grillinwithdad.com/wp-content/uploads/2023/03/Bourbon-chicken-lollipops-1024x1024.jpg",
+      image2Url:
+        "https://dinnerthendessert.com/wp-content/uploads/2017/11/Easy-Bourbon-Chicken-3.jpg",
+      image3Url:
+        "https://grillinwithdad.com/wp-content/uploads/2023/03/Bourbon-chicken-lollipops-1024x1024.jpg",
       tags: ["bbq"],
       ingredients: [
         { name: "Bourbon", measurement: "474g" },
@@ -1546,8 +1623,10 @@ async function seed() {
         "1. In a small bowl, combine the first 7 ingredients. With a fork or sharp knife, prick holes in briskets. Rub meat with seasoning mixture. Cover and refrigerate overnight.\n2. Preheat oven to 325°. Place briskets, fat sides up, in a roasting pan. In a small bowl, combine steak sauce, liquid smoke and Worcestershire sauce; pour over meat.\n3. Cover tightly with foil; bake 4 to 5 hours or until tender. Let stand in juices 15 minutes. To serve, thinly slice across the grain. Skim fat from pan juices; spoon over meat.",
       imageUrl:
         "https://themom100.com/wp-content/uploads/2019/06/oven-baked-beef-brisket-206.jpg",
-        image2Url: "https://www.aspicyperspective.com/wp-content/uploads/2019/05/Texas-Style-Oven-Brisket-Recipe-7.jpg",
-        image3Url: "https://www.willcookforsmiles.com/wp-content/uploads/2019/02/Brisket-recipe-4-1.jpg",
+      image2Url:
+        "https://www.aspicyperspective.com/wp-content/uploads/2019/05/Texas-Style-Oven-Brisket-Recipe-7.jpg",
+      image3Url:
+        "https://www.willcookforsmiles.com/wp-content/uploads/2019/02/Brisket-recipe-4-1.jpg",
       tags: ["bbq", "easy"],
       ingredients: [
         { name: "Brown sugar", measurement: "26g" },
@@ -1571,8 +1650,10 @@ async function seed() {
         "1. Combine chili powder, salt, and ground ginger, rub over tenderloins. Cover and refrigerate for 2 to 4 hours.\n2. Grill, covered over medium to hot indirect heat for 25 to 40 minutes or until a thermometer reads 160 degrees Fahrenheit.",
       imageUrl:
         "https://www.jocooks.com/wp-content/uploads/2012/12/cajun-honey-pork-tenderloin-1-16.jpg",
-        image2Url: "https://www.foodandwine.com/thmb/F0UuasTmlVVZXCX299meNy6o_8w=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/201307-xl-spice-roasted-pork-tenderloin-2000-fc50e44251324150af17ed8faf248963.jpg",
-        image3Url: "https://www.tasteofhome.com/wp-content/uploads/2018/01/exps832_GIT2919402B01_04_2bC_RMS.jpg?fit=700,700",
+      image2Url:
+        "https://www.foodandwine.com/thmb/F0UuasTmlVVZXCX299meNy6o_8w=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/201307-xl-spice-roasted-pork-tenderloin-2000-fc50e44251324150af17ed8faf248963.jpg",
+      image3Url:
+        "https://www.tasteofhome.com/wp-content/uploads/2018/01/exps832_GIT2919402B01_04_2bC_RMS.jpg?fit=700,700",
       tags: ["bbq", "easy"],
       ingredients: [
         { name: "Chili Powder", measurement: "8 to 24g" },
@@ -1591,8 +1672,10 @@ async function seed() {
         "1. Preheat the grill to 500 degrees Fahrenheit.\n2. In a bowl, mix sesame oil, soy sauce, garlic, and brown sugar. Place asparagus in the bowl, and toss to coat.\n3. Lightly oil a fine-mesh grill grate. Place asparagus on the grate and cook for 8 minutes, until tender but firm. Garnish with sesame seeds to serve.",
       imageUrl:
         "https://therecipecritic.com/wp-content/uploads/2019/06/grilledasparagus.jpg",
-        image2Url: "https://www.wellplated.com/wp-content/uploads/2021/03/Healthy-Grilled-Asparagus.jpg",
-        image3Url: "https://www.wholesomeyum.com/wp-content/uploads/2021/06/wholesomeyum-How-To-Grill-Asparagus-Easy-Grilled-Aspragus-Recipe-15.jpg",
+      image2Url:
+        "https://www.wellplated.com/wp-content/uploads/2021/03/Healthy-Grilled-Asparagus.jpg",
+      image3Url:
+        "https://www.wholesomeyum.com/wp-content/uploads/2021/06/wholesomeyum-How-To-Grill-Asparagus-Easy-Grilled-Aspragus-Recipe-15.jpg",
       tags: ["bbq", "easy"],
       ingredients: [
         { name: "Sesame oil", measurement: "14g" },
@@ -1611,8 +1694,10 @@ async function seed() {
         "1. Preheat an outdoor grill for 400 degrees Fahrenheit and lightly oil the grates.\n2. Brush butter over Brussels sprouts and season with garlic powder, black pepper, and seasoned salt.\n3. Place sprouts on the preheated grill and cook until tender and grill marks appear, about 10 minutes. Squeeze lime juice over sprouts before removing from the grill.",
       imageUrl:
         "https://www.slenderkitchen.com/sites/default/files/styles/gsd-1x1/public/recipe_images/grilled-brussels-sprouts-6.jpg",
-        image2Url: "https://www.wellplated.com/wp-content/uploads/2017/08/Crispy-Oven-Roasted-Brussels-Sprouts.jpg",
-        image3Url: "https://www.wellplated.com/wp-content/uploads/2019/08/Roasted-Brussels-with-Garlic-Easy.jpg",
+      image2Url:
+        "https://www.wellplated.com/wp-content/uploads/2017/08/Crispy-Oven-Roasted-Brussels-Sprouts.jpg",
+      image3Url:
+        "https://www.wellplated.com/wp-content/uploads/2019/08/Roasted-Brussels-with-Garlic-Easy.jpg",
       tags: ["bbq", "easy"],
       ingredients: [
         { name: "Melted butter", measurement: "28g" },
@@ -1631,8 +1716,10 @@ async function seed() {
         "1. Preheat oven to 400 degrees Fahrenheit. Grease and lightly flour a 9in square baking pan. Set aside.\n2. Whisk the cornmeal, flour, baking powder, baking soda, and salt together in a large bowl. Set aside. In a medium bowl, whisk the melted butter, brown sugar and honey together until completely smooth and thick. Then, whisk in the egg until combined. Finally, whisk in the buttermilk. Pour the wet ingredients into the dry ingredients and whisk until combined. Avoid over-mixing.\n3. Pour batter into prepared baking pan. Bake for 20 minutes or until golden brown on top and the center is cooked through. Use a toothpick to test. Edges should be crispy at this point. Allow to slightly cool before slicing and serving. Serve cornbread with butter, honey, jam, or whatever you like.",
       imageUrl:
         "https://www.fromvalerieskitchen.com/wordpress/wp-content/uploads/2022/08/Jiffy-Mexican-Cornbread-08.jpg",
-        image2Url: "https://www.inspiredtaste.net/wp-content/uploads/2023/06/Homemade-Cornbread-Recipe-Video.jpg",
-        image3Url: "https://www.culinaryhill.com/wp-content/uploads/2021/01/Cornbread-Culinary-Hill-1200x800-1-1.jpg",
+      image2Url:
+        "https://www.inspiredtaste.net/wp-content/uploads/2023/06/Homemade-Cornbread-Recipe-Video.jpg",
+      image3Url:
+        "https://www.culinaryhill.com/wp-content/uploads/2021/01/Cornbread-Culinary-Hill-1200x800-1-1.jpg",
       tags: ["bbq"],
       ingredients: [
         { name: "Fine cornmeal", measurement: "120g" },
@@ -1658,8 +1745,10 @@ async function seed() {
         "1. Preheat an outdoor grill for medium heat and lightly oil the grate.\n2. Mix brown sugar, sea salt, lemon pepper seasoning, and seasoned salt together in a container. Coat halved salmon fillets with seasoning mixture. Place salmon on two to four aluminum foil sheets; Drizzle with olive oil and liquid smoke. Fold the tops of pieces of foil together, leaving the sides open. Tent the foil for heat circulation.\n3. Place foil packets on the preheated grill and cook until salmon is easily flaked with a fork, 15 to 25 minutes, opening foil during the last five minutes to lightly brown.",
       imageUrl:
         "https://www.dinneratthezoo.com/wp-content/uploads/2019/05/grilled-salmon-final-2.jpg",
-        image2Url: "https://www.lecremedelacrumb.com/wp-content/uploads/2019/08/cajun-honey-butter-grilled-salmon-2.jpg",
-        image3Url: "https://evuecezehrh.exactdn.com/wp-content/uploads/2021/09/best-damn-george-foreman-grill-salmon-feature.jpg",
+      image2Url:
+        "https://www.lecremedelacrumb.com/wp-content/uploads/2019/08/cajun-honey-butter-grilled-salmon-2.jpg",
+      image3Url:
+        "https://evuecezehrh.exactdn.com/wp-content/uploads/2021/09/best-damn-george-foreman-grill-salmon-feature.jpg",
       tags: ["bbq", "seafood"],
       ingredients: [
         { name: "Brown sugar", measurement: "300g" },
@@ -1679,8 +1768,10 @@ async function seed() {
         "1. Place garlic and oil in a small skillet and cook over medium heat until fragrant, about 1 minute. Add lemon juice, parsley, salt, and pepper. Toss with shrimp in a large bowl. Chill until ready to serve.",
       imageUrl:
         "https://www.wholesomeyum.com/wp-content/uploads/2022/01/wholesomeyum-Lemon-Garlic-Butter-Shrimp-Recipe-19.jpg",
-        image2Url: "https://www.killingthyme.net/wp-content/uploads/2020/05/lemon-garlic-butter-shrimp.jpg",
-        image3Url: "https://www.wellplated.com/wp-content/uploads/2019/05/Garlic-Butter-Shrimp-recipe.jpg",
+      image2Url:
+        "https://www.killingthyme.net/wp-content/uploads/2020/05/lemon-garlic-butter-shrimp.jpg",
+      image3Url:
+        "https://www.wellplated.com/wp-content/uploads/2019/05/Garlic-Butter-Shrimp-recipe.jpg",
       tags: ["easy", "mediterranean"],
       ingredients: [
         { name: "Minced garlic", measurement: "45g" },
@@ -1700,8 +1791,10 @@ async function seed() {
         "1. Combine greens, figs, goat cheese, and almonds in a medium bowl. Stir together oil, vinegar, honey, salt, and pepper.\n2. Just before serving, drizzle the dressing over the salad and toss.",
       imageUrl:
         "https://stripedspatula.com/wp-content/uploads/2018/06/fig-salad-2.jpg",
-        image2Url: "https://www.simplyleb.com/wp-content/uploads/Fig-and-Goat-Cheese-Salad-7.jpg",
-        image3Url: "https://georgieeats.co.uk/wp-content/uploads/2018/09/IMG_2657.jpg",
+      image2Url:
+        "https://www.simplyleb.com/wp-content/uploads/Fig-and-Goat-Cheese-Salad-7.jpg",
+      image3Url:
+        "https://georgieeats.co.uk/wp-content/uploads/2018/09/IMG_2657.jpg",
       tags: ["easy", "mediterranean"],
       ingredients: [
         { name: "Mixed greens salad mix", measurement: "60g" },
@@ -1724,8 +1817,10 @@ async function seed() {
         "1. Heat 1 tablespoon oil in a large nonstick skillet over medium-high heat. Add gnocchi and cook, stirring often, until plumped and starting to brown, about 5 minutes. Transfer to a bowl and cover to keep warm.\n2. Reduce heat to medium. Add the remaining 1 tablespoon oil and onion to the pan. Cook, stirring occasionally, until starting to brown, 2 to 3 minutes. Add bell pepper; cook, stirring occasionally, until crisp-tender, about 3 minutes. Add garlic and oregano; cook, stirring, for 30 seconds. Add chickpeas, tomatoes, and artichokes; cook, stirring, until hot, about 3 minutes. Stir in olives, vinegar, pepper, and the gnocchi. Sprinkle with oregano, if desired.",
       imageUrl:
         "https://www.eatingwell.com/thmb/z-BHmGsUsQL20Zsb7TKjscolEls=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/3749546-8313f88901464d8196fbe654ac33a0a9.jpg",
-        image2Url: "https://cdn.jwplayer.com/v2/media/Pfmn7gAJ/poster.jpg?width=720",
-        image3Url: "https://allyscooking.com/wp-content/uploads/2017/01/gnocchi-1.12.17-9.jpg",
+      image2Url:
+        "https://cdn.jwplayer.com/v2/media/Pfmn7gAJ/poster.jpg?width=720",
+      image3Url:
+        "https://allyscooking.com/wp-content/uploads/2017/01/gnocchi-1.12.17-9.jpg",
       tags: ["mediterranean"],
       ingredients: [
         { name: "Olive oil", measurement: "28g" },
@@ -1751,8 +1846,10 @@ async function seed() {
         "1. Mince the onion. Mince the garlic. Finely chop the tomatoes, removing the cores but keeping the seeds with their juices.\n2. Measure out all the remaining ingredients before you start. The cooking process goes fast.\n3. Dry the shrimp and add it to a bowl with half teaspoon smoked paprika and quarter teaspoon kosher salt. In your largest skillet or a four serving paella pan, heat one tablespoon olive oil over medium heat. Add the shrimp and sauté until it is just barely opaque, about one to two minutes per side. Remove the shrimp and set it aside.\n4. In the same pan, heat 3 tablespoons olive oil on medium heat. Sauté the onion and garlic until just translucent, about 3 minutes, stirring frequently. Add the chopped tomatoes, the remaining one teaspoon smoked paprika and red pepper flakes, and cook until the tomatoes have broken down and most of the liquid is evaporated, about 5 minutes. Stir in the stock, saffron, and one and a quarter teaspoon kosher salt. Sprinkle the rice evenly across the broth and tap the pan with a spoon to evenly spread the rice. Bring it to a medium simmer and cook without stirring until liquid is absorbed, about 18 to 22 minutes.\n5. If your pan is large enough to span multiple burners on your stove top, adjust the heat on each burner so you achieve a steady medium simmer. Rotate the pan every few minutes for an even cook.\n6. When the top of the rice is beginning to show through the liquid, press the artichokes and peas lightly into the rice. Add the strips of red pepper over the top.\n7. In the last few minutes, carefully watch the Paella and rotate the pan more frequently. As the Paella finishes, you'll see the steam start to slow down as the water cooks out. If desired, peek at the bottom of the pan by using a knife to scrape back the rice; you shouldn't see any standing water. The sound will start to change from a simmer to a crackle. This indicates the crust is forming. Let the crackling continue for about two minutes before removing from the heat. If you smell any burning, remove immediately.\n8. When the Paella is done, add the shrimp to the top of the Paella and squeeze the lemon wedges onto the top of the pan. Sprinkle with a pinch or two of kosher salt and add the parsley, if using. Serve with additional lemon wedges.",
       imageUrl:
         "https://images.immediate.co.uk/production/volatile/sites/30/2018/06/Oven-paella-5d16b06.jpg?resize=768,574",
-        image2Url: "https://houseofnasheats.com/wp-content/uploads/2023/08/Mixed-Paella-Recipe-1.jpg",
-        image3Url: "https://images.squarespace-cdn.com/content/v1/5d8ca6452d89533d477b5ef5/1662738028082-81TNAVPP5UAIYXJBGUUF/Paella.png",
+      image2Url:
+        "https://houseofnasheats.com/wp-content/uploads/2023/08/Mixed-Paella-Recipe-1.jpg",
+      image3Url:
+        "https://images.squarespace-cdn.com/content/v1/5d8ca6452d89533d477b5ef5/1662738028082-81TNAVPP5UAIYXJBGUUF/Paella.png",
       tags: ["mediterranean"],
       ingredients: [
         { name: "Spanish onion", measurement: "150g" },
@@ -1779,8 +1876,10 @@ async function seed() {
         "1. Rinse the quinoa using a fine mesh strainer, then drain it completely. Place it in a saucepan with two cups of water and a quarter teaspoon of kosher salt. Bring to a boil, then reduce the heat to low. Cover the pot and simmer where the water is just bubbling for about 17 to 20 minutes, until the water has been completely absorbed. Turn off the heat and let it sit with the lid on to steam for 5 minutes, then fluff the quinoa with a fork.\n2. To cool the quinoa quickly, spread it on a baking sheet and place it in the freezer for two to three minutes until it reaches room temperature.\n3. Finally, chop the parsley and mint. Thinly slice the green onions. Finely chop the tomato, removing the core and the seeds. Finely chop the cucumber.\n4. Juice the lemon and whisk it together with the olive oil. In a large bowl, toss the quinoa and vegetables with the dressing, kosher salt, and pepper. Taste and adjust flavors as necessary. Serve immediately or refrigerate for three to four days.",
       imageUrl:
         "https://assets.epicurious.com/photos/54b0b5bec6a78d1a4a60b208/1:1/w_2560%2Cc_limit/395939_quinoa-tabbouleh_1x1.jpg",
-        image2Url: "https://www.acouplecooks.com/wp-content/uploads/2020/09/Quinoa-Tabbouleh-001.jpg",
-        image3Url: "https://www.simplyquinoa.com/wp-content/uploads/2015/06/quinoa-tabbouleh-salad-3-1.jpg",
+      image2Url:
+        "https://www.acouplecooks.com/wp-content/uploads/2020/09/Quinoa-Tabbouleh-001.jpg",
+      image3Url:
+        "https://www.simplyquinoa.com/wp-content/uploads/2015/06/quinoa-tabbouleh-salad-3-1.jpg",
       tags: ["easy", "mediterranean"],
       ingredients: [
         { name: "Dry quinoa", measurement: "185g" },
@@ -1803,8 +1902,10 @@ async function seed() {
         "1. Thaw scallops if frozen.\n2. Brine the scallops: In a shallow dish, mix four cups of room temperature water and two tablespoons of kosher salt. Place the scallops in the water and wait for 10 minutes.\n3. Remove the scallops and dry thoroughly. Lightly season with kosher salt.\n4. Heat the oil in a large skillet over high heat. If using a medium skillet, cook the scallops in two batches. Once the oil is hot, add the scallops and cook without turning for two to three minutes, until an even brown crust forms on the bottom.\n5. Flip scallops with tongs. Cook an additional 2 to 3 minutes on the other side, until a crust forms on the bottom and the center of the scallops is almost opaque.\n6. Turn off the heat and add the butter. When it melts, spoon the melted butter over the scallops and serve with a squeeze of lemon.",
       imageUrl:
         "https://www.wellseasonedstudio.com/wp-content/uploads/2020/06/Pan-seared-scallops-12.jpg",
-        image2Url: "https://www.fifteenspatulas.com/wp-content/uploads/2014/06/Seared-Scallops-Fifteen-Spatulas-3.jpg",
-        image3Url: "https://www.wholesomeyum.com/wp-content/uploads/2021/08/wholesomeyum-Pan-Seared-Scallops-Recipe-With-Garlic-Butter-14.jpg",
+      image2Url:
+        "https://www.fifteenspatulas.com/wp-content/uploads/2014/06/Seared-Scallops-Fifteen-Spatulas-3.jpg",
+      image3Url:
+        "https://www.wholesomeyum.com/wp-content/uploads/2021/08/wholesomeyum-Pan-Seared-Scallops-Recipe-With-Garlic-Butter-14.jpg",
       tags: ["easy", "mediterranean"],
       ingredients: [
         { name: "Sea scallops", measurement: "1lb" },
@@ -1822,8 +1923,10 @@ async function seed() {
         "1. Place all ingredients in a blender, blend until smooth. Taste and adjust salt as needed.\n2. Refrigerate until cold, about 2 hours or up to 3 days.\n3. Serve topped with additional chopped veggies, a drizzle of olive oil, and toasted bread.",
       imageUrl:
         "https://www.acouplecooks.com/wp-content/uploads/2021/07/Gazpacho-002s.jpg",
-        image2Url: "https://rosannaetc.com/wp-content/uploads/2020/07/Classic-gazpacho-500x500.jpeg",
-        image3Url: "https://www.acouplecooks.com/wp-content/uploads/2021/07/Gazpacho-015.jpg",
+      image2Url:
+        "https://rosannaetc.com/wp-content/uploads/2020/07/Classic-gazpacho-500x500.jpeg",
+      image3Url:
+        "https://www.acouplecooks.com/wp-content/uploads/2021/07/Gazpacho-015.jpg",
       tags: ["easy", "mediterranean"],
       ingredients: [
         {
@@ -1848,8 +1951,10 @@ async function seed() {
         "1. Peel the garlic. Drain the chickpeas into a liquid measuring cup. Juice the lemon.\n2. Add the garlic to the bowl of a food processor and process until finely chopped. Add chickpeas, lemon juice, tahini, kosher salt, and two tablespoons of water from the chickpea can. Puree for 30 seconds, then scrape down the bowl. Taste. If necessary, add one to two tablespoons of chickpea water. Puree for one to two minutes to come to a creamy consistency. Store refrigerated for seven to 10 days.",
       imageUrl:
         "https://www.inspiredtaste.net/wp-content/uploads/2019/07/The-Best-Homemade-Hummus-Recipe-1200.jpg",
-        image2Url: "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2022/08/Hummus-main-1.jpg",
-        image3Url: "https://hips.hearstapps.com/hmg-prod/images/hummus-index-6463bace4bba5.jpeg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*",
+      image2Url:
+        "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2022/08/Hummus-main-1.jpg",
+      image3Url:
+        "https://hips.hearstapps.com/hmg-prod/images/hummus-index-6463bace4bba5.jpeg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*",
       tags: ["easy", "mediterranean"],
       ingredients: [
         { name: "Garlic cloves", measurement: "3g" },
@@ -1867,8 +1972,10 @@ async function seed() {
         "1. Preheat oven to 425 degrees Fahrenheit.\n2. Chop tomatoes, shallot, garlic, and lemon as noted above.\n3. Place the chopped vegetables and lemon slices in the bottom of a 9 by 13 baking dish and mix with one tablespoon olive oil, a quarter teaspoon of salt, and fresh ground black pepper. Crumble the feta cheese into rough chunks and add it to the pan, tossing gently to combine.\n4. Pat the tilapia dry. Rub it with 1 tablespoon olive oil and half a teaspoon kosher salt, split between the fillets. Place it on top of the vegetables and feta in the pan. Sprinkle both fillets with the Italian seasoning and a few grinds of fresh ground black pepper, then add the red pepper flakes and smoked paprika. Sprinkle the capers over the top.\n5. Place the pan in the oven and bake for 20 to 25 minutes, until the fish is flaky, and the internal temperature is 140 degrees Fahrenheit when measured with a food thermometer. Garnish with chopped parsley and remove the lemon slices when serving.",
       imageUrl:
         "https://thealmondeater.com/wp-content/uploads/2023/04/baked-tilapia_web-6.jpg",
-        image2Url: "https://www.wholesomeyum.com/wp-content/uploads/2021/09/wholesomeyum-Lemon-Butter-Baked-Tilapia-Recipe-14.jpg",
-        image3Url: "https://diethood.com/wp-content/uploads/2020/10/Garlic-Butter-Baked-Tilapia-5.jpg",
+      image2Url:
+        "https://www.wholesomeyum.com/wp-content/uploads/2021/09/wholesomeyum-Lemon-Butter-Baked-Tilapia-Recipe-14.jpg",
+      image3Url:
+        "https://diethood.com/wp-content/uploads/2020/10/Garlic-Butter-Baked-Tilapia-5.jpg",
       tags: ["mediterranean"],
       ingredients: [
         { name: "Halved cherry tomatoes", measurement: "284g" },
@@ -1894,8 +2001,10 @@ async function seed() {
         "1. Preheat oven to 450 degrees Fahrenheit. Line a baking sheet with aluminum foil or parchment paper. Poke the eggplant all over with a fork to speed up the cooking process and put it on the prepared baking sheet. Bake for 30 minutes or until the eggplant is easily pierced with a knife. Remove from the oven and let cool.\n2. Once the eggplant is cool enough to handle, slice the eggplant in half and scrape out the insides into a food processor fitted with the blade attachment, removing as many large portions of seeds as you can. Add tahini, lemon juice, garlic, parsley, salt, cumin, and smoked paprika. Process until smooth, about 30 seconds. With the motor running, pour in the olive oil and process for another 30 seconds or until light and fluffy.\n3. Transfer the dip to a serving bowl and top with desired toppings. Serve with pita chips or bread.",
       imageUrl:
         "https://www.simplyrecipes.com/thmb/HMIn0Vh0HIyBOzV43Wv1FKNDQYs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2020__07__Baba-Ganoush-LEAD-4a-bb45a735e742476e8c305d8962f220c1.jpg",
-        image2Url: "https://www.seriouseats.com/thmb/nhgfDG68_YXD-qz-0b1C9L45lmE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2014__02__20140225-baba-ganoush-recipe-food-lab-vegan-primary-3-30d3fa6c920a4c3dafce66e140a35905.jpg",
-        image3Url: "https://littleferrarokitchen.com/wp-content/uploads/2023/06/authentic-baba-ganoush-dip.jpg.jpg",
+      image2Url:
+        "https://www.seriouseats.com/thmb/nhgfDG68_YXD-qz-0b1C9L45lmE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2014__02__20140225-baba-ganoush-recipe-food-lab-vegan-primary-3-30d3fa6c920a4c3dafce66e140a35905.jpg",
+      image3Url:
+        "https://littleferrarokitchen.com/wp-content/uploads/2023/06/authentic-baba-ganoush-dip.jpg.jpg",
       tags: ["easy", "mediterranean"],
       ingredients: [
         { name: "Eggplant", measurement: "2lbs" },
@@ -1917,8 +2026,10 @@ async function seed() {
         "1. Gather the ingredients.\n2. Heat the oil in a deep skillet over medium heat and fry the onions until golden brown. Remove from the oil with a slotted spoon and drain on paper towels. Turn off heat, keeping oil in the pan.\n3. Grind the onions into a smooth paste in a food processor. Remove to a bowl and set aside.\n4. In the food processor, grind the tomatoes, garlic paste, and ginger paste together into a smooth paste.\n5. Heat the oil in the skillet again and add the onion paste. Fry for 2 to 3 minutes. Add the tomato paste and all the spices; coriander, cumin, turmeric, and red chili and garam masala powders. Mix well.\n6. Fry the masala until the oil begins to separate from it.\n7. Add the chicken to the masala and brown well, about 8 minutes.\n8. Add one and a half cups of hot water to the chicken, simmer, and cover. Cook until the chicken is tender, about 15 minutes.\n9. Garnish with chopped coriander and serve with hot chapatis, naans, or basmati rice.",
       imageUrl:
         "https://www.allrecipes.com/thmb/FL-xnyAllLyHcKdkjUZkotVlHR8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/46822-indian-chicken-curry-ii-DDMFS-4x3-39160aaa95674ee395b9d4609e3b0988.jpg",
-        image2Url: "https://hips.hearstapps.com/del.h-cdn.co/assets/17/31/1501791674-delish-chicken-curry-horizontal.jpg?crop=0.665xw:0.998xh;0.139xw,0.00240xh&resize=1200:*",
-        image3Url: "https://www.177milkstreet.com/assets/site/Recipes/Hyderabadi-Chicken-Curry.jpg",
+      image2Url:
+        "https://hips.hearstapps.com/del.h-cdn.co/assets/17/31/1501791674-delish-chicken-curry-horizontal.jpg?crop=0.665xw:0.998xh;0.139xw,0.00240xh&resize=1200:*",
+      image3Url:
+        "https://www.177milkstreet.com/assets/site/Recipes/Hyderabadi-Chicken-Curry.jpg",
       tags: ["indian"],
       ingredients: [
         { name: "Canola or sunflower oil", measurement: "60g" },
@@ -1946,8 +2057,10 @@ async function seed() {
         "1. Gather the ingredients.\n2. Prepare the eggplants by washing, patting dry, and cutting into quarters.\n3. Soak the eggplant in warm water.\n4. In a deep pan, heat the cooking oil on a medium flame until it is hot.\n5. Add the cumin seeds and fry them until they no longer splutter.\n6. Add the onions and fry them until they are slightly soft and translucent.\n7. Then, add the diced eggplant and the potato cubes, stir and mix well. Sauté it for about 2 minutes.\n8. Add the coriander powder, cumin powder, turmeric powder, the red chili powder, and the chopped tomato. Stir to mix everything well and then sauté for another 2 to 3 minutes.\n9. Sprinkle water on top of the vegetables and stir everything to mix well.\n10. Cover the dish and cook it until the vegetables are almost done. Check occasionally and stir to prevent burning or sticking to the bottom of the pan.\n11. When nearly cooked, remove the cover from the dish and stir.\n12. Cook until both the potatoes and the eggplant are soft and cooked throughout. This is meant to be a dryish dish so cook off any extra water that may be present in it.\n13. When done, turn off the heat and then garnish with chopped, fresh coriander leaves. Serve with hot chapatis and a daal dish if you like. A spicy, tangy pickle also tastes great with this delicious subji. You can even add raita if you wish.",
       imageUrl:
         "https://ministryofcurry.com/wp-content/uploads/2022/11/Aloo-Baingan-3.jpg",
-        image2Url: "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/aloo-baingan-recipe.jpg",
-        image3Url: "https://greenbowl2soul.com/wp-content/uploads/2019/05/aloo-baingan-1-500x500.jpg",
+      image2Url:
+        "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/aloo-baingan-recipe.jpg",
+      image3Url:
+        "https://greenbowl2soul.com/wp-content/uploads/2019/05/aloo-baingan-1-500x500.jpg",
       tags: ["indian"],
       ingredients: [
         { name: "Eggplant cut into 2in chunks", measurement: "400g" },
@@ -1971,8 +2084,10 @@ async function seed() {
         "1. Gather the ingredients.\n2. Mix the gram flour and all the spices with a little water at a time in a bowl, to make a thick batter, slightly thicker than pancake batter. Add salt to taste.\n3. If using cauliflower, separate the florets into bite-sized pieces. The potatoes and onions should be thinly sliced. Trim the stems off the spinach leaves. Cube the paneer into 1-inch cubes.\n4. Preheat oil and reduce the flame to medium. This will allow the bhajias to cook well both on the outside and inside.\n5. Coat the vegetables well with batter, and then deep fry till golden.\n6. Drain on paper towels and serve with tamarind chutney or tomato ketchup.",
       imageUrl:
         "https://www.sanjanafeasts.co.uk/wp-content/uploads/2019/12/Crispy-Potato-Bhajia-recipe.jpg",
-        image2Url: "https://3.bp.blogspot.com/-elGixg0HhHU/T5LMGbpzDAI/AAAAAAAADMY/vF5WvYYKL-Q/s1600/IMG_6544.jpg",
-        image3Url: "https://africanbites.com/wp-content/uploads/2015/03/IMG_3870.jpg",
+      image2Url:
+        "https://3.bp.blogspot.com/-elGixg0HhHU/T5LMGbpzDAI/AAAAAAAADMY/vF5WvYYKL-Q/s1600/IMG_6544.jpg",
+      image3Url:
+        "https://africanbites.com/wp-content/uploads/2015/03/IMG_3870.jpg",
       tags: ["indian", "easy"],
       ingredients: [
         { name: "Bengal gram flour", measurement: "125g" },
@@ -1997,8 +2112,10 @@ async function seed() {
         "1. Gather the ingredients.\n2. In a large, dry skillet or saucepan, gently toast the coriander seeds over medium-low heat until fragrant, about 1 minute. Coarsely grind the seeds into a powder. Set aside.\n3. Heat the oil in the same pan on medium heat until it shimmers. Add the mustard seeds, curry leaves, and green chiles. Fry the mixture until the splattering stops.\n4. Add the ginger and peanuts. Fry the mixture until fragrant, about 1 minute more.\n5. Stir the turmeric powder and turn off the burner.\n6. Add the lemon juice and mix well.\n7. Add the rice, toasted coriander powder, and salt to taste. Mix thoroughly. Serve and enjoy.",
       imageUrl:
         "https://www.thespruceeats.com/thmb/8dNjMiMn_hXG7zUec9MPbrZkoOM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/south-indian-lemon-rice-1957723-hero-02-18047e2504ad42fa96817e047c075ac3.jpg",
-        image2Url: "https://www.cookwithmanali.com/wp-content/uploads/2016/01/South-Indian-Lemon-Rice-Recipe.jpg",
-        image3Url: "https://www.thespruceeats.com/thmb/8dNjMiMn_hXG7zUec9MPbrZkoOM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/south-indian-lemon-rice-1957723-hero-02-18047e2504ad42fa96817e047c075ac3.jpg",
+      image2Url:
+        "https://www.cookwithmanali.com/wp-content/uploads/2016/01/South-Indian-Lemon-Rice-Recipe.jpg",
+      image3Url:
+        "https://www.thespruceeats.com/thmb/8dNjMiMn_hXG7zUec9MPbrZkoOM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/south-indian-lemon-rice-1957723-hero-02-18047e2504ad42fa96817e047c075ac3.jpg",
       tags: ["indian"],
       ingredients: [
         { name: "Coriander seeds", measurement: "2g" },
@@ -2022,8 +2139,10 @@ async function seed() {
         "1. Gather the ingredients.\n2. In a blender, combine all of the marinade ingredients—garlic paste, cilantro, chilies, lemon juice, and oil—and grind until it's a smooth paste.\n3. In a large, non-metallic bowl, place the prawns and pour the marinade over them. Mix to coat all the prawns well.\n4. Cover the bowl and store in the refrigerator to marinate while you make the gravy.\n5. Gather the ingredients for the gravy; canola oil, Spanish onions, garlic paste, ginger paste, diced tomatoes, coriander, cumin, turmeric, red chili powder, garam masala, salt, and boiling water.\n6. In a heavy-bottomed pan, heat 4 tablespoons of cooking oil over medium heat.\n7. When the cooking oil is hot, add the chopped onions. Sautee until the onions begin to turn pale golden brown color.\n8. Add the garlic and ginger pastes and sauté for 1 minute.\n9. Add the tomatoes, all the powdered spices—coriander, cumin, turmeric, chili, and garam masala, and salt to taste. Mix well.\n10. Sauté the masala (onion-tomato-spice mixture) until the oil begins to separate from it. This can take up to 10 minutes.\n11. Put the prepared masala into the food processor and grind into a smooth paste (do not add water). Remove and place in a separate container.\n12. Using the same frying pan as before, turn the heat on medium.\n13. Once it is hot, add the prawns and marinade and sauté until the prawns just begin to turn opaque.\n14. Add the prepared masala and boiling water. Stir well.\n15. Cook for 1 to 2 minutes and turn off the heat.\n16. Garnish with chopped cilantro.",
       imageUrl:
         "https://kitchenmai.com/wp-content/uploads/2020/09/coconut_prawn_masala_blog.jpg",
-        image2Url: "https://www.yummytummyaarthi.com/wp-content/uploads/2013/12/1-8.jpg",
-        image3Url: "https://www.sainsburysmagazine.co.uk/media/7386/download/2_PrawnCurry.jpg?v=1",
+      image2Url:
+        "https://www.yummytummyaarthi.com/wp-content/uploads/2013/12/1-8.jpg",
+      image3Url:
+        "https://www.sainsburysmagazine.co.uk/media/7386/download/2_PrawnCurry.jpg?v=1",
       tags: ["indian"],
       ingredients: [
         { name: "Garlic paste for marinade", measurement: "15g" },
@@ -2053,8 +2172,10 @@ async function seed() {
         "1. Gather the ingredients.\n2. In a medium bowl, place the chicken pieces and add the lemon juice, 1 tablespoon of olive oil, and 2 teaspoons curry powder.\n3. Toss to coat the chicken, cover, and set aside.\n4. In a heavy skillet over medium heat, warm up the remaining olive oil with one tablespoon of butter.\n5. Add the onion, garlic, and ginger and sauté for one minute.\n6. Add the remaining curry powder and remaining butter. Stir well.\n7. Add the pepper, salt, and tomato puree. Mix well and simmer for 5 minutes, stirring frequently.\n8. Stir in the skillet the marinated chicken pieces with their juices.\n9. Bring the chicken to a boil, then reduce the heat and simmer for about 11 to 15 minutes until the chicken is thoroughly cooked to 165 F as tested with an instant-read thermometer.\n10. Stir in the heavy cream and mix. Cook for one more minute.\n11. Turn off the heat and let the chicken rest for 2 to 5 minutes.\n12. Serve the chicken over basmati rice.",
       imageUrl:
         "https://masalaandchai.com/wp-content/uploads/2022/03/Butter-Chicken.jpg",
-        image2Url: "https://littlespicejar.com/wp-content/uploads/2016/02/Finger-Lickin-Butter-Chicken-14-720x720.jpg",
-        image3Url: "https://cravinghomecooked.com/wp-content/uploads/2020/06/butter-chicken-1.jpg",
+      image2Url:
+        "https://littlespicejar.com/wp-content/uploads/2016/02/Finger-Lickin-Butter-Chicken-14-720x720.jpg",
+      image3Url:
+        "https://cravinghomecooked.com/wp-content/uploads/2020/06/butter-chicken-1.jpg",
       tags: ["indian"],
       ingredients: [
         { name: "Boneless chicken breast", measurement: "907g" },
@@ -2080,8 +2201,10 @@ async function seed() {
         "1. Gather the ingredients.\n2. In a large bowl, thoroughly mix the flour, baking powder, salt, and sugar.\n3. Add 1 tablespoon of oil, or ghee if using, and mix it into the flour.\n4. Add just enough water to knead and make a dough. Start with 3/4 cup of water and knead the dough, adding a little bit more water at a time if you deem it necessary. Not all flours are alike, and not all doughs need the same amounts of water. The dough needs to be soft and pliable, and you'll get that after a few minutes of kneading, between 4 and 8.\n5. Form a ball with the dough and rub some of the remaining oil on top to prevent the dough from forming a skin. Cover and let rest for 30 minutes.\n6. Heat a cast iron griddle, pan, or tawah if you have one, over medium heat.\n7. Cut the dough into 4 equal pieces. Cover the rest of the dough as you work with one piece at a time.\n8. Lightly flour your work surface and rolling pin.\n9. Form one piece of the dough into a ball, then flatten it into a disk. Roll it out into a 5-inch circle of about 1/4 inch thickness.\n10. Transfer the dough disc to the heated griddle or pan and lower the heat to medium-low. Let cook on one side until the roti puffs up.\n11. Flip the roti and cook the other side for 1 or 2 minutes. Remove roti from the pan and wrap loosely in a clean kitchen towel, or any flour-bag type of fabric.\n12. Repeat the process with the remaining pieces of dough. Serve warm.",
       imageUrl:
         "https://www.thespruceeats.com/thmb/zlk6PmbAGmDBvvtM2Uj7G7sgAc0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/sada-roti-2138052-Hero_01-c121ed4e32cd4224a358c7096a068650.jpg",
-        image2Url: "https://metemgee.com/wp-content/uploads/2023/04/Inflated-sada-roti.jpg",
-        image3Url: "https://www.shutterstock.com/shutterstock/photos/2301393851/display_1500/stock-photo-chapati-also-known-as-roti-rooti-rotli-rotta-safati-shabaati-phulka-chapo-sada-roti-poli-2301393851.jpg",
+      image2Url:
+        "https://metemgee.com/wp-content/uploads/2023/04/Inflated-sada-roti.jpg",
+      image3Url:
+        "https://www.shutterstock.com/shutterstock/photos/2301393851/display_1500/stock-photo-chapati-also-known-as-roti-rooti-rotli-rotta-safati-shabaati-phulka-chapo-sada-roti-poli-2301393851.jpg",
       tags: ["indian"],
       ingredients: [
         { name: "All-purpose flour", measurement: "360g" },
@@ -2100,8 +2223,10 @@ async function seed() {
         "1. Gather the ingredients.\n2. Heat a griddle over medium heat. When hot, add the cumin seeds and dry roast until they are slightly fragrant and start to darken in color. Set aside to cool.\n3. Combine the grated coconut, green chilies, and toasted cumin seeds in a food processor and grind to a smooth paste.\n4. In a bowl, whisk the yogurt until smooth; add the water and stir to blend well.\n5. Add the coconut-spice paste and salt to taste and stir well.\n6. Transfer the mixture to a heavy-bottomed pan and heat slowly over medium heat. Stir occasionally to prevent the mixture from sticking to the pan or scorching.\n7. Meanwhile, heat the vegetable oil or ghee in a small pan over medium heat; add the dry red chilies, cumin seeds, and curry leaves. Be very careful to avoid getting burned as the chilies, seeds, and leaves will cause the oil to splutter. Cook until the spluttering stops.\n8. Just before the yogurt mixture comes to a boil, turn off the heat and add the oil, chilies, seeds, and leaves.\n9. Spoon into a large bowl or individual bowls and garnish with freshly chopped coriander.",
       imageUrl:
         "https://static.toiimg.com/thumb/89721602.cms?imgsize=75354&width=800&height=800",
-        image2Url: "https://shwetainthekitchen.com/wp-content/uploads/2020/10/IMG_9683.jpg",
-        image3Url: "https://www.flourandspiceblog.com/wp-content/uploads/2023/03/IMG_2162.jpg",
+      image2Url:
+        "https://shwetainthekitchen.com/wp-content/uploads/2020/10/IMG_9683.jpg",
+      image3Url:
+        "https://www.flourandspiceblog.com/wp-content/uploads/2023/03/IMG_2162.jpg",
       tags: ["indian"],
       ingredients: [
         { name: "Cumin seeds", measurement: "24g" },
@@ -2122,8 +2247,10 @@ async function seed() {
         "1. Preheat the oven to 325 degrees Fahrenheit.\n2. While the oven preheats, in a shallow dish stir together 4 cups room temperature water and 3 tablespoons kosher salt until it dissolves. Place the salmon in the water and wait for 15 minutes.\n3.  Rub the bottom of a baking dish with olive oil. Pat each piece of salmon dry and place it on the pan. Sprinkle the salmon with eighth teaspoon kosher salt  for each of the 4 fillets and fresh ground pepper. Cover pan with foil and bake the salmon for 10 minutes. Then remove the foil bake again for 3 to 6 minutes, depending on thickness, until just tender and pink at the center. A 1-inch thick fillet should cook in about 15 minutes total.\n4. When the salmon is done, spoon the pesto over the salmon. Sprinkle it with chopped pine nuts and if desired, a bit of lemon zest. Serve immediately.",
       imageUrl:
         "https://www.acouplecooks.com/wp-content/uploads/2020/08/Pesto-Salmon-013.jpg",
-        image2Url: "https://cookingwithmammac.com/wp-content/uploads/2018/07/1200-Baked-Pesto-Salmon-Recipe-Photo.jpg",
-        image3Url: "https://sailorbailey.com/wp-content/uploads/2023/03/Salmon-Pesto-Pasta2.jpg",
+      image2Url:
+        "https://cookingwithmammac.com/wp-content/uploads/2018/07/1200-Baked-Pesto-Salmon-Recipe-Photo.jpg",
+      image3Url:
+        "https://sailorbailey.com/wp-content/uploads/2023/03/Salmon-Pesto-Pasta2.jpg",
       tags: ["seafood", "italian"],
       ingredients: [
         { name: "Salmon Filet", measurement: "680g" },
@@ -2143,8 +2270,10 @@ async function seed() {
         "1. Thaw the scallops, if frozen\n2. Start a pot of well salted water to a boil. Boil the pasta until it is just al dente. Start tasting a few minutes before the package recommends: you want it to be tender but still a little firm on the inside; usually around 7 to 8 minutes. Drain the pasta.\n3. Meanwhile, in a shallow dish, mix 4 cups room temperature water and 2 tablespoons kosher salt. Place the scallops in the water and wait for 10 minutes.\n4. Remove the scallops and dry thoroughly. Lightly season with a several pinches kosher salt. Heat the oil in a large skillet over high heat. If using a medium skillet, cook the scallops in two batches. Once the oil is hot, add the scallops and cook without turning for 2 to 3 minutes,  until an even brown crust clearly forms on bottom.\n5. Flip scallops with tongs. Cook additional 2 to 3 minutes on the other side, until a crust just forms on bottom and the center of the scallop is almost opaque. Remove the scallops from the skillet to a plate and turn off the heat.\n6. Turn on the heat to low. Add the butter and allow it to melt. Add the lemon zest, minced garlic and chopped herbs. Scrape the bottom of the pan with a spatula to release flavor from any browned bits stuck to the pan. Cook 1 minute until fragrant, adjusting the heat so the garlic is just sizzling but so it doesn’t brown.\n7. Add the milk, pasta, kosher salt, and greens and return the heat to medium; cook until greens are wilted. Return the scallops to the pan and cook for a few seconds until just warm. Add lots of fresh ground black pepper. Taste and add additional salt if necessary. Serve with drizzle of olive oil and if desired, grated Parmesan cheese.",
       imageUrl:
         "https://whatsgabycooking.com/wp-content/uploads/2023/03/WGC-__-Lemon-Garlic-Scallop-Pasta-2.jpg",
-        image2Url: "https://www.acouplecooks.com/wp-content/uploads/2020/09/Scallop-Pasta-005.jpg",
-        image3Url: "https://static01.nyt.com/images/2019/02/04/dining/ch-pasta-with-scallops-tomatoes-and-herbs/ch-pasta-with-scallops-tomatoes-and-herbs-videoSixteenByNineJumbo1600-v2.jpg",
+      image2Url:
+        "https://www.acouplecooks.com/wp-content/uploads/2020/09/Scallop-Pasta-005.jpg",
+      image3Url:
+        "https://static01.nyt.com/images/2019/02/04/dining/ch-pasta-with-scallops-tomatoes-and-herbs/ch-pasta-with-scallops-tomatoes-and-herbs-videoSixteenByNineJumbo1600-v2.jpg",
       tags: ["seafood"],
       ingredients: [
         { name: "Linguine noodles", measurement: "226g" },
@@ -2170,8 +2299,10 @@ async function seed() {
         "1. Remove all shells from the shrimp, rinse it, and pat it dry.\n2. In a food processor, pulse the onion and garlic several times until minced. Add the shrimp, parsley, salt, paprika, garlic powder, onion powder, dried thyme, fennel, cumin, and cayenne. Pulse 15 to 20 times until ground, but not pureed. Form the mixture into 4 patties and place them on a plate or in a sealed container. Refrigerate 15 minutes to allow them to set.\n3. In a large, heavy bottomed, skillet, heat the olive oil over medium high heat. Cook 4 to 5 minutes per side until browned and interior temperature reaches 145°F. Alternatively, brush the patties with olive oil and grill on direct medium-high heat for 3 to 4 minutes per side and interior temperature reach 145°F.\n4. Serve on burger bun with lettuce, tomato and onion slices, along with mustard sauce, tartar sauce or remoulade.",
       imageUrl:
         "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2FPhoto%2FRecipes%2F2022-03_Shrimp-Burger%2F2022-03-16_ATK-0434",
-        image2Url: "https://www.thespruceeats.com/thmb/DWtzSvrnd5yW5UA1dPMd8W_AeVg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/shrimp-burgers-4800594-hero-68c49a8421fe425182ab485347007eac.jpg",
-        image3Url: "https://static01.nyt.com/images/2017/07/19/dining/19COOKING-BURGER2/19COOKING-BURGER2-superJumbo.jpg",
+      image2Url:
+        "https://www.thespruceeats.com/thmb/DWtzSvrnd5yW5UA1dPMd8W_AeVg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/shrimp-burgers-4800594-hero-68c49a8421fe425182ab485347007eac.jpg",
+      image3Url:
+        "https://static01.nyt.com/images/2017/07/19/dining/19COOKING-BURGER2/19COOKING-BURGER2-superJumbo.jpg",
       tags: ["seafood", "sandwich"],
       ingredients: [
         { name: "Shrimp", measurement: "680g" },
@@ -2197,8 +2328,10 @@ async function seed() {
         "1. To make the garlic-infused olive oil, add the two peeled, lightly crushed garlic cloves to the olive oil in a small saucepan and simmer on very low heat. Be very careful not to let the garlic get brown. Turn off the flame after just a few minutes and let the garlic sit in the oil until it softens. Let cool before making the aioli.\n2. Add egg yolks, the cooled cooked garlic cloves, lime juice, lime zest, tarragon, salt, and pepper to a blender. Blend until smooth.\n3. With the blender running, slowly add the vegetable oil and garlic-infused olive oil. The aioli will be thick and creamy and a lovely light green. Adjust seasoning and citrus to your taste.\n4. Heat your oil. Fry fish sticks in approximately 4 inches of oil in a heavy sauté or saucepan at 375 degrees Fahrenheit.\n5. Cut your fish into pieces, dip in egg, and then in panko.\n6. Carefully drop your fish sticks into hot oil and fry until golden brown. Remove and place on a paper towel-lined plate to absorb any extra oil. Add additional salt if you like directly after they come out of the oil.\n7. Serve with aioli as a dipping sauce.",
       imageUrl:
         "https://images.food52.com/eKq6do-PewR-8Xuew4OPr82Km2c=/965x643/filters:format(webp)/e6140a68-5fc6-4ee9-a94e-a1d4cf811e0f--food52_02-21-12-8375.jpg",
-        image2Url: "https://www.crunchycreamysweet.com/wp-content/uploads/2019/04/homemade-fish-sticks-3A-500x500.jpg",
-        image3Url: "https://www.recipetineats.com/wp-content/uploads/2020/01/Fish-Fingers_5.jpg?w=500&h=375&crop=1",
+      image2Url:
+        "https://www.crunchycreamysweet.com/wp-content/uploads/2019/04/homemade-fish-sticks-3A-500x500.jpg",
+      image3Url:
+        "https://www.recipetineats.com/wp-content/uploads/2020/01/Fish-Fingers_5.jpg?w=500&h=375&crop=1",
       tags: ["seafood"],
       ingredients: [
         { name: "Frozen calamari tubes", measurement: "1lb" },
@@ -2221,8 +2354,10 @@ async function seed() {
         "1. Thaw the shrimp. Then pat the shrimp dry with a clean towel or paper towel.\n2. Place the shrimp in a bowl and drizzle with olive oil to coat. Sprinkle with seasonings. Mix with your hands to combine.\n3. Preheat a grill to medium-high heat 375 to 450 degrees. Place the shrimp directly on the grates and grill for 1 to 2 minutes per side until bright pink and cooked through.\n4. Heat 2 tablespoons butter or olive oil in a large cast iron skillet or stainless steel skillet over high heat. Add the shrimp in 2 batches, making sure they are in a single layer. Cook 2 minutes on one side until lightly charred, then turn with tongs and cook another 20 seconds until opaque. For the second batch, add a bit of olive oil if necessary to coat the bottom of the pan.\n5. Squeeze with fresh lemon juice from several wedges of the lemon, to taste. Serve immediately.",
       imageUrl:
         "https://saltandbaker.com/wp-content/uploads/2022/02/blackened-shrimp-square.jpg",
-        image2Url: "https://www.jocooks.com/wp-content/uploads/2019/01/blackened-shrimp-1-500x500.jpg",
-        image3Url: "https://keviniscooking.com/wp-content/uploads/2020/12/Blackened-Shrimp-square.jpg",
+      image2Url:
+        "https://www.jocooks.com/wp-content/uploads/2019/01/blackened-shrimp-1-500x500.jpg",
+      image3Url:
+        "https://keviniscooking.com/wp-content/uploads/2020/12/Blackened-Shrimp-square.jpg",
       tags: ["seafood"],
       ingredients: [
         { name: "Smoked paprika", measurement: "28g" },
@@ -2247,8 +2382,10 @@ async function seed() {
         "1. In a small bowl, combine the smoked paprika, garlic powder, onion powder, celery seed, and kosher salt. Pat the cod dry and sprinkle all sides with the seasoning.\n2. Heat a large skillet over medium high heat and add the butter and olive oil. When butter is melted, add the cod and cook for 2 minutes.\n3. Flip the cod and pour the lemon juice over the fish. Cook an additional 1 to 2 minutes until the cod is tender and starts to flake when you prick it with a fork. Remove from the heat and sprinkle with the parsley. Serve immediately, drizzled with the juices from the pan.",
       imageUrl:
         "https://cookingwithmammac.com/wp-content/uploads/2023/05/1200-Pan-Seared-Cod-Loin-Photo.jpg",
-        image2Url: "https://www.dontgobaconmyheart.co.uk/wp-content/uploads/2018/05/pan-fried-cod-5.jpg",
-        image3Url: "https://www.lemonblossoms.com/wp-content/uploads/2022/09/Pan-Seared-Cod-S3.jpg",
+      image2Url:
+        "https://www.dontgobaconmyheart.co.uk/wp-content/uploads/2018/05/pan-fried-cod-5.jpg",
+      image3Url:
+        "https://www.lemonblossoms.com/wp-content/uploads/2022/09/Pan-Seared-Cod-S3.jpg",
       tags: ["seafood"],
       ingredients: [
         { name: "Cod", measurement: "680g" },
@@ -2270,8 +2407,10 @@ async function seed() {
         "1. In a small bowl, combine the garlic powder, onion powder, celery seed, and kosher salt. Pat the swordfish dry and sprinkle all sides with the seasoning.\n2. Heat a large skillet over medium high heat and add the olive oil. Add the fillets and cook for 2 to 3 minutes per side, until browned and internal temperature reaches 145°F.\n3. Remove the swordfish steaks to a plate and reduce temperature to very low. Add the butter, garlic and capers cook until garlic is lightly browned, scraping the bottom of the pan while it cooks.\n4. Stir in lemon juice and drizzle over the fish. Serve immediately. Store leftovers up to 2 days refrigerated.",
       imageUrl:
         "https://365barrington.com/wp-content/uploads/2019/07/Heinens_swordfish_piccata_tableanddish-3575.jpg",
-        image2Url: "https://images.food52.com/wBr1UDdSZwMIXa5AYPBajbLG_do=/1200x1200/8ae6da8d-1c12-45ac-a53b-00144af47a08--food52_05-14-13-2489.jpg",
-        image3Url: "https://www.sippitysup.com/wp-content/uploads/2017/07/SwordfishWEB.jpg",
+      image2Url:
+        "https://images.food52.com/wBr1UDdSZwMIXa5AYPBajbLG_do=/1200x1200/8ae6da8d-1c12-45ac-a53b-00144af47a08--food52_05-14-13-2489.jpg",
+      image3Url:
+        "https://www.sippitysup.com/wp-content/uploads/2017/07/SwordfishWEB.jpg",
       tags: ["seafood"],
       ingredients: [
         { name: "Swordfish", measurement: "680g" },

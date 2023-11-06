@@ -47,6 +47,15 @@ export function StickyNavbar({ openDrawer }) {
         color="blue-gray"
         className="p-1 font-bold hover:text-orange-600"
       >
+        <Link to={"/map"} onClick={() => setOpenNav(false)}>
+          Map
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        color="blue-gray"
+        className="p-1 font-bold hover:text-orange-600"
+      >
         {!user.userId && (
           <Link to={"/login"} onClick={() => setOpenNav(false)}>
             Login/Register

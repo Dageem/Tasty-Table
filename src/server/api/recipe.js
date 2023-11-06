@@ -234,7 +234,7 @@ router.post('/', async (req,res,next)=>{
 router.get("/recent", async (req, res, next) => {
   try {
     const recentRecipes = await prisma.recipe.findMany({
-      take: 3,
+      take: 6,
       orderBy: {
         id: "desc",
       },
@@ -520,27 +520,24 @@ router.put('/:id', async (req, res, next) => {
         
         
         const finalPost = await prisma.Recipe.findFirst({
-            where: {
-                id: recipe.id
-            },
-            include:{
-                recipetags:{
-                    include:{
-                        tag:true
-                    }
-                }
-            }, 
-            include:{
-              Ingredient_recipe:{
-                include:{
-                  recipe: true
-                }
+          where: {
+              id: recipe.id
+          },
+          include: {
+              recipetags: {
+                  include: {
+                      tag: true
+                  }
+              },
+              Ingredient_recipe: {
+                  include: {
+                      ingredient: true
+                  }
               }
-            }
-
-        })
-
-        res.send(finalPost)
+          }
+      })
+      
+      res.send(finalPost);
     } catch (err) {
         next(err)
     }

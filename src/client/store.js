@@ -3,9 +3,6 @@ import { api } from "./reducers/api";
 import authReducer from './reducers/auth';
 import commentsReducer from "./reducers/commentsSlice"
 import { searchReducer, dataReducer } from "./reducers/api";
-import savedRecipeReducer from "./reducers/SavedRecipeSlice";
-
-
 
 
 const store = configureStore({
@@ -14,7 +11,6 @@ const store = configureStore({
         auth: authReducer,
         search: searchReducer,
         comments: commentsReducer,
-        saveRecipe: savedRecipeReducer,
         data: dataReducer,
    
     },

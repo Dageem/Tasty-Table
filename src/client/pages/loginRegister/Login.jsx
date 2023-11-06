@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRegisterMutation, useLoginMutation } from "../../reducers/auth";
 import { useNavigate } from "react-router-dom";
 
+
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +24,7 @@ const LoginPage = () => {
       navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
-      setErrorMessage("Login failed!");
+      alert("Login failed!");
     }
 
     setTimeout(() => {

@@ -73,6 +73,9 @@ export const api = createApi({
           body,
         };
       },
+            invalidatesTags: (result, error, arg) => [
+                { type: 'Recipe', id: arg.id },
+              ],
     }),
     getRecipeById: builder.query({
       query: (id) => ({
@@ -116,6 +119,11 @@ export const api = createApi({
       query: () => ({
         url: "api/tags/recipetags",
       }),
+    }),
+    getPopTags: builder.query({
+      query: () => ({
+          url: "api/tags/popular",
+      })
     }),
     getPosts: builder.query({
       query: () => ({
@@ -192,6 +200,8 @@ const dataSlice = createSlice({
       }
     );
 
+    
+
     //  Recipe
     builder.addMatcher(
       api.endpoints.getRecipeById.matchFulfilled,
@@ -202,6 +212,16 @@ const dataSlice = createSlice({
         };
       }
     );
+
+    builder.addMatcher(
+        api.endpoints.getRecipesByUserId.matchFulfilled,
+        (state, { payload }) => {
+          return {
+            ...state,
+            recipes: payload,
+          };
+        }
+      );
 
     builder.addMatcher(
       api.endpoints.getRecipes.matchFulfilled,
@@ -231,40 +251,31 @@ const dataSlice = createSlice({
       }
     );
 
-    builder.addMatcher(
-      api.endpoints.editRecipe.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          recipes: state.recipes.map((i) =>
-            i.id === payload.id ? { ...i, ...payload } : i
-          ),
-        };
-      }
-    );
 
-    // Community Posts
-    builder.addMatcher(
-      api.endpoints.getPostByUserId.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          post: payload,
-        };
-      }
-    );
+        builder.addMatcher(api.endpoints.editRecipe.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                recipe: payload,
+                recipes: state.recipes.map(i=>i.id===payload.id?{...i, ...payload}:i)
+            }
+        })  
+        
 
-    builder.addMatcher(
-      api.endpoints.getPosts.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          posts: state.posts.map((i) =>
-            i.id === payload.id ? { ...i, ...payload } : i
-          ),
-        };
-      }
-    );
+        // Community Posts 
+        builder.addMatcher(api.endpoints.getPostByUserId.matchFulfilled, (state, {payload})=>{
+            return{
+                ...state,
+                posts: payload
+
+            }
+        })
+       
+        builder.addMatcher(api.endpoints.getPosts.matchFulfilled, (state, {payload})=>{
+            return {
+                ...state,
+                posts: state.posts.map(i=>i.id===payload.id?{...i, ...payload}:i)
+            }
+        })
 
     builder.addMatcher(
       api.endpoints.updatePostById.matchFulfilled,
@@ -397,5 +408,6 @@ export const {
   useAddCommentMutation,
   useSaveRecipeMutation,
   useGetSavedRecipesQuery,
+  useGetPopTagsQuery, 
 } = api;
 
