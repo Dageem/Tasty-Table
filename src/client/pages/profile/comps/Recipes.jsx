@@ -1,7 +1,7 @@
-
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-function RecipesRender({ recipes, onDelete }) {
+function Recipes({ recipes, onDelete }) {
     return (
         <div className="recipes-container flex flex-wrap justify-end mt-10">
             {recipes.map((recipe) => (
@@ -50,4 +50,4 @@ function RecipesRender({ recipes, onDelete }) {
     );
 }
 
-export default RecipesRender;
+export default Recipes;
