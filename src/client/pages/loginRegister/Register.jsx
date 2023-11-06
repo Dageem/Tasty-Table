@@ -21,7 +21,7 @@ const RegisterPage = () => {
       }, 2000);
     } catch (error) {
       console.error("Register failed:", error);
-      setErrorMessage("Registration failed!");
+      alert("Registration failed!");
     }
     setTimeout(() => {
       setUsername("");

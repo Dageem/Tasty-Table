@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useGetRecipeByIdQuery, useAddCommentMutation, useDeleteCommentMutation } from '../../reducers/api';
 import SingleHead from './comps/SingleHead';
 import RecipeDetails from './comps/RecipeDetails';
@@ -18,33 +18,37 @@ export default function SingleRecipe() {
   const [deleteCommentapi] = useDeleteCommentMutation();
   const [loading, setLoading] = useState(false);
   const [load, setLoad] = useState(true);
- 
+  const nav = useNavigate();
+  
   const handleAddComment = async () => {
-    if (me) {
-      try {
-        setLoading(true);
-        const newCommentData = await addcommentapi({ recipeId: id, message, userId: me.userId });
-  
-        // Assuming newCommentData looks like: { id: 123, message: '...', createdAt: '...', userId: 1 }
-        const newComment = {
-          recipeId: id,
-          message,
-          userId: me.userId,
-          user: {
+    if (me.userId) {
+      if (message.trim() !== '') { // Check if message is not empty after trimming whitespace
+        try {
+          setLoading(true);
+          const newCommentData = await addcommentapi({ recipeId: id, message, userId: me.userId });
+    
+          const newComment = {
+            recipeId: id,
+            message,
             userId: me.userId,
-            username: me.username, // Assuming you have 'username' in your auth state
-          },
-        };
-  
-        dispatch(addComment(newComment));
-        setMessage('');
-        setLoading(false);
-      } catch (error) {
-        console.error('Error adding comment:', error);
-        setLoading(false);
+            user: {
+              userId: me.userId,
+              username: me.username,
+            },
+          };
+    
+          dispatch(addComment(newComment));
+          setMessage('');
+          setLoading(false);
+        } catch (error) {
+          console.error('Error adding comment:', error);
+          setLoading(false);
+        }
+      } else {
+        alert('Please enter a message before submitting.'); // Display an alert if message is empty
       }
     } else {
-      navigate('/login');
+      nav('/login');
     }
   };
 
@@ -70,7 +74,7 @@ export default function SingleRecipe() {
   }, [recipe, isLoading, dispatch]);
 
   if (load) return null;
-
+console.log(comments)
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 console.log(recipe.Comment)
@@ -85,9 +89,11 @@ console.log(recipe.Comment)
     <li key={comment.id} className="comment">
       <p>{comment.message}</p>
       <p>User: {comment.user.username}</p>
+      {me.userId && comment.user.id === me.userId && (
         <button onClick={() => handleDeleteComment(comment.id, comment.user.userId)}>
           Delete
         </button>
+      )}
     </li>
   ))}
 </ul>

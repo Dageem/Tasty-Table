@@ -24,7 +24,7 @@ const LoginPage = () => {
       navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
-      setErrorMessage("Login failed!");
+      alert("Login failed!");
     }
 
     setTimeout(() => {
