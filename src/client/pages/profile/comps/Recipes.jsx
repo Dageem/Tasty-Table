@@ -26,7 +26,7 @@ function RecipesRender({ recipes, onDelete }) {
           {/* Details Overlay */}
           <div className="absolute inset-0 flex flex-col justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <p
-              className="text-sm text-center text-black"
+              className="hidden md:block text-sm text-center text-black"
               style={{ textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)" }}
             >
               {recipe.details.split(" ").slice(0, 15).join(" ") +
