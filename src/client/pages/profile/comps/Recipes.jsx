@@ -55,4 +55,4 @@ function RecipesRender({ recipes, onDelete }) {
   );
 }
 
-export default Recipes;
+export default RecipesRender;
