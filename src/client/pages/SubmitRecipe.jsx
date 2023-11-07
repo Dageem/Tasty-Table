@@ -27,20 +27,29 @@ const RecipeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-
+    const emptyTagCount = tags.filter(tag => tag.name.trim() === "").length;
+    if (emptyTagCount > 1) {
+      alert('Please fill out empty tag fields, otherwise remove if you have no tags to add!');
+    }
+    if (!name.trim() || !details.trim() || !desc.trim() || !instructions.trim() || !imageUrl.trim()) {
+      alert('Please fill in all required fields: recipe name, details, description, at least one image, and your recipe ingredients. Thank you');
+      return; 
+    }
+  
+  
     const recipeData = {
       name,
       details,
       desc,
       instructions,
-      imageUrl,
+      imageUrl, 
       image2Url,
       image3Url,
-      userId: me.userId,  
-      tags,
-      ingredients,
+      userId: me.userId,
+      tags: tags.filter(tag => tag.name.trim()), 
+      ingredients: ingredients.filter(ingredient => ingredient.name.trim() && ingredient.measurement.trim()), 
     };
-
+  
     try {
       const response = await createRecipe(recipeData);
       console.log(response);
@@ -49,7 +58,7 @@ const RecipeForm = () => {
       console.error("Error creating recipe:", error);
     }
   };
-
+  
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       {isSubmitted ? (
