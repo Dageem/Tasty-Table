@@ -50,10 +50,6 @@ function UserProfile() {
     }
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Daniel3
   // Loading states
   if (isRecipesLoading || isPostsLoading) {
     return <div>Loading...</div>;
