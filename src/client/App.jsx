@@ -1,5 +1,4 @@
 import { StickyNavbar } from "./pages/nav/comps/Nav";
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import DisplayCategory from "./pages/displayCategory/DisplayCategory";
 import SubmitRecipe from "./pages/SubmitRecipe";

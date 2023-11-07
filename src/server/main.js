@@ -1,11 +1,11 @@
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 const express = require("express");
 const app = express();
 const path = require("path");
 const PORT =8081;
 const ViteExpress = require("vite-express");
 
-dotenv.config();
+// dotenv.config();
 const cors = require('cors');
 app.use(cors());
 
