@@ -4,24 +4,6 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 router.get('/recipetags', async (req, res, next) => {
-<<<<<<< Updated upstream
-    // try {
-    //   const recipetags = await prisma.recipetags.findMany({
-    //     include: {
-    //       tag: true,
-    //     },
-    //   });
-    //   res.json(recipetags);
-    // } catch (error) {
-    //   console.error('Error fetching recipetags:', error);
-    //   res.status(500).json({ error: 'Internal server error' });
-    // }
-    try{
-        const allTags = await prisma.Tag.findMany();
-        res.send(allTags)
-    }catch(err){
-        next(err)
-=======
   try {
       const recipetags = await prisma.recipetags.findMany({
           include: {
@@ -55,7 +37,6 @@ router.get('/recipetags', async (req, res, next) => {
     } catch (error) {
       console.error('Error fetching popular tags:', error);
       res.status(500).json({ error: 'Internal server error' });
->>>>>>> Stashed changes
     }
   })
 
