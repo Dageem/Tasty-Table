@@ -60,9 +60,6 @@ function UserProfile() {
     }
   };
 
-  
-  
-  
   // Loading states
   if (isRecipesLoading || isPostsLoading) {
     return <div>Loading...</div>;
