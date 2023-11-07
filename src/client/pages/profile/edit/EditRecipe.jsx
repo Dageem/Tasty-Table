@@ -1,10 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-import { useGetPopTagsQuery, useGetRecipeByIdQuery, useGetTagsQuery } from "../../../reducers/api";
-=======
 import { useGetRecipeByIdQuery, useGetTagsQuery } from "../../../reducers/api";
->>>>>>> Daniel3
 import { useEditRecipeMutation } from "../../../reducers/api";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -27,25 +23,14 @@ function EditRecipe() {
   const navigate = useNavigate();
   
   // API and Edit 
-<<<<<<< HEAD
-  // const { data, isLoading, error} = useGetTagsQuery();
-  const { data: popData, isLoading: popLoad, error: popError} = useGetPopTagsQuery();
-  const { isLoading: isLoadingRecipe} = useGetRecipeByIdQuery(id);
-=======
   const { data, isLoading, error} = useGetTagsQuery();
   const { isLoading: isLoadingTwo} = useGetRecipeByIdQuery(id)
->>>>>>> Daniel3
   const recipe = useSelector((state) => state.data.recipe);
   const [editRecipe, { isLoading: isEditing, error: editError }] = useEditRecipeMutation();
   const [load, setLoad] = useState(true)
   useEffect(() => {
-<<<<<<< HEAD
-      setLoad(isLoadingRecipe)
-  }, [isLoadingRecipe])
-=======
       setLoad(isLoadingTwo)
   }, [isLoadingTwo])
->>>>>>> Daniel3
 
 
   const [formData, setFormData] = useState({
@@ -195,17 +180,10 @@ function EditRecipe() {
         {/* {isBoot ? ( <div>isBooting...</div> ) : ( */}
           <>
           {isEditing && <div>Updating recipe...</div>}
-<<<<<<< HEAD
-          {popLoad && <div>Loading tags...</div>}
-          {popError && <div>Error loading tags!</div>}
-          {!recipe && <div>Loading recipe...</div>}
-        {!popLoad && !popError && recipe && !isEditing && (
-=======
           {isLoading && <div>Loading tags...</div>}
           {error && <div>Error loading tags!</div>}
           {!recipe && <div>Loading recipe...</div>}
         {!isLoading && !error && recipe && !isEditing && (
->>>>>>> Daniel3
           <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
             <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50" onClick={() => navigate("/profile")}>
               Go Back
@@ -281,21 +259,13 @@ function EditRecipe() {
                 </div>
     
             {/* Section for Popular Tags */}
-<<<<<<< HEAD
-            {popData && !popLoad &&( 
-=======
             {data && (
->>>>>>> Daniel3
               <div className="w-full px-3 mb-6 md:mb-0">
                 <label className="block text-gray-700 text-sm font-bold mb-2">
                   Popular Tags (click to add or remove):
                 </label>
                 <div className="flex flex-wrap gap-2">
-<<<<<<< HEAD
-                  {popData.map((apiTag) => {
-=======
                   {data.map((apiTag) => {
->>>>>>> Daniel3
                     const isSelected = formData.tags.some(tag => tag.name === apiTag.name);
                     return (
                       <button
@@ -337,4 +307,3 @@ function EditRecipe() {
     }
       
       export default EditRecipe;
-  
