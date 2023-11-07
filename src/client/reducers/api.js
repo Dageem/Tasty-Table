@@ -106,7 +106,12 @@ export const api = createApi({
         }),
         getTags: builder.query({
             query:()=>({
-                url:'api/Tags/recipetags'
+                url:'api/tags/recipetags'
+            })
+        }),
+        getPopTags: builder.query({
+            query:()=>({
+                url:'api/tags/popular'
             })
         }),
         getPosts: builder.query({
@@ -322,5 +327,6 @@ export const {
     useGetTagsQuery,
     useGetThreeRecentRecipesQuery,
     useEditRecipeMutation,
-    useGetSearchRecipesQuery
+    useGetSearchRecipesQuery,
+    useGetPopTagsQuery
 }= api

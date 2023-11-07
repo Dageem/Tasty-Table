@@ -181,10 +181,11 @@ function EditRecipe() {
         {/* {isBoot ? ( <div>isBooting...</div> ) : ( */}
           <>
           {isEditing && <div>Updating recipe...</div>}
+          {isLoading && <div> Loading Your Tags </div>}
           {popLoad && <div>Loading tags...</div>}
           {popError && <div>Error loading tags!</div>}
           {!recipe && <div>Loading recipe...</div>}
-        {!popLoad && !popError && recipe && !isEditing && (
+        {!popLoad && !popError && recipe && !isEditing && !isLoading &&(
           <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
             <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50" onClick={() => navigate("/profile")}>
               Go Back
