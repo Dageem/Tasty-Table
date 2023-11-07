@@ -51,9 +51,9 @@ function UserProfile() {
   };
 
   // Loading states
-  if (isRecipesLoading || isPostsLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isRecipesLoading || isPostsLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div className="w-[95%] min-h-[100vh] lg:w-[70%]  m-auto">

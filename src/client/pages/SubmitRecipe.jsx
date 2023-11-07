@@ -28,10 +28,12 @@ const RecipeForm = () => {
     e.preventDefault();
   
     const emptyTagCount = tags.filter(tag => tag.name.trim() === "").length;
+    const emptyIngredientCount = ingredients.filter(ingredient => !ingredient.name.trim() || !ingredient.measurement.trim()).length;
+    
     if (emptyTagCount > 1) {
       alert('Please fill out empty tag fields, otherwise remove if you have no tags to add!');
     }
-    if (!name.trim() || !details.trim() || !desc.trim() || !instructions.trim() || !imageUrl.trim()) {
+    if (!name.trim() || !details.trim() || !desc.trim() || !instructions.trim() || !imageUrl.trim() || emptyIngredientCount > 0) {
       alert('Please fill in all required fields: recipe name, details, description, at least one image, and your recipe ingredients. Thank you');
       return; 
     }
