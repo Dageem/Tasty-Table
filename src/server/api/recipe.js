@@ -70,7 +70,7 @@ router.post('/', async (req,res,next)=>{
     // console.log(req.body)
     // console.log("Request headers:", req.headers);
 
-    let tags = req.body.tags 
+    let tags = req.body.tags || []
     const TagIds = [];
 
     for (const tagName of tags) {
@@ -158,9 +158,12 @@ router.post('/', async (req,res,next)=>{
 
     
 
-        const relations = await prisma.Recipetags.createMany({
+        if (convertedItems.length > 0) {
+          const relations = await prisma.Recipetags.createMany({
             data: convertedItems
-        })
+          });
+        }
+    
 
         const relations2 = await prisma.ingredient_recipe.createMany({
           data: convertedItems2
