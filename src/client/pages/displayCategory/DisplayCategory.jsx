@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGetRecipesByNameQuery } from "../../reducers/api";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import Pagination from "./Pagiantion";
 
 function DisplayCategory() {
   const { category } = useParams();
@@ -11,8 +12,20 @@ function DisplayCategory() {
     isLoading,
   } = useGetRecipesByNameQuery(category);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const recipesPerPage = 16;
+
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error Loading Categories! {error.message}</p>;
+
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="w-[95%] ml-[2.5%] min-h-screen lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
@@ -21,9 +34,14 @@ function DisplayCategory() {
           The best <strong className="text-purple-900">{category}</strong>{" "}
           recipes
         </h1>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(recipes.length / recipesPerPage)}
+          onPageChange={handlePageChange}
+        />
       </div>
       <div className="flex flex-wrap justify-center">
-        {recipes.map((recipe) => (
+        {currentRecipes.map((recipe) => (
           <div
             key={recipe.id}
             className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-4 hover:opacity-70 cursor-pointer"
@@ -46,6 +64,11 @@ function DisplayCategory() {
           </div>
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(recipes.length / recipesPerPage)}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 }
