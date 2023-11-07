@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useGetRecipesByUserIdQuery } from "../../../reducers/api";
 
 function RecipesRender({ recipes, onDelete }) {
   return (
@@ -35,7 +34,7 @@ function RecipesRender({ recipes, onDelete }) {
           </div>
 
           {/* Edit and Delete buttons with fixed width */}
-          <div className="flex flex-col space-y-1">
+          <div className="absolute right-10 flex flex-col space-y-1">
             <Link to={`/editrecipe/${recipe.id}`}>
               <button className="w-full bg-blue-900 text-white p-2 rounded">
                 Edit 
