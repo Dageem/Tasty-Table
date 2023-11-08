@@ -16,29 +16,19 @@ import "react-toastify/dist/ReactToastify.css";
 function EditRecipe() {
   // Redux
   const me = useSelector((state) => state.auth.credentials.user);
-  // const [isBoot, setIsBoot] = useState(false);
-  // const [isSubmitting, setIsSubmitting] = useState(false);
-  // const [hasSubmitted, setHasSubmitted] = useState(false);
-
+  
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  // API and Edit
-  const { data, isLoading, error } = useGetTagsQuery();
-  const {
-    data: popData,
-    isLoading: popLoad,
-    error: popError,
-  } = useGetPopTagsQuery();
-  const { isLoading: isLoadingRecipe } = useGetRecipeByIdQuery(id);
-  const recipe = useSelector((state) => state.data.recipe);
-  const [editRecipe, { isLoading: isEditing, error: editError }] =
-    useEditRecipeMutation();
-  const [load, setLoad] = useState(true);
-  useEffect(() => {
-    setLoad(isLoadingRecipe);
-  }, [isLoadingRecipe]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+  // API and Edit 
+  const { data, isLoading, error} = useGetTagsQuery();
+  const { data: popData, isLoading: popLoad, error: popError} = useGetPopTagsQuery();
+  const { data: recipeData, isLoading: isLoadingRecipe, isError} = useGetRecipeByIdQuery(id);
+  const [editRecipe, { isLoading: isEditing, error: editError }] = useEditRecipeMutation();
+  const [hasUpdated, setHasUpdated] = useState(false);
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -52,183 +42,138 @@ function EditRecipe() {
     ingredients: [{ name: "", measurement: "" }],
   });
 
-  useEffect(() => {
-    // if (id && !hasSubmitted) {
-    if (id) {
-      // setIsBoot(true);
-      dispatch(api.endpoints.getRecipeById.initiate(id))
-        .unwrap()
-        .finally(() => {
-          // setIsBoot(false); // End loading
-        });
-    }
-    // }, [id, dispatch, hasSubmitted]);
-  }, [id, dispatch]);
-
   // Update local state
   useEffect(() => {
-    // if (recipe && !hasSubmitted) {
-    if (recipe) {
-      const {
-        name,
-        details,
-        desc,
-        instructions,
-        imageUrl,
-        image2Url,
-        image3Url,
-        recipetags,
-        Ingredient_recipe,
-      } = recipe;
-
-      // console.log('Ingredient_recipe:', Ingredient_recipe);
-      // console.log('Tags: ', recipetags? recipetags.map(tagItem => tagItem.tag.name) : [{ name: "" }])
-
+    if (recipeData && !isLoadingRecipe && !isError) {
       setFormData({
-        name: name || "",
-        details: details || "",
-        desc: desc || "",
-        instructions: instructions || "",
-        imageUrl: imageUrl || "",
-        image2Url: image2Url || "",
-        image3Url: image3Url || "",
-        tags: recipetags
-          ? recipetags.map((tagItem) => ({ name: tagItem.tag.name }))
-          : [],
-        ingredients: Ingredient_recipe
-          ? Ingredient_recipe.map((ingredientItem) => ({
-              name: ingredientItem?.ingredient?.name || "",
-              measurement: ingredientItem.measurement || "",
-            }))
-          : [{ name: "", measurement: "" }],
+        name: recipeData.name || "",
+        details: recipeData.details || "",
+        desc: recipeData.desc || "",
+        instructions: recipeData.instructions || "",
+        imageUrl: recipeData.imageUrl || "",
+        image2Url: recipeData.image2Url || "",
+        image3Url: recipeData.image3Url || "",
+        tags: recipeData.recipetags?.map(tag => ({ name: tag.tag.name })) || [],
+        ingredients: recipeData.Ingredient_recipe?.map(ingredient => ({
+          name: ingredient?.ingredient?.name || "",
+          measurement: ingredient.measurement || ""
+        })) || [{ name: "", measurement: "" }],
       });
     }
-    // }, [recipe, hasSubmitted]);
-  }, [recipe]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    console.log("Update Payload before submission:", formData);
-
-    // Start the update process
-    editRecipe({ ...formData, id: id })
-      .unwrap()
-      .then((updatedRecipe) => {
-        console.log("Edit Recipe Response:", updatedRecipe);
-
-        // Invalidate the cache
-        api.util.invalidateTags([{ type: "Recipe", id: id }]);
-
-        // Refetch the recipe data
-        return dispatch(api.endpoints.getRecipeById.initiate(id)).unwrap();
-      })
-      .then((freshData) => {
-        console.log("Fresh Data after update:", freshData);
-
-        // Update local state with the new data
-        const updatedTags =
-          freshData.recipetags?.map((tagItem) => ({
-            name: tagItem.tag.name,
-          })) || [];
-        console.log("Setting form data with tags:", updatedTags);
-
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          tags: updatedTags,
-        }));
-
-        navigate("/profile");
-      })
-      .catch((err) => {
-        console.error("Failed to update recipe", err);
-      });
-  };
-
+  }, [recipeData, isLoadingRecipe, isError]);
+  
   useEffect(() => {
-    console.log("Form data changed:", formData);
-  }, [formData]);
+    if (hasUpdated) {
+      navigate('/profile');
+    }
+  }, [hasUpdated, navigate]);
+  
 
-  const toggleTag = (apiTag) => {
-    const tagExists = formData.tags.some((tag) => tag.name === apiTag.name);
-    const updatedTags = tagExists
-      ? formData.tags.filter((tag) => tag.name !== apiTag.name)
-      : [...formData.tags, { name: apiTag.name }];
+    
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({
+          ...prevData,
+          [name]: value
+        }));
+        
+      };
+  
+    
+    
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+      
+        console.log('Update Payload before submission:', formData);
+        
+        try {
+    
+          const updatedRecipe = await editRecipe({ ...formData, id: id }).unwrap(); 
+          console.log('Edit Recipe Response:', updatedRecipe);
+          
+          // Invalidate the cache
+          api.util.invalidateTags([{ type: 'Recipe', id: id }]);
+          
+          // Set hasUpdated to trigger the navigation
+          setHasUpdated(true);
+          
+        } catch (err) {
+          console.error('Failed to update recipe', err);
+          setHasUpdated(false);
+        }
+      };
+      
+      
+      
 
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      tags: updatedTags,
-    }));
-  };
+      useEffect(() => {
+        console.log('Form data changed:', formData);
+      }, [formData]);
+      
+      
+      
 
-  const removeTag = (tagName) => {
-    const updatedTags = formData.tags.filter((tag) => tag.name !== tagName);
 
-    setFormData({
-      ...formData,
-      tags: updatedTags,
-    });
-  };
-
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-200 p-5">
-      {/* {isBoot ? ( <div>isBooting...</div> ) : ( */}
-      <>
-        {isEditing && <div>Updating recipe...</div>}
-        {isLoading && <div> Loading Your Tags </div>}
-        {isLoadingRecipe && <div>Loading recipe...</div>}
-        {popLoad && <div>Loading tags...</div>}
-        {popError && <div>Error loading tags!</div>}
-        {!recipe && <div>Loading recipe...</div>}
-        {!popLoad &&
-          !popError &&
-          recipe &&
-          !isEditing &&
-          !isLoading &&
-          !isLoadingRecipe && (
-            <form
-              className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto"
-              onSubmit={handleSubmit}
-            >
-              <button
-                className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50"
-                onClick={() => navigate("/profile")}
-              >
-                Go Back
-              </button>
-              <div classname="p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50">
-                Name
-              </div>
-              <input
-                name="name"
-                className="border-2 w-full rounded mb-4"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Name"
-              />
-              Details
-              <textarea
-                name="details"
-                className="border-2 h-20 w-full rounded mb-4"
-                value={formData.details}
-                onChange={handleChange}
-                placeholder="Details"
-              ></textarea>
-              Description
-              <textarea
-                name="description"
-                className="border-2 h20 w-full rounded mb-4"
-                value={formData.desc}
-                onChange={handleChange}
-                placeholder="description"
+      const toggleTag = (apiTag) => {
+        const tagExists = formData.tags.some(tag => tag.name === apiTag.name);
+        const updatedTags = tagExists
+          ? formData.tags.filter(tag => tag.name !== apiTag.name)
+          : [...formData.tags, { name: apiTag.name }];
+        
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          tags: updatedTags
+        }));
+      };
+      
+      
+      const removeTag = (tagName) => {
+        const updatedTags = formData.tags.filter(tag => tag.name !== tagName);
+        
+        setFormData({
+          ...formData,
+          tags: updatedTags
+        });
+      };
+     
+      const isLoadingAnyData = isLoading || popLoad || isLoadingRecipe || isEditing;
+      const hasError = error || popError || isError || editError;
+      return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-200 p-5">
+        <>
+        {isLoadingAnyData && <div>Loading...</div>}
+      {hasError && <div>Error: {hasError.message}</div>}
+      {!isLoadingAnyData && !hasError && recipeData && (
+          <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
+            <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50" onClick={() => navigate("/profile")}>
+              Go Back
+            </button>
+            {/* <div className="p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50">
+            Name
+            </div> */}
+            <input 
+              name="name"
+              className="border-2 w-full rounded mb-4" 
+              value={formData.name} 
+              onChange={handleChange} 
+              placeholder="Name" 
+            />
+            Details
+            <textarea 
+              name="details"
+              className="border-2 h-20 w-full rounded mb-4" 
+              value={formData.details} 
+              onChange={handleChange} 
+              placeholder="Details"
+            ></textarea>
+            Description
+              <textarea 
+              name="description"
+              className="border-2 h20 w-full rounded mb-4"
+              value={formData.desc}
+              onChange={handleChange}
+              placeholder="description"
               />
               <input
                 name="imageUrl"

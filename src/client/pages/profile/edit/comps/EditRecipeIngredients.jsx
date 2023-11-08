@@ -16,7 +16,7 @@ export default function EditRecipeIngredients({ ingredients, setIngredients }) {
       const updatedIngredients = ingredients.filter((_, i) => i !== index);
       setIngredients(updatedIngredients);
     };
-    // const [isAdding, setIsAdding] = useState(false);
+  
 
     const handleAddIngredient = () => {
       console.log('Before adding:', ingredients);

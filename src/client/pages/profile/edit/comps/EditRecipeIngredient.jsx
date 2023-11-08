@@ -24,7 +24,7 @@ export default function EditRecipeIngredient({ ingredient, handleUpdate, handleD
           placeholder="Measurement"
           className="border-2 rounded px-2"
         />
-        <button onClick={handleDelete} className="bg-red-500 text-white px-2 rounded">
+        <button type="button" onClick={handleDelete} className="bg-red-500 text-white px-2 rounded">
         Delete
       </button>
       </div>
