@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 function RecipesRender({ recipes, onDelete }) {
+    if (recipes.length === 0) {
+        return <p className="text-center mt-10 text-4xl"> You Have No Recipe's Currently. Please add some recipes!</p>;
+      }
   return (
     <div className="flex flex-col justify-center items-center mt-10">
       {recipes.map((recipe) => (
