@@ -1,11 +1,11 @@
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 const express = require("express");
 const app = express();
 const path = require("path");
 const PORT =8081;
 const ViteExpress = require("vite-express");
 
-// dotenv.config();
+dotenv.config();
 const cors = require('cors');
 app.use(cors());
 
@@ -29,11 +29,10 @@ const server = app.listen(PORT, ()=>{
 app.use((err, req, res, next) => {
   console.error(err.stack);
 
-  // Log the error message and status code
+
   console.error(`Error Status Code: ${err.status || 500}`);
   console.error(`Error Message: ${err.message || "Internal server error."}`);
 
-  // Send an error response with the status code and error message
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 

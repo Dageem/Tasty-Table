@@ -10,6 +10,9 @@ module.exports = withMT({
   
   theme: {
     extend: {
+      fontSize: {
+        'giant': '10rem', // or any other size you prefer
+      },
       screens: {
 
       },

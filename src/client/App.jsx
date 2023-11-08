@@ -14,7 +14,6 @@ import Footer from "./pages/footer/Footer";
 import AllRecipes from "./pages/allRecipes/AllRecipes";
 import BasicMap from "./pages/map/map";
 import SearchResults from "./pages/SearchResults";
-
 import Visualize from "./pages/profile/comps/Visualize";
 import Account from "./pages/profile/comps/Account";
 import Saved from "./pages/profile/comps/Saved";

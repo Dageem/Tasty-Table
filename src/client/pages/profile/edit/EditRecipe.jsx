@@ -7,6 +7,9 @@ import { useDispatch } from "react-redux";
 import {useParams, useNavigate} from "react-router-dom";
 import EditRecipeIngredients from "./comps/EditRecipeIngredients"
 import { api } from "../../../reducers/api"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 
@@ -190,7 +193,9 @@ function EditRecipe() {
             <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50" onClick={() => navigate("/profile")}>
               Go Back
             </button>
-          
+            <div classname="p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50">
+            Name
+            </div>
             <input 
               name="name"
               className="border-2 w-full rounded mb-4" 
@@ -198,6 +203,7 @@ function EditRecipe() {
               onChange={handleChange} 
               placeholder="Name" 
             />
+            Details
             <textarea 
               name="details"
               className="border-2 h-20 w-full rounded mb-4" 
@@ -205,6 +211,7 @@ function EditRecipe() {
               onChange={handleChange} 
               placeholder="Details"
             ></textarea>
+            Description
               <textarea 
               name="description"
               className="border-2 h20 w-full rounded mb-4"

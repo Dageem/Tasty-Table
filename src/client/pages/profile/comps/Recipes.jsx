@@ -34,7 +34,7 @@ function RecipesRender({ recipes, onDelete }) {
           </div>
 
           {/* Edit and Delete buttons with fixed width */}
-          <div className="absolute right-10 flex flex-col space-y-1">
+          <div className=" w-1/6 absolute right-10 flex flex-col space-y-1">
             <Link to={`/editrecipe/${recipe.id}`}>
               <button className="w-full bg-blue-900 text-white p-2 rounded">
                 Edit 
