@@ -29,11 +29,10 @@ const server = app.listen(PORT, ()=>{
 app.use((err, req, res, next) => {
   console.error(err.stack);
 
-  // Log the error message and status code
+
   console.error(`Error Status Code: ${err.status || 500}`);
   console.error(`Error Message: ${err.message || "Internal server error."}`);
 
-  // Send an error response with the status code and error message
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 

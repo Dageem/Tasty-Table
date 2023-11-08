@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useCreateRecipeMutation } from "../reducers/api";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "./SubmitRecipe.css";
 
 const RecipeForm = () => {
   // console.log({userId})
@@ -27,37 +30,66 @@ const RecipeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-
+    const emptyTagCount = tags.filter(tag => tag.name.trim() === "").length;
+    const emptyIngredientCount = ingredients.filter(ingredient => !ingredient.name.trim() || !ingredient.measurement.trim()).length;
+    
+    if (emptyTagCount > 1) {
+      toast.warn('Please fill out empty tag fields, otherwise remove blank fields!');
+      return;
+    }
+    if (!name.trim() || !details.trim() || !desc.trim() || !instructions.trim() || !imageUrl.trim() || emptyIngredientCount > 0) {
+      toast.error('Please fill in all required fields: recipe name, details, description, at least one image, and your recipe ingredients. Thank you');
+      return;
+    }
+  
+  
     const recipeData = {
       name,
       details,
       desc,
       instructions,
-      imageUrl,
+      imageUrl, 
       image2Url,
       image3Url,
-      userId: me.userId,  
-      tags,
-      ingredients,
+      userId: me.userId,
+      tags: tags.filter(tag => tag.name.trim()), 
+      ingredients: ingredients.filter(ingredient => ingredient.name.trim() && ingredient.measurement.trim()), 
     };
-
+  
     try {
       const response = await createRecipe(recipeData);
       console.log(response);
       setIsSubmitted(true);
+      toast.success('Recipe submitted successfully!', {
+        autoClose:5000, // Toast will auto-close after 3 seconds
+      });
+      setTimeout(() => navigate("/profile"), 5000);
     } catch (error) {
       console.error("Error creating recipe:", error);
+      toast.error('Error creating recipe!');
     }
   };
-
+  
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="flex justify-center items-center min-h-screen bg-gray-100 py-3 space-x-4">
       {isSubmitted ? (
-    <div className="text-center">
-      <h1 className="text-2xl mb-4">Recipe submitted successfully!</h1>
+    <>
+    <button
+      type="button"
+      className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden text-lg font-medium text-indigo-600 transition-all bg-white border-2 border-indigo-600 rounded-full shadow-2xl group"
+      onClick={() => navigate("/profile")}
+    >
+      <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-indigo-600 rounded-full group-hover:w-56 group-hover:h-56"></span>
+      <span className="relative">Go Back</span>
+    </button>
+    <div className="text-center mt-8">
+      <h1 className="text-2xl mb-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 animate-text">
+        Recipe submitted successfully!
+      </h1>
     </div>
+    </>
     ) : (
-    <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
+    <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto py-3" onSubmit={handleSubmit}>
        <button className="mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-green-200" onClick={() => navigate("/profile")}>
         Go Back
     </button>
@@ -182,6 +214,7 @@ const RecipeForm = () => {
         </button>
         </form>
       )}
+         <ToastContainer />
     </div>
   );
 };

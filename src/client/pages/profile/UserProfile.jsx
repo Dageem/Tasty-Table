@@ -51,9 +51,9 @@ function UserProfile() {
   };
 
   // Loading states
-  if (isRecipesLoading || isPostsLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isRecipesLoading || isPostsLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div className="w-[95%] min-h-[100vh] lg:w-[70%]  m-auto">
@@ -65,14 +65,17 @@ function UserProfile() {
         </div>
         <div className="flex mr-10">
           <Link to="/recipesubmit">
-            <button className="bg-green-300 text-white p-3 rounded w-full max-w-md ml-[18%]">
-              Add a New Recipe !
+            <button className="bg-green-500 p-4 rounded w-full max-w-md ml-[18%] font-extrabold text-black">
+              Add a New Recipe!
             </button>
           </Link>
         </div>
       </div>
       <div>
-      <Sidebar />
+        <Sidebar />
+      </div>
+      <div className="w-full">
+        <RecipesRender recipes={recipes} onDelete={onDelete} />
       </div>
     </div>
   );

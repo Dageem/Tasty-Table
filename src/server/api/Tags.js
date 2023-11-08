@@ -27,7 +27,6 @@ router.get('/recipetags', async (req, res, next) => {
         GROUP BY t.name;
       `;
   
-      // Convert the count to a regular number in JavaScript
       const result = popularTags
         .filter((row) => row.count > 0)
         .map((row) => ({
