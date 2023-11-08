@@ -52,6 +52,20 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+router.put("/edit", require('./middleware'), async (req, res,next)=>{
+  try{
+      const user = await  prisma.user.update({
+          where: {id:req.user.id},
+          data: req.body
+      })
+//i removed admin: user.admin, from under this and it didnt break
+      res.send({userId:user.id, username: user.username, image: user.image!=="null"?user.image:null})
+
+  } catch(err){
+      next(err)
+  }
+});
+
 router.get("/me", async (req, res, next) => {
   if (!req.user) {
     return res.send({});
