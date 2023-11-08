@@ -2,15 +2,30 @@ import React, { useState } from "react";
 import { useGetRecipesQuery } from "../../reducers/api";
 import { Link } from "react-router-dom";
 import Pagination from "../displayCategory/Pagiantion";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function AllRecipes() {
-  const { data: recipes, error, isLoading } = useGetRecipesQuery();
+  const recipes = useSelector((state) => state.data.recipes);
   const initialPage = 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
   const recipesPerPage = 16;
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error Loading Categories! {error.message}</p>;
+  const {
+    isLoading: isRecipesLoading,
+    isError: isRecipesError,
+    refetch,
+  } = useGetRecipesQuery();
+
+  useEffect(() => {
+    if (isRecipesError) {
+      console.error("Error loading recipes:", isRecipesError);
+    }
+  }, [isRecipesError]);
+
+  if (isRecipesLoading) {
+    return <div>Loading...</div>;
+  }
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
@@ -28,10 +43,10 @@ function AllRecipes() {
           All Recipes
         </h1>
         <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(recipes.length / recipesPerPage)}
-        onPageChange={paginate}
-      />
+          currentPage={currentPage}
+          totalPages={Math.ceil(recipes.length / recipesPerPage)}
+          onPageChange={paginate}
+        />
       </div>
       <div className="flex flex-wrap justify-center">
         {currentRecipes.map((recipe) => (
