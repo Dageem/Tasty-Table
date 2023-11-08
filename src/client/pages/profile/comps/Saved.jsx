@@ -22,33 +22,40 @@ export default function Saved() {
         </h1>
       </div>
       <div className="flex flex-wrap justify-center">
-        {savedRecipes.map((savedRecipe) => (
-          <div
-            key={savedRecipe.recipe.id}
-            className="w-full sm:w-1/2 md:w-1/2 xl:w-1/3 2xl:w-1/4 sm:p-3 hover:opacity-70 cursor-pointer"
-          >
-            <Link to={`/recipe/${savedRecipe.recipe.id}`}>
-              <div>
-                <div className="flex items-center justify-center">
-                  <div
-                    className="w-full h-[280px] md:h-[300px] bg-cover bg-center"
-                    style={{ backgroundImage: `url(${savedRecipe.recipe.imageUrl})` }}
-                  ></div>
-                </div>
-                <div className="text-xl font-bold text-center">
-                  {savedRecipe.recipe.name}
-                </div>
-                <div className="text-blue-gray-900 text-xl text-center ">
-                  {savedRecipe.recipe.details}
-                </div>
-              </div>
-            </Link>
+        {savedRecipes.length === 0 ? (
+          <div className="text-center text-xl font-extrabold mt-6 text-red-900 w-full">
+            <p>You Have No Saved Recipes</p>
           </div>
-        ))}
+        ) : (
+          savedRecipes.map((savedRecipe) => (
+            <div
+              key={savedRecipe.recipe.id}
+              className="w-full sm:w-1/2 md:w-1/2 xl:w-1/3 2xl:w-1/4 sm:p-3 hover:opacity-70 cursor-pointer"
+            >
+              <Link to={`/recipe/${savedRecipe.recipe.id}`}>
+                <div>
+                  <div className="flex items-center justify-center">
+                    <div
+                      className="w-full h-[280px] md:h-[300px] bg-cover bg-center"
+                      style={{ backgroundImage: `url(${savedRecipe.recipe.imageUrl})` }}
+                    ></div>
+                  </div>
+                  <div className="text-xl font-bold text-center">
+                    {savedRecipe.recipe.name}
+                  </div>
+                  <div className="text-blue-gray-900 text-xl text-center ">
+                    {savedRecipe.recipe.details}
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
 }
+
 
 
 
