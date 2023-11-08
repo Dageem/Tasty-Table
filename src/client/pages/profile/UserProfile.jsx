@@ -8,6 +8,7 @@ import {
 } from "../../reducers/api";
 import Sidebar from "./comps/Sidebar";
 import RecipesRender from "./comps/Recipes";
+import Avatar from "./comps/Avatar";
 
 function UserProfile() {
   const user = useSelector((state) => state.auth.credentials.user) || "";
@@ -49,6 +50,7 @@ function UserProfile() {
       {/* User Profile Header */}
       <div className="flex mb-6 mt-5 ml-5 justify-between ">
         <div className="flex flex-col">
+          <Avatar mod={true}/>
           <h1 className="text-xl font-extrabold">{user.username}'s Profile</h1>
           <h2>Number of recipes: {recipes?.length || 0}</h2>
         </div>

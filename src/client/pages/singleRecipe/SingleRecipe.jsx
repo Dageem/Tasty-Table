@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  useGetRecipeByIdQuery,
-  useAddCommentMutation,
-  useDeleteCommentMutation,
-} from "../../reducers/api";
-import SingleHead from "./comps/SingleHead";
-import RecipeDetails from "./comps/RecipeDetails";
-import "./Comment.css";
-import {
-  setComments,
-  addComment,
-  deleteComment,
-} from "../../reducers/commentsSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useGetRecipeByIdQuery, useAddCommentMutation, useDeleteCommentMutation } from '../../reducers/api';
+import SingleHead from './comps/SingleHead';
+import RecipeDetails from './comps/RecipeDetails';
+import './Comment.css';
+import { setComments, addComment, deleteComment } from '../../reducers/commentsSlice';
 
 export default function SingleRecipe() {
   const { id } = useParams();
@@ -98,13 +90,8 @@ export default function SingleRecipe() {
   }, [recipe, isLoading, dispatch]);
 
   if (load) return null;
-  if (isLoading) {
-    return (
-      <div className=" flex justify-center items-center">
-        <div className="text-blue-900 text-xl font-bold">LOADING...</div>
-      </div>
-    );
-  }
+console.log(comments)
+  if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (
