@@ -261,53 +261,6 @@ const dataSlice = createSlice({
         })  
         
 
-        // Community Posts 
-        builder.addMatcher(api.endpoints.getPostByUserId.matchFulfilled, (state, {payload})=>{
-            return{
-                ...state,
-                posts: payload
-
-            }
-        })
-       
-        builder.addMatcher(api.endpoints.getPosts.matchFulfilled, (state, {payload})=>{
-            return {
-                ...state,
-                posts: state.posts.map(i=>i.id===payload.id?{...i, ...payload}:i)
-            }
-        })
-
-    builder.addMatcher(
-      api.endpoints.updatePostById.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          recipes: state.recipes.map((i) =>
-            i.id === payload.id ? { ...i, ...payload } : i
-          ),
-        };
-      }
-    );
-
-    builder.addMatcher(
-      api.endpoints.deletePostById.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          posts: state.posts.filter((i) => i.id !== payload.id),
-        };
-      }
-    );
-
-    builder.addMatcher(
-      api.endpoints.createPost.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          recipes: state.recipes.filter((i) => i.id !== payload.id),
-        };
-      }
-    );
 
     // Users
 
