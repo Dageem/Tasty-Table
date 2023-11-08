@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import {
   useGetRecipesByUserIdQuery,
-  useGetPostByUserIdQuery,
   useDeleteRecipeByIdMutation,
 } from "../../reducers/api";
 import Sidebar from "./comps/Sidebar";
@@ -22,12 +21,6 @@ function UserProfile() {
     refetch,
   } = useGetRecipesByUserIdQuery(userId, { skip: !userId });
 
-  const {
-    data: postsData,
-    isLoading: isPostsLoading,
-    isError: isPostsError,
-  } = useGetPostByUserIdQuery(userId, { skip: !userId });
-
   const [deleteRecipe] = useDeleteRecipeByIdMutation();
 
   // Handle errors
@@ -35,10 +28,7 @@ function UserProfile() {
     if (isRecipesError) {
       console.error("Error loading recipes:", isRecipesError);
     }
-    if (isPostsError) {
-      console.error("Error loading posts:", isPostsError);
-    }
-  }, [isRecipesError, isPostsError]);
+  }, [isRecipesError]);
 
   // Delete recipe handler
   const onDelete = async (recipeId) => {
@@ -50,10 +40,9 @@ function UserProfile() {
     }
   };
 
-  // Loading states
-  // if (isRecipesLoading || isPostsLoading) {
-  //   return <div>Loading...</div>;
-  // }
+  if (isRecipesLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="w-[95%] min-h-[100vh] lg:w-[70%]  m-auto">

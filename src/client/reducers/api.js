@@ -223,15 +223,15 @@ const dataSlice = createSlice({
         }
       );
 
-    // builder.addMatcher(
-    //   api.endpoints.getRecipes.matchFulfilled,
-    //   (state, { payload }) => {
-    //     return {
-    //       ...state,
-    //       recipes: payload,
-    //     };
-    //   }
-    // );
+    builder.addMatcher(
+      api.endpoints.getRecipes.matchFulfilled,
+      (state, { payload }) => {
+        return {
+          ...state,
+          recipes: payload,
+        };
+      }
+    );
 
     builder.addMatcher(
       api.endpoints.deleteRecipeById.matchFulfilled,
