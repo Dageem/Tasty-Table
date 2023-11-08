@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useRegisterMutation, useLoginMutation } from "../../reducers/auth";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
@@ -15,13 +17,13 @@ const RegisterPage = () => {
   const handleRegister = async () => {
     try {
       await register({ username, password }).unwrap();
-      setSuccessMessage("Registered successfully!");
+      toast.success("Registered successfully!");
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     } catch (error) {
       console.error("Register failed:", error);
-      alert("Registration failed!");
+      toast.error("Registration failed!");
     }
     setTimeout(() => {
       setUsername("");
@@ -98,6 +100,17 @@ const RegisterPage = () => {
           >
             Register
           </button>
+          <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
         </div>
       </div>
       <div>
