@@ -25,7 +25,9 @@ function EditRecipe() {
   // API and Edit 
   const { data, isLoading, error} = useGetTagsQuery();
   const { data: popData, isLoading: popLoad, error: popError} = useGetPopTagsQuery();
-  const { data: recipeData, isLoading: isLoadingRecipe, isError} = useGetRecipeByIdQuery(id);
+  const { data: recipeData, isLoading: isLoadingRecipe, isError } = useGetRecipeByIdQuery(id, {
+    refetchOnMountOrArgChange: true,
+  });
   const [editRecipe, { isLoading: isEditing, error: editError }] = useEditRecipeMutation();
   const [hasUpdated, setHasUpdated] = useState(false);
 
