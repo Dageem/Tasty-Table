@@ -1,0 +1,21 @@
+
+@keyframes textClip {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+  
+  .animate-text {
+    background-image: linear-gradient(to right, #32cd32, #4169e1);
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textClip 2s linear infinite;
+  }
+  
