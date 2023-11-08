@@ -318,20 +318,6 @@ router.get("/:id", async (req, res, next) => {
 
 
 
-//  user can update their recipe by userId -- This should be in Chef Dan's User routes, also unfinished
-router.put("/user/:userId/recipe/recipeId", async (req, res, next) => {
-  try {
-    const recipe = await prisma.recipe.update({
-      where: {
-        id: Number(req.params.id),
-      },
-      data: req.body,
-    });
-    res.send(recipe);
-  } catch (error) {
-    next(error);
-  }
-});
 
 router.delete('/:id', async (req, res, next) => {
   try {
