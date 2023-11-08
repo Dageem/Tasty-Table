@@ -40,7 +40,7 @@ function UserProfile() {
     }
   };
 
-  if (isRecipesLoading || isPostsLoading) {
+  if (isRecipesLoading) {
     return <div>Loading...</div>;
   }
 
