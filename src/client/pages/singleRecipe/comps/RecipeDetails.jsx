@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useGetRecipeByIdQuery } from "../../../reducers/api";
-import { useGetThreeRecentRecipesQuery } from "../../../reducers/api";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  useGetRecipeByIdQuery,
+  useGetThreeRecentRecipesQuery,
+} from "../../../reducers/api";
 import { Link } from "react-router-dom";
 
 export default function RecipeDetails() {
   const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const recipeInRedux = useSelector((state) => state.data.recipe);
+
   const {
-    data: recipe,
+    data: recipeFromQuery,
     isLoading: recipeLoading,
     error: recipeError,
-  } = useGetRecipeByIdQuery(id);
+  } = useGetRecipeByIdQuery(id, { skip: !!recipeInRedux });
+
+  const recipe = recipeFromQuery || recipeInRedux;
+
   const {
     data: recents,
     isLoading: recentsLoading,
     error: recentsError,
   } = useGetThreeRecentRecipesQuery();
+
+  useEffect(() => {
+    if (!recipeInRedux) {
+    }
+  }, [dispatch, id, recipeInRedux]);
 
   if (recipeLoading || recentsLoading) {
     return <p>Loading...</p>;

@@ -5,7 +5,7 @@ const CREDENTIALS = "credentials";
 
 // Define a service using a base URL and expected endpoints
 export const api = createApi({
-  tagTypes: ['SavedRecipes'],//
+  tagTypes: ["SavedRecipes"], //
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_URL || "http://localhost:3000",
@@ -73,9 +73,7 @@ export const api = createApi({
           body,
         };
       },
-            invalidatesTags: (result, error, arg) => [
-                { type: 'Recipe', id: arg.id },
-              ],
+      invalidatesTags: (result, error, arg) => [{ type: "Recipe", id: arg.id }],
     }),
     getRecipeById: builder.query({
       query: (id) => ({
@@ -109,11 +107,11 @@ export const api = createApi({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ['SavedRecipes'],//
+      invalidatesTags: ["SavedRecipes"], //
     }),
     getSavedRecipes: builder.query({
       query: (userId) => `api/recipe/users/${userId}/savedrecipes`,
-      providesTags: ['SavedRecipes'],//
+      providesTags: ["SavedRecipes"], //
     }),
     getTags: builder.query({
       query: () => ({
@@ -122,8 +120,8 @@ export const api = createApi({
     }),
     getPopTags: builder.query({
       query: () => ({
-          url: "api/tags/popular",
-      })
+        url: "api/tags/popular",
+      }),
     }),
     getPosts: builder.query({
       query: () => ({
@@ -154,22 +152,21 @@ export const api = createApi({
         method: "DELETE",
       }),
     }),
-     deleteComment:builder.mutation({
-            query:(id)=>({
-                url:'/api/recipe/comments/'+id,
-                method:'DELETE'
-            })
-        }),
-      addComment : builder.mutation({
-            query:(body)=>({
-                url:'/api/recipe/comments',
-                method:"POST",
-                body:body
-            })
-        }),
+    deleteComment: builder.mutation({
+      query: (id) => ({
+        url: "/api/recipe/comments/" + id,
+        method: "DELETE",
+      }),
+    }),
+    addComment: builder.mutation({
+      query: (body) => ({
+        url: "/api/recipe/comments",
+        method: "POST",
+        body: body,
+      }),
+    }),
   }),
 });
-
 
 const dataSlice = createSlice({
   name: "data",
@@ -200,8 +197,6 @@ const dataSlice = createSlice({
       }
     );
 
-    
-
     //  Recipe
     builder.addMatcher(
       api.endpoints.getRecipeById.matchFulfilled,
@@ -214,14 +209,14 @@ const dataSlice = createSlice({
     );
 
     builder.addMatcher(
-        api.endpoints.getRecipesByUserId.matchFulfilled,
-        (state, { payload }) => {
-          return {
-            ...state,
-            recipes: payload,
-          };
-        }
-      );
+      api.endpoints.getRecipesByUserId.matchFulfilled,
+      (state, { payload }) => {
+        return {
+          ...state,
+          recipes: payload,
+        };
+      }
+    );
 
     builder.addMatcher(
       api.endpoints.getRecipes.matchFulfilled,
@@ -251,16 +246,18 @@ const dataSlice = createSlice({
       }
     );
 
-
-        builder.addMatcher(api.endpoints.editRecipe.matchFulfilled, (state, {payload})=>{
-            return {
-                ...state,
-                recipe: payload,
-                recipes: state.recipes.map(i=>i.id===payload.id?{...i, ...payload}:i)
-            }
-        })  
-        
-
+    builder.addMatcher(
+      api.endpoints.editRecipe.matchFulfilled,
+      (state, { payload }) => {
+        return {
+          ...state,
+          recipe: payload,
+          recipes: state.recipes.map((i) =>
+            i.id === payload.id ? { ...i, ...payload } : i
+          ),
+        };
+      }
+    );
 
     // Users
 
@@ -308,13 +305,12 @@ const dataSlice = createSlice({
   },
 });
 
-
 const searchSlice = createSlice({
   name: "search",
   initialState: {
     results: {
       search: false,
-      rslt: [], 
+      rslt: [],
     },
   },
   reducers: {
@@ -333,8 +329,6 @@ export const { setSearchResults, clearSearch } = searchSlice.actions;
 
 export const searchReducer = searchSlice.reducer;
 export const dataReducer = dataSlice.reducer;
-
-
 
 export const {
   useGetUsersQuery,
@@ -361,6 +355,5 @@ export const {
   useAddCommentMutation,
   useSaveRecipeMutation,
   useGetSavedRecipesQuery,
-  useGetPopTagsQuery, 
+  useGetPopTagsQuery,
 } = api;
-
