@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import Search from "../../home/comps/Search";
+import { useNavigate } from "react-router-dom";
 
 export function StickyNavbar({ openDrawer }) {
   const [openNav, setOpenNav] = useState(false);
@@ -21,7 +22,7 @@ export function StickyNavbar({ openDrawer }) {
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
-
+  const navigate = useNavigate();
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -73,6 +74,7 @@ export function StickyNavbar({ openDrawer }) {
             onClick={() => {
               logout();
               setOpenNav(false);
+              navigate("/")
             }}
           >
             <span className="p-1 font-bold hover:text-orange-600">Logout</span>
