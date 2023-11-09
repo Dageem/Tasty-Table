@@ -98,7 +98,13 @@ export default function SingleRecipe() {
   }, [recipe, isLoading, dispatch]);
 
   if (load) return null;
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className=" flex justify-center items-center">
+        <div className="text-blue-900 text-xl font-bold">LOADING...</div>
+      </div>
+    );
+  }
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   return (

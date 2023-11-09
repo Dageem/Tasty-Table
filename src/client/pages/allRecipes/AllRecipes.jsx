@@ -3,12 +3,14 @@ import { useGetRecipesQuery } from "../../reducers/api";
 import { Link } from "react-router-dom";
 import Pagination from "../displayCategory/Pagiantion";
 import { useSelector } from "react-redux";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function AllRecipes() {
   const recipes = useSelector((state) => state.data.recipes);
   const initialPage = 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
   const recipesPerPage = 16;
+  const [isLoading, setIsLoading] = useState(true);
 
   const {
     isLoading: isRecipesLoading,
@@ -23,7 +25,11 @@ function AllRecipes() {
   }, [isRecipesError]);
 
   if (isRecipesLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className=" flex justify-center items-center">
+        <div className="text-blue-900 text-xl font-bold">LOADING...</div>
+      </div>
+    );
   }
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -63,13 +69,20 @@ function AllRecipes() {
             <Link to={`/recipe/${recipe.id}`}>
               <div>
                 <div className="flex items-center justify-center">
+                  {isLoading && (
+                    <AiOutlineLoading3Quarters className="text-4xl animate-spin" />
+                  )}
                   <img
                     src={recipe.imageUrl || backupImage}
                     alt="recipe-image"
+                    onLoad={() => setIsLoading(false)}
                     onError={(e) => {
                       e.target.src = backupImage;
+                      setIsLoading(false);
                     }}
-                    className="w-full h-[280px] md:h-[300px]"
+                    className={`w-full h-[280px] md:h-[300px] ${
+                      isLoading ? "hidden" : ""
+                    }`}
                     style={{ objectFit: "cover", objectPosition: "center" }}
                   />
                 </div>

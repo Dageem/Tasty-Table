@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGetRecipesByNameQuery } from "../../reducers/api";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import Pagination from "./Pagiantion"; // Make sure the import path is correct
+import Pagination from "./Pagiantion";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function DisplayCategory() {
   const { category } = useParams();
@@ -15,7 +16,25 @@ function DisplayCategory() {
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 16;
 
-  if (isLoading) return <p>Loading...</p>;
+  const [imageLoading, setImageLoading] = useState({});
+
+  useEffect(() => {
+    if (recipes) {
+      const initialImageLoadingState = {};
+      recipes.forEach((recipe) => {
+        initialImageLoadingState[recipe.id] = true;
+      });
+      setImageLoading(initialImageLoadingState);
+    }
+  }, [recipes]);
+
+  if (isLoading) {
+    return (
+      <div className=" flex justify-center items-center">
+        <div className="text-blue-900 text-xl font-bold">LOADING...</div>
+      </div>
+    );
+  }
   if (error) return <p>Error Loading Categories! {error.message}</p>;
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -56,21 +75,30 @@ function DisplayCategory() {
             <Link to={`/recipe/${recipe.id}`}>
               <div className="">
                 <div className="flex items-center justify-center">
+                  {imageLoading[recipe.id] && (
+                    <AiOutlineLoading3Quarters className="text-4xl animate-spin" />
+                  )}
                   <img
                     src={recipe.imageUrl || backupImage}
                     alt="recipe-image"
+                    onLoad={() => {
+                      setImageLoading((prevImageLoading) => ({
+                        ...prevImageLoading,
+                        [recipe.id]: false,
+                      }));
+                    }}
                     onError={(e) => {
                       e.target.src = backupImage;
+                      setImageLoading((prevImageLoading) => ({
+                        ...prevImageLoading,
+                        [recipe.id]: false,
+                      }));
                     }}
-                    className="w-full h-[280px] md:h-[300px]"
+                    className={`w-full h-[280px] md:h-[300px] ${
+                      imageLoading[recipe.id] ? "hidden" : ""
+                    }`}
                     style={{ objectFit: "cover", objectPosition: "center" }}
                   />
-                  {/* <div
-                    className="w-full h-[280px] md:h-[300px] bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url(${recipe.imageUrl || backupImage})`,
-                    }}
-                  ></div> */}
                 </div>
                 <div className="text-xl font-bold text-center">
                   {recipe.name}
