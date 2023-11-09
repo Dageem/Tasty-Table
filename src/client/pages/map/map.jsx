@@ -53,8 +53,8 @@ const BasicMap = () => {
   };
   return (
     <>
-      <div className="row">
-        <div className="col text-center  ">
+      <div className="row min-h-screen">
+        <div className="col text-center">
           <h1>The Tasty Table Map</h1>
           <p>The Flavors are out of this world!</p>
           <div className="col">
