@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGetRecipesQuery } from "../../reducers/api";
 import { Link } from "react-router-dom";
 import Pagination from "../displayCategory/Pagiantion";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 function AllRecipes() {
   const recipes = useSelector((state) => state.data.recipes);
@@ -36,17 +35,24 @@ function AllRecipes() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const showPagination = recipes.length >= 17;
+
+  const backupImage =
+    "https://hexclad.com/cdn/shop/files/Hexclad_13Pc_8Qt_Lid_FryPanHandles_BLACK_1024x1024.jpg?v=1686775048";
+
   return (
     <div className="w-[95%] ml-[2.5%] min-h-screen lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
       <div>
         <h1 className="text-xl text-center md:text-3xl font-bold">
           All Recipes
         </h1>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(recipes.length / recipesPerPage)}
-          onPageChange={paginate}
-        />
+        {showPagination && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={Math.ceil(recipes.length / recipesPerPage)}
+            onPageChange={paginate}
+          />
+        )}
       </div>
       <div className="flex flex-wrap justify-center">
         {currentRecipes.map((recipe) => (
@@ -57,10 +63,15 @@ function AllRecipes() {
             <Link to={`/recipe/${recipe.id}`}>
               <div>
                 <div className="flex items-center justify-center">
-                  <div
-                    className="w-full h-[280px] md:h-[300px] bg-cover bg-center"
-                    style={{ backgroundImage: `url(${recipe.imageUrl})` }}
-                  ></div>
+                  <img
+                    src={recipe.imageUrl || backupImage}
+                    alt="recipe-image"
+                    onError={(e) => {
+                      e.target.src = backupImage;
+                    }}
+                    className="w-full h-[280px] md:h-[300px]"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                  />
                 </div>
                 <div className="text-xl font-bold text-center">
                   {recipe.name}
@@ -73,11 +84,13 @@ function AllRecipes() {
           </div>
         ))}
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(recipes.length / recipesPerPage)}
-        onPageChange={paginate}
-      />
+      {showPagination && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(recipes.length / recipesPerPage)}
+          onPageChange={paginate}
+        />
+      )}
     </div>
   );
 }

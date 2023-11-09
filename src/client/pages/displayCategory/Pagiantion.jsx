@@ -2,7 +2,7 @@ import React from "react";
 
 function Pagination({ currentPage, totalPages, onPageChange }) {
   return (
-    <div className="flex justify-center mt-4">
+    <div className="flex justify-center mt-4 mb-2">
       <ul className="flex items-center">
         <li className={`page-item ${currentPage === 1 ? "opacity-50" : ""}`}>
           <button

@@ -8,6 +8,9 @@ function RecentRecipes() {
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(0);
   const [isMobileScreen, setIsMobileScreen] = useState(window.innerWidth < 768);
 
+  const backupImage =
+    "https://hexclad.com/cdn/shop/files/Hexclad_13Pc_8Qt_Lid_FryPanHandles_BLACK_1024x1024.jpg?v=1686775048";
+
   const nextRecipe = () => {
     setCurrentRecipeIndex((prevIndex) => (prevIndex + 1) % recipes.length);
   };
@@ -41,8 +44,11 @@ function RecentRecipes() {
       {isMobileScreen ? (
         <div className="relative hover:cursor-pointer hover:opacity-70">
           <img
-            src={recipes[currentRecipeIndex].imageUrl}
+            src={recipes[currentRecipeIndex].imageUrl || backupImage}
             alt="recipe-image"
+            onError={(e) => {
+              e.target.src = backupImage;
+            }}
             className="h-[350px] w-full"
           />
           <div className="absolute top-0 left-0 w-full h-full flex justify-between items-center">
@@ -71,10 +77,15 @@ function RecentRecipes() {
                 }
               >
                 <div className="relative hover:cursor-pointer hover:opacity-70">
-                <div
-                  className="w-full h-[300px] xl:h-[350px] bg-cover bg-center"
-                  style={{ backgroundImage: `url(${recipe.imageUrl})` }}
-                ></div>
+                  <img
+                    src={recipe.imageUrl || backupImage}
+                    alt="recipe-image"
+                    onError={(e) => {
+                      e.target.src = backupImage;
+                    }}
+                    className="w-full h-[300px] xl:h-[350px]"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                  />
                 </div>
                 <div className="mt-2">
                   <h1 className="text-xl font-bold">{recipe.name}</h1>
