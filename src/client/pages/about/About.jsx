@@ -31,7 +31,7 @@ const people = [
   },
   {
     name: "Luke Jones",
-    role: "Co-Founder / CEO",
+    role: "Janitor",
     imageUrl:
       "https://ca.slack-edge.com/E05LYDFST6K-U039ADKHDDM-8aa8e3928383-512",
   },
