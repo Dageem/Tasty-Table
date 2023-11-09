@@ -74,13 +74,13 @@ const RecipeForm = () => {
     <div class="flex justify-center items-center min-h-screen bg-gray-100 py-3 space-x-4">
       {isSubmitted ? (
     <>
-    <button
+      <button
       type="button"
       className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden text-lg font-medium text-indigo-600 transition-all bg-white border-2 border-indigo-600 rounded-full shadow-2xl group"
       onClick={() => navigate("/profile")}
     >
       <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-indigo-600 rounded-full group-hover:w-56 group-hover:h-56"></span>
-      <span className="relative">Go Back</span>
+      <span className="relative group-hover:text-white">Go Back</span>
     </button>
     <div className="text-center mt-8">
       <h1 className="text-2xl mb-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 animate-text">
