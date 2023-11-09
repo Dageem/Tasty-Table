@@ -16,6 +16,9 @@ export default function SingleHead() {
   const [saveRecipe] = useSaveRecipeMutation();
   const userId = useSelector(selectCurrentUserId);
 
+  const backupImage =
+    "https://hexclad.com/cdn/shop/files/Hexclad_13Pc_8Qt_Lid_FryPanHandles_BLACK_1024x1024.jpg?v=1686775048";
+
   const handleSaveRecipe = async () => {
     if (!userId) {
       console.log("User not logged in");
@@ -78,10 +81,15 @@ export default function SingleHead() {
       </div>
       <div className="h-10"></div>
       <div className="grid mt-5 grid-cols-1 lg:grid-cols-3 gap-12">
-        <div
-          className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px] bg-cover bg-center"
-          style={{ backgroundImage: `url(${recipe.imageUrl})` }}
-        ></div>
+        <img
+          src={recipe.imageUrl || backupImage}
+          alt="recipe-image"
+          onError={(e) => {
+            e.target.src = backupImage;
+          }}
+          className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px]"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
         <div className="col-span-1 hidden lg:block">
           <a
             href="https://www.amazon.com/Cooking-Dummies-Computer-Tech/dp/0764552503/ref=asc_df_0764552503/?tag=hyprod-20&linkCode=df0&hvadid=265933302123&hvpos=&hvnetw=g&hvrand=12173538260040523448&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9051588&hvtargid=pla-583583437151&psc=1&mcid=7b1da4703a063cf49a2e4c9bfb31f950"

@@ -23,16 +23,23 @@ const SearchResults = () => {
 
   const totalResults = searchResults.rslt.length;
 
+  const showPagination = totalResults >= 17;
+
+  const backupImage =
+    "https://hexclad.com/cdn/shop/files/Hexclad_13Pc_8Qt_Lid_FryPanHandles_BLACK_1024x1024.jpg?v=1686775048";
+
   return (
     <div className="w-[95%] ml-[2.5%] min-h-screen lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
       <h1 className="text-3xl font-bold text-center mb-4">
         {totalResults} Recipes
       </h1>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(searchResults.rslt.length / resultsPerPage)}
-        onPageChange={handlePageChange}
-      />
+      {showPagination && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(totalResults / resultsPerPage)}
+          onPageChange={handlePageChange}
+        />
+      )}
       <div className="flex flex-wrap justify-center">
         {currentResults.map((result) => (
           <div
@@ -42,10 +49,15 @@ const SearchResults = () => {
             <Link to={`/recipe/${result.id}`}>
               <div>
                 <div className="flex items-center justify-center">
-                  <div
-                    className="w-full h-[280px] md:h-[300px] bg-cover bg-center"
-                    style={{ backgroundImage: `url(${result.imageUrl})` }}
-                  ></div>
+                <img
+                    src={result.imageUrl || backupImage}
+                    alt="recipe-image"
+                    onError={(e) => {
+                      e.target.src = backupImage;
+                    }}
+                    className="w-full h-[280px] md:h-[300px]"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                  />
                 </div>
                 <div className="text-xl font-bold text-center mt-2">
                   {result.name}
@@ -58,14 +70,15 @@ const SearchResults = () => {
           </div>
         ))}
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(searchResults.rslt.length / resultsPerPage)}
-        onPageChange={handlePageChange}
-      />
+      {showPagination && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(totalResults / resultsPerPage)}
+          onPageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };
 
 export default SearchResults;
-

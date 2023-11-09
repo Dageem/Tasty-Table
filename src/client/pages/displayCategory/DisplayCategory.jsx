@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useGetRecipesByNameQuery } from "../../reducers/api";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import Pagination from "./Pagiantion";
+import Pagination from "./Pagiantion"; // Make sure the import path is correct
 
 function DisplayCategory() {
   const { category } = useParams();
@@ -27,6 +27,11 @@ function DisplayCategory() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const showPagination = recipes.length >= 17;
+
+  const backupImage =
+    "https://hexclad.com/cdn/shop/files/Hexclad_13Pc_8Qt_Lid_FryPanHandles_BLACK_1024x1024.jpg?v=1686775048";
+
   return (
     <div className="w-[95%] ml-[2.5%] min-h-screen lg:w-[70%] lg:ml-[15%] text-blue-gray-900 my-4">
       <div className="w-full mb-4 text-center text-blue-gray-900">
@@ -34,11 +39,13 @@ function DisplayCategory() {
           The best <strong className="text-purple-900">{category}</strong>{" "}
           recipes
         </h1>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={Math.ceil(recipes.length / recipesPerPage)}
-          onPageChange={handlePageChange}
-        />
+        {showPagination && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={Math.ceil(recipes.length / recipesPerPage)}
+            onPageChange={handlePageChange}
+          />
+        )}
       </div>
       <div className="flex flex-wrap justify-center">
         {currentRecipes.map((recipe) => (
@@ -50,10 +57,20 @@ function DisplayCategory() {
               <div className="">
                 <div className="flex items-center justify-center">
                   <img
-                    src={recipe.imageUrl}
+                    src={recipe.imageUrl || backupImage}
                     alt="recipe-image"
-                    className="h-[300px] w-full"
+                    onError={(e) => {
+                      e.target.src = backupImage;
+                    }}
+                    className="w-full h-[280px] md:h-[300px]"
+                    style={{ objectFit: "cover", objectPosition: "center" }}
                   />
+                  {/* <div
+                    className="w-full h-[280px] md:h-[300px] bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url(${recipe.imageUrl || backupImage})`,
+                    }}
+                  ></div> */}
                 </div>
                 <div className="text-xl font-bold text-center">
                   {recipe.name}
@@ -64,11 +81,13 @@ function DisplayCategory() {
           </div>
         ))}
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(recipes.length / recipesPerPage)}
-        onPageChange={handlePageChange}
-      />
+      {showPagination && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(recipes.length / recipesPerPage)}
+          onPageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 }
