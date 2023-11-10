@@ -87,7 +87,7 @@ export default function Saved() {
                   </div>
                 </div>
               </Link>
-              <div className="flex justify-center">
+              <div className="flex justify-center mb-2">
                 <button
                   onClick={() =>
                     handleDeleteSavedRecipe(userId, savedRecipe.recipe.id)
