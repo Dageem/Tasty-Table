@@ -52,7 +52,7 @@ function UserProfile() {
   };
 
   // Loading states
-  if (isRecipesLoading || isPostsLoading) {
+  if (isRecipesLoading) {
     return <div>Loading...</div>;
   }
 

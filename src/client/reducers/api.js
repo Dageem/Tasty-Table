@@ -5,7 +5,7 @@ const CREDENTIALS = "credentials";
 
 // Define a service using a base URL and expected endpoints
 export const api = createApi({
-  tagTypes: ['SavedRecipes'],//
+  tagTypes: ['SavedRecipes', 'EditRecipe'],//
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_URL || "http://localhost:3000",
