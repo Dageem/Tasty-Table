@@ -13,8 +13,8 @@ export default function EditRecipeIngredient({ ingredient, handleUpdate, handleD
           name="name"
           value={ingredient.name}
           onChange={handleChange}
-          placeholder="Ingredient name"
-          className="border-2 rounded px-2"
+          placeholder="Ingredient"
+          className="border rounded px-2 py-2 w-full border-blue-gray-200 my-1"
         />
         <input
           type="text"
@@ -22,12 +22,15 @@ export default function EditRecipeIngredient({ ingredient, handleUpdate, handleD
           value={ingredient.measurement}
           onChange={handleChange}
           placeholder="Measurement"
-          className="border-2 rounded px-2"
+          className="border rounded px-2 py-2 w-full border-blue-gray-200"
         />
-        <button type="button" onClick={handleDelete} className="bg-red-500 text-white px-2 rounded">
-        Delete
-      </button>
+        <button
+          type="button"
+          onClick={handleDelete}
+          className="bg-red-500 text-white px-2 py-2 rounded-full hover:bg-red-300"
+        >
+          Delete
+        </button>
       </div>
     );
-  }
-  
+    };

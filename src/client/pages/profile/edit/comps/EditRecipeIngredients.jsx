@@ -27,9 +27,10 @@ export default function EditRecipeIngredients({ ingredients, setIngredients }) {
     
     return (
       <div>
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Ingredients:
-        </label>
+        <h1 className="text-xl mb-4 font-semibold">Ingredients + Measurements:</h1>
+        <button type="button" onClick={handleAddIngredient}  className="bg-green-300 text-purple p-2 rounded mb-4 hover:bg-green-200">
+          Add Ingredient 
+        </button>
         {ingredients.map((ingredient, index) => (
         <EditRecipeIngredient
           key={ingredient.id || index} // 
@@ -38,9 +39,6 @@ export default function EditRecipeIngredients({ ingredients, setIngredients }) {
           handleDelete={() => handleDeleteIngredient(index)}
         />
       ))}
-        <button type="button" onClick={handleAddIngredient}  className="mt-2 bg-blue-500 text-white px-2 rounded">
-          Add Ingredient 
-        </button>
       </div>
     );
   }
