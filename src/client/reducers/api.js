@@ -113,6 +113,14 @@ export const api = createApi({
       query: (userId) => `api/recipe/users/${userId}/savedrecipes`,
       providesTags: ["SavedRecipes"], //
     }),
+    deleteSavedRecipe: builder.mutation({
+      query: ({ userId, recipeId }) => ({
+        url: `api/recipe/savedrecipes/${userId}/${recipeId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['SavedRecipes'],//
+    }),
+
     getTags: builder.query({
       query: () => ({
         url: "api/tags/recipetags",
@@ -366,4 +374,5 @@ export const {
   useSaveRecipeMutation,
   useGetSavedRecipesQuery,
   useGetPopTagsQuery,
+  useDeleteSavedRecipeMutation,
 } = api;

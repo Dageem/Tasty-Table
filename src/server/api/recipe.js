@@ -43,6 +43,40 @@ router.get('/users/:userId/savedrecipes', async (req, res) => {
   }
 });
 
+router.delete('/savedrecipes/:userId/:recipeId', async (req, res) => {
+  const { userId, recipeId } = req.params;
+
+  try {
+    // Check if the saved recipe exists
+    const existingSavedRecipe = await prisma.savedRecipe.findUnique({
+      where: {
+        userId_recipeId: {
+          userId: parseInt(userId),
+          recipeId: parseInt(recipeId),
+        },
+      },
+    });
+
+    if (!existingSavedRecipe) {
+      return res.status(404).json({ message: 'Saved recipe not found' });
+    }
+
+    // Delete the saved recipe
+    await prisma.savedRecipe.delete({
+      where: {
+        userId_recipeId: {
+          userId: parseInt(userId),
+          recipeId: parseInt(recipeId),
+        },
+      },
+    });
+
+    res.json({ message: 'Saved recipe deleted successfully' });
+  } catch (error) {
+    console.error("Failed to delete saved recipe", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 
 router.get('/', async (req, res, next) => {
