@@ -23,7 +23,7 @@ function RecipesRender({ recipes, onDelete }) {
           key={recipe.id}
         >
             <span
-            className="absolute inset-0 flex items-center justify-center text-4xl font-cursive opacity-100 group-hover:opacity-0 transition-opacity duration-300 z-0"
+            className="hidden md:absolute inset-0 md:flex items-center justify-center text-4xl font-cursive opacity-100 group-hover:opacity-0 transition-opacity duration-300 z-0"
         >
             Hover On Me
         </span>
@@ -58,7 +58,7 @@ function RecipesRender({ recipes, onDelete }) {
 
         {/* View Recipe Button */}
         <Link to={`/recipe/${recipe.id}`}>
-          <button type="button" className="mt-2 bg-blue-gray-900 text-white rounded-full border-4 border-blue-gray-700 hover:bg-blue-gray-700 p-2">
+          <button type="button" className="mt-2 bg-blue-gray-900 text-white rounded-full border-4 border-blue-gray-700 hover:bg-blue-gray-700 p-2 ">
             View Recipe
           </button>
         </Link>
