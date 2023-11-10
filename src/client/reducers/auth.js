@@ -5,7 +5,6 @@ import { api } from "./api";
 const CREDENTIALS = "credentials";
 
 const authApi = api.injectEndpoints({
-    tagTypes: ['EditAuth'],
     endpoints: (builder)=>({
         login: builder.mutation({
             query: (cred)=>({
@@ -67,13 +66,9 @@ const authSlice = createSlice({
     reducers:{},
     extraReducers: (builder)=>{
         builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
-        // builder.addMatcher(api.endpoints.edit.matchFulfilled, storeToken);
-        builder.addMatcher(api.endpoints.edit.matchFulfilled, (state, {payload})=>{
-            return {
-                ...state,
-                image: payload
-            }
-        }) 
+        builder.addMatcher(api.endpoints.edit.matchFulfilled, (state, { payload }) => {
+            state.credentials.user.image = payload.image;
+        });
         builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
         builder.addMatcher(api.endpoints.logout.matchFulfilled, (state)=>{
             console.log("logout")
