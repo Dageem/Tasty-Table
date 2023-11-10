@@ -2634,6 +2634,201 @@ async function seed() {
         { name: "Grapeseed oil", measurement: "as needed" },
       ],
     },
+    {
+      name: "Sweet Potato Pie",
+      details: "The personification of thanskgiving",
+      desc: "Sweet potato pie, a luscious and soul-warming dessert, occupies a cherished place in American culinary history, particularly in the Southern United States. Originating in the colonial era, when African slaves creatively incorporated sweet potatoes into their meals, the sweet potato pie has since become an iconic dish associated with African American and Southern cuisine. The rich, velvety filling, a harmonious blend of sweet potatoes, sugar, and spices, evokes both nostalgia and a sense of celebration. The pie's popularity surged during the Thanksgiving season, offering an alternative to the traditional pumpkin pie. Its cultural significance extends beyond the plate, symbolizing the resilience and ingenuity of African American culinary traditions. Today, sweet potato pie remains a beloved fixture at family gatherings, celebrations, and holiday feasts, its legacy a testament to the fusion of diverse culinary influences that have shaped the American culinary landscape.",
+      instructions:
+        "1.	Place whole sweet potato in a pot and cover with water; bring to a boil. Boil until tender when pierced with a fork, 40 to 50 minutes. \n2.	Preheat the oven to 350 degrees F  \n3.	Remove the sweet potato from the pot and run under cold water. Remove and discard skin. \n4.	Break sweet potato flesh apart and place in a bowl. Add butter and mix with an electric mixer until well combined. \n5.	Add sugar, milk, eggs, nutmeg, cinnamon, and vanilla; beat on medium speed until mixture is smooth. \n6.	Pour filling into unbaked pie crust. \n7.	Bake in the preheated oven until a knife inserted in the center comes out clean, 55 to 60 minutes. \n8.	Remove from the oven and let cool before serving.",
+      imageUrl:
+        "https://www.allrecipes.com/thmb/Y5wp5m1GIALYygAX-v0mBfOCKkU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/12142-sweet-potato-pie-1-mfs233-2x1-1-516a9933a1da4d2e9554597754ac5617.jpg",
+      image2Url:
+        "https://www.onceuponachef.com/images/2019/11/Sweet-Potato-Pie.jpg",
+      image3Url:
+        "https://www.wellplated.com/wp-content/uploads/2019/11/Sweet-Potato-Pie-recipe-condensed-milk.jpg",
+      tags: ["dessert", "thanksgiving", "holiday"],
+      ingredients: [
+        { name: "sweet potato", measurement: "454g" },
+        { name: "softened butter", measurement: "113g" },
+        { name: "white sugar", measurement: "200g" },
+        { name: "milk", measurement: "120g" },
+        { name: "eggs", measurement: "100g" },
+        { name: "ground nutmeg", measurement: "2g" },
+        { name: "ground cinnamon", measurement: "2g" },
+        { name: "vanilla extract", measurement: "5g" },
+        { name: "pie crust", measurement: "1" },
+      ],
+    },
+    {
+      name: "Butter Herb Stuffing",
+      details: "You got butter, and you got herbs, what else do you want?",
+      desc: "Stuffing, that aromatic concoction of seasoned bread cubes, herbs, and savory delights, is the unsung hero of the Thanksgiving feast, uniting plates and palates in a dance of flavors. With roots dating back to ancient Rome, stuffing has traversed centuries and continents, evolving into the cherished sidekick at the American Thanksgiving table. Its diverse incarnations, from cornbread-laden Southern traditions to herb-infused Northeastern delights, reflect the tapestry of regional culinary influences. Beyond its historical journey, stuffing embodies the communal spirit of Thanksgiving, inviting creativity in its preparation – some swear by sausage, others by oysters. The stuffing saga, a tale of crispy edges and moist interiors, continues to be written with each passing holiday, where culinary experimentation meets tradition, leaving taste buds in a state of perpetual gratitude.",
+      instructions:
+        "1.	Note about the bread cubes! You have options here. Stale or toasty bread works best. The first option is you can cut 1 ½ pounds of bread into cubes, place it in a large baking dish, loosely tent it with foil, and let it sit overnight. You can also cut the cubes and put them in the oven, toasting them at 350 degrees F until they are like croutons, about 15 minutes or so. Finally, you can buy the toasted bread cubes in bags from the store. It’s your choice! You can also choose the size of your cubes. They can be small or larger for a more rustic stuffing. I like to use different kinds of bread (usually two), like sourdough and Italian, and mix the cubes. It provides great texture. \n2.	Preheat the oven to 350 degrees F. Brush a 9x13 baking dish (you can also use a larger baking dish or a larger foil roasting pan too!) with melted butter, and olive oil or spray with nonstick spray. Place the bread in a large mixing bowl (this may be easier for you to stir!) or the baking dish that you will bake it in. You can also separate this into two baking dishes if it's easier. \n3.	Heat the butter in a large skillet or Dutch oven over medium heat. Once melted, stir in the onion, celery, and garlic with a big pinch of salt and pepper - at least ½ to 1 teaspoon each. Cook until the onions and celery soften, about 8 to 10 minutes. Stir in the sage, parsley, and rosemary. Cook for another minute. Stir in 1 cup of stock. \n4.	Pour the onion-celery mixture over the bread crumbs and toss well to coat. \n5.	In a small bowl or measuring cup, whisk together the remaining 1 ½ cups stock and 2 eggs. \n6.	Pour that mixture into the bread cubes and stir and fold the bread cubes until thoroughly combined. Bake the stuffing for 45 to 50 minutes, until the internal temperature registers 160 degrees F. If the stuffing is getting too browned, you can tent it with foil. \n7.	I have successfully made this a day ahead of time and reheated it - it’s just as good! remove the pan from the fridge 60 minutes before reheating it. You can also use this mixture to stuff the bird if you wish! \n8.	To serve 4: Cut this recipe in half exactly and bake it in an 8x8 or 9x9 inch dish. I bake for the same amount of time. \n9.	To serve 12 to 18: Double this recipe exactly. Bake in a large baking dish, like a 10x15 roasting pan, or baking in two 9x13 baking dishes. I bake for roughly the same amount of time, or about 15 minutes longer.",
+      imageUrl:
+        "https://www.howsweeteats.com/wp-content/uploads/2020/11/best-stuffing-11.jpg",
+      image2Url:
+        "https://www.howsweeteats.com/wp-content/uploads/2020/11/best-stuffing-12.jpg",
+      image3Url:
+        "https://www.thissavoryvegan.com/wp-content/uploads/2021/11/vegan-butter-herb-stuffing-4-683x1024.jpg",
+      tags: ["holiday", "thanksgiving"],
+      ingredients: [
+        { name: "bread cubes", measurement: "680g" },
+        { name: "unsalted butter", measurement: "226g" },
+        { name: "diced sweet onion", measurement: "300g" },
+        { name: "diced celery", measurement: "300g" },
+        { name: "garlic clove", measurement: "18g" },
+        { name: "salt", measurement: "to taste" },
+        { name: "pepper", measurement: "to taste" },
+        { name: "chopped sage", measurement: "15g" },
+        { name: "chopped parsley", measurement: "15g" },
+        { name: "chopped rosemary", measurement: "15g" },
+        { name: "chicken stock", measurement: "590g" },
+        { name: "eggs", measurement: "100g" },
+      ],
+    },
+    {
+      name: "Homemade Eggnog",
+      details: "A traditional recipe for a classic holiday beverage",
+      desc: "Eggnog, that velvety elixir synonymous with festive cheer, traces its origins back to medieval Britain, where a warm, ale-based concoction was sipped to ward off winter chills. This frothy libation evolved over time, reaching its zenith of popularity in colonial America, where rum became a key addition, giving birth to the rich and spirited eggnog we know today. Beyond its historical roots, eggnog has become an emblem of holiday conviviality, gracing tables with its decadence during Christmas and New Year's celebrations. The tradition of nogging — to toast to good health — echoes through the centuries, fostering a sense of warmth and togetherness. Whether served spiked or virgin, this indulgent blend of eggs, milk, sugar, and spices stands as a festive testament to the enduring union of culinary history and seasonal merriment.",
+      instructions:
+        "1.	Whisk the egg yolks and sugar together in a medium bowl until light and creamy. \n2.	In a saucepan over medium-high heat, combine the cream, milk, nutmeg, and salt. Stir often until the mixture reaches a bare simmer.  \n3.	Add a big spoonful of the hot milk to the egg mixture, whisking vigorously. Repeat, adding a big spoonful at a time, to temper the eggs.  \n4.	Once most of the hot milk has been added to the eggs, pour the mixture back into the saucepan on the stove.  \n5.	Whisk constantly for just a few minutes, until the mixture is just slightly thickened (or until it reaches about 160 degrees F on a thermometer). It will thicken more as it cools. \n6.	Remove from heat and stir in the vanilla and alcohol*, if using \n7.	Pour the eggnog through a fine mesh strainer into a pitcher or other container and cover with plastic wrap.  \n8.	Refrigerate until chilled. It will thicken as it cools. If you want a thinner, completely smooth consistency, you can add the entire mixture to a blender with 1 or 2 tablespoons of milk and blend until smooth. \n9.	Serve with a sprinkle of cinnamon or nutmeg, and fresh whipped cream, if desired. \n10.	Serve with a sprinkle of cinnamon or nutmeg, and fresh whipped cream, if desired.",
+      imageUrl:
+        "https://hips.hearstapps.com/hmg-prod/images/20191115-classic-eggnog-delish-ehg-4185-1576183275.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*",
+      image2Url:
+        "https://joyfoodsunshine.com/wp-content/uploads/2021/12/homemade-eggnog-recipe-square.jpg",
+      image3Url:
+        "https://www.shugarysweets.com/wp-content/uploads/2020/12/eggnog-square.jpg",
+      tags: ["easy", "holiday", "christmas"],
+      ingredients: [
+        { name: "egg yolk", measurement: "108g" },
+        { name: "granulated sugar", measurement: "100g" },
+        { name: "heavy whipping cream", measurement: "240g" },
+        { name: "milk", measurement: "480g" },
+        { name: "ground nutmeg", measurement: "1g" },
+        { name: "salt", measurement: "0.5g" },
+        { name: "vanilla extract", measurement: "2g" }
+      ],
+    },
+    {
+      name: "Honey Baked Ham",
+      details: "That nice holiday ham you just need to have in the picture",
+      desc: "Honey Baked Ham, a succulent centerpiece of festive feasts, has a rich culinary history rooted in time-honored traditions. With origins dating back to medieval Europe, where honey-glazed hams were prized for their decadence and preservation qualities, the practice of sweetening and roasting ham became a culinary emblem. As culinary tastes evolved, so did the methods of preparation, with the iconic Honey Baked Ham, as we know it today, emerging in the United States during the mid-20th century. This delectable creation, often associated with celebratory occasions, seamlessly blends the sweetness of honey with savory spices, creating a harmonious flavor profile that transcends cultural boundaries. Whether gracing the Thanksgiving table or adorning the Easter spread, the Honey Baked Ham has become a symbol of indulgence and communal joy, showcasing the enduring connection between history, culture, and the artistry of culinary expression.",
+      instructions:
+        "1.	Trim ham if needed, then place in slow cooker.  Combine melted butter and honey, then massage over ham, getting in between the slices a little.  Cover and cook on LOW 4-5 hours. \n2.	At the end of the cooking time, preheat the broiler to HIGH, and line a roasting pan with heavy-duty aluminum foil.   \n3.	Combine sugar, seasoned salt, onion powder, ground cinnamon, ground nutmeg, ground ginger, ground cloves, paprika, and allspice in a small bowl.  Pat half of the sugar mixture over the top of the ham. \n4.	Broil for several minutes, until bubbly and caramelized, then remove from oven. \n5.	To a small saucepan, add the remaining sugar mixture.  Add 3 Tbsp of either water or ham juices from the bottom of the slow cooker. A combination of water/ham juice and bourbon is a nice alternative!  Stir, and heat to a boil.  Boil for about a minute, then remove from heat. \n6.	Brush or pour glaze over the ham, then broil again for a minute or two (careful... don't let it burn!).  Remove from oven and let ham rest for 5-10 minutes.  \n7.	Serve warm or cold and enjoy!",
+      imageUrl:
+        "https://www.chewoutloud.com/wp-content/uploads/2022/12/honey-baked-ham-1-edited.jpg",
+      image2Url:
+        "https://togetherasfamily.com/wp-content/uploads/2019/03/slow-cooker-honey-glazed-ham-4.jpg",
+      image3Url:
+        "https://4.bp.blogspot.com/-V5JgBIXHHgY/XIlSUZqQdRI/AAAAAAAAfFk/nJaOTGq_ohsMZDgMhx09X556DHY9byXXgCLcBGAs/s1600/honey-baked-ham-0316.jpg",
+      tags: ["holiday", "christmas"],
+      ingredients: [
+        { name: "bone in spiral sliced ham", measurement: "8lbs" },
+        { name: "melted butter", measurement: "28g" },
+        { name: "honey", measurement: "63g" },
+        { name: "granulated sugar", measurement: "300g" },
+        { name: "seasoned salt", measurement: "3g" },
+        { name: "onion powder", measurement: "3g" },
+        { name: "ground cinnamon", measurement: "2g" },
+        { name: "gound nutmeg", measurement: "2g" },
+        { name: "ground ginger", measurement: "1g" },
+        { name: "ground cloves", measurement: "1g" },
+        { name: "ground paprika", measurement: "1g" },
+        { name: "allspice", measurement: "0.5g" }
+      ],
+    },
+    {
+      name: "Melting Potatoes",
+      details: "Your new addiction ",
+      desc: "Melting potatoes, a culinary sensation that transcends mere side dish status, are a delectable marvel born from the intersection of creativity and tradition. Originating in the American South, these potatoes undergo a transformative cooking process that renders them irresistibly tender on the inside while achieving a golden, crispy exterior. This technique, often associated with Southern home cooking, has roots in the art of slow roasting and skillet preparation, where potatoes are bathed in a symphony of butter, broth, and seasonings. The result is a dish that not only pays homage to the rich agricultural history of the region but also showcases the ingenuity of home cooks who have mastered the alchemy of transforming humble spuds into a culinary masterpiece. Melting potatoes, with their harmonious blend of textures and flavors, have become a symbol of Southern hospitality and a favorite across the United States, embodying the timeless allure of comfort food deeply embedded in American culinary culture.",
+      instructions:
+        "1.	Preheat the oven to 400 degrees F. \n2.	Peel the potatoes and slice off the ends. Cut into 1-inch slices. Season both sides of the potatoes generously with kosher salt and pepper. \n3.	Heat a cast-iron skillet (or other heavy-duty, ovenproof skillet) over medium-high heat. Add the oil and 4 tablespoons of the butter. Sear the potatoes on one side until golden brown, about 4 minutes. Flip the potatoes and add the broth, rosemary, and garlic. Cut the remaining 6 tablespoons of butter into cubes and scatter on top of the potatoes. Transfer the skillet to the oven and cook until fork-tender, about 30 minutes. Garnish with flaky salt and spoon the pan sauce all over the potatoes.",
+      imageUrl:
+        "https://carlsbadcravings.com/wp-content/uploads/2022/03/melting-potatoes-12bc.jpg",
+      image2Url:
+        "https://kirbiecravings.com/wp-content/uploads/2019/12/melting-potatoes-2-500x500.jpg",
+      image3Url:
+        "https://www.thecountrycook.net/wp-content/uploads/2022/02/thumbnail-Melting-Potatoes-scaled.jpg",
+      tags: ["easy", "holiday", "christmas"],
+      ingredients: [
+        { name: "low sodium chicken broth", measurement: "240g" },
+        { name: "rosemary", measurement: "4g" },
+        { name: "garlic cloves", measurement: "6g" },
+        { name: "flaky salt for garnish", measurement: "to taste" },
+        { name: "diced russet potatoes", measurement: "180g" },
+        { name: "kosher salt", measurement: "to taste" },
+        { name: "black pepper", measurement: "to taste" },
+        { name: "vegetable oil", measurement: "30g" },
+        { name: "unsalted butter", measurement: "140g" },
+      ],
+    },
+    {
+      name: "Korean Corn Cheese",
+      details: "A sweet and savory side dish popularized in South Korea",
+      desc: "Korean corn cheese, a beloved street delicacy, harmoniously blends the sweetness of corn with gooey melted cheese, creating a snack that tantalizes taste buds and warms hearts. Originating in South Korea, this delightful treat has roots in the fusion of traditional Korean flavors with Western influences. In the late 20th century, as international culinary trends infiltrated Korean street food culture, the ingenious combination of corn and cheese became a sensation. Inspired by Western-style corn casseroles, Korean street vendors embraced the concept, adding their own flair by grilling the corn and generously layering it with a blanket of melted cheese. Today, Korean corn cheese is a ubiquitous presence in bustling markets and trendy food stalls, offering a delicious testament to the dynamic evolution of South Korean street cuisine and its ability to blend global inspirations into a uniquely Korean gastronomic experience.",
+      instructions:
+        "1.	Preheat oven to 400˚F. \n2.	Combine all ingredients in a mixing bowl and stir together. \n3.	Pour mixture into a lightly greased baking dish. \n4.	Bake for 10 minutes or until the mixture melts and bubbles. \n5.	Transfer dish to broiler and broil for 2 minutes or until top is browned. \n6.	Serve immediately.",
+      imageUrl:
+        "https://s23209.pcdn.co/wp-content/uploads/2022/02/Korean-Cheese-CornIMG_9994.jpg",
+      image2Url:
+        "https://www.spoonforkbacon.com/wp-content/uploads/2021/01/korean-cheese-corn-1-688x916.jpg",
+      image3Url:
+        "https://www.tashasartisanfoods.com/blog/wp-content/uploads/2023/05/Korean-Corn-Cheese-Recipe-8-FEATURE.jpeg",
+      tags: ["easy", "korean"],
+      ingredients: [
+        { name: "sweet corn kernels", measurement: "100g" },
+        { name: "mayonnaise", measurement: "112g" },
+        { name: "shredded mozarella", measurement: "113g" },
+        { name: "sugar", measurement: "2g" },
+        { name: "salt", measurement: "to taste" },
+        { name: "pepper", measurement: "to taste" },
+        { name: "green onions", measurement: "to taste" },
+      ],
+    },
+    {
+      name: "Korean Fried Chicken",
+      details: "It’ll make you want to fly to Seoul for some chicken",
+      desc: "	Korean fried chicken, a crispy and succulent sensation, embodies a flavorful tale of culinary evolution rooted in the vibrancy of South Korean culture. Originating in the 1970s as an adaptation of Western-style fried chicken, the Korean version underwent a transformation that elevated it to a national culinary treasure. Characterized by a thin, crackling crust achieved through double frying, Korean fried chicken emerged as a street food phenomenon, capturing hearts and taste buds alike. Its rise to prominence was marked by a fusion of flavors, with the introduction of a diverse array of sauces, from spicy gochujang-infused coatings to sweet and savory soy-based glazes. Today, Korean fried chicken stands as a symbol of Korean gastronomic innovation, celebrated not just for its irresistible crunch but also for its role in social gatherings, where friends and family come together to savor this delectable creation. This crispy delight not only mirrors the adaptability of Korean culinary traditions but also showcases the nation's ability to reimagine and enhance global culinary influences.",
+      instructions:
+        "1.	In a bowl, place the chicken, rice wine, ginger, salt, and black pepper. Combine them well. Then evenly coat the chicken with the starch and set aside. \n2.	In a deep saucepan, add a generous amount of oil and heat it until the oil temperature reaches 347 F. Start adding the battered chicken carefully and fry them until they cook. Do not overcrowd the pan. ",
+      imageUrl:
+        "https://christieathome.com/wp-content/uploads/2020/10/Facetune_06-10-2020-15-37-58-scaled.jpg",
+      image2Url:
+        "https://cdn.vox-cdn.com/thumbor/VLQhTuEzjqAXHnpHZyBjKBcFUg4=/0x0:7000x7815/1200x800/filters:focal(2940x3348:4060x4468)/cdn.vox-cdn.com/uploads/chorus_image/image/70021297/_bb.q_Chicken__Golden_Original_Chicken_1.0.jpg",
+      image3Url:
+        "https://www.injohnnyskitchen.com/wp-content/uploads/2020/12/IJK-soy-garlic-Korean-fried-chicken-VT800px.jpg",
+      tags: ["korean"],
+      ingredients: [
+        { name: "chicken wings", measurement: "1400g" },
+        { name: "rice wine", measurement: "30g" },
+        { name: "minced ginger", measurement: "10g" },
+        { name: "fine sea salt", measurement: "5g" },
+        { name: "ground black pepper", measurement: "3g" },
+        { name: "corn starch", measurement: "120g" },
+        { name: "cooking oil", measurement: "500g" },
+      ],
+    },
+    {
+      name: "Thai Iced Tea",
+      details: "A refreshing beverage for any time of the year",
+      desc: "Thai Iced Tea, a tantalizing elixir that marries robust black tea with sweetened condensed milk and ice, has become an iconic and refreshing fixture in Thai culinary culture. Originating in the 20th century, this vibrant beverage finds its roots in Thailand's rich tea-drinking traditions. Introduced during a period of heightened global tea trade, Thai Iced Tea reflects the influence of Indian chai, Chinese tea culture, and the Thai penchant for bold flavors. The tea is typically infused with star anise, crushed tamarind, and orange blossom water, lending it a unique and aromatic profile. Its distinct orange hue comes from the addition of food coloring, a practice that emerged to enhance the visual appeal of this beloved street drink. Thai Iced Tea not only quenches thirst in the tropical heat but also symbolizes the harmonious blend of cultural influences that shape Thai cuisine, making it a flavorful embodiment of Thailand's diverse culinary heritage.",
+      instructions:
+        "1.	Bring water to a boil and add the Thai tea mix. Add sugar and gently stir to completely dissolve sugar. Gently boil tea for about 3 minutes. Remove from heat. \n2.	Allow the tea to steep for at least 30 minutes and allow it to cool. The more concentrated the tea flavor, the better the Thai tea tastes. \n3.	If you are using the Thai tea mix, strain the tea leaves. Set finished Thai tea aside to cool. You can make this ahead of time and have the Thai tea chilling in the fridge. We usually like to make this tea mix one day ahead. \n4.	Fill glasses with ice and pour in Thai tea leaving enough room to fill in your half-and-half (or other creamer). For an 8 oz. glass we like to add about 2-3 tablespoons of half and half for a creamier flavor.",
+      imageUrl:
+        "https://www.thespruceeats.com/thmb/w16B4MH-a_AlvG4t27cw3KgrjLM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-real-thai-iced-tea-recipe-765458-hero-1-9139caef4772411bb34a948c5df50cfb.jpg",
+      image2Url:
+        "https://feastandwest.com/wp-content/uploads/2014/08/spiked-thai-iced-tea-recipe-image.jpg",
+      image3Url:
+        "https://theforkedspoon.com/wp-content/uploads/2018/06/Thai-Tea-Recipe-5-700x1050.jpg",
+      tags: ["easy", "thai"],
+      ingredients: [
+        { name: "thai tea mix", measurement: "80g" },
+        { name: "water", measurement: "960ml" },
+        { name: "granulated sugar", measurement: "150g" },
+        { name: "half and half", measurement: "240ml" },
+      ],
+    },
   ];
 
   for (const recipeData of recipesData) {
