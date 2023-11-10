@@ -20,6 +20,14 @@ const authApi = api.injectEndpoints({
                 body: cred
             })
         }),
+        edit: builder.mutation({
+            query: (cred)=>({
+                url:"/auth/edit",
+                method: "PUT",
+                body: cred
+            }),
+            invalidatesTags: ['EditAuth'],
+        }),
         logout: builder.mutation({
             queryFn: ()=>({data:{}})
         })
@@ -27,7 +35,7 @@ const authApi = api.injectEndpoints({
 })
 
 function storeToken(state, {payload}){
-    console.log(state)
+    console.log(payload)
     state.credentials = {token: payload.token, user: {...payload.user}};
     window.sessionStorage.setItem(
         CREDENTIALS,
@@ -44,12 +52,16 @@ const authSlice = createSlice({
     initialState: {
         credentials : JSON.parse(window.sessionStorage.getItem(CREDENTIALS)) || {
             token:"",
-            user: {userId:null}
+            user: {userId:null},
+            image: {image:null}
         }
     },
     reducers:{},
     extraReducers: (builder)=>{
         builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
+        builder.addMatcher(api.endpoints.edit.matchFulfilled, (state, { payload }) => {
+            state.credentials.user.image = payload.image;
+        });
         builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
         builder.addMatcher(api.endpoints.logout.matchFulfilled, (state)=>{
             console.log("logout")
@@ -68,5 +80,6 @@ export default  authSlice.reducer;
 export const {
     useLoginMutation,
     useRegisterMutation,
-    useLogoutMutation
+    useLogoutMutation,
+    useEditMutation
 } = authApi

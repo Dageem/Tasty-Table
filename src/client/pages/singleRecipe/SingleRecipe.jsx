@@ -99,6 +99,7 @@ export default function SingleRecipe() {
       setLoading(false); // Set loading to false after comments are loaded
     }
   }, [recipe, isLoading, dispatch]);
+
 console.log(comments)
   if (load) return null;
   if (isLoading) {

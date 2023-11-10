@@ -17,6 +17,7 @@ model User {
   Comment  Comment[]
   Likes     Like[]
   savedRecipes SavedRecipe[]
+  image    String    @default("null")
 }
 
 model Recipe {
