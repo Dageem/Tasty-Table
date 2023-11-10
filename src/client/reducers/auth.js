@@ -13,6 +13,13 @@ const authApi = api.injectEndpoints({
                 body: cred
             })
         }),
+            editCreds: builder.mutation({
+                query: (cred)=>({
+                    url:"auth/edit",
+                    method: "POST",
+                    body: cred
+                })
+            }),
         register: builder.mutation({
             query: (cred)=>({
                 url:"auth/register",
@@ -50,6 +57,7 @@ const authSlice = createSlice({
     reducers:{},
     extraReducers: (builder)=>{
         builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
+        builder.addMatcher(api.endpoints.editCreds.matchFulfilled, storeToken);
         builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
         builder.addMatcher(api.endpoints.logout.matchFulfilled, (state)=>{
             console.log("logout")
@@ -68,5 +76,6 @@ export default  authSlice.reducer;
 export const {
     useLoginMutation,
     useRegisterMutation,
-    useLogoutMutation
+    useLogoutMutation, 
+    useEditCredsMutation,
 } = authApi
