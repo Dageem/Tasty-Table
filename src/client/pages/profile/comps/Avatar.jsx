@@ -6,18 +6,10 @@ import { useRef } from "react";
 import Button from "./Button";
 import { useEditMutation } from "../../../reducers/auth";
 import { useGetUsersQuery } from "../../../reducers/api";
-import UserProfile from "../UserProfile";
 import { data } from "autoprefixer";
 import { useParams } from "react-router-dom";
 
 function Avatar({ mod }) {
-//   const {
-//     data: recipeData,
-//     isLoading: isLoadingRecipe,
-//     isError,
-//   } = useGetRecipeByIdQuery(id, {
-//     refetchOnMountOrArgChange: true,
-//   });
 
     const {id} = useParams() 
   const me = useSelector((state) => state.auth.credentials.user);
