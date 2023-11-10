@@ -29,6 +29,189 @@ async function seed() {
       ],
     },
     {
+      name: "Classic Tomato Basil Pasta",
+      details: "A simple and flavorful pasta dish",
+      desc: "This classic tomato basil pasta is a quick and delicious meal that's perfect for busy weeknights. It features a rich tomato sauce infused with fresh basil and garlic, served over your favorite pasta.",
+      instructions:
+        "1. Cook 8 ounces (225g) of pasta according to package instructions until al dente. 2. In a large skillet, heat 2 tablespoons of olive oil over medium heat. 3. Add 3 cloves of minced garlic and sauté for 1-2 minutes until fragrant. 4. Pour in 1 can (14 ounces) of diced tomatoes and 1/4 cup of fresh basil leaves. 5. Simmer the sauce for 10-15 minutes, stirring occasionally, until it thickens. 6. Season with salt and black pepper to taste. 7. Drain the cooked pasta and add it to the skillet with the tomato basil sauce. Toss to combine. 8. Serve hot, garnished with grated Parmesan cheese if desired.",
+      imageUrl:
+        "https://www.acouplecooks.com/wp-content/uploads/2019/08/Tomato-Basil-Pasta-005.jpg",
+      image2Url:
+        "https://images.getrecipekit.com/20230125011759-garlic-20-26-20basil-20pasta-20with-20classic-20marinara_web_v2.jpg?aspect_ratio=4:3&quality=90&",
+      image3Url:
+        "https://theclevermeal.com/wp-content/uploads/2022/05/tomato-basil-pasta_7-1024x657.jpg",
+      tags: ["pasta", "Italian", "easy", "dinner"],
+      ingredients: [
+        {
+          name: "pasta",
+          measurement: "8 ounces (225g)",
+        },
+        {
+          name: "olive oil",
+          measurement: "2 tablespoons",
+        },
+        {
+          name: "garlic cloves, minced",
+          measurement: "3",
+        },
+        {
+          name: "canned diced tomatoes",
+          measurement: "1 can (14 ounces)",
+        },
+        {
+          name: "fresh basil leaves",
+          measurement: "1/4 cup",
+        },
+        {
+          name: "salt",
+          measurement: "to taste",
+        },
+        {
+          name: "black pepper",
+          measurement: "to taste",
+        },
+        {
+          name: "Parmesan cheese, grated (optional)",
+          measurement: "for garnish",
+        },
+      ],
+    },
+    {
+      name: "Simple Greek Salad",
+      details: "A refreshing and healthy salad",
+      desc: "This simple Greek salad is a delightful combination of fresh vegetables, olives, feta cheese, and a zesty dressing. It's a light and healthy salad that's easy to prepare and perfect for a quick lunch or side dish.",
+      instructions:
+        "1. In a large salad bowl, combine 2 cups of cherry tomatoes (halved), 1 cucumber (sliced), 1 red onion (thinly sliced), 1/2 cup of Kalamata olives (pitted), and 1/2 cup of crumbled feta cheese. 2. In a small bowl, whisk together 3 tablespoons of olive oil, 1 tablespoon of red wine vinegar, 1 teaspoon of dried oregano, salt, and black pepper to taste. 3. Drizzle the dressing over the salad ingredients. 4. Toss the salad gently to coat everything with the dressing. 5. Serve immediately as a refreshing and healthy side dish.",
+      imageUrl: "https://hips.hearstapps.com/hmg-prod/images/greek-salad-index-642f292397bbf.jpg?crop=0.6666666666666667xw:1xh;center,top&resize=1200:*",
+      image2Url: "https://www.foodnetwork.com/content/dam/images/food/fullset/2010/4/23/0/BX0204_greek-salad_s4x3.jpg",
+      image3Url: "https://www.simplyrecipes.com/thmb/Z69nXRtC8QRza_ODhMB6-CKcttA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Easy-Greek-Salad-LEAD-8-360dba53fb8f41a2b89f4ab341068c3f.jpg",
+      tags: ["salad", "Greek", "easy", "healthy"],
+      ingredients: [
+        {
+          name: "cherry tomatoes, halved",
+          measurement: "2 cups",
+        },
+        {
+          name: "cucumber, sliced",
+          measurement: "1",
+        },
+        {
+          name: "red onion, thinly sliced",
+          measurement: "1",
+        },
+        {
+          name: "Kalamata olives, pitted",
+          measurement: "1/2 cup",
+        },
+        {
+          name: "crumbled feta cheese",
+          measurement: "1/2 cup",
+        },
+        {
+          name: "olive oil",
+          measurement: "3 tablespoons",
+        },
+        {
+          name: "red wine vinegar",
+          measurement: "1 tablespoon",
+        },
+        {
+          name: "dried oregano",
+          measurement: "1 teaspoon",
+        },
+        {
+          name: "salt",
+          measurement: "to taste",
+        },
+        {
+          name: "black pepper",
+          measurement: "to taste",
+        },
+      ],
+    },
+    {
+      name: "Pumpkin Pie",
+      details: "A classic pumpkin pie with a flaky crust",
+      desc: "No holiday dessert table is complete without a delicious pumpkin pie. This classic recipe features a creamy pumpkin filling spiced with cinnamon, nutmeg, and cloves, all nestled in a flaky pie crust. It's the perfect way to end your holiday meal on a sweet note.",
+      instructions:
+        "For the Pie Crust: 1. Preheat your oven to 375°F (190°C). 2. Roll out your pie crust and carefully place it in a 9-inch pie pan. Trim any excess dough and crimp the edges. 3. Line the pie crust with parchment paper and fill it with pie weights or dried beans. 4. Blind bake the crust for 15 minutes. Remove the parchment paper and weights, and bake for an additional 5 minutes, or until the crust is lightly golden. 5. Remove from the oven and let cool. For the Pumpkin Filling: 1. In a large bowl, whisk together the pumpkin puree, sugar, salt, cinnamon, nutmeg, cloves, eggs, and evaporated milk until well combined. 2. Pour the pumpkin filling into the pre-baked pie crust. 3. Bake in the preheated oven for 40-50 minutes or until the filling is set. You can check for doneness by inserting a knife into the center; it should come out clean when the pie is done. 4. Let the pumpkin pie cool completely before serving. You can refrigerate it for a few hours or overnight for best results. 5. Serve with whipped cream and a sprinkle of cinnamon if desired.",
+      imageUrl:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmfLUAewdmBrpQqfFD_7JmRKWyNs6GWJnmQQ&usqp=CAU",
+      image2Url:
+        "https://www.allrecipes.com/thmb/CQrgVw7qjs2QQfKqy0GMerfppsM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/229932-Simple-Pumpkin-Pie-vat-hero-4x3-LSH-ae211272471a4e7aa9f10716cdcf4bc3.jpg",
+      image3Url:
+        "https://images.ctfassets.net/lufu0clouua1/4lelH9ihlKmEuIweQuEGUE/3b1f905f5bbb7514918061721577d18d/PumpkinPie4f-1.jpg",
+      tags: ["holiday", "pumpkin", "dessert", "thanksgiving"],
+      ingredients: [
+        {
+          name: "store-bought or homemade pie crust",
+          measurement: "1 (9-inch) crust",
+        },
+        { name: "canned pumpkin puree", measurement: "1 (15-ounce) can" },
+        { name: "granulated sugar", measurement: "3/4 cup" },
+        { name: "salt", measurement: "1/2 teaspoon" },
+        { name: "ground cinnamon", measurement: "1 teaspoon" },
+        { name: "ground nutmeg", measurement: "1/2 teaspoon" },
+        { name: "ground cloves", measurement: "1/4 teaspoon" },
+        { name: "eggs", measurement: "2 large" },
+        { name: "evaporated milk", measurement: "1 (12-ounce) can" },
+      ],
+    },
+    {
+      name: "Cranberry Orange Sauce",
+      details: "A zesty and tangy cranberry sauce with a hint of orange",
+      desc: "This cranberry orange sauce is the perfect accompaniment to your holiday turkey or ham. It's a delightful combination of tart cranberries and the zesty sweetness of oranges. This sauce adds a burst of flavor and a pop of color to your festive meal.",
+      instructions:
+        "1. Rinse the cranberries and pick out any stems or bruised berries. 2. In a medium saucepan, combine the cranberries, sugar, orange juice, and orange zest. 3. Place the saucepan over medium heat and bring the mixture to a boil, stirring frequently. 4. Reduce the heat to low and simmer for about 10-15 minutes, or until the cranberries burst and the sauce thickens. 5. Remove the saucepan from heat and let the sauce cool to room temperature. It will continue to thicken as it cools. 6. Transfer the cranberry orange sauce to a serving bowl and refrigerate until ready to serve.",
+      imageUrl:
+        "https://s23209.pcdn.co/wp-content/uploads/2013/11/Cranberry-Orange-Sauce__413.jpg",
+      image2Url:
+        "https://www.oceanspray.com/-/media/OS/US/DotCom/recipes/Sauces-Sides-and-Salads/Fresh-Cranberry-Orange-Relish_MobileDETAIL_815.ashx",
+      image3Url:
+        "https://flavorthemoments.com/wp-content/uploads/2020/11/cranberry-orange-sauce-1-1360.jpg",
+      tags: ["holiday", "cranberry", "sauce", "thanksgiving"],
+      ingredients: [
+        {
+          name: "fresh cranberries",
+          measurement: "12 ounces (340g)",
+        },
+        { name: "granulated sugar", measurement: "1 cup" },
+        { name: "fresh orange juice", measurement: "1/2 cup" },
+        { name: "orange zest", measurement: "1 tablespoon" },
+      ],
+    },
+    {
+      name: "Roasted Garlic Mashed Potatoes",
+      details:
+        "Creamy and flavorful mashed potatoes with a hint of roasted garlic",
+      desc: "These roasted garlic mashed potatoes are the perfect side dish for your holiday feast. The roasted garlic adds a rich and savory flavor to the creamy mashed potatoes, making them a delicious complement to your main course. Your guests will love this comforting and classic holiday recipe.",
+      instructions:
+        "1. Preheat your oven to 400°F (200°C). 2. Cut the top off a whole garlic bulb to expose the cloves. Drizzle with olive oil and wrap it in aluminum foil. Roast in the preheated oven for about 30-35 minutes, or until the garlic cloves are soft and golden. 3. While the garlic is roasting, peel and cut the potatoes into chunks. 4. Place the potato chunks in a large pot, cover them with cold water, and add a pinch of salt. Bring to a boil, then reduce the heat and simmer for about 15-20 minutes or until the potatoes are fork-tender. 5. Drain the potatoes and return them to the pot. 6. Squeeze the roasted garlic cloves out of their skins into the pot with the potatoes. 7. Add butter, milk, salt, and pepper to the potatoes and garlic. Mash everything together until smooth and creamy. You can use a hand masher or an electric mixer for this step. 8. Taste and adjust the seasoning if needed. 9. Serve hot, garnished with fresh chopped chives or parsley if desired.",
+      imageUrl:
+        "https://dishingouthealth.com/wp-content/uploads/2021/11/GarlicMashedPotatoes_Styled1.jpg",
+      image2Url:
+        "https://cdn.theliveinkitchen.com/wp-content/uploads/2021/10/22133400/Mashed-Potatoes-Without-Milk-The-Live-In-Kitchen-Ingredients-The-Live-In-Kitchen.png",
+      image3Url:
+        "https://littleferrarokitchen.com/wp-content/uploads/2021/10/Roasted-Garlic-Mashed-Potatoes-2.jpg",
+      tags: ["holiday", "potatoes", "sides", "thanksgiving", "christmas"],
+      ingredients: [
+        {
+          name: "russet potatoes",
+          measurement: "2.5 pounds (about 1.13 kg)",
+        },
+        { name: "whole garlic bulb", measurement: "1" },
+        { name: "olive oil", measurement: "2 tablespoons" },
+        { name: "butter", measurement: "1/2 cup (1 stick)" },
+        { name: "milk", measurement: "1/2 cup" },
+        { name: "salt", measurement: "1 teaspoon" },
+        { name: "black pepper", measurement: "1/2 teaspoon" },
+        {
+          name: "fresh chives or parsley (optional)",
+          measurement: "for garnish",
+        },
+      ],
+    },
+    {
       name: "Herb-Infused Roasted Chicken",
       details: "A savory and herbaceous whole roasted chicken",
       desc: "This classic Herb-Infused Roasted Chicken features a golden, crispy skin on the outside and succulent, flavorful meat on the inside. The secret lies in a blend of herbs and spices that infuse the chicken with depth and aroma during the roasting process. While simple to prepare, the result is nothing short of a feast for the senses, making it a perfect centerpiece for any family dinner or special occasion. Follow this recipe for a poultry dish that's guaranteed to be a crowd-pleaser.",
