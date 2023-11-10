@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useGetRecipesQuery } from "../../reducers/api";
 import { Link } from "react-router-dom";
 import Pagination from "../displayCategory/Pagiantion";
-import { useSelector } from "react-redux";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function AllRecipes() {
-  const recipes = useSelector((state) => state.data.recipes);
   const initialPage = 1;
   const [currentPage, setCurrentPage] = useState(initialPage);
   const recipesPerPage = 16;
   const [isLoading, setIsLoading] = useState(true);
 
   const {
+    data: recipes,
     isLoading: isRecipesLoading,
     isError: isRecipesError,
     refetch,
