@@ -1,21 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useGetRecipeByIdQuery } from "../../../reducers/api";
-import { useGetThreeRecentRecipesQuery } from "../../../reducers/api";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  useGetRecipeByIdQuery,
+  useGetThreeRecentRecipesQuery,
+} from "../../../reducers/api";
 import { Link } from "react-router-dom";
 
 export default function RecipeDetails() {
   const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const recipeInRedux = useSelector((state) => state.data.recipe);
+
   const {
-    data: recipe,
+    data: recipeFromQuery,
     isLoading: recipeLoading,
     error: recipeError,
-  } = useGetRecipeByIdQuery(id);
+  } = useGetRecipeByIdQuery(id, { skip: !!recipeInRedux });
+
+  const recipe = recipeFromQuery || recipeInRedux;
+
   const {
     data: recents,
     isLoading: recentsLoading,
     error: recentsError,
   } = useGetThreeRecentRecipesQuery();
+
+  const backupImage =
+    "https://hexclad.com/cdn/shop/files/Hexclad_13Pc_8Qt_Lid_FryPanHandles_BLACK_1024x1024.jpg?v=1686775048";
+
+  useEffect(() => {
+    if (!recipeInRedux) {
+    }
+  }, [dispatch, id, recipeInRedux]);
 
   if (recipeLoading || recentsLoading) {
     return <p>Loading...</p>;
@@ -38,10 +56,15 @@ export default function RecipeDetails() {
           <strong className="text-yellow-900">{recipe.name}</strong>
         </h1>
         <p className="text-xl">{recipe.desc}</p>
-        <div
-          className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px] bg-cover bg-center"
-          style={{ backgroundImage: `url(${recipe.image2Url})` }}
-        ></div>
+        <img
+          src={recipe.image2Url || backupImage}
+          alt="recipe-image"
+          onError={(e) => {
+            e.target.src = backupImage;
+          }}
+          className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px]"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
         <h1 className="text-3xl font-bold">Ingredients</h1>
         <div>
           <ol>
@@ -70,10 +93,15 @@ export default function RecipeDetails() {
             </ol>
           </div>
         </div>
-        <div
-          className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px] bg-cover bg-center"
-          style={{ backgroundImage: `url(${recipe.image3Url})` }}
-        ></div>
+        <img
+          src={recipe.image3Url || backupImage}
+          alt="recipe-image"
+          onError={(e) => {
+            e.target.src = backupImage;
+          }}
+          className="col-span-2 w-full h-[400px] md:h-[600px] xl:h-[800px]"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
       </div>
       <div className="hidden lg:block">
         <h1 className="text-3xl font-bold">Recently Added</h1>
@@ -82,8 +110,11 @@ export default function RecipeDetails() {
             <Link to={`/recipe/${recent.id}`} key={recent.id} className="mb-4">
               <div className="relative hover:cursor-pointer hover:opacity-70">
                 <img
-                  src={recent.imageUrl}
+                  src={recent.imageUrl || backupImage}
                   alt="recipe-image"
+                  onError={(e) => {
+                    e.target.src = backupImage;
+                  }}
                   className="w-full h-[320px]"
                 />
               </div>

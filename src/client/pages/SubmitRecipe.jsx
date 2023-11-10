@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useCreateRecipeMutation } from "../reducers/api";
 import { useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./SubmitRecipe.css";
 
 const RecipeForm = () => {
-  // console.log({userId})
-  const me = useSelector((state) => state.auth.credentials.user)
+  const me = useSelector((state) => state.auth.credentials.user);
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
   const [desc, setDesc] = useState("");
@@ -20,13 +22,70 @@ const RecipeForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [createRecipe] = useCreateRecipeMutation();
-
   const navigate = useNavigate();
 
+  const handleTagChange = (index, value) => {
+    const newTags = [...tags];
+    newTags[index].name = value;
+    setTags(newTags);
+  };
+
+  const handleIngredientChange = (index, name, measurement) => {
+    const newIngredients = [...ingredients];
+    newIngredients[index].name = name;
+    newIngredients[index].measurement = measurement;
+    setIngredients(newIngredients);
+  };
+
+  const handleAddTag = () => {
+    setTags([...tags, { name: "" }]);
+  };
+
+  const handleDeleteTag = (index) => {
+    const newTags = [...tags];
+    newTags.splice(index, 1);
+    setTags(newTags);
+  };
+
+  const handleAddIngredient = () => {
+    setIngredients([...ingredients, { name: "", measurement: "" }]);
+  };
+
+  const handleDeleteIngredient = (index) => {
+    const newIngredients = [...ingredients];
+    newIngredients.splice(index, 1);
+    setIngredients(newIngredients);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
+    const emptyTagCount = tags.filter((tag) => tag.name.trim() === "").length;
+    const emptyIngredientCount = ingredients.filter(
+      (ingredient) =>
+        !ingredient.name.trim() || !ingredient.measurement.trim()
+    ).length;
+
+    if (emptyTagCount > 1) {
+      toast.warn(
+        "Please fill out empty tag fields, otherwise remove blank fields!"
+      );
+      return;
+    }
+
+    if (
+      !name.trim() ||
+      !details.trim() ||
+      !desc.trim() ||
+      !instructions.trim() ||
+      !imageUrl.trim() ||
+      emptyIngredientCount > 0
+    ) {
+      toast.error(
+        "Please fill in all required fields: recipe name, details, description, at least one image, and your recipe ingredients. Thank you"
+      );
+      return;
+    }
 
     const recipeData = {
       name,
@@ -36,154 +95,183 @@ const RecipeForm = () => {
       imageUrl,
       image2Url,
       image3Url,
-      userId: me.userId,  
-      tags,
-      ingredients,
+      userId: me.userId,
+      tags: tags.filter((tag) => tag.name.trim()),
+      ingredients: ingredients.filter(
+        (ingredient) =>
+          ingredient.name.trim() && ingredient.measurement.trim()
+      ),
     };
 
     try {
       const response = await createRecipe(recipeData);
       console.log(response);
       setIsSubmitted(true);
+      toast.success("Recipe submitted successfully!", {
+        autoClose: 2000, // Toast will auto-close after 2 seconds
+      });
+      setTimeout(() => navigate("/profile"), 5000);
     } catch (error) {
       console.error("Error creating recipe:", error);
+      toast.error("Error creating recipe!");
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      {isSubmitted ? (
-    <div className="text-center">
-      <h1 className="text-2xl mb-4">Recipe submitted successfully!</h1>
-    </div>
-    ) : (
-    <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
-       <button className="mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-green-200" onClick={() => navigate("/profile")}>
-        Go Back
-    </button>
-      <input className="border-8 p-2 w-full rounded mb-4"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
-      />
-      <textarea className="border-8 p-2 h-20 w-full rounded mb-4"
-        value={details}
-        onChange={(e) => setDetails(e.target.value)}
-        placeholder="Details"
-      ></textarea>
-      <textarea className="border-8  p-2 h-40 w-full rounded mb-4"
-        value={desc}
-        onChange={(e) => setDesc(e.target.value)}
-        placeholder="Description"
-      ></textarea>
-      <textarea className="border-8 p-2 h-60  w-full rounded mb-4"
-        value={instructions}
-        onChange={(e) => setInstructions(e.target.value)}
-        placeholder="Instructions"
-      ></textarea>
-      <input className="border-8 p-2 w-full rounded mb-4"
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
-        placeholder="Image URL"
-      />
-      <input className="border-8 p-2 w-full rounded mb-4"
-        value={image2Url}
-        onChange={(e) => setImage2Url(e.target.value)}
-        placeholder="Image 2 URL"
-      />
-      <input className="border-8 p-2 w-full rounded mb-4"
-        value={image3Url}
-        onChange={(e) => setImage3Url(e.target.value)}
-        placeholder="Image 3 URL"
-      />
-    
-
-
-    <button type="button" className="bg-green-300 text-purple p-2 rounded mb-4 hover:bg-green-200" onClick={() => setTags([...tags, { name: "" }])}>Add Tag</button>
-    
-    {tags.map((tag, index) => (
-      <div>
-      <div>
-        <button 
-          type="button"
-            onClick={() => {
-              const newTags = [...tags];
-                newTags.splice(index, 1);
-                setTags(newTags);
-            }}
-            className="bg-red-500 text-white p-1 rounded"
-        >
-            Delete Tag
-        </button>
-        </div>
-        <div key={index} className="border-8 p-2 rounded mb-4 flex items-center">
-        <input
-            value={tag.name}
-            onChange={(e) => {
-                const newTags = [...tags];
-                newTags[index].name = e.target.value;
-                setTags(newTags);
-            }}
-            placeholder="Tag Name"
-            className="flex-1 p-1 rounded mr-2"
-        />
-        </div>
-      </div>
-))}
-
-
-        <div>
-        <button type="button" className="bg-green-300 text-purple p-2 rounded mb-4 hover:bg-green-200" onClick={() => setIngredients([...ingredients, { name: "", measurement: "" }])}>
-        Add Ingredient
-        </button>
-        </div>
-
-      {ingredients.map((ingredient, index) => (
-        <div>
-          <div>
-          <button 
-          type="button"
-              onClick={() => {
-                const newIngredients = [...ingredients];
-                  newIngredients.splice(index, 1);
-                  setIngredients(newIngredients);
-              }}
-              className="bg-red-500 text-white p-1 rounded"
+    <div className="flex justify-center items-center min-h-screen lg:w-[60%] lg:mx-auto py-3">
+      <div className="w-full sm:w-4/5 lg:w-3/4 xl:w-2/3">
+        {isSubmitted ? (
+          <>
+            <button
+              type="button"
+              className="bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 focus:outline-none"
+              onClick={() => navigate("/profile")}
+            >
+              Go Back
+            </button>
+            <div className="text-center mt-8">
+              <h1 className="text-2xl mb-4 font-bold text-green-500">
+                Recipe submitted successfully!
+              </h1>
+            </div>
+          </>
+        ) : (
+          <form
+            className="bg-white p-8 rounded-lg shadow-md"
+            onSubmit={handleSubmit}
           >
-              Delete Ingredient
-          </button>
-        </div>
-        <div key={index} className="border-8 p-2 rounded mb-4 flex items-center">
-        <input
-            value={ingredient.name}
-            onChange={(e) => {
-                const newIngredients = [...ingredients];
-                newIngredients[index].name = e.target.value;
-                setIngredients(newIngredients);
-            }}
-            placeholder="Ingredient Name"
-            className="flex-1 p-1 rounded mr-2"
-        />
-        <input
-            value={ingredient.measurement}
-            onChange={(e) => {
-                const newIngredients = [...ingredients];
-                newIngredients[index].measurement = e.target.value;
-                setIngredients(newIngredients);
-            }}
-            placeholder="Measurement"
-            className="flex-1 p-1 rounded mr-2"
-        />
+            <h1 className="text-2xl mb-4 font-extrabold">Recipe Submission</h1>
+            <h1 className="text-xl mb-4 font-semibold">Name:</h1>
+            <input
+              className="border p-2 w-full rounded mb-4 border-blue-gray-200"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Name"
+            />
+            <h1 className="text-xl mb-4 font-semibold">Details:</h1>
+            <textarea
+              className="border p-2 h-20 w-full rounded mb-4 border-blue-gray-200"
+              value={details}
+              onChange={(e) => setDetails(e.target.value)}
+              placeholder="Details"
+            ></textarea>
+            <h1 className="text-xl mb-4 font-semibold">Description:</h1>
+            <textarea
+              className="border p-2 h-40 w-full rounded mb-4 border-blue-gray-200"
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              placeholder="Description"
+            ></textarea>
+            <h1 className="text-xl mb-4 font-semibold">Instructions:</h1>
+            <textarea
+              className="border p-2 h-60 w-full rounded mb-4 border-blue-gray-200"
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+              placeholder="Instructions"
+            ></textarea>
+            <h1 className="text-xl mb-4 font-semibold">Image URL 1:</h1>
+            <input
+              className="border p-2 w-full rounded mb-4 border-blue-gray-200"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+              placeholder="Image URL"
+            />
+            <h1 className="text-xl mb-4 font-semibold">Image URL 2:</h1>
+            <input
+              className="border p-2 w-full rounded mb-4 border-blue-gray-200"
+              value={image2Url}
+              onChange={(e) => setImage2Url(e.target.value)}
+              placeholder="Image 2 URL"
+            />
+            <h1 className="text-xl mb-4 font-semibold">Image URL 3:</h1>
+            <input
+              className="border p-2 w-full rounded mb-4 border-blue-gray-200"
+              value={image3Url}
+              onChange={(e) => setImage3Url(e.target.value)}
+              placeholder="Image 3 URL"
+            />
+
+            <h1 className="text-xl mb-4 font-semibold">Recipe Tags:</h1>
+            <button
+              type="button"
+              className="bg-green-300 text-purple p-2 rounded mb-4 hover:bg-green-200"
+              onClick={handleAddTag}
+            >
+              Add Tag
+            </button>
+
+            {tags.map((tag, index) => (
+              <div key={index} className="mb-4">
+                <div className="flex items-center">
+                  <input
+                    value={tag.name}
+                    onChange={(e) => handleTagChange(index, e.target.value)}
+                    placeholder="Tag Name"
+                    className="border p-2 w-1/2 rounded mr-2 border-blue-gray-200"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteTag(index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded-full hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+
+            <h1 className="text-xl mb-4 font-semibold">Ingredient + Measurement:</h1>
+            <button
+              type="button"
+              className="bg-green-300 text-purple p-2 rounded mb-4 hover:bg-green-200"
+              onClick={handleAddIngredient}
+            >
+              Add Ingredient
+            </button>
+
+            {ingredients.map((ingredient, index) => (
+              <div key={index} className="mb-4">
+                <div className="flex items-center">
+                  <input
+                    value={ingredient.name}
+                    onChange={(e) =>
+                      handleIngredientChange(index, e.target.value, ingredient.measurement)
+                    }
+                    placeholder="Ingredient Name"
+                    className="border p-2 w-1/2 rounded mr-2 border-blue-gray-200"
+                  />
+                  <input
+                    value={ingredient.measurement}
+                    onChange={(e) =>
+                      handleIngredientChange(index, ingredient.name, e.target.value)
+                    }
+                    placeholder="Measurement"
+                    className="border p-2 w-1/2 rounded mr-2 border-blue-gray-200"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteIngredient(index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded-full hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+
+            <button
+              type="submit"
+              className="bg-green-300 text-white p-2 w-full rounded mt-4 hover:bg-green-200"
+            >
+              Submit Recipe
+            </button>
+          </form>
+        )}
       </div>
-        </div>
-          ))}
-        <button type="submit" className="bg-green-300 text-white p-2 w-full rounded mt-4 hover:bg-green-200">
-        Submit Recipe
-        </button>
-        </form>
-      )}
+      <ToastContainer />
     </div>
   );
 };
 
 export default RecipeForm;
+

@@ -1,5 +1,4 @@
 import { StickyNavbar } from "./pages/nav/comps/Nav";
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import DisplayCategory from "./pages/displayCategory/DisplayCategory";
 import SubmitRecipe from "./pages/SubmitRecipe";
@@ -15,9 +14,6 @@ import Footer from "./pages/footer/Footer";
 import AllRecipes from "./pages/allRecipes/AllRecipes";
 import BasicMap from "./pages/map/map";
 import SearchResults from "./pages/SearchResults";
-
-import Visualize from "./pages/profile/comps/Visualize";
-import Account from "./pages/profile/comps/Account";
 import Saved from "./pages/profile/comps/Saved";
 import RecipesRender from "./pages/profile/comps/Recipes";
 
@@ -35,9 +31,7 @@ export default function App() {
         <Route path="/communityboard" element={<CommunityBoard />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<UserProfile />} />
-          <Route path="/account" element={<Account />} />
           <Route path="/saved" element={<Saved />} />
-          <Route path="/visualize" element={<Visualize />} />
           <Route path="/recipes" element={<RecipesRender />} />
         <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />

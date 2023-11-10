@@ -43,6 +43,40 @@ router.get('/users/:userId/savedrecipes', async (req, res) => {
   }
 });
 
+router.delete('/savedrecipes/:userId/:recipeId', async (req, res) => {
+  const { userId, recipeId } = req.params;
+
+  try {
+    // Check if the saved recipe exists
+    const existingSavedRecipe = await prisma.savedRecipe.findUnique({
+      where: {
+        userId_recipeId: {
+          userId: parseInt(userId),
+          recipeId: parseInt(recipeId),
+        },
+      },
+    });
+
+    if (!existingSavedRecipe) {
+      return res.status(404).json({ message: 'Saved recipe not found' });
+    }
+
+    // Delete the saved recipe
+    await prisma.savedRecipe.delete({
+      where: {
+        userId_recipeId: {
+          userId: parseInt(userId),
+          recipeId: parseInt(recipeId),
+        },
+      },
+    });
+
+    res.json({ message: 'Saved recipe deleted successfully' });
+  } catch (error) {
+    console.error("Failed to delete saved recipe", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 
 router.get('/', async (req, res, next) => {
@@ -315,20 +349,6 @@ router.get("/:id", async (req, res, next) => {
 
 
 
-//  user can update their recipe by userId -- This should be in Chef Dan's User routes, also unfinished
-router.put("/user/:userId/recipe/recipeId", async (req, res, next) => {
-  try {
-    const recipe = await prisma.recipe.update({
-      where: {
-        id: Number(req.params.id),
-      },
-      data: req.body,
-    });
-    res.send(recipe);
-  } catch (error) {
-    next(error);
-  }
-});
 
 router.delete('/:id', async (req, res, next) => {
   try {

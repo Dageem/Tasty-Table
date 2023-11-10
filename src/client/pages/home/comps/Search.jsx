@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const handleSearchButtonClick = async () => {
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault(); // Prevents the default form submission behavior
+
     dispatch(clearSearch());
 
     try {
@@ -34,25 +36,25 @@ const Search = () => {
 
   return (
     <div className="bg-gray-100">
-      <div className="flex items-center justify-center">
-        <input
-          type="text"
-          placeholder="Search recipes..."
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-          className="border border-blue-gray-900 rounded-lg p-2 w-[200px]"
-        />
-        <button
-          onClick={handleSearchButtonClick}
-          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
-        >
-          Search
-        </button>
-      </div>
+      <form onSubmit={handleSearchSubmit}>
+        <div className="flex items-center justify-center">
+          <input
+            type="text"
+            placeholder="Search recipes..."
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+            className="border border-blue-gray-900 rounded-lg p-2 w-[200px]"
+          />
+          <button
+            type="submit"
+            className="ml-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-400"
+          >
+            Search
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
 
 export default Search;
-
-

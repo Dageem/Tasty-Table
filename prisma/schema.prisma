@@ -30,7 +30,7 @@ model Recipe {
   image2Url         String?
   image3Url         String?
   userId            Int?
-  Ingredient_recipe Ingredient_recipe[]
+  Ingredient_recipe Ingredient_recipe[] 
   User              User?               @relation(fields: [userId], references: [id])
   recipetags        Recipetags[]
   Tag               Tag?                @relation(fields: [tagId], references: [id])

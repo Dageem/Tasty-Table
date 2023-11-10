@@ -20,9 +20,9 @@ function Home() {
       <div className="my-[40px] lg:my-[60px]">
         <RecentRecipes />
       </div>
-      <div className="my-[40px] lg:my-[60px]">
+      {/* <div className="my-[40px] lg:my-[60px]">
         <Newsletter />
-      </div>
+      </div> */}
       <div className="hidden xl:block my-[40px] mb-[4rem] lg:my-[60px]">
         <TempFeature />
       </div>

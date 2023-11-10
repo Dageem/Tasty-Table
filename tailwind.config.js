@@ -10,6 +10,12 @@ module.exports = withMT({
   
   theme: {
     extend: {
+      fontFamily: {
+          'cursive': ['Dancing Script', 'cursive']
+        },
+      fontSize: {
+        'giant': '10rem', // or any other size you prefer
+      },
       screens: {
 
       },
@@ -19,8 +25,18 @@ module.exports = withMT({
         // ... you can add more gradient styles if needed ...
       })
     },
+    // plugins: [
+    //   function({ addUtilities }) {
+    //     const newUtilities = {
+    //       '.diagonal-stripes': {
+    //         backgroundImage: 'repeating-linear-gradient(45deg, #000000 0, #000000 10px, #ff0000 10px, #ff0000 20px, #0000ff 20px, #0000ff 30px)',
+    //       },
+    //     }
+    //     addUtilities(newUtilities)
+    //   }
+    // ],
   },
 
-  variants: {},
-  plugins: [],
+  // variants: {},
+  // plugins: [],
 });

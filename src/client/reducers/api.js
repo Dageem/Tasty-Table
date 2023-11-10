@@ -5,7 +5,9 @@ const CREDENTIALS = "credentials";
 
 // Define a service using a base URL and expected endpoints
 export const api = createApi({
+
   tagTypes: ['SavedRecipes', 'EditRecipe'],//
+
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_URL || "http://localhost:3000",
@@ -73,9 +75,7 @@ export const api = createApi({
           body,
         };
       },
-            invalidatesTags: (result, error, arg) => [
-                { type: 'Recipe', id: arg.id },
-              ],
+      invalidatesTags: (result, error, arg) => [{ type: "Recipe", id: arg.id }],
     }),
     getRecipeById: builder.query({
       query: (id) => ({
@@ -109,12 +109,20 @@ export const api = createApi({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ['SavedRecipes'],//
+      invalidatesTags: ["SavedRecipes"], //
     }),
     getSavedRecipes: builder.query({
       query: (userId) => `api/recipe/users/${userId}/savedrecipes`,
-      providesTags: ['SavedRecipes'],//
+      providesTags: ["SavedRecipes"], //
     }),
+    deleteSavedRecipe: builder.mutation({
+      query: ({ userId, recipeId }) => ({
+        url: `api/recipe/savedrecipes/${userId}/${recipeId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['SavedRecipes'],//
+    }),
+
     getTags: builder.query({
       query: () => ({
         url: "api/tags/recipetags",
@@ -122,8 +130,8 @@ export const api = createApi({
     }),
     getPopTags: builder.query({
       query: () => ({
-          url: "api/tags/popular",
-      })
+        url: "api/tags/popular",
+      }),
     }),
     getPosts: builder.query({
       query: () => ({
@@ -154,22 +162,21 @@ export const api = createApi({
         method: "DELETE",
       }),
     }),
-     deleteComment:builder.mutation({
-            query:(id)=>({
-                url:'/api/recipe/comments/'+id,
-                method:'DELETE'
-            })
-        }),
-      addComment : builder.mutation({
-            query:(body)=>({
-                url:'/api/recipe/comments',
-                method:"POST",
-                body:body
-            })
-        }),
+    deleteComment: builder.mutation({
+      query: (id) => ({
+        url: "/api/recipe/comments/" + id,
+        method: "DELETE",
+      }),
+    }),
+    addComment: builder.mutation({
+      query: (body) => ({
+        url: "/api/recipe/comments",
+        method: "POST",
+        body: body,
+      }),
+    }),
   }),
 });
-
 
 const dataSlice = createSlice({
   name: "data",
@@ -200,8 +207,6 @@ const dataSlice = createSlice({
       }
     );
 
-    
-
     //  Recipe
     builder.addMatcher(
       api.endpoints.getRecipeById.matchFulfilled,
@@ -214,17 +219,7 @@ const dataSlice = createSlice({
     );
 
     builder.addMatcher(
-        api.endpoints.getRecipesByUserId.matchFulfilled,
-        (state, { payload }) => {
-          return {
-            ...state,
-            recipes: payload,
-          };
-        }
-      );
-
-    builder.addMatcher(
-      api.endpoints.getRecipes.matchFulfilled,
+      api.endpoints.getRecipesByUserId.matchFulfilled,
       (state, { payload }) => {
         return {
           ...state,
@@ -232,6 +227,26 @@ const dataSlice = createSlice({
         };
       }
     );
+
+    // builder.addMatcher(
+    //   api.endpoints.getRecipes.matchFulfilled,
+    //   (state, { payload }) => {
+    //     return {
+    //       ...state,
+    //       recipes: payload,
+    //     };
+    //   }
+    // );
+
+    // builder.addMatcher(
+    //   api.endpoints.getThreeRecentRecipes.matchFulfilled,
+    //   (state, { payload }) => {
+    //     return {
+    //       ...state,
+    //       recipes: payload,
+    //     };
+    //   }
+    // );
 
     builder.addMatcher(
       api.endpoints.deleteRecipeById.matchFulfilled,
@@ -251,60 +266,15 @@ const dataSlice = createSlice({
       }
     );
 
-
-        builder.addMatcher(api.endpoints.editRecipe.matchFulfilled, (state, {payload})=>{
-            return {
-                ...state,
-                recipe: payload,
-                recipes: state.recipes.map(i=>i.id===payload.id?{...i, ...payload}:i)
-            }
-        })  
-        
-
-        // Community Posts 
-        builder.addMatcher(api.endpoints.getPostByUserId.matchFulfilled, (state, {payload})=>{
-            return{
-                ...state,
-                posts: payload
-
-            }
-        })
-       
-        builder.addMatcher(api.endpoints.getPosts.matchFulfilled, (state, {payload})=>{
-            return {
-                ...state,
-                posts: state.posts.map(i=>i.id===payload.id?{...i, ...payload}:i)
-            }
-        })
-
     builder.addMatcher(
-      api.endpoints.updatePostById.matchFulfilled,
+      api.endpoints.editRecipe.matchFulfilled,
       (state, { payload }) => {
         return {
           ...state,
+          recipe: payload,
           recipes: state.recipes.map((i) =>
             i.id === payload.id ? { ...i, ...payload } : i
           ),
-        };
-      }
-    );
-
-    builder.addMatcher(
-      api.endpoints.deletePostById.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          posts: state.posts.filter((i) => i.id !== payload.id),
-        };
-      }
-    );
-
-    builder.addMatcher(
-      api.endpoints.createPost.matchFulfilled,
-      (state, { payload }) => {
-        return {
-          ...state,
-          recipes: state.recipes.filter((i) => i.id !== payload.id),
         };
       }
     );
@@ -355,13 +325,12 @@ const dataSlice = createSlice({
   },
 });
 
-
 const searchSlice = createSlice({
   name: "search",
   initialState: {
     results: {
       search: false,
-      rslt: [], 
+      rslt: [],
     },
   },
   reducers: {
@@ -380,8 +349,6 @@ export const { setSearchResults, clearSearch } = searchSlice.actions;
 
 export const searchReducer = searchSlice.reducer;
 export const dataReducer = dataSlice.reducer;
-
-
 
 export const {
   useGetUsersQuery,
@@ -408,6 +375,6 @@ export const {
   useAddCommentMutation,
   useSaveRecipeMutation,
   useGetSavedRecipesQuery,
-  useGetPopTagsQuery, 
+  useGetPopTagsQuery,
+  useDeleteSavedRecipeMutation,
 } = api;
-

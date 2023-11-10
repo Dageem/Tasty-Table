@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useRegisterMutation, useLoginMutation } from "../../reducers/auth";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const LoginPage = () => {
@@ -24,7 +26,7 @@ const LoginPage = () => {
       navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
-      alert("Login failed!");
+      toast.error("Login failed!");
     }
 
     setTimeout(() => {
@@ -36,7 +38,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 min-h-screen">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="mx-auto h-21 w-auto"
@@ -109,6 +111,17 @@ const LoginPage = () => {
           >
             Sign in
           </button>
+          <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
         </div>
 
         <p className="mt-10 text-center text-sm text-gray-500">
