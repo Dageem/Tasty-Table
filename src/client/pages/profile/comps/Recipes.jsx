@@ -70,7 +70,7 @@ function RecipesRender({ recipes, onDelete }) {
           <div className="flex-grow md:flex-grow-0 md:w-1/6 absolute right-10 flex flex-col space-y-1 z-20">
             <Link to={`/editrecipe/${recipe.id}`}>
                 <button
-                    className="relative w-full p-2 text-white-600 bg-blue-500 border-2 border-indigo-600 rounded-full shadow-2xl transition-all duration-500 ease-out text-white rounded overflow-hidden group hover:bg-blue-gray-700"
+                    className="relative w-full p-2 text-white-600 bg-blue-500 border-2 border-indigo-600 rounded-full shadow-2xl transition-all duration-500 ease-out text-white  overflow-hidden group hover:bg-blue-gray-700"
                 >
                     {/* <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500 rounded-full group-hover:w-full group-hover:h-full"></span>
                     <span className="relative z-10">Edit</span> */}
@@ -79,7 +79,7 @@ function RecipesRender({ recipes, onDelete }) {
             </Link>
 
             <button
-                className="relative w-full p-2 text-white-600 bg-red-500 border-2 border-red-900 rounded-full shadow-2xl transition-all duration-500 ease-out text-white rounded overflow-hidden group hover:bg-blue-gray-700"
+                className="relative w-full p-2 text-white-600 bg-red-500 border-2 border-red-900 rounded-full shadow-2xl transition-all duration-500 ease-out text-white overflow-hidden group hover:bg-blue-gray-700"
 
               onClick={() => onDelete(recipe.id)}
             >
