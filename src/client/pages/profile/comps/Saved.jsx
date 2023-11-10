@@ -55,8 +55,7 @@ export default function Saved() {
                 to={`/recipe/${savedRecipe.recipe.id}`}
                 className="hover:opacity-70"
               >
-                {/* Wrap the content you want inside the link */}
-                <div>
+                <div className="lg:min-h-[390px]">
                   <div className="flex items-center justify-center">
                     <img
                       src={savedRecipe.recipe.imageUrl || backupImage}
@@ -88,13 +87,12 @@ export default function Saved() {
                   </div>
                 </div>
               </Link>
-              {/* Center the button */}
               <div className="flex justify-center">
                 <button
                   onClick={() =>
                     handleDeleteSavedRecipe(userId, savedRecipe.recipe.id)
                   }
-                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                  className="px-4 py-2 mt-2 bg-red-500 text-white rounded hover:bg-red-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
                 >
                   Remove Recipe
                 </button>
