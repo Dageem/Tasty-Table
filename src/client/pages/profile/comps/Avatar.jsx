@@ -66,7 +66,7 @@ function Avatar({ mod }) {
         {!me.image ? (
           <FontAwesomeIcon icon={faUser} />
         ) : (
-          <img alt={"profile"} src={`${me.image}`} />
+          <img alt={"profile"} src={`${me.image}`} style={{ width: "180px", height: "180px" }} />
         )}
       </div>
       {isLoading && <FontAwesomeIcon icon={faSpinner} spin />}
