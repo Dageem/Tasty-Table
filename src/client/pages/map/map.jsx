@@ -45,7 +45,31 @@ const BasicMap = () => {
     },
     {
       geocode: [15.87, 100.9925],
-      popUp: "Thai",
+      popUp: "thai",
+    },
+    {
+      geocode: [18.1096, -77.2975],
+      popUp: "jamaican",
+    },
+    {
+      geocode: [4.5709, -74.2973],
+      popUp: "colombian",
+    },
+    {
+      geocode: [-14.2350, -51.9253],
+      popUp: "brazilian",
+    },
+    {
+      geocode: [37.0902, -95.7129],
+      popUp: "american",
+    },
+    {
+      geocode: [62.1282, 15.6435],
+      popUp: "swedish",
+    },
+    {
+      geocode: [-30.5595, 22.9375],
+      popUp: "south african",
     },
   ];
   const handleMarkerClick = (index) => {
