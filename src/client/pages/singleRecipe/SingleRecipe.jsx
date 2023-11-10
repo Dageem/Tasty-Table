@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useGetRecipeByIdQuery, useAddCommentMutation, useDeleteCommentMutation } from '../../reducers/api';
-import SingleHead from './comps/SingleHead';
-import RecipeDetails from './comps/RecipeDetails';
-import './Comment.css';
-import { setComments, addComment, deleteComment } from '../../reducers/commentsSlice';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  useGetRecipeByIdQuery,
+  useAddCommentMutation,
+  useDeleteCommentMutation,
+} from "../../reducers/api";
+import SingleHead from "./comps/SingleHead";
+import RecipeDetails from "./comps/RecipeDetails";
+import "./Comment.css";
+import {
+  setComments,
+  addComment,
+  deleteComment,
+} from "../../reducers/commentsSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SingleRecipe() {
   const { id } = useParams();
@@ -19,6 +29,7 @@ export default function SingleRecipe() {
   const [loading, setLoading] = useState(false);
   const [load, setLoad] = useState(true);
   const nav = useNavigate();
+  
 
   const handleAddComment = async () => {
     if (me.userId) {
@@ -33,11 +44,11 @@ export default function SingleRecipe() {
           });
 
           const newComment = {
-            recipeId: id,
+            id: newCommentData.data.id,
             message,
             userId: me.userId,
             user: {
-              userId: me.userId,
+              id: me.userId,
               username: me.username,
             },
             createdAt: new Date().toISOString(),
@@ -51,7 +62,7 @@ export default function SingleRecipe() {
           setLoading(false);
         }
       } else {
-        alert("Please enter a message before submitting."); // Display an alert if message is empty
+        toast.error("Please enter a message before submitting."); // Display an alert if message is empty
       }
     } else {
       nav("/login");
@@ -88,7 +99,7 @@ export default function SingleRecipe() {
       setLoading(false); // Set loading to false after comments are loaded
     }
   }, [recipe, isLoading, dispatch]);
-
+console.log(comments)
   if (load) return null;
 console.log(comments)
   if (isLoading) return <p>Loading...</p>;
@@ -136,6 +147,17 @@ console.log(comments)
             placeholder="Add a comment..."
           />
           <button onClick={handleAddComment}>Submit</button>
+          <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
         </div>
       </form>
     </div>
