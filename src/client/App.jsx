@@ -18,8 +18,6 @@ import Saved from "./pages/profile/comps/Saved";
 import RecipesRender from "./pages/profile/comps/Recipes";
 
 export default function App() {
-
-
   return (
     <div id="app-container">
       <StickyNavbar />
@@ -31,8 +29,8 @@ export default function App() {
         <Route path="/communityboard" element={<CommunityBoard />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<UserProfile />} />
-          <Route path="/saved" element={<Saved />} />
-          <Route path="/recipes" element={<RecipesRender />} />
+        <Route path="/saved" element={<Saved />} />
+        <Route path="/recipes" element={<RecipesRender />} />
         <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />
