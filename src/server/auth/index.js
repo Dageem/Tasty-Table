@@ -22,7 +22,7 @@ router.post("/register", async (req, res, next) => {
 
     res
       .status(201)
-      .send({ token, user: { userId: user.id, username: user.username } });
+      .send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null } });
   } catch (err) {
     next(err);
   }
@@ -46,7 +46,7 @@ router.post("/login", async (req, res, next) => {
 
     const token = jwt.sign({ id: user.id }, process.env.JWT);
 
-    res.send({ token, user: { userId: user.id, username: user.username } });
+    res.send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null } });
   } catch (err) {
     next(err);
   }
