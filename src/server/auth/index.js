@@ -71,35 +71,54 @@ router.post("/login", async (req, res, next) => {
 
 
 router.put("/edit", require('./middleware'), async (req, res) => {
-  const saltRounds = 5; 
-  const { currentPassword, newPassword } = req.body;
+  const saltRounds = 5;
+  const { currentPassword, newPassword, image } = req.body;
   const userId = req.user.id;
 
   try {
       const user = await prisma.user.findUnique({ where: { id: userId } });
 
-     
-      const isValid = await bcrypt.compare(currentPassword, user.password);
-      if (!isValid) {
-          return res.status(401).send("Current password is incorrect.");
+      // Update password if currentPassword and newPassword are provided
+      if (currentPassword && newPassword) {
+          const isValid = await bcrypt.compare(currentPassword, user.password);
+          if (!isValid) {
+              return res.status(401).send("Current password is incorrect.");
+          }
+
+          const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
+          await prisma.user.update({
+              where: { id: userId },
+              data: { password: hashedNewPassword }
+          });
       }
 
-  
-      const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
-      await prisma.user.update({
-          where: { id: userId },
-          data: { password: hashedNewPassword }
+      // Update image if provided
+      if (image) {
+          await prisma.user.update({
+              where: { id: userId },
+              data: { image: image }
+          });
+      }
+
+      const updatedUser = await prisma.user.findUnique({ where: { id: userId } });
+
+      const token = jwt.sign({ id: updatedUser.id }, process.env.JWT);
+      res.send({ 
+          token, 
+          user: { 
+              userId: updatedUser.id, 
+              username: updatedUser.username, 
+              image: updatedUser.image !== "null" ? updatedUser.image : null,
+              password: updatedUser.password !== "null" ? updatedUser.password : null 
+          } 
       });
-
-        const token = jwt.sign({ id: user.id }, process.env.JWT);
-
-        res.send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null, password: user.password!=="null"? user.password : null } });
 
   } catch (error) {
       console.error(error);
-      res.status(500).send("Error updating password.");
+      res.status(500).send("Error updating user profile.");
   }
 });
+
 
 
 

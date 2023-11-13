@@ -33,6 +33,7 @@ export default function App() {
           <Route path="/saved" element={<Saved />} />
           <Route path="/recipes" element={<RecipesRender />} />
         <Route path="/authfillout" element={<AuthFillOut />} />
+        <Route path="/about" element={<About />} />
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />
         <Route path="/editrecipe/:id" element={<EditRecipe />} />

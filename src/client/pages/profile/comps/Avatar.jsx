@@ -41,10 +41,23 @@ function Avatar({ mod }) {
 
   const uploadImage = async (event) => {
     const file = event.target.files[0];
+    console.log("Selected file:", file); 
+  
     const base64 = await convertBase64(file);
-    edit({ image: base64 });
-    refetch, console.log(base64);
+    console.log("Converted base64:", base64); 
+  
+    edit({ image: base64 })
+      .unwrap()
+      .then((response) => {
+        console.log("Edit response:", response); 
+        refetch(); 
+      })
+      .catch((error) => {
+        console.error("Edit error:", error); 
+      });
   };
+  
+  
 
   if (loading) {
     return <div>Loading...</div>;
@@ -63,7 +76,8 @@ function Avatar({ mod }) {
   //   console.log(me);
   return (
     <>
-      <div className={"flex justify-center"}>
+    {console.log("Current user state:", me)}
+      <div className={"avatar"}>
         {!me.image ? (
           <FontAwesomeIcon icon={faUser} className="text-5xl" />
         ) : (

@@ -53,26 +53,34 @@ function storeToken(state, { payload }) {
 const authSlice = createSlice({
     name: "auth",
     initialState: {
-        credentials : JSON.parse(window.sessionStorage.getItem(CREDENTIALS)) || {
-            token:"",
-            user: {userId:null},
-            image: {image:null},
-            password: {password:null}
+        credentials: JSON.parse(window.sessionStorage.getItem(CREDENTIALS)) || {
+            token: "",
+            user: {
+                userId: null,
+                username: null, 
+                image: null,
+                password: null
+            }
         }
     },
     reducers:{},
     extraReducers: (builder)=>{
         builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
         builder.addMatcher(api.endpoints.edit.matchFulfilled, (state, { payload }) => {
-            state.credentials.user.image = payload.image;
-            state.credentials.user.password = payload.password;
-            state.credentials.username = payload.username;
-           
+            state.credentials = {
+                ...state.credentials,
+                user: {
+                    ...state.credentials.user,
+                    username: payload.user.username, 
+                    image: payload.user.image,
+                    password: payload.user.password
+                }
+            };
             window.sessionStorage.setItem(
                 CREDENTIALS,
                 JSON.stringify(state.credentials)
             );
-        });        
+        });       
         builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
         builder.addMatcher(api.endpoints.logout.matchFulfilled, (state)=>{
             console.log("logout")
