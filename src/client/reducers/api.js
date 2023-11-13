@@ -401,5 +401,4 @@ export const {
   useGetSavedRecipesQuery,
   useGetPopTagsQuery,
   useDeleteSavedRecipeMutation,
-  useDeleteSavedRecipeMutation,
 } = api;
