@@ -23,7 +23,7 @@ const RegisterPage = () => {
       }, 2000);
     } catch (error) {
       console.error("Register failed:", error);
-      toast.error("Registration failed!");
+      toast.error("Username already Taken!");
     }
     setTimeout(() => {
       setUsername("");
@@ -34,7 +34,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 min-h-screen">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           className="mx-auto h-21 w-auto"
