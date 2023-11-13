@@ -22,7 +22,8 @@ router.post("/register", async (req, res, next) => {
 
     res
       .status(201)
-      .send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null } });
+      .send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null, password: user.password!=="null"? user.password : null } });
+      console.log('response payload: ', user)
   } catch (err) {
     next(err);
   }
@@ -46,25 +47,61 @@ router.post("/login", async (req, res, next) => {
 
     const token = jwt.sign({ id: user.id }, process.env.JWT);
 
-    res.send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null } });
+    res.send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null, password: user.password!=="null"? user.password : null } });
+    console.log('response payload: ', user)
   } catch (err) {
     next(err);
   }
 });
 
-router.put("/edit", require('./middleware'), async (req, res,next)=>{
-  try{
-      const user = await  prisma.user.update({
-          where: {id:req.user.id},
-          data: req.body
-      })
-//i removed admin: user.admin, from under this and it didnt break
-      res.send({userId:user.id, username: user.username, image: user.image!=="null"?user.image:null})
+// router.put("/edit", require('./middleware'), async (req, res,next)=>{
+//   try{
+//       const user = await  prisma.user.update({
+//           where: {id:req.user.id},
+//           data: req.body
+//       })
+// //i removed admin: user.admin, from under this and it didnt break
+//       res.send({userId:user.id, username: user.username, image: user.image!=="null"?user.image:null, password: user.password})
 
-  } catch(err){
-      next(err)
+//   } catch(err){
+//       next(err)
+//   }
+// });
+
+
+
+router.put("/edit", require('./middleware'), async (req, res) => {
+  const saltRounds = 5; 
+  const { currentPassword, newPassword } = req.body;
+  const userId = req.user.id;
+
+  try {
+      const user = await prisma.user.findUnique({ where: { id: userId } });
+
+     
+      const isValid = await bcrypt.compare(currentPassword, user.password);
+      if (!isValid) {
+          return res.status(401).send("Current password is incorrect.");
+      }
+
+  
+      const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
+      await prisma.user.update({
+          where: { id: userId },
+          data: { password: hashedNewPassword }
+      });
+
+        const token = jwt.sign({ id: user.id }, process.env.JWT);
+
+        res.send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null, password: user.password!=="null"? user.password : null } });
+
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Error updating password.");
   }
 });
+
+
 
 router.get("/me", async (req, res, next) => {
   if (!req.user) {

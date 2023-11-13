@@ -5,9 +5,7 @@ const CREDENTIALS = "credentials";
 
 // Define a service using a base URL and expected endpoints
 export const api = createApi({
-
   tagTypes: ['SavedRecipes', 'EditRecipe'],//
-
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_URL || "http://localhost:3000",
@@ -115,6 +113,14 @@ export const api = createApi({
       query: (userId) => `api/recipe/users/${userId}/savedrecipes`,
       providesTags: ["SavedRecipes"], //
     }),
+    deleteSavedRecipe: builder.mutation({
+      query: ({ userId, recipeId }) => ({
+        url: `api/recipe/savedrecipes/${userId}/${recipeId}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['SavedRecipes'],//
+    }),
+
     deleteSavedRecipe: builder.mutation({
       query: ({ userId, recipeId }) => ({
         url: `api/recipe/savedrecipes/${userId}/${recipeId}`,
@@ -237,7 +243,25 @@ const dataSlice = createSlice({
     //     };
     //   }
     // );
+    // builder.addMatcher(
+    //   api.endpoints.getRecipes.matchFulfilled,
+    //   (state, { payload }) => {
+    //     return {
+    //       ...state,
+    //       recipes: payload,
+    //     };
+    //   }
+    // );
 
+    // builder.addMatcher(
+    //   api.endpoints.getThreeRecentRecipes.matchFulfilled,
+    //   (state, { payload }) => {
+    //     return {
+    //       ...state,
+    //       recipes: payload,
+    //     };
+    //   }
+    // );
     // builder.addMatcher(
     //   api.endpoints.getThreeRecentRecipes.matchFulfilled,
     //   (state, { payload }) => {
@@ -376,5 +400,6 @@ export const {
   useSaveRecipeMutation,
   useGetSavedRecipesQuery,
   useGetPopTagsQuery,
+  useDeleteSavedRecipeMutation,
   useDeleteSavedRecipeMutation,
 } = api;

@@ -78,76 +78,86 @@ function EditRecipe() {
       navigate("/profile");
     }
   }, [hasUpdated, navigate]);
+  
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+    
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({
+          ...prevData,
+          [name]: value
+        }));
+        
+      };
+  
+    
+    
+      const handleSubmit = async (event) => {
+        event.preventDefault();
+      
+        console.log('Update Payload before submission:', formData);
+        
+        try {
+    
+          const updatedRecipe = await editRecipe({ ...formData, id: id }).unwrap(); 
+          console.log('Edit Recipe Response:', updatedRecipe);
+          
+          // Invalidate the cache
+          api.util.invalidateTags([{ type: 'Recipe', id: id }]);
+          
+          // Set hasUpdated to trigger the navigation
+          setHasUpdated(true);
+          
+        } catch (err) {
+          console.error('Failed to update recipe', err);
+          setHasUpdated(false);
+        }
+      };
+      
+      
+      
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+      useEffect(() => {
+        console.log('Form data changed:', formData);
+      }, [formData]);
+      
+      
+      
 
-    console.log("Update Payload before submission:", formData);
 
-    try {
-      const updatedRecipe = await editRecipe({ ...formData, id: id }).unwrap();
-      console.log("Edit Recipe Response:", updatedRecipe);
-
-      // Invalidate the cache
-      api.util.invalidateTags([{ type: "Recipe", id: id }]);
-
-      // Set hasUpdated to trigger the navigation
-      setHasUpdated(true);
-    } catch (err) {
-      console.error("Failed to update recipe", err);
-      setHasUpdated(false);
-    }
-  };
-
-  useEffect(() => {
-    console.log("Form data changed:", formData);
-  }, [formData]);
-
-  const toggleTag = (apiTag) => {
-    const tagExists = formData.tags.some((tag) => tag.name === apiTag.name);
-    const updatedTags = tagExists
-      ? formData.tags.filter((tag) => tag.name !== apiTag.name)
-      : [...formData.tags, { name: apiTag.name }];
-
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      tags: updatedTags,
-    }));
-  };
-
-  const removeTag = (tagName) => {
-    const updatedTags = formData.tags.filter((tag) => tag.name !== tagName);
-
-    setFormData({
-      ...formData,
-      tags: updatedTags,
-    });
-  };
-
-  const isLoadingAnyData = isLoading || popLoad || isLoadingRecipe || isEditing;
-  const hasError = error || popError || isError || editError;
-  return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-200 p-5">
-      <>
+      const toggleTag = (apiTag) => {
+        const tagExists = formData.tags.some(tag => tag.name === apiTag.name);
+        const updatedTags = tagExists
+          ? formData.tags.filter(tag => tag.name !== apiTag.name)
+          : [...formData.tags, { name: apiTag.name }];
+        
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          tags: updatedTags
+        }));
+      };
+      
+      
+      const removeTag = (tagName) => {
+        const updatedTags = formData.tags.filter(tag => tag.name !== tagName);
+        
+        setFormData({
+          ...formData,
+          tags: updatedTags
+        });
+      };
+     
+      const isLoadingAnyData = isLoading || popLoad || isLoadingRecipe || isEditing;
+      const hasError = error || popError || isError || editError;
+      return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-200 p-5">
+        <>
         {isLoadingAnyData && <div>Loading...</div>}
-        {hasError && <div>Error: {hasError.message}</div>}
-        {!isLoadingAnyData && !hasError && recipeData && (
-          <form
-            className="bg-white p-8 rounded-lg w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2"
-            onSubmit={handleSubmit}
-          >
-            <button
-              className="border p-3 mb-6 bg-red-500 text-white font-bold rounded-full hover:bg-red-300"
-              onClick={() => navigate("/profile")}
-            >
+      {hasError && <div>Error: {hasError.message}</div>}
+      {!isLoadingAnyData && !hasError && recipeData && (
+          <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
+            <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50" onClick={() => navigate("/profile")}>
               Go Back
             </button>
             <h1 className="text-2xl mb-4 font-extrabold">Recipe Submission</h1>
@@ -170,7 +180,7 @@ function EditRecipe() {
               onChange={handleChange}
               placeholder="Details"
             ></textarea>
-            <h1 className="text-xl mb-4 font-semibold">Desc:</h1>
+            <h1 className="text-xl mb-4 font-semibold">Description:</h1>
             <textarea
               name="description"
               className="border h20 w-full rounded mb-4 border-blue-gray-200"

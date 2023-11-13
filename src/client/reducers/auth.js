@@ -34,17 +34,20 @@ const authApi = api.injectEndpoints({
     })
 })
 
-function storeToken(state, {payload}){
-    console.log(payload)
-    state.credentials = {token: payload.token, user: {...payload.user}};
+function storeToken(state, { payload }) {
+    state.credentials = {
+        token: payload.token,
+        user: { 
+            ...payload.user, 
+            password: payload.password  
+        }
+    };
     window.sessionStorage.setItem(
         CREDENTIALS,
-        JSON.stringify({
-            token: payload.token,
-            user: {...payload.user}
-        })
-    )
+        JSON.stringify(state.credentials)
+    );
 }
+
 
 
 const authSlice = createSlice({
@@ -53,7 +56,8 @@ const authSlice = createSlice({
         credentials : JSON.parse(window.sessionStorage.getItem(CREDENTIALS)) || {
             token:"",
             user: {userId:null},
-            image: {image:null}
+            image: {image:null},
+            password: {password:null}
         }
     },
     reducers:{},
@@ -61,7 +65,14 @@ const authSlice = createSlice({
         builder.addMatcher(api.endpoints.login.matchFulfilled, storeToken);
         builder.addMatcher(api.endpoints.edit.matchFulfilled, (state, { payload }) => {
             state.credentials.user.image = payload.image;
-        });
+            state.credentials.user.password = payload.password;
+            state.credentials.username = payload.username;
+           
+            window.sessionStorage.setItem(
+                CREDENTIALS,
+                JSON.stringify(state.credentials)
+            );
+        });        
         builder.addMatcher(api.endpoints.register.matchFulfilled, storeToken);
         builder.addMatcher(api.endpoints.logout.matchFulfilled, (state)=>{
             console.log("logout")
@@ -80,6 +91,6 @@ export default  authSlice.reducer;
 export const {
     useLoginMutation,
     useRegisterMutation,
-    useLogoutMutation,
-    useEditMutation
+    useLogoutMutation, 
+    useEditMutation,
 } = authApi
