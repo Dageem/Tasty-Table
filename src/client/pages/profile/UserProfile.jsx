@@ -51,15 +51,15 @@ function UserProfile() {
   return (
     <div className="w-[95%] min-h-[100vh] lg:w-[70%]  m-auto">
       {/* User Profile Header */}
-      <div className="flex mb-6 mt-5 ml-5 justify-between ">
-        <div className="flex flex-col">
+      <div className="flex mb-6 mt-5 ml-5 justify-between">
+        <div className="flex flex-col  border-blue-gray-900  text-blue-gray-900">
+        <h1 className="text-l font-extrabold mb-3 text-blue-gray-900 flex justify-center">{user.username}'s Profile!</h1>
           <Avatar mod={true}/>
-          <h1 className="text-xl font-extrabold">{user.username}'s Profile</h1>
-          <h2>Number of recipes: {recipes?.length || 0}</h2>
+          <h2 className="text-blue-gray-900 text-xs mt-5 flex justify-center">Number of Recipes: {recipes?.length || 0}</h2>
         </div>
         <div className="flex mr-10">
           <Link to="/recipesubmit">
-            <button className="bg-green-500 p-4 rounded w-full max-w-md ml-[18%] font-extrabold text-black hover:bg-green-900 transition-colors duration-300">
+            <button className="bg-green-500 p-2 lg:p-5 rounded w-full ml-[18%] font-extrabold text-black hover:bg-green-900 transition-colors duration-300 ">
               Add a New Recipe!
             </button>
           </Link>
