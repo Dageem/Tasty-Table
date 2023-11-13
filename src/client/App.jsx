@@ -16,6 +16,7 @@ import BasicMap from "./pages/map/map";
 import SearchResults from "./pages/SearchResults";
 import Saved from "./pages/profile/comps/Saved";
 import RecipesRender from "./pages/profile/comps/Recipes";
+import AuthFillOut from "./pages/profile/comps/AuthFillOut";
 
 export default function App() {
 
@@ -33,7 +34,7 @@ export default function App() {
         <Route path="/profile" element={<UserProfile />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/recipes" element={<RecipesRender />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/authfillout" element={<AuthFillOut />} />
         <Route path="/allrecipes" element={<AllRecipes />} />
         <Route path="/recipe/:id" element={<SingleRecipe />} />
         <Route path="/editrecipe/:id" element={<EditRecipe />} />

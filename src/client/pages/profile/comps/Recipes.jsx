@@ -12,7 +12,7 @@ function RecipesRender({ recipes, onDelete }) {
       }
     
     if (recipes.length === 0) {
-        return <p className="text-center mt-10 text-4xl"> You Have No Recipe's Currently. Please add some recipes!</p>;
+        return <p className="text-center mt-10 text-4xl"> You Have Not Created Any Recipes. Add a Recipe and See it Here !</p>;
       }
     
   return (

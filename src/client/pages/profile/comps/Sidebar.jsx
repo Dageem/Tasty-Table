@@ -8,10 +8,10 @@ function Sidebar() {
         Home
       </Link>
       <Link to="/saved" className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900 w-[33%] text-center">
-        Saved
+        Saved Recipes
       </Link>
-      <Link to="/about" className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900 w-[33%] text-center">
-        About
+      <Link to="/authfillout" className="text-blue-gray-900 font-semibold border border-blue-gray-900 border-solid py-2 px-2 mr-2 hover:text-white hover:bg-blue-gray-900 w-[33%] text-center">
+        Login Info
       </Link>
     </div>
   );

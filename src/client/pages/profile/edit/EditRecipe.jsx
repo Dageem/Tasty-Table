@@ -170,7 +170,7 @@ function EditRecipe() {
               onChange={handleChange}
               placeholder="Details"
             ></textarea>
-            <h1 className="text-xl mb-4 font-semibold">Desc:</h1>
+            <h1 className="text-xl mb-4 font-semibold">Description:</h1>
             <textarea
               name="description"
               className="border h20 w-full rounded mb-4 border-blue-gray-200"
