@@ -69,51 +69,38 @@ router.post("/login", async (req, res, next) => {
 // });
 
 
-router.put("/edit", require('./middleware'), async (req, res, next) => {
+
+router.put("/edit", require('./middleware'), async (req, res) => {
+  const saltRounds = 5; 
+  const { currentPassword, newPassword } = req.body;
+  const userId = req.user.id;
+
   try {
-    // Extract data from request
-    const { currentPassword, newPassword, username } = req.body;
+      const user = await prisma.user.findUnique({ where: { id: userId } });
 
-    // Find the user in the database
-    const user = await prisma.user.findUnique({
-      where: { id: req.user.id },
-    });
+     
+      const isValid = await bcrypt.compare(currentPassword, user.password);
+      if (!isValid) {
+          return res.status(401).send("Current password is incorrect.");
+      }
 
-    // Check if the user exists
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
+  
+      const hashedNewPassword = await bcrypt.hash(newPassword, saltRounds);
+      await prisma.user.update({
+          where: { id: userId },
+          data: { password: hashedNewPassword }
+      });
 
-    // Verify the current password
-    const isValid = await bcrypt.compare(currentPassword, user.password);
-    if (!isValid) {
-      return res.status(401).send("Invalid current password");
-    }
+        const token = jwt.sign({ id: user.id }, process.env.JWT);
 
-    // Hash the new password
-    const saltRounds = 10; // or any other number you prefer
-    const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+        res.send({ token, user: { userId: user.id, username: user.username, image: user.image!=="null"?user.image:null, password: user.password!=="null"? user.password : null } });
 
-    // Update the user's password (and username if provided)
-    const updatedUser = await prisma.user.update({
-      where: { id: req.user.id },
-      data: {
-        password: hashedPassword,
-        ...(username && { username }), // Update username if it's provided
-      },
-    });
-
-    // Respond with updated user info (excluding sensitive data like password)
-    res.send({
-      userId: updatedUser.id,
-      username: updatedUser.username,
-      image: updatedUser.image !== "null" ? updatedUser.image : null,
-    });
-
-  } catch (err) {
-    next(err);
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Error updating password.");
   }
 });
+
 
 
 router.get("/me", async (req, res, next) => {
