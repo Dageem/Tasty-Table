@@ -63,7 +63,7 @@ function AllRecipes() {
         {currentRecipes.map((recipe) => (
           <div
             key={recipe.id}
-            className="w-full sm:w-1/2 md:w-1/2 xl:w-1/3 2xl:w-1/4 my-3 hover:opacity-70 cursor-pointer"
+            className="w-full sm:w-1/2 md:w-1/2 xl:w-1/3 2xl:w-1/4 p-4 my-3 hover:opacity-70 cursor-pointer"
           >
             <Link to={`/recipe/${recipe.id}`}>
               <div>
