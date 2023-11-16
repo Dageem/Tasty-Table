@@ -79,7 +79,7 @@ function RecipesRender({ recipes, onDelete }) {
             </Link>
 
             <button
-                className="relative w-full p-2 text-white-600 bg-red-500 border-2 border-red-900 rounded-full shadow-2xl transition-all duration-500 ease-out text-white overflow-hidden group hover:bg-blue-gray-700"
+                className="relative w-full p-2 text-white-600 bg-red-500 border-2 border-red-900 rounded-full shadow-2xl transition-all duration-500 ease-out text-white overflow-hidden group hover:bg-red-700"
 
               onClick={() => onDelete(recipe.id)}
             >

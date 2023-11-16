@@ -10,8 +10,8 @@ import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import EditRecipeIngredients from "./comps/EditRecipeIngredients";
 import { api } from "../../../reducers/api";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function EditRecipe() {
   // Redux
@@ -157,7 +157,7 @@ function EditRecipe() {
       {hasError && <div>Error: {hasError.message}</div>}
       {!isLoadingAnyData && !hasError && recipeData && (
           <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
-            <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50" onClick={() => navigate("/profile")}>
+            <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-green-200" onClick={() => navigate("/profile")}>
               Go Back
             </button>
             <h1 className="text-2xl mb-4 font-extrabold">Recipe Submission</h1>
@@ -274,7 +274,7 @@ function EditRecipe() {
               }
             />
             {/* Submit Button */}
-            <div className="flex justify-center">
+            <div className="flex justify-center pt-6">
               <button
                 type="submit"
                 className="bg-green-300 text-black p-2 rounded mb-4 hover:bg-green-200"

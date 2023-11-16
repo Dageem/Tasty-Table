@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 function AuthFillOut() {
   const me = useSelector((state) => state.auth.credentials.user);
@@ -42,42 +42,46 @@ function AuthFillOut() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     if (formData.newPassword !== formData.confirmNewPassword) {
       toast.error("New passwords do not match!");
-      
       return;
     }
-
+  
     try {
       await edit({
         currentPassword: formData.currentPassword,
         newPassword: formData.newPassword,
+        username: formData.username,
         id: me.userId,
       }).unwrap();
       toast.success("Password updated successfully!");
       navigate('/profile');
     } catch (error) {
-        console.error('Failed to update:', error);
-    console.log(error);
-      toast.error(error.message || "Failed to update password");
-    }
-  };
+        // console.error('Failed to update:', error);
+        // Check for a specific status code in the error
+        if (error.status === 409) {
+          toast.error("Username already taken!");
+        } else if (error.status === 401) {
+          toast.error("Current password is incorrect.");
+        } else {
+          toast.error(error.data?.message || "Failed to update profile");
+        }
+      }
+    };
+  
 
   if (isEditing) return <div>Loading...</div>;
-  if (editError) return <div>Error: Failed to Update Password! </div>;
+//   if (editError) return <div>Error: Failed to Update Password! </div>;
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-200 p-5">
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <form className="bg-white p-8 rounded-lg w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2" onSubmit={handleSubmit}>
-        <button 
-          className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50" 
-          onClick={() => navigate("/profile")}
-        >
-          Go Back
-        </button>
-        <h1 className="text-xl mb-4 font-semibold">Username:</h1>
+            <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-green-200" onClick={() => navigate("/profile")}>
+              Go Back
+            </button>
+        <h1 className="text-xl mb-4 font-semibold p-2">Username:</h1>
         <input
           name="username"
           className="border-2 w-full rounded mb-4"

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useCreateRecipeMutation } from "../reducers/api";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import "./SubmitRecipe.css";
 
 const RecipeForm = () => {
@@ -20,6 +20,7 @@ const RecipeForm = () => {
     { name: "", measurement: "" },
   ]);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const isSubmitting = useRef(false);
 
   const [createRecipe] = useCreateRecipeMutation();
   const navigate = useNavigate();
@@ -57,35 +58,44 @@ const RecipeForm = () => {
     setIngredients(newIngredients);
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const emptyTagCount = tags.filter((tag) => tag.name.trim() === "").length;
-    const emptyIngredientCount = ingredients.filter(
-      (ingredient) =>
-        !ingredient.name.trim() || !ingredient.measurement.trim()
-    ).length;
-
-    if (emptyTagCount > 1) {
-      toast.warn(
-        "Please fill out empty tag fields, otherwise remove blank fields!"
-      );
-      return;
+    console.log('handleSubmit called');
+    if (isSubmitting.current) {
+      console.log('Submission is already in progress');
+      return; // Prevents multiple submissions
     }
-
-    if (
-      !name.trim() ||
-      !details.trim() ||
-      !desc.trim() ||
-      !instructions.trim() ||
-      !imageUrl.trim() ||
-      emptyIngredientCount > 0
-    ) {
-      toast.error(
-        "Please fill in all required fields: recipe name, details, description, at least one image, and your recipe ingredients. Thank you"
-      );
-      return;
-    }
+    isSubmitting.current = true;
+    
+      let errorMessages = [];
+      
+      // Check for empty fields and add error messages to the array
+      if (!name.trim()) errorMessages.push("Missing recipe name.");
+      if (!details.trim()) errorMessages.push("Missing details.");
+      if (!desc.trim()) errorMessages.push("Missing description.");
+      if (!instructions.trim()) errorMessages.push("Missing instructions.");
+      if (!imageUrl.trim()) errorMessages.push("Missing image URL.");
+    
+      const emptyTagCount = tags.filter((tag) => tag.name.trim() === "").length;
+      if (emptyTagCount > 1) errorMessages.push("Missing recipe tags.");
+    
+      const emptyIngredientCount = ingredients.filter(
+        (ingredient) => !ingredient.name.trim() || !ingredient.measurement.trim()
+      ).length;
+      if (emptyIngredientCount > 0) errorMessages.push("Missing recipe ingredients.");
+    
+      // If there are any error messages, show them in a single toast and return
+      if (errorMessages.length > 0) {
+        toast.warn(errorMessages.join(" "), {
+          toastId:'warn1',
+        });
+        console.log("Displaying toast for validation errors");
+        isSubmitting.current = false; // Reset the flag after showing the error
+        return;
+      }
+    
+    
 
     const recipeData = {
       name,
@@ -104,16 +114,19 @@ const RecipeForm = () => {
     };
 
     try {
-      const response = await createRecipe(recipeData);
+      const response = createRecipe(recipeData);
       console.log(response);
       setIsSubmitted(true);
       toast.success("Recipe submitted successfully!", {
-        autoClose: 2000, // Toast will auto-close after 2 seconds
+        autoClose: 2000, 
       });
       setTimeout(() => navigate("/profile"), 5000);
     } catch (error) {
       console.error("Error creating recipe:", error);
       toast.error("Error creating recipe!");
+    }finally {
+      console.log('Resetting isSubmitting'); // Reset the flag after submission attempt
+      isSubmitting.current = false; 
     }
   };
 
@@ -135,12 +148,15 @@ const RecipeForm = () => {
               </h1>
             </div>
           </>
-        ) : (
+         ) : ( 
           <form
             className="bg-white p-8 rounded-lg shadow-md"
             onSubmit={handleSubmit}
           >
-            <h1 className="text-2xl mb-4 font-extrabold">Recipe Submission</h1>
+            <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-green-200" onClick={() => navigate("/profile")}>
+              Go Back
+            </button>
+            <h1 className="text-2xl mb-4 font-extrabold text-center">Recipe Submission</h1>
             <h1 className="text-xl mb-4 font-semibold">Name:</h1>
             <input
               className="border p-2 w-full rounded mb-4 border-blue-gray-200"
@@ -266,9 +282,9 @@ const RecipeForm = () => {
               Submit Recipe
             </button>
           </form>
-        )}
+        )} 
       </div>
-      <ToastContainer />
+
     </div>
   );
 };

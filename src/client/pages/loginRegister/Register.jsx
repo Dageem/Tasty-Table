@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRegisterMutation, useLoginMutation } from "../../reducers/auth";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 const RegisterPage = () => {
   const [username, setUsername] = useState("");
@@ -100,7 +100,7 @@ const RegisterPage = () => {
           >
             Register
           </button>
-          <ToastContainer
+          {/* <ToastContainer
               position="top-center"
               autoClose={2000}
               hideProgressBar={false}
@@ -110,7 +110,7 @@ const RegisterPage = () => {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-            />
+            /> */}
         </div>
       </div>
       <div>

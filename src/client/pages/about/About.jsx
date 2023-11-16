@@ -27,8 +27,8 @@ const people = [
     name: "Daniel Jerman",
     role: "Executive Chef",
     imageUrl:
-      "https://media.licdn.com/dms/image/D4E35AQGb4fQ4mWOWTQ/profile-framedphoto-shrink_400_400/0/1686318155926?e=1699470000&v=beta&t=Mj2li8feCfemLVd6UpoinHpOUa3gg6VDz2IA6mDb1f8",
-  },
+    "https://media.licdn.com/dms/image/D4E35AQGb4fQ4mWOWTQ/profile-framedphoto-shrink_400_400/0/1686318156760?e=1700773200&v=beta&t=nLJFbvsE6cjJpoSht1bEk9fswGJN6Ta4gYDUeRNoxEU"
+    },
   {
     name: "Luke Jones",
     role: "Janitor",

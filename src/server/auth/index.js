@@ -72,12 +72,23 @@ router.post("/login", async (req, res, next) => {
 
 router.put("/edit", require('./middleware'), async (req, res) => {
   const saltRounds = 5;
-  const { currentPassword, newPassword, image } = req.body;
+  const { currentPassword, newPassword, image, username } = req.body;
   const userId = req.user.id;
 
   try {
       const user = await prisma.user.findUnique({ where: { id: userId } });
 
+      if (username) {
+        const existingUser = await prisma.user.findUnique({ where: { username } });
+        if (existingUser && existingUser.id !== userId) {
+            return res.status(409).send({ message: "Username already taken." });
+
+        }
+        await prisma.user.update({
+          where: { id: userId },
+          data: { username: username }
+      });
+    }
       // Update password if currentPassword and newPassword are provided
       if (currentPassword && newPassword) {
           const isValid = await bcrypt.compare(currentPassword, user.password);

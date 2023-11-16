@@ -40,7 +40,7 @@ function Footer() {
                 Subscribe
               </button>
             </form>
-            <ToastContainer
+            {/* <ToastContainer
               position="top-center"
               autoClose={2000}
               hideProgressBar={false}
@@ -50,7 +50,7 @@ function Footer() {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-            />
+            /> */}
           </div>
 
           <div className="w-1/2  md:w-1/4 mb-6 md:mb-0">

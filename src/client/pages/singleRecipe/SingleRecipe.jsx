@@ -152,7 +152,7 @@ console.log(comments)
             placeholder="Add a comment..."
           />
           <button onClick={handleAddComment}>Submit</button>
-          <ToastContainer
+          {/* <ToastContainer
               position="top-center"
               autoClose={2000}
               hideProgressBar={false}
@@ -173,7 +173,7 @@ console.log(comments)
               pauseOnFocusLoss
               draggable
               pauseOnHover
-            />
+            /> */}
         </div>
       </form>
     </div>

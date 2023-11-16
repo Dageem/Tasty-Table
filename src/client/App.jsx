@@ -17,6 +17,8 @@ import SearchResults from "./pages/SearchResults";
 import Saved from "./pages/profile/comps/Saved";
 import RecipesRender from "./pages/profile/comps/Recipes";
 import AuthFillOut from "./pages/profile/comps/AuthFillOut";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   return (
@@ -40,6 +42,7 @@ export default function App() {
         <Route path="/map" element={<BasicMap />} />
         <Route path="/search-results" element={<SearchResults />} />
       </Routes>
+      <ToastContainer/>
       <Footer />
     </div>
   );

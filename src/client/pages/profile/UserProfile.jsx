@@ -59,7 +59,7 @@ function UserProfile() {
         </div>
         <div className="flex mr-10">
           <Link to="/recipesubmit">
-            <button className="bg-green-500 p-2 lg:p-5 rounded w-full ml-[18%] font-extrabold text-black hover:bg-green-900 transition-colors duration-300 ">
+            <button type="button" className="bg-green-500 p-2 lg:p-5 rounded w-full ml-[18%] font-extrabold text-black hover:bg-green-900 transition-colors duration-300 ">
               Add a New Recipe!
             </button>
           </Link>

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUserId } from "../../../reducers/auth";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 export default function SingleHead() {
   const { id } = useParams();
@@ -46,7 +46,7 @@ export default function SingleHead() {
             >
               Save Recipe
             </button>
-            <ToastContainer
+            {/* <ToastContainer
               position="top-center"
               autoClose={2000}
               hideProgressBar={false}
@@ -56,7 +56,7 @@ export default function SingleHead() {
               pauseOnFocusLoss
               draggable
               pauseOnHover
-            />
+            /> */}
           </div>
         </div>
         <div className="hidden xl:block">
