@@ -151,16 +151,16 @@ function EditRecipe() {
       const isLoadingAnyData = isLoading || popLoad || isLoadingRecipe || isEditing;
       const hasError = error || popError || isError || editError;
       return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-200 p-5">
-        <>
+        <div className="mx-auto bg-gray-200 p-5 overflow-y-auto" >
+        {/* <> */}
         {isLoadingAnyData && <div>Loading...</div>}
       {hasError && <div>Error: {hasError.message}</div>}
       {!isLoadingAnyData && !hasError && recipeData && (
-          <form className="bg-white p-8 rounded-lg shadow-md w-7/10 mx-auto" onSubmit={handleSubmit}>
+          <form className="bg-white p-8 rounded-lg shadow-md mx-auto min-h-screen" style={{ width: '70%' }} onSubmit={handleSubmit}>
             <button className="border-2 p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-green-200" onClick={() => navigate("/profile")}>
               Go Back
             </button>
-            <h1 className="text-2xl mb-4 font-extrabold">Recipe Submission</h1>
+            <h1 className="text-2xl mb-4 font-extrabold text-center">Recipe Submission</h1>
             <h1 className="text-xl mb-4 font-semibold">Name:</h1>
             {/* <div className="p-4 mb-6 bg-blue-gray-50 text-black rounded px-6 py-3 hover:bg-blue-gray-50">
             Name
@@ -213,14 +213,14 @@ function EditRecipe() {
               placeholder="image3Url"
             />
             {/* Display all available tags from the API */}
-            <div className="w-full px-3 mb-6 md:mb-0">
+            <div className="w-full px-3 ">
               <h1 className="text-xl mb-4 font-semibold">
                 Current Tags{" "}
                 <strong className="text-sm font-semibold">
                   (Click To Remove):
                 </strong>
               </h1>
-              <div className="flex flex-wrap gap-2 p-3 bg-gray-200 rounded">
+              <div className="flex flex-wrap gap-2 p-3 bg-gray-200 rounded min-w-full">
                 {formData.tags.map((tag, index) => (
                   <div key={index} className="relative group">
                     <button
@@ -286,7 +286,7 @@ function EditRecipe() {
             </div>
           </form>
         )}
-      </>
+      {/* </> */}
       {/* )} */}
     </div>
   );
